@@ -4,19 +4,6 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
-## 2026-03-29T16:00:14Z
-
-- **Who:** Copilot CLI agent
-- **What:** Added homepage-like background pattern to product page and removed gray background usage from product sections
-- **When:** 2026-03-29T16:00:14Z
-- **Where:** `src/app/product/page.tsx`, `src/app/product/product-page.module.css`, `docs/logs/changelogs.md`
-- **Why:** User requested product page to match homepage pattern treatment and replace gray backgrounds with brand-consistent white/orange styling
-- **How:** Wrapped product content in a dedicated `.product-page` container with orange vertical line pattern, made section backgrounds transparent to reveal that pattern, converted gray backgrounds/borders/text accents to white + fire-orange/dark-orange tones, and adjusted product-page structure/indentation while preserving behavior
-- **File path(s) changed:**
-  - `src/app/product/page.tsx`
-  - `src/app/product/product-page.module.css`
-  - `docs/logs/changelogs.md`
-
 ## 2026-03-29T15:53:02Z
 
 - **Who:** Copilot CLI agent
