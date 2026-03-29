@@ -57,6 +57,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 3. **When user says "same thing again"** — completely rethink approach, don't just tweak
 4. **Do not ask for push confirmation** when change is done — commit and push automatically after every edit
 5. **Before every commit/push, append changelog first** in `docs/logs/changelogs.md` using 5W+1H + file paths
+6. **If asked to change only background gray, do NOT alter text/icon/button palettes** — keep existing colors unless explicitly requested
 
 ### File Organization
 1. **Follow user's exact directory structure** — don't create files in wrong locations

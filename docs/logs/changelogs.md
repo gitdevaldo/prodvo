@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T16:16:44Z
+
+- **Who:** Copilot CLI agent
+- **What:** Reverted overbroad product color changes and reapplied only requested scope: homepage-like pattern + gray background replacement
+- **When:** 2026-03-29T16:16:44Z
+- **Where:** `.claude/task/lessons.md`, `src/app/product/page.tsx`, `src/app/product/product-page.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested strict scope: keep existing non-background colors and only change product background pattern + gray backgrounds
+- **How:** Reverted prior broad commit, added a process lesson to prevent palette overreach, wrapped product page with patterned container, then changed only gray background values to white/orange-tint backgrounds while preserving text/icon/button color palette
+- **File path(s) changed:**
+  - `.claude/task/lessons.md`
+  - `src/app/product/page.tsx`
+  - `src/app/product/product-page.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T15:53:02Z
 
 - **Who:** Copilot CLI agent

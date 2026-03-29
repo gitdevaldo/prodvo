@@ -1,3 +1,9 @@
+.product-page {
+  background: #fff;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 140px 100%;
+}
+
 .hero {
   padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 7vw, 6rem);
   position: relative;
@@ -9,7 +15,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(#e4e4e7 1.2px, transparent 1.2px);
+  background-image: radial-gradient(#fdba74 1.2px, transparent 1.2px);
   background-size: 30px 30px;
   opacity: 0.6;
   pointer-events: none;
@@ -142,7 +148,7 @@
 
 .btn-hero-secondary:hover {
   border-color: #18181b;
-  background: #f4f4f5;
+  background: #fff;
 }
 
 .hero-proof {
@@ -177,7 +183,7 @@
 }
 
 .terminal {
-  background: #fafafa;
+  background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 16px;
   overflow: hidden;
@@ -196,7 +202,7 @@
 }
 
 .terminal-bar {
-  background: #f4f4f5;
+  background: #fff;
   border-bottom: 1px solid #e4e4e7;
   padding: 0.65rem 1rem;
   display: flex;
@@ -340,7 +346,7 @@
 }
 
 .contrast {
-  background: #f4f4f5;
+  background: #fff;
   border-top: 1px solid #e4e4e7;
   border-bottom: 1px solid #e4e4e7;
   padding: clamp(3.5rem, 6vw, 5rem) 0;
@@ -399,7 +405,7 @@
   font-size: 0.65rem;
   font-weight: 500;
   color: #71717a;
-  background: #f4f4f5;
+  background: #fff;
   border: 1px solid #e4e4e7;
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
@@ -442,7 +448,7 @@
 .contrast-line {
   width: 1px;
   height: 80px;
-  background: #e4e4e7;
+  background: #fdba74;
 }
 
 .features {
@@ -533,7 +539,7 @@
 }
 
 .bc.surf-cool {
-  background: #f4f4f5;
+  background: #fff;
   border-color: #e4e4e7;
 }
 
@@ -589,7 +595,7 @@
 
 .bc-code {
   margin-top: 1.4rem;
-  background: #f4f4f5;
+  background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 10px;
   padding: 1.1rem 1.3rem;
@@ -663,7 +669,7 @@
   font-size: 0.72rem;
   font-weight: 500;
   color: #3f3f46;
-  background: #f4f4f5;
+  background: #fff;
   border: 1px solid #e4e4e7;
   padding: 0.3rem 0.7rem;
   border-radius: 6px;
@@ -722,7 +728,7 @@
 
 .how {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #f4f4f5;
+  background: #fff;
   border-top: 1px solid #e4e4e7;
 }
 
@@ -784,7 +790,7 @@
   width: 2px;
   flex: 1;
   min-height: 48px;
-  background: #e4e4e7;
+  background: #fdba74;
   margin: 4px 0;
 }
 
@@ -849,7 +855,7 @@
   padding: 1.3rem 1.4rem;
   border: 1px solid #e4e4e7;
   border-radius: 14px;
-  background: #fafafa;
+  background: #fff;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -887,7 +893,7 @@
 
 .testi {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #f4f4f5;
+  background: #fff;
   border-top: 1px solid #e4e4e7;
   overflow: hidden;
 }
@@ -915,12 +921,12 @@
 
 .testi-track-wrap::before {
   left: 0;
-  background: linear-gradient(to right, #f4f4f5, transparent);
+  background: linear-gradient(to right, #fff, transparent);
 }
 
 .testi-track-wrap::after {
   right: 0;
-  background: linear-gradient(to left, #f4f4f5, transparent);
+  background: linear-gradient(to left, #fff, transparent);
 }
 
 .testi-track {
@@ -1024,7 +1030,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d4d4d8;
+  background: #fdba74;
   border: none;
   padding: 0;
   transition: background 0.2s, transform 0.2s;
@@ -1140,7 +1146,7 @@
 
 .pc-div {
   height: 1px;
-  background: #e4e4e7;
+  background: #fdba74;
   margin: 1.1rem 0;
 }
 
@@ -1203,7 +1209,7 @@
 
 .btn-pc.outline:hover {
   border-color: #18181b;
-  background: #f4f4f5;
+  background: #fff;
 }
 
 .btn-pc.fill {
