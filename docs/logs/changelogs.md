@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T20:43:11Z
+
+- **Who:** Copilot CLI agent
+- **What:** Replaced `/use-cases` with a direct TSX/CSS conversion of `docs/references/use-case.html` and ported the page interactions to React
+- **When:** 2026-03-29T20:43:11Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User explicitly requested to use the reference design directly for the use-cases route and convert it into project-native code
+- **How:** Rebuilt the route as a high-fidelity conversion of the reference section architecture and styling, implemented reveal observer, persona word/sub/CTA switch animation, sticky-nav scroll state, and hackathon countdown in React hooks/state, preserved route responsiveness, and validated with `npm run build` (lint still has pre-existing repo errors outside this route)
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T18:29:43Z
 
 - **Who:** Copilot CLI agent

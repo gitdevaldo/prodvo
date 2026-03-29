@@ -1,136 +1,195 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { SiteShell } from "@/components/site-shell";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./use-cases.module.css";
 
-type Scenario = {
-  id: string;
+type Persona = {
   label: string;
-  title: string;
-  pressure: string;
-  steps: readonly string[];
-  wins: readonly string[];
-  quote: string;
-  byline: string;
+  word: string;
+  sub: string;
+  cta: string;
 };
 
-const SCENARIOS: readonly Scenario[] = [
+type ShipRow = {
+  label: string;
+  sub: string;
+  withWidth: string;
+  withoutWidth: string;
+  withValue: string;
+  withoutValue: string;
+};
+
+type CapabilityValue = "check" | "dot";
+
+type CapabilityRow = {
+  capability: string;
+  values: [
+    CapabilityValue,
+    CapabilityValue,
+    CapabilityValue,
+    CapabilityValue,
+    CapabilityValue,
+  ];
+};
+
+const PERSONAS: readonly Persona[] = [
   {
-    id: "startup",
-    label: "Lane 01",
-    title: "Startup weekly release lane",
-    pressure:
-      "The team had clear product intent but release ownership was scattered across docs, tickets, and PR notes.",
-    steps: [
-      "Scope one release in plan mode with strict done criteria.",
-      "Run UI, API, and QA in parallel agents under one execution lane.",
-      "Pause at checkpoints for merge and quality approval.",
-      "Deploy with rollback tied to run history.",
-    ],
-    wins: [
-      "Release rhythm became predictable.",
-      "Priority changes stopped derailing sprints.",
-      "Status meetings dropped as lane visibility improved.",
-    ],
-    quote:
-      "Prodvo gave us one place to run the release instead of coordinating across five channels.",
-    byline: "Engineering lead · SaaS startup",
+    label: "Solo Founders",
+    word: "founders",
+    sub: "You have one shot to validate fast. Prodvo gets you from idea to live product in a weekend - auth, database, and deploy included.",
+    cta: "Build your MVP today",
   },
   {
-    id: "agency",
-    label: "Lane 02",
-    title: "Agency multi-client lane",
-    pressure:
-      "Different client processes caused constant context switching and inconsistent launch quality.",
-    steps: [
-      "Create isolated client lanes with reusable workflow templates.",
-      "Apply one checkpoint model for build, review, and release.",
-      "Track approvals and QA state inside each lane.",
-      "Ship parallel client updates with consistent quality gates.",
-    ],
-    wins: [
-      "Throughput increased without headcount growth.",
-      "Launch-week defects declined across accounts.",
-      "Client reporting shifted to shipped evidence.",
-    ],
-    quote:
-      "We stopped reinventing process per client. Prodvo gave us repeatable execution.",
-    byline: "Delivery manager · Product agency",
+    label: "Agencies",
+    word: "agencies",
+    sub: "Client deadlines do not care about setup time. Prodvo means less config, faster handoffs, and more margin per project.",
+    cta: "See how agencies use it",
   },
   {
-    id: "regulated",
-    label: "Lane 03",
-    title: "Regulated release lane",
-    pressure:
-      "Audit evidence was gathered too late, creating rework and approval delays near go-live windows.",
-    steps: [
-      "Capture control artifacts during implementation checkpoints.",
-      "Review engineering and compliance state in one lane.",
-      "Keep approval logs and decisions with run history.",
-      "Deploy once release records are complete and traceable.",
-    ],
-    wins: [
-      "Audit prep became predictable per cycle.",
-      "Compliance stopped blocking final release stage.",
-      "Approval confidence increased with full traceability.",
-    ],
-    quote:
-      "Evidence now arrives with the work, so release approvals move faster and cleaner.",
-    byline: "Engineering manager · Fintech",
+    label: "Non-Technical Founders",
+    word: "non-devs",
+    sub: "You do not need to hire a developer. Describe what you want to build and Prodvo builds it - no technical background required.",
+    cta: "Build without coding",
+  },
+  {
+    label: "Internal Tools Teams",
+    word: "teams",
+    sub: "Internal tools should not take 3 sprints. Prodvo lets your team ship ops tooling fast, without blocking your core product roadmap.",
+    cta: "See internal tool use cases",
+  },
+  {
+    label: "Hackathon Builders",
+    word: "hackers",
+    sub: "48 hours. One idea. Prodvo gets you to a working demo in hours, not days. Stop fighting infra. Start winning.",
+    cta: "Hackathon mode",
   },
 ];
 
-const RHYTHM = [
-  "Intent lock",
-  "Parallel build",
-  "Checkpoint review",
-  "Release + rollback",
-] as const;
-
-const SIGNALS = [
-  "Single owner per release lane",
-  "Checkpoint accountability across roles",
-  "Early blocker discovery",
-  "Approval context preserved in run history",
-  "Rollback always available",
-] as const;
-
-const FIT = [
-  "Founder-led teams shipping V1 rapidly",
-  "Product squads shipping weekly customer releases",
-  "Agencies managing multiple client lanes",
-  "Regulated orgs requiring audit-ready releases",
-] as const;
-
-const FAQ = [
+const SHIP_ROWS: readonly ShipRow[] = [
   {
-    q: "Can Prodvo fit our existing Git + CI?",
-    a: "Yes. Prodvo runs as an execution layer on top of your existing branch and CI workflow.",
+    label: "Solo Founders",
+    sub: "MVP to first user",
+    withWidth: "12%",
+    withoutWidth: "100%",
+    withValue: "2 days",
+    withoutValue: "3 wks",
   },
   {
-    q: "How do we keep runs inside scope?",
-    a: "Scope is locked in plan mode and reinforced through checkpoint approvals before critical merges.",
+    label: "Agencies",
+    sub: "First feature to client",
+    withWidth: "6%",
+    withoutWidth: "85%",
+    withValue: "2 hrs",
+    withoutValue: "1 wk",
   },
   {
-    q: "What happens when quality drops mid-run?",
-    a: "Teams pause at checkpoint, request revision, or roll back instantly to a known-good state.",
+    label: "Non-Technical",
+    sub: "Idea to working product",
+    withWidth: "9%",
+    withoutWidth: "100%",
+    withValue: "1 day",
+    withoutValue: "infinite",
   },
-] as const;
+  {
+    label: "Internal Tools",
+    sub: "Request to live tool",
+    withWidth: "8%",
+    withoutWidth: "90%",
+    withValue: "3 days",
+    withoutValue: "9 wks",
+  },
+  {
+    label: "Hackathon",
+    sub: "Zero to working demo",
+    withWidth: "30%",
+    withoutWidth: "100%",
+    withValue: "30 min",
+    withoutValue: "12 hrs",
+  },
+];
 
-function cx(...parts: string[]) {
-  return parts
-    .map((part) => styles[part])
-    .filter((value): value is string => Boolean(value))
+const CAPABILITY_ROWS: readonly CapabilityRow[] = [
+  {
+    capability: "AI code generation",
+    values: ["check", "check", "check", "check", "check"],
+  },
+  {
+    capability: "Zero-config auth",
+    values: ["check", "check", "check", "check", "check"],
+  },
+  {
+    capability: "Postgres database",
+    values: ["check", "check", "check", "check", "check"],
+  },
+  {
+    capability: "1-click deploy",
+    values: ["check", "check", "check", "check", "check"],
+  },
+  {
+    capability: "Client preview environments",
+    values: ["dot", "check", "dot", "check", "dot"],
+  },
+  {
+    capability: "RBAC / role permissions",
+    values: ["dot", "check", "dot", "check", "dot"],
+  },
+  {
+    capability: "Natural language editing",
+    values: ["check", "check", "check", "check", "check"],
+  },
+  {
+    capability: "Team collaboration",
+    values: ["dot", "check", "dot", "check", "check"],
+  },
+  {
+    capability: "Rapid iteration mode",
+    values: ["check", "dot", "check", "dot", "check"],
+  },
+];
+
+const CLOCK_START_SECONDS = 47 * 60 + 32;
+
+function cx(...classNames: Array<string | false | null | undefined>) {
+  return classNames
+    .filter(Boolean)
+    .map((className) => styles[className as string])
     .join(" ");
 }
 
 export default function UseCasesPage() {
-  const [activeId, setActiveId] = useState<string>(SCENARIOS[0]?.id ?? "");
+  const [navScrolled, setNavScrolled] = useState(false);
+  const [selectedPersona, setSelectedPersona] = useState(0);
+  const [contentPersona, setContentPersona] = useState(0);
+  const [wordCurrent, setWordCurrent] = useState(PERSONAS[0].word);
+  const [wordPrevious, setWordPrevious] = useState<string | null>(null);
+  const [wordEntering, setWordEntering] = useState(false);
+  const [swapWidth, setSwapWidth] = useState<number>();
+  const [subVisible, setSubVisible] = useState(true);
+  const [clockSeconds, setClockSeconds] = useState(CLOCK_START_SECONDS);
+
+  const subTimeoutRef = useRef<number | null>(null);
+  const wordTimeoutRef = useRef<number | null>(null);
+  const measureRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    const revealEls = Array.from(document.querySelectorAll<HTMLElement>(`.${styles.reveal}`));
+    const onScroll = () => {
+      setNavScrolled(window.scrollY > 8);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const revealEls = Array.from(
+      document.querySelectorAll<HTMLElement>(`.${styles.reveal}`),
+    );
+
+    if (!revealEls.length) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -140,200 +199,908 @@ export default function UseCasesPage() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.07, rootMargin: "0px 0px -28px 0px" },
     );
+
     revealEls.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
-  const active = SCENARIOS.find((s) => s.id === activeId) ?? SCENARIOS[0];
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setClockSeconds((prev) => {
+        if (prev <= 0) return CLOCK_START_SECONDS;
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (!measureRef.current) return;
+    measureRef.current.textContent = wordCurrent;
+    setSwapWidth(measureRef.current.offsetWidth);
+  }, [wordCurrent]);
+
+  useEffect(() => {
+    return () => {
+      if (subTimeoutRef.current) window.clearTimeout(subTimeoutRef.current);
+      if (wordTimeoutRef.current) window.clearTimeout(wordTimeoutRef.current);
+    };
+  }, []);
+
+  const clockText = useMemo(() => {
+    const minutes = Math.floor(clockSeconds / 60)
+      .toString()
+      .padStart(2, "0");
+    const seconds = (clockSeconds % 60).toString().padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  }, [clockSeconds]);
+
+  const activePersona = PERSONAS[contentPersona];
+
+  const handlePersonaSwitch = (index: number) => {
+    if (index === selectedPersona) return;
+
+    const nextPersona = PERSONAS[index];
+
+    setSelectedPersona(index);
+    setWordPrevious(wordCurrent);
+    setWordCurrent(nextPersona.word);
+    setWordEntering(true);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        setWordEntering(false);
+      });
+    });
+
+    if (wordTimeoutRef.current) window.clearTimeout(wordTimeoutRef.current);
+    wordTimeoutRef.current = window.setTimeout(() => {
+      setWordPrevious(null);
+    }, 400);
+
+    setSubVisible(false);
+    if (subTimeoutRef.current) window.clearTimeout(subTimeoutRef.current);
+    subTimeoutRef.current = window.setTimeout(() => {
+      setContentPersona(index);
+      setSubVisible(true);
+    }, 200);
+  };
 
   return (
-    <SiteShell buildTag="prodvo-use-cases-v17">
-      <div className={styles["usecases-page"]}>
-        <section className={styles.hero}>
-          <div className="container">
-            <div className={cx("hero-shell", "reveal")}>
-              <p className={styles["hero-kicker"]}>Use Cases</p>
-              <h1 className={styles["hero-title"]}>
-                Production delivery lanes
-                <br />
-                teams run in Prodvo.
+    <div className={cx("page")}>
+      <a href="#main" className={cx("skip-link")}>
+        Skip to content
+      </a>
+
+      <div className={cx("announce")}>
+        Early access is open - limited seats.
+        <Link href="/pricing"> Claim yours -&gt;</Link>
+      </div>
+
+      <nav className={cx("nav", navScrolled && "scrolled")} id="nav">
+        <div className={cx("container")}>
+          <div className={cx("nav-inner")}>
+            <Link href="/" className={cx("nav-logo")}>
+              Prodvo<em>.</em>
+            </Link>
+
+            <ul className={cx("nav-links")}>
+              <li>
+                <Link href="/product">Features</Link>
+              </li>
+              <li>
+                <Link href="/use-cases" className={cx("active")}>
+                  Use Cases
+                </Link>
+              </li>
+              <li>
+                <Link href="/workflow">Stack</Link>
+              </li>
+              <li>
+                <Link href="/pricing">Pricing</Link>
+              </li>
+              <li>
+                <Link href="/docs">Docs</Link>
+              </li>
+            </ul>
+
+            <div className={cx("nav-right")}>
+              <a href="#" className={cx("btn-ghost")}>
+                Sign in
+              </a>
+              <Link href="/pricing" className={cx("btn-nav")}>
+                Start building -&gt;
+              </Link>
+            </div>
+
+            <button className={cx("nav-burger")} aria-label="Menu" type="button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <main id="main">
+        <section className={cx("hero")}>
+          <div className={cx("container")}>
+            <div className={cx("hero-inner")}>
+              <div className={cx("hero-eyebrow")}>Use Cases</div>
+
+              <h1 className={cx("hero-statement")}>
+                <span className={cx("static-line")}>Built for how</span>
+                <span className={cx("static-line")}>
+                  <span
+                    className={cx("swap-wrap")}
+                    aria-live="polite"
+                    style={swapWidth ? { width: `${swapWidth}px` } : undefined}
+                  >
+                    {wordPrevious ? (
+                      <span className={cx("swap-word", "exit")}>{wordPrevious}</span>
+                    ) : null}
+                    <span
+                      className={cx(
+                        "swap-word",
+                        wordEntering ? "enter" : "active",
+                      )}
+                    >
+                      {wordCurrent}
+                    </span>
+                  </span>{" "}
+                  actually work.
+                </span>
               </h1>
-              <p className={styles["hero-sub"]}>
-                Prodvo is an AI coding workspace for real shipping operations:
-                scoped intent, parallel implementation, checkpoint review, and controlled release.
-              </p>
-            </div>
-          </div>
-        </section>
 
-        <section className={styles["lane-band"]}>
-          <div className={styles["lane-scroll"]}>
-            {[...SCENARIOS, ...SCENARIOS].map((item, idx) => (
-              <span key={`${item.id}-${idx}`}>{item.title}</span>
-            ))}
-          </div>
-        </section>
+              <span
+                ref={measureRef}
+                className={cx("swap-measure")}
+                aria-hidden="true"
+              />
 
-        <section className={styles["lane-pins"]}>
-          <div className="container">
-            <div className={cx("pin-strip", "reveal")}>
-              {SCENARIOS.map((item, idx) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveId(item.id)}
-                  className={cx(
-                    "pin-btn",
-                    activeId === item.id ? "pin-btn-active" : "",
-                    idx === 1 ? "d1" : idx === 2 ? "d2" : "",
-                  )}
-                  aria-pressed={activeId === item.id}
-                >
-                  <strong>{item.label}</strong>
-                  <span>{item.title}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles["pressure"]}>
-          <div className="container">
-            <div className={cx("pressure-rail", "reveal")}>
-              <h2>{active.title}</h2>
-              <p>{active.pressure}</p>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles["workflow-board"]}>
-          <div className="container">
-            <div className={cx("board-shell", "reveal", "d1")}>
-              <h3>Workflow in Prodvo</h3>
-              <div className={styles["step-columns"]}>
-                {active.steps.map((step, index) => (
-                  <article key={step} className={styles["step-line"]}>
-                    <span>{`0${index + 1}`}</span>
-                    <p>{step}</p>
-                  </article>
+              <div
+                className={cx("persona-tabs")}
+                role="tablist"
+                aria-label="Select your role"
+              >
+                {PERSONAS.map((persona, index) => (
+                  <button
+                    key={persona.label}
+                    className={cx(
+                      "persona-tab",
+                      selectedPersona === index && "active",
+                    )}
+                    role="tab"
+                    aria-selected={selectedPersona === index}
+                    type="button"
+                    onClick={() => handlePersonaSwitch(index)}
+                  >
+                    {persona.label}
+                  </button>
                 ))}
+              </div>
+
+              <div className={cx("hero-sub-wrap")}>
+                <p
+                  className={cx("hero-sub")}
+                  style={{ opacity: subVisible ? 1 : 0 }}
+                >
+                  {activePersona.sub}
+                </p>
+              </div>
+
+              <div className={cx("hero-ctas")}>
+                <Link href="/pricing" className={cx("btn-primary-lg")}>
+                  {activePersona.cta} -&gt;
+                </Link>
+                <a href="#solo" className={cx("btn-outline-lg")}>
+                  Explore use cases ↓
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        <section className={styles["quote-run"]}>
-          <div className="container">
-            <blockquote className={cx("quote-shell", "reveal")}>
-              <p>&ldquo;{active.quote}&rdquo;</p>
-              <cite>{active.byline}</cite>
-            </blockquote>
+        <section className={cx("seg-solo")} id="solo">
+          <div className={cx("container")}>
+            <div className={cx("seg-solo-inner")}>
+              <div className={cx("seg-solo-left", "reveal")}>
+                <div className={cx("seg-number-label")}>time-to-ship</div>
+                <div className={cx("seg-big-stat")}>
+                  48<sub>hrs</sub>
+                </div>
+                <div className={cx("seg-stat-caption")}>
+                  From first prompt to a fully-deployed product that is ready for
+                  real users
+                </div>
+              </div>
+
+              <div className={cx("seg-solo-right")}>
+                <div className={cx("seg-persona-badge", "reveal")}>
+                  Solo Founders &amp; Indie Hackers
+                </div>
+                <h2 className={cx("section-title", "reveal", "d1")}>
+                  Stop rebuilding the same boilerplate. Start validating the idea.
+                </h2>
+                <p className={cx("section-sub", "reveal", "d2", "solo-sub")}>
+                  Every solo founder burns the same 2 weeks on setup: auth,
+                  database, deployment pipelines. That is 2 weeks not talking to
+                  users. Prodvo removes the setup entirely so you can spend every
+                  hour on what actually matters - finding product-market fit.
+                </p>
+
+                <ul className={cx("proof-list", "reveal", "d3")}>
+                  <li>
+                    <span className={cx("proof-num")}>01</span>
+                    <span className={cx("proof-text")}>
+                      <strong>Ship before you lose momentum</strong>
+                      Describe your product. Prodvo scaffolds the full codebase -
+                      backend, frontend, database schema - in under 5 minutes.
+                    </span>
+                  </li>
+                  <li>
+                    <span className={cx("proof-num")}>02</span>
+                    <span className={cx("proof-text")}>
+                      <strong>Iterate without a co-founder</strong>
+                      Change the pricing model. Add a new feature. Pivot the core
+                      flow. Say it, and Prodvo builds it. No PR reviews needed.
+                    </span>
+                  </li>
+                  <li>
+                    <span className={cx("proof-num")}>03</span>
+                    <span className={cx("proof-text")}>
+                      <strong>One subscription replaces five</strong>
+                      Vercel, Supabase, Auth0, Resend, GitHub CI - all replaced.
+                      One monthly bill instead of five, and one less thing to
+                      context-switch between.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className={styles["wins"]}>
-          <div className="container">
-            <div className={cx("section-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Shipped outcomes</span>
-              <h2 className={styles["section-title"]}>What changed in this lane</h2>
+        <section className={cx("seg-agency")} id="agencies">
+          <div className={cx("container")}>
+            <div className={cx("seg-agency-header")}>
+              <div>
+                <div className={cx("eyebrow", "reveal")}>Agencies &amp; Freelancers</div>
+                <h2 className={cx("section-title", "reveal", "d1")}>
+                  More projects. Same team.
+                  <br />
+                  Better margins.
+                </h2>
+              </div>
+              <div>
+                <p className={cx("section-sub", "reveal", "d2")}>
+                  Every hour your developers spend on boilerplate is an hour you
+                  are not billing for. Prodvo compresses setup time to near-zero so
+                  your team works on the parts clients actually pay for.
+                </p>
+              </div>
             </div>
-            <ol className={styles["wins-track"]}>
-              {active.wins.map((item, idx) => (
-                <li key={item} className={cx("win-item", "reveal", idx > 0 ? "d1" : "")}>
-                  <span>{`0${idx + 1}`}</span>
-                  <p>{item}</p>
-                </li>
-              ))}
-            </ol>
+
+            <div className={cx("ba-track", "reveal")}>
+              <div className={cx("ba-col", "before")}>
+                <div className={cx("ba-head")}>Before Prodvo</div>
+                <div className={cx("ba-items")}>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>-</span>
+                    <span className={cx("ba-item-text")}>
+                      Day 1-3: environment setup, repo scaffolding, CI/CD pipeline
+                      configuration
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>-</span>
+                    <span className={cx("ba-item-text")}>
+                      Day 4-6: integrate auth provider, configure database, wire API
+                      layer
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>-</span>
+                    <span className={cx("ba-item-text")}>
+                      Day 7+: start building actual client-facing features
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>-</span>
+                    <span className={cx("ba-item-text")}>
+                      Scope creep hits - extend timeline - erode margin
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>-</span>
+                    <span className={cx("ba-item-text")}>
+                      Handoff requires documentation of 5+ separate service configs
+                    </span>
+                  </div>
+                </div>
+                <div className={cx("ba-time-badge")}>
+                  <div className={cx("ba-time-num")}>7+</div>
+                  <div className={cx("ba-time-label")}>
+                    days before first real feature ships
+                  </div>
+                </div>
+              </div>
+
+              <div className={cx("ba-divider")}>
+                <div className={cx("ba-divider-label")}>vs.</div>
+              </div>
+
+              <div className={cx("ba-col", "after")}>
+                <div className={cx("ba-head")}>With Prodvo</div>
+                <div className={cx("ba-items")}>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>✓</span>
+                    <span className={cx("ba-item-text")}>
+                      Day 1, hour 1: full project environment live - auth, DB,
+                      deploy, CI all configured
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>✓</span>
+                    <span className={cx("ba-item-text")}>
+                      Day 1 afternoon: start building client features immediately
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>✓</span>
+                    <span className={cx("ba-item-text")}>
+                      Scope changes handled via conversation - no sprint replanning
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>✓</span>
+                    <span className={cx("ba-item-text")}>
+                      Client previews on every push - no extra deployment config
+                    </span>
+                  </div>
+                  <div className={cx("ba-item")}>
+                    <span className={cx("ba-item-marker")}>✓</span>
+                    <span className={cx("ba-item-text")}>
+                      Handoff is clean: one platform, one login, full export anytime
+                    </span>
+                  </div>
+                </div>
+                <div className={cx("ba-time-badge")}>
+                  <div className={cx("ba-time-num")}>2h</div>
+                  <div className={cx("ba-time-label")}>
+                    to first client-facing feature shipped
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className={styles["rhythm"]}>
-          <div className="container">
-            <div className={cx("section-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Execution rhythm</span>
-              <h2 className={styles["section-title"]}>The repeatable cadence teams keep</h2>
+        <section className={cx("seg-nontechnical")} id="nontechnical">
+          <div className={cx("container")}>
+            <div className={cx("eyebrow", "reveal")}>Non-Technical Founders</div>
+
+            <div className={cx("pull-quote-wrap", "reveal", "d1")}>
+              <p className={cx("pull-quote")}>
+                &quot;You do not need to learn to code.
+                <br />
+                You need to <em>build</em> - and those
+                <br />
+                are two very different things.&quot;
+              </p>
             </div>
-            <div className={styles["rhythm-run"]}>
-              {RHYTHM.map((item, idx) => (
-                <div key={item} className={cx("rhythm-node", "reveal", idx > 0 ? "d1" : "")}>
-                  {item}
+
+            <div className={cx("nontechnical-content")}>
+              <div className={cx("nontechnical-grid")}>
+                <div>
+                  <p className={cx("section-sub", "reveal", "nontechnical-sub")}>
+                    Most AI tools for non-technical founders still require you to
+                    understand deployment, environment variables, and database
+                    migrations. Prodvo abstracts all of it. You describe your
+                    product in plain language. Prodvo handles the technical execution
+                    end-to-end - including the parts you do not even know exist yet.
+                  </p>
+                  <Link
+                    href="/pricing"
+                    className={cx("btn-primary-lg", "reveal", "d1", "nontechnical-cta")}
+                  >
+                    Try it without coding -&gt;
+                  </Link>
+                </div>
+                <div>
+                  <p className={cx("section-sub", "reveal", "d1", "nontechnical-sub")}>
+                    You are not outsourcing the thinking. You are offloading the
+                    implementation. Prodvo lets you stay in the product decisions -
+                    what it does, for whom, and how - while it handles the database
+                    schemas, API routes, and deployment pipelines that would otherwise
+                    require hiring a developer.
+                  </p>
+                  <p className={cx("section-sub", "reveal", "d2")}>
+                    <strong className={cx("nontechnical-strong")}>
+                      No developer needed. No technical co-founder required.
+                    </strong>{" "}
+                    Just a product idea and the clarity to describe it.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className={cx("proof-grid-3", "reveal")}>
+              <div className={cx("proof-cell")}>
+                <div className={cx("proof-cell-num")}>
+                  0<span>hrs</span>
+                </div>
+                <div className={cx("proof-cell-title")}>Time spent on setup</div>
+                <div className={cx("proof-cell-desc")}>
+                  Prodvo handles every technical configuration automatically. You
+                  never see an env file.
+                </div>
+              </div>
+              <div className={cx("proof-cell")}>
+                <div className={cx("proof-cell-num")}>
+                  1<span>day</span>
+                </div>
+                <div className={cx("proof-cell-title")}>
+                  From idea to testable MVP
+                </div>
+                <div className={cx("proof-cell-desc")}>
+                  Describe your product. Prodvo builds it. Share the link with real
+                  users before lunch.
+                </div>
+              </div>
+              <div className={cx("proof-cell")}>
+                <div className={cx("proof-cell-num")}>5x</div>
+                <div className={cx("proof-cell-title")}>
+                  Cheaper than hiring a dev
+                </div>
+                <div className={cx("proof-cell-desc")}>
+                  A freelance developer costs $3-8K to build what Prodvo ships in
+                  days, for the cost of a subscription.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={cx("seg-internal")} id="internal">
+          <div className={cx("container")}>
+            <div className={cx("seg-internal-inner")}>
+              <div>
+                <div className={cx("day-timeline", "reveal")}>
+                  <div className={cx("day-timeline-head")}>
+                    A typical internal tools request - without Prodvo
+                  </div>
+                  <div className={cx("day-row")}>
+                    <div className={cx("day-time")}>Wk 1</div>
+                    <div className={cx("day-content")}>
+                      <div className={cx("day-task")}>
+                        Ticket filed, backlog prioritized
+                      </div>
+                      <div className={cx("day-detail")}>
+                        Engineering reviews scope, estimates 3 sprints
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx("day-row")}>
+                    <div className={cx("day-time")}>Wk 3</div>
+                    <div className={cx("day-content")}>
+                      <div className={cx("day-task")}>Development starts</div>
+                      <div className={cx("day-detail")}>
+                        Dev assigned, environment configured, API integration begins
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx("day-row")}>
+                    <div className={cx("day-time")}>Wk 5</div>
+                    <div className={cx("day-content")}>
+                      <div className={cx("day-task")}>First internal review</div>
+                      <div className={cx("day-detail")}>
+                        Ops team reviews, requests 12 changes
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx("day-row")}>
+                    <div className={cx("day-time")}>Wk 7</div>
+                    <div className={cx("day-content")}>
+                      <div className={cx("day-task")}>
+                        Revisions, testing, staging deploy
+                      </div>
+                      <div className={cx("day-detail")}>
+                        QA cycle, security review, approval chain
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx("day-row", "highlight")}>
+                    <div className={cx("day-time")}>Wk 9</div>
+                    <div className={cx("day-content")}>
+                      <div className={cx("day-task")}>Finally live</div>
+                      <div className={cx("day-detail")}>
+                        9 weeks. One internal tool. The ops team already wants 3
+                        more.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className={cx("eyebrow", "reveal")}>Internal Tools Teams</div>
+                <h2 className={cx("section-title", "reveal", "d1", "internal-title")}>
+                  Your backlog is killing your ops team&apos;s velocity.
+                </h2>
+                <p className={cx("section-sub", "reveal", "d2", "section-sub-zero")}>
+                  Internal tools should not compete with your product roadmap for
+                  engineering time. Prodvo lets you build and ship ops dashboards,
+                  admin panels, and workflow automations independently - without
+                  touching the core product codebase.
+                </p>
+
+                <div className={cx("benefit-list")}>
+                  <div className={cx("benefit-item", "reveal", "d1")}>
+                    <div className={cx("benefit-title")}>
+                      Ship internal tools in days, not sprints
+                    </div>
+                    <div className={cx("benefit-desc")}>
+                      Describe the dashboard, the data model, the permissions.
+                      Prodvo builds it. Your engineers stay focused on core product.
+                    </div>
+                    <span className={cx("metric-chip")}>3 days avg. vs 9 weeks</span>
+                  </div>
+                  <div className={cx("benefit-item", "reveal", "d2")}>
+                    <div className={cx("benefit-title")}>
+                      Non-technical ops can make small changes
+                    </div>
+                    <div className={cx("benefit-desc")}>
+                      When the ops team wants a new filter or an export button, they
+                      can ask Prodvo directly. No ticket required.
+                    </div>
+                    <span className={cx("metric-chip")}>
+                      Zero engineering tickets for minor changes
+                    </span>
+                  </div>
+                  <div className={cx("benefit-item", "reveal", "d3")}>
+                    <div className={cx("benefit-title")}>
+                      One platform, all your internal tooling
+                    </div>
+                    <div className={cx("benefit-desc")}>
+                      Every internal tool lives in one place, with shared auth, one
+                      database, and consistent access controls.
+                    </div>
+                    <span className={cx("metric-chip")}>
+                      Unified RBAC across all tools
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={cx("seg-hackathon")} id="hackathon">
+          <div className={cx("container")}>
+            <div className={cx("seg-hackathon-inner")}>
+              <div>
+                <div className={cx("eyebrow", "reveal")}>Hackathon Builders</div>
+                <h2 className={cx("section-title", "reveal", "d1", "hackathon-title")}>
+                  48 hours. The clock is running.
+                </h2>
+                <p className={cx("section-sub", "reveal", "d2", "section-sub-zero")}>
+                  Most hackathon teams waste the first 8-12 hours on setup. Prodvo
+                  compresses that to under 30 minutes so you spend 47.5 hours
+                  building - and 30 minutes winning.
+                </p>
+
+                <div className={cx("build-strip", "reveal", "d2")}>
+                  <div className={cx("build-strip-head")}>
+                    <span>Task</span>
+                    <span>Time allocation (48hr hackathon)</span>
+                  </div>
+                  <div className={cx("build-row")}>
+                    <span className={cx("build-label")}>Environment</span>
+                    <div className={cx("build-bar-track")}>
+                      <div className={cx("build-bar", "type-setup")}>.</div>
+                    </div>
+                  </div>
+                  <div className={cx("build-row")}>
+                    <span className={cx("build-label")}>Database</span>
+                    <div className={cx("build-bar-track")}>
+                      <div className={cx("build-bar", "type-db")}>DB</div>
+                    </div>
+                  </div>
+                  <div className={cx("build-row")}>
+                    <span className={cx("build-label")}>Auth</span>
+                    <div className={cx("build-bar-track")}>
+                      <div className={cx("build-bar", "type-auth")}>Auth</div>
+                    </div>
+                  </div>
+                  <div className={cx("build-row")}>
+                    <span className={cx("build-label")}>Features</span>
+                    <div className={cx("build-bar-track")}>
+                      <div className={cx("build-bar", "type-feature")}>
+                        Your actual product
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx("build-row")}>
+                    <span className={cx("build-label")}>Deploy</span>
+                    <div className={cx("build-bar-track")}>
+                      <div className={cx("build-bar", "type-deploy")}>↑</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={cx("clock-block", "reveal", "d1")}>
+                <div className={cx("clock-head")}>Prodvo hackathon timeline</div>
+                <div className={cx("clock-body")}>
+                  <div className={cx("clock-display")}>{clockText}</div>
+                  <div className={cx("clock-sub")}>hours left to build features</div>
+                  <div className={cx("clock-tasks")}>
+                    <div className={cx("clock-task", "done")}>
+                      <span className={cx("clock-task-name")}>Environment setup</span>
+                      <span className={cx("clock-task-time")}>:04 min</span>
+                    </div>
+                    <div className={cx("clock-task", "done")}>
+                      <span className={cx("clock-task-name")}>Auth configured</span>
+                      <span className={cx("clock-task-time")}>:08 min</span>
+                    </div>
+                    <div className={cx("clock-task", "done")}>
+                      <span className={cx("clock-task-name")}>Database ready</span>
+                      <span className={cx("clock-task-time")}>:12 min</span>
+                    </div>
+                    <div className={cx("clock-task", "done")}>
+                      <span className={cx("clock-task-name")}>First deploy live</span>
+                      <span className={cx("clock-task-time")}>:16 min</span>
+                    </div>
+                    <div className={cx("clock-task", "active-task")}>
+                      <span className={cx("clock-task-name")}>
+                        Building your actual idea...
+                      </span>
+                      <span className={cx("clock-task-time")}>now -&gt;</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={cx("ship-time")} id="comparison">
+          <div className={cx("container")}>
+            <div className={cx("ship-time-header")}>
+              <div>
+                <div className={cx("eyebrow", "reveal")}>Time-to-ship</div>
+                <h2 className={cx("section-title", "reveal", "d1")}>
+                  How fast is Prodvo,
+                  <br />
+                  really?
+                </h2>
+              </div>
+              <div>
+                <p className={cx("section-sub", "reveal", "d1", "ship-sub")}>
+                  Time from zero to a deployed, usable product - per persona, with
+                  and without Prodvo. Based on reported ship times from users across
+                  each segment.
+                </p>
+                <div className={cx("ship-legend", "reveal", "d2", "ship-legend-top")}>
+                  <div className={cx("ship-legend-item")}>
+                    <div className={cx("ship-legend-dot", "legend-with")}></div>
+                    With Prodvo
+                  </div>
+                  <div className={cx("ship-legend-item")}>
+                    <div className={cx("ship-legend-dot", "legend-without")}></div>
+                    Traditional stack
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={cx("ship-bars", "reveal")}>
+              {SHIP_ROWS.map((row) => (
+                <div className={cx("ship-bar-row")} key={row.label}>
+                  <div>
+                    <div className={cx("ship-bar-label")}>{row.label}</div>
+                    <span className={cx("ship-bar-sub")}>{row.sub}</span>
+                  </div>
+                  <div>
+                    <div className={cx("ship-bar-track")}>
+                      <div
+                        className={cx("ship-bar-fill")}
+                        style={{ width: row.withWidth }}
+                      ></div>
+                    </div>
+                    <div className={cx("ship-bar-track", "bar-top-gap")}>
+                      <div
+                        className={cx("ship-bar-fill", "without-fill")}
+                        style={{ width: row.withoutWidth }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className={cx("ship-bar-num")}>
+                    {row.withValue} <em>vs {row.withoutValue}</em>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles["signals"]}>
-          <div className="container">
-            <div className={cx("section-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Operator signals</span>
-              <h2 className={styles["section-title"]}>Signs of healthy release operations</h2>
-            </div>
-            <div className={styles["signal-cloud"]}>
-              {SIGNALS.map((item, idx) => (
-                <span key={item} className={cx("signal-pill", "reveal", idx > 0 ? "d1" : "")}>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles["fit"]}>
-          <div className="container">
-            <div className={cx("section-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Team fit</span>
-              <h2 className={styles["section-title"]}>Who gets immediate value</h2>
-            </div>
-            <div className={styles["fit-lines"]}>
-              {FIT.map((item, idx) => (
-                <p key={item} className={cx("fit-line", "reveal", idx > 0 ? "d1" : "")}>
-                  {item}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles["qa"]}>
-          <div className="container">
-            <div className={cx("section-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Operator Q&A</span>
-              <h2 className={styles["section-title"]}>Before teams adopt Prodvo lanes</h2>
-            </div>
-            <div className={styles["qa-stack"]}>
-              {FAQ.map((item, idx) => (
-                <details key={item.q} className={cx("qa-item", "reveal", idx > 0 ? "d1" : "")} open={idx === 0}>
-                  <summary>{item.q}</summary>
-                  <p>{item.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.cta}>
-          <div className="container">
-            <div className={cx("cta-shell", "reveal")}>
-              <h2>Run your next release lane in Prodvo.</h2>
-              <p>
-                Start with your highest-friction workflow and execute it in one controlled lane.
+        <section className={cx("capability")}>
+          <div className={cx("container")}>
+            <div className={cx("cap-header")}>
+              <div className={cx("eyebrow", "reveal")}>What you get</div>
+              <h2 className={cx("section-title", "reveal", "d1", "cap-title")}>
+                Every capability,
+                <br />
+                mapped to your role.
+              </h2>
+              <p className={cx("section-sub", "reveal", "d2", "cap-sub")}>
+                Prodvo is one platform. But how you use it depends on who you are.
+                Here is what each persona actually leans on.
               </p>
-              <div className={styles["cta-actions"]}>
-                <Link href="/pricing" className={styles["btn-primary"]}>
-                  Start free trial
+            </div>
+
+            <div className={cx("cap-table-wrap", "reveal")}>
+              <table className={cx("cap-table")}>
+                <thead>
+                  <tr>
+                    <th>Capability</th>
+                    <th>Solo Founders</th>
+                    <th className={cx("highlight-col")}>Agencies</th>
+                    <th>Non-Technical</th>
+                    <th>Internal Tools</th>
+                    <th>Hackathon</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {CAPABILITY_ROWS.map((row) => (
+                    <tr key={row.capability}>
+                      <td>{row.capability}</td>
+                      {row.values.map((value, index) => (
+                        <td
+                          key={`${row.capability}-${index}`}
+                          className={index === 1 ? cx("highlight-col") : undefined}
+                        >
+                          {value === "check" ? (
+                            <div className={cx("cap-check")}>✓</div>
+                          ) : (
+                            <div className={cx("cap-dot")}></div>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section className={cx("cta-final")}>
+          <div className={cx("container")}>
+            <div className={cx("cta-inner")}>
+              <div className={cx("cta-left")}>
+                <div className={cx("cta-eyebrow")}>Start today</div>
+                <h2 className={cx("cta-title")}>
+                  Whoever you are,
+                  <br />
+                  Prodvo ships it.
+                </h2>
+                <p className={cx("cta-sub")}>
+                  No setup. No configuration. No waiting on infrastructure. Describe
+                  your product and start building in the next 2 minutes.
+                </p>
+              </div>
+              <div className={cx("cta-right")}>
+                <Link href="/pricing" className={cx("btn-cta-w")}>
+                  Start building free -&gt;
                 </Link>
-                <Link href="/workflow" className={styles["btn-secondary"]}>
-                  Explore workflow
+                <Link href="/docs" className={cx("btn-cta-ghost")}>
+                  Talk to the team
                 </Link>
+                <p className={cx("cta-trust")}>
+                  Free tier available - No credit card required - Cancel anytime
+                </p>
               </div>
             </div>
           </div>
         </section>
-      </div>
-    </SiteShell>
+      </main>
+
+      <footer className={cx("footer")}>
+        <div className={cx("container")}>
+          <div className={cx("footer-top")}>
+            <div>
+              <div className={cx("footer-logo")}>
+                Prodvo<em>.</em>
+              </div>
+              <p className={cx("footer-tagline")}>
+                The AI coding agent for builders who want to ship - not configure.
+              </p>
+              <div className={cx("footer-social")}>
+                <a href="#" className={cx("fsoc")} aria-label="X">
+                  X
+                </a>
+                <a href="#" className={cx("fsoc")} aria-label="GitHub">
+                  GH
+                </a>
+                <a href="#" className={cx("fsoc")} aria-label="Discord">
+                  DC
+                </a>
+              </div>
+            </div>
+            <div>
+              <div className={cx("f-col-title")}>Product</div>
+              <ul className={cx("f-links")}>
+                <li>
+                  <Link href="/product">Features</Link>
+                </li>
+                <li>
+                  <Link href="/use-cases">Use Cases</Link>
+                </li>
+                <li>
+                  <Link href="/pricing">Pricing</Link>
+                </li>
+                <li>
+                  <a href="#">Changelog</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className={cx("f-col-title")}>Developers</div>
+              <ul className={cx("f-links")}>
+                <li>
+                  <Link href="/docs">Docs</Link>
+                </li>
+                <li>
+                  <a href="#">API Reference</a>
+                </li>
+                <li>
+                  <a href="#">Templates</a>
+                </li>
+                <li>
+                  <a href="#">GitHub</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className={cx("f-col-title")}>Company</div>
+              <ul className={cx("f-links")}>
+                <li>
+                  <a href="#">About</a>
+                </li>
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+                <li>
+                  <a href="#">Careers</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={cx("footer-bottom")}>
+            <div className={cx("footer-copy")}>© 2025 Prodvo, Inc. - prodvo.dev</div>
+            <ul className={cx("f-bottom-links")}>
+              <li>
+                <a href="#">Privacy</a>
+              </li>
+              <li>
+                <a href="#">Terms</a>
+              </li>
+              <li>
+                <a href="#">Cookies</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
