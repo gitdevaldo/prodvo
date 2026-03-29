@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T16:50:37Z
+
+- **Who:** Copilot CLI agent
+- **What:** Replaced `/use-cases` page architecture with a materially different scenario-driven layout (not a color-only tweak)
+- **When:** 2026-03-29T16:50:37Z
+- **Where:** `.claude/task/lessons.md`, `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User said the redesign still felt the same and requested a real change in use-cases design direction
+- **How:** Added new feedback lesson for structure-first redesigns, then rebuilt the route into a new composition: split hero with problem panel, case selector pills, 3-card scenario snapshot (trigger/interventions/outcomes), execution drill grid, fit matrix section, and solid-orange CTA; kept strict white + brand-orange palette and validated with `npm run build`
+- **File path(s) changed:**
+  - `.claude/task/lessons.md`
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T16:33:00Z
 
 - **Who:** Copilot CLI agent
