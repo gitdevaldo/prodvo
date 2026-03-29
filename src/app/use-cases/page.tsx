@@ -1,102 +1,116 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./use-cases.module.css";
 
-type UseCase = {
+type StoryScene = {
   id: string;
-  team: string;
-  domain: string;
-  stage: string;
-  trigger: string;
-  interventions: readonly string[];
-  outcomes: readonly string[];
-  proof: string;
+  chapter: string;
+  hero: string;
+  problem: string;
+  desire: string;
+  plan: readonly string[];
+  success: readonly string[];
 };
 
-const CASES: readonly UseCase[] = [
+const STORY_SCENES: readonly StoryScene[] = [
   {
-    id: "startup-release",
-    team: "Series A product team",
-    domain: "SaaS platform",
-    stage: "Pre-PMF release pressure",
-    trigger: "Features were blocked by frontend/backend/QA handoffs.",
-    interventions: [
-      "Converted roadmap intents into scoped implementation lanes.",
-      "Parallelized frontend, backend, and test work under one checkpoint model.",
-      "Used mandatory reviews before merge to prevent late regressions.",
+    id: "founder-ship",
+    chapter: "01",
+    hero: "Founder and product lead",
+    problem: "Roadmap intent was clear, but delivery slowed down across handoffs.",
+    desire: "Ship weekly without creating chaos or burning the team.",
+    plan: [
+      "Lock one release intent for each sprint.",
+      "Run frontend/backend/test lanes in parallel.",
+      "Check quality at fixed checkpoints before merge.",
     ],
-    outcomes: [
-      "Release cycle moved from 6 weeks to 10 days.",
-      "Cross-team blockers surfaced during planning, not sprint review.",
-      "Team shipped weekly with stable defect rates.",
+    success: [
+      "Cycle time reduced from weeks to days.",
+      "Priority shifts handled without derailing release confidence.",
     ],
-    proof: "Delivery velocity recovered without adding headcount.",
   },
   {
-    id: "agency-accounts",
-    team: "Agency with 12 client accounts",
-    domain: "Services delivery",
-    stage: "Multi-stream execution",
-    trigger: "Quality varied by PM style and client urgency.",
-    interventions: [
-      "Standardized delivery checkpoints across all client streams.",
-      "Mapped each account backlog to one repeatable operating model.",
-      "Added quality gates per account before client-facing releases.",
+    id: "agency-scale",
+    chapter: "02",
+    hero: "Agency delivery manager",
+    problem: "Each client stream used a different process and quality dropped under pressure.",
+    desire: "Keep every account moving with consistent quality and less firefighting.",
+    plan: [
+      "Standardize one execution model across accounts.",
+      "Map each account backlog to shared checkpoints.",
+      "Review readiness before every client release.",
     ],
-    outcomes: [
-      "3x more concurrent projects managed by same core team.",
-      "Fewer launch-week bugs and escalations across accounts.",
-      "Client reporting shifted from status updates to proof artifacts.",
+    success: [
+      "More concurrent client projects with the same team.",
+      "Fewer launch-week regressions and escalations.",
     ],
-    proof: "Consistent quality across accounts became operational, not individual.",
   },
   {
-    id: "fintech-compliance",
-    team: "Regulated fintech squad",
-    domain: "Financial workflows",
-    stage: "SOC2 and audit cycles",
-    trigger: "Audit evidence was assembled manually near release deadlines.",
-    interventions: [
-      "Embedded evidence capture directly into delivery checkpoints.",
-      "Connected change logs to release artifacts by default.",
-      "Made compliance review part of the normal merge flow.",
+    id: "fintech-audit",
+    chapter: "03",
+    hero: "Compliance-heavy fintech squad",
+    problem: "Audit evidence was rebuilt manually before each release.",
+    desire: "Pass compliance reviews without slowing product delivery.",
+    plan: [
+      "Capture evidence during normal execution, not after.",
+      "Link checkpoint outputs to release artifacts.",
+      "Keep compliance review in-flow with engineering review.",
     ],
-    outcomes: [
-      "Audit prep dropped from 2 weeks to 1 day.",
-      "Compliance requests answered from live artifacts, not spreadsheets.",
-      "Release confidence increased during regulated launches.",
+    success: [
+      "Audit prep dropped from weeks to days.",
+      "Release confidence improved in regulated launches.",
     ],
-    proof: "Compliance shifted from afterthought to in-flow execution.",
-  },
-  {
-    id: "scale-engineering",
-    team: "50-person engineering org",
-    domain: "Platform engineering",
-    stage: "Cross-team scaling",
-    trigger: "Dependency breaks were detected late across squads.",
-    interventions: [
-      "Introduced dependency maps at planning instead of post-implementation.",
-      "Ran multi-team checkpoint reviews before sprint handoff.",
-      "Used one escalation path for blockers across squads.",
-    ],
-    outcomes: [
-      "Cross-team delay incidents reduced by 60%.",
-      "Planning meetings focused on sequencing, not firefighting.",
-      "Teams regained predictable release windows.",
-    ],
-    proof: "Scale coordination became a system, not tribal knowledge.",
   },
 ];
 
-const DRILL_SEQUENCE: readonly string[] = [
-  "Intake and scoping",
-  "Parallel execution lanes",
-  "Checkpoint review",
-  "Release and evidence",
-];
+const PRINCIPLES = [
+  {
+    title: "Character-first clarity",
+    copy: "Every use case starts with who owns the outcome and what pressure they face.",
+  },
+  {
+    title: "Problem before product",
+    copy: "We frame delivery friction first, then map product intervention clearly.",
+  },
+  {
+    title: "Plan that can be repeated",
+    copy: "A three-step execution model keeps velocity and quality predictable.",
+  },
+  {
+    title: "Proof, not promise",
+    copy: "Each narrative ends with measurable operational change.",
+  },
+] as const;
+
+const JOURNEY_STEPS = [
+  {
+    title: "Scene setup",
+    detail: "Define team context, release stage, and delivery tension.",
+  },
+  {
+    title: "Guided intervention",
+    detail: "Apply a shared operating plan with explicit checkpoint gates.",
+  },
+  {
+    title: "Operational proof",
+    detail: "Measure cycle, quality, and confidence delta after rollout.",
+  },
+  {
+    title: "Scale with control",
+    detail: "Repeat proven lane patterns across squads and accounts.",
+  },
+] as const;
+
+const FIT_SIGNALS = [
+  "Multiple teams contribute to one release path",
+  "Delivery quality depends on predictable handoffs",
+  "Audit or compliance evidence is mandatory",
+  "Roadmap speed is blocked by coordination overhead",
+  "Leadership needs traceable execution visibility",
+] as const;
 
 function cx(...parts: string[]) {
   return parts
@@ -106,8 +120,6 @@ function cx(...parts: string[]) {
 }
 
 export default function UseCasesPage() {
-  const [activeCaseId, setActiveCaseId] = useState<string>(CASES[0]?.id ?? "");
-
   useEffect(() => {
     const revealEls = Array.from(document.querySelectorAll<HTMLElement>(`.${styles.reveal}`));
     const observer = new IntersectionObserver(
@@ -126,170 +138,180 @@ export default function UseCasesPage() {
     return () => observer.disconnect();
   }, []);
 
-  const activeCase = useMemo(
-    () => CASES.find((item) => item.id === activeCaseId) ?? CASES[0],
-    [activeCaseId],
-  );
-
   return (
-    <SiteShell buildTag="prodvo-use-cases-v8">
+    <SiteShell buildTag="prodvo-use-cases-v9">
       <div className={styles["usecases-page"]}>
         <section className={styles.hero}>
           <div className="container">
             <div className={cx("hero-grid", "reveal")}>
               <div className={styles["hero-copy"]}>
-                <span className={styles["hero-kicker"]}>Use Cases</span>
+                <p className={styles["hero-kicker"]}>Use Cases</p>
                 <h1 className={styles["hero-title"]}>
-                  Real operating scenarios.
+                  Story-driven scenarios
                   <br />
-                  Not template examples.
+                  for teams that must ship.
                 </h1>
                 <p className={styles["hero-sub"]}>
-                  Each case shows what changed in execution rhythm when teams moved from
-                  fragmented handoffs to one coordinated delivery system.
+                  This page is built like a storyboard: character, tension, plan, and
+                  measurable outcome. It shows how teams use Prodvo in real delivery
+                  pressure, not abstract feature tours.
                 </p>
               </div>
-
-              <div className={styles["hero-panel"]}>
-                <div className={styles["panel-label"]}>Common trigger</div>
+              <aside className={styles["hero-note"]}>
+                <strong>StoryBrand lens</strong>
                 <p>
-                  Teams did not lack engineering talent. They lacked a shared mechanism
-                  to coordinate scope, quality, and release proof at speed.
+                  The team is the hero. Prodvo is the guide. Clear plans remove risk
+                  and produce reliable release outcomes.
                 </p>
-              </div>
+              </aside>
             </div>
           </div>
         </section>
 
-        <section className={styles.selector}>
+        <section className={styles["chapter-nav"]}>
           <div className="container">
-            <div className={cx("selector-wrap", "reveal", "d1")}>
-              <div className={styles["selector-head"]}>
-                <span className={styles["section-kicker"]}>Case selector</span>
-                <h2 className={styles["section-title"]}>
-                  Pick a scenario and inspect the operating shift
-                </h2>
+            <div className={cx("chapter-strip", "reveal", "d1")}>
+              {STORY_SCENES.map((scene, index) => (
+                <a
+                  key={scene.id}
+                  className={cx("chapter-link", index === 1 ? "d1" : index === 2 ? "d2" : "")}
+                  href={`#${scene.id}`}
+                >
+                  <span>{scene.chapter}</span>
+                  <strong>{scene.hero}</strong>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.storyboard}>
+          <div className="container">
+            <div className={cx("storyboard-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Storyboard</span>
+              <h2 className={styles["section-title"]}>Three high-pressure delivery narratives</h2>
+              <p className={styles["section-sub"]}>
+                Each chapter shows the exact shift from delivery friction to controlled execution.
+              </p>
+            </div>
+
+            <div className={styles["scene-stack"]}>
+              {STORY_SCENES.map((scene, index) => (
+                <article
+                  id={scene.id}
+                  key={scene.id}
+                  className={cx(
+                    "scene",
+                    "reveal",
+                    index === 1 ? "d1" : index === 2 ? "d2" : "",
+                  )}
+                >
+                  <div className={styles["scene-meta"]}>
+                    <span>{scene.chapter}</span>
+                    <h3>{scene.hero}</h3>
+                  </div>
+
+                  <div className={styles["scene-grid"]}>
+                    <div className={styles["scene-block"]}>
+                      <strong>Problem</strong>
+                      <p>{scene.problem}</p>
+                    </div>
+                    <div className={styles["scene-block"]}>
+                      <strong>Desired outcome</strong>
+                      <p>{scene.desire}</p>
+                    </div>
+                    <div className={styles["scene-block"]}>
+                      <strong>Plan</strong>
+                      <ol>
+                        {scene.plan.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ol>
+                    </div>
+                    <div className={styles["scene-block"]}>
+                      <strong>Success markers</strong>
+                      <ul>
+                        {scene.success.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.principles}>
+          <div className="container">
+            <div className={cx("principles-grid", "reveal")}>
+              <div className={styles["principles-head"]}>
+                <span className={styles["section-kicker"]}>Messaging principles</span>
+                <h2 className={styles["section-title"]}>How we structure every case narrative</h2>
               </div>
-              <div className={styles["selector-pills"]}>
-                {CASES.map((item, index) => (
-                  <button
-                    key={item.id}
-                    type="button"
+              <div className={styles["principles-list"]}>
+                {PRINCIPLES.map((item, index) => (
+                  <article
+                    key={item.title}
                     className={cx(
-                      "pill",
-                      activeCaseId === item.id ? "pill-active" : "",
+                      "principle-card",
+                      "reveal",
                       index === 1 ? "d1" : index === 2 ? "d2" : index === 3 ? "d3" : "",
                     )}
-                    onClick={() => setActiveCaseId(item.id)}
-                    aria-pressed={activeCaseId === item.id}
                   >
-                    <span>{item.team}</span>
-                    <small>{item.domain}</small>
-                  </button>
+                    <h3>{item.title}</h3>
+                    <p>{item.copy}</p>
+                  </article>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section className={styles.snapshot}>
+        <section className={styles.journey}>
           <div className="container">
-            <div className={styles["snapshot-grid"]}>
-              <article className={cx("snapshot-card", "reveal")}>
-                <div className={styles["snapshot-head"]}>
-                  <span className={styles["snapshot-tag"]}>{activeCase.domain}</span>
-                  <h3>{activeCase.team}</h3>
-                  <p>{activeCase.stage}</p>
-                </div>
-                <div className={styles["snapshot-trigger"]}>
-                  <strong>Trigger</strong>
-                  <p>{activeCase.trigger}</p>
-                </div>
-              </article>
-
-              <article className={cx("snapshot-card", "reveal", "d1")}>
-                <div className={styles["snapshot-head"]}>
-                  <span className={styles["snapshot-tag"]}>Interventions</span>
-                  <h3>What changed operationally</h3>
-                </div>
-                <ol className={styles["list-numbered"]}>
-                  {activeCase.interventions.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ol>
-              </article>
-
-              <article className={cx("snapshot-card", "reveal", "d2")}>
-                <div className={styles["snapshot-head"]}>
-                  <span className={styles["snapshot-tag"]}>Outcomes</span>
-                  <h3>Observed results</h3>
-                </div>
-                <ul className={styles["list-bullets"]}>
-                  {activeCase.outcomes.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <p className={styles["proof-note"]}>{activeCase.proof}</p>
-              </article>
+            <div className={cx("journey-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Execution journey</span>
+              <h2 className={styles["section-title"]}>From intent to repeatable delivery</h2>
             </div>
-          </div>
-        </section>
-
-        <section className={styles.drill}>
-          <div className="container">
-            <div className={cx("drill-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Execution drill</span>
-              <h2 className={styles["section-title"]}>The sequence teams run every sprint</h2>
-            </div>
-            <div className={styles["drill-grid"]}>
-              {DRILL_SEQUENCE.map((step, index) => (
+            <div className={styles["journey-track"]}>
+              {JOURNEY_STEPS.map((step, index) => (
                 <div
-                  key={step}
+                  key={step.title}
                   className={cx(
-                    "drill-step",
+                    "journey-step",
                     "reveal",
                     index === 1 ? "d1" : index === 2 ? "d2" : index === 3 ? "d3" : "",
                   )}
                 >
-                  <span className={styles["drill-index"]}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3>{step}</h3>
+                  <span>{`0${index + 1}`}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.detail}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles.matrix}>
+        <section className={styles["fit-matrix"]}>
           <div className="container">
-            <div className={styles["matrix-wrap"]}>
-              <div className={cx("matrix-copy", "reveal")}>
+            <div className={styles["fit-grid"]}>
+              <div className={cx("fit-copy", "reveal")}>
                 <span className={styles["section-kicker"]}>Fit matrix</span>
-                <h2 className={styles["section-title"]}>When Prodvo is a strong fit</h2>
+                <h2 className={styles["section-title"]}>When this operating model is a clear match</h2>
                 <p>
-                  You benefit most when shipping depends on cross-team coordination,
-                  repeatable checkpoints, and release evidence that can be reviewed fast.
+                  If your team sees these signals, the use-case patterns above usually
+                  produce immediate delivery and coordination gains.
                 </p>
               </div>
-
-              <div className={cx("matrix-table", "reveal", "d1")}>
-                <div className={styles["matrix-row"]}>
-                  <span>Multiple teams touch one release</span>
-                  <strong>High fit</strong>
-                </div>
-                <div className={styles["matrix-row"]}>
-                  <span>Frequent compliance or audit checks</span>
-                  <strong>High fit</strong>
-                </div>
-                <div className={styles["matrix-row"]}>
-                  <span>Delivery blocked by handoffs, not coding speed</span>
-                  <strong>High fit</strong>
-                </div>
-                <div className={styles["matrix-row"]}>
-                  <span>Need one repeatable operating model across squads</span>
-                  <strong>High fit</strong>
-                </div>
+              <div className={cx("fit-table", "reveal", "d1")}>
+                {FIT_SIGNALS.map((item) => (
+                  <div key={item} className={styles["fit-row"]}>
+                    <span>{item}</span>
+                    <strong>Strong fit</strong>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -298,14 +320,17 @@ export default function UseCasesPage() {
         <section className={styles.cta}>
           <div className="container">
             <div className={cx("cta-frame", "reveal")}>
-              <h2>Run one workflow and compare your before/after cycle.</h2>
-              <p>Start with your highest-friction lane and validate impact in one sprint.</p>
+              <h2>Start with one high-friction lane and prove the delta.</h2>
+              <p>
+                Pick a chapter above, run it for one sprint, and measure the before/after
+                on speed, quality, and handoff clarity.
+              </p>
               <div className={styles["cta-actions"]}>
                 <Link className={styles["btn-primary"]} href="/pricing">
                   Start free trial
                 </Link>
                 <Link className={styles["btn-secondary"]} href="/workflow">
-                  See workflow model
+                  Explore workflow
                 </Link>
               </div>
             </div>

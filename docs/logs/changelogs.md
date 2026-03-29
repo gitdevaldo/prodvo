@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T17:30:34Z
+
+- **Who:** Copilot CLI agent
+- **What:** Expanded `/use-cases` into a richer StoryBrand-driven page with deeper narrative, copy, and section architecture
+- **When:** 2026-03-29T17:30:34Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User asked for a much richer route comparable to homepage/product depth, with stronger storyboard logic and copy strategy
+- **How:** Rebuilt the route with multiple narrative sections (hero + guide note, chapter navigation, storyboard scene stack, messaging principles, execution journey, fit matrix, CTA), rewrote copy around StoryBrand flow (hero/problem/plan/success), implemented matching responsive CSS module with neutral readability hierarchy + orange emphasis, and validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T17:17:29Z
 
 - **Who:** Copilot CLI agent
