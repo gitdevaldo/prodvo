@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T18:29:43Z
+
+- **Who:** Copilot CLI agent
+- **What:** Reworked `/use-cases` again to reduce repeated box/card treatment and shift to line/rail/band style composition
+- **When:** 2026-03-29T18:29:43Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User explicitly rejected repeated card/box/grid look and asked for stronger design thinking
+- **How:** Replaced prior structure with less box-dominant systems (lane band marquee, bottom-border lane pins, pressure rail, columnized workflow board, centered quote run, win track, rhythm nodes, signal cloud, fit lines, minimal stacked Q&A) while keeping Prodvo-accurate copy and solid-orange CTA, then validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T18:26:16Z
 
 - **Who:** Copilot CLI agent
