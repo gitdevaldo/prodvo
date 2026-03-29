@@ -1,562 +1,810 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./product-page.module.css";
 
+type TimelineStep = {
+  title: string;
+  description: string;
+  delay?: "d1" | "d2" | "d3" | "d4";
+};
+
+type Testimonial = {
+  initials: string;
+  name: string;
+  role: string;
+  quote: string;
+};
+
+type PricingFeature = {
+  label: string;
+  off?: boolean;
+};
+
+type PricingPlan = {
+  name: string;
+  price: string;
+  period: string;
+  context: string;
+  cta: string;
+  tone: "outline" | "fill";
+  popular?: boolean;
+  features: readonly PricingFeature[];
+};
+
+const TIMELINE_STEPS: readonly TimelineStep[] = [
+  {
+    title: "Describe your product",
+    description:
+      "Type what you want to build in plain language. \"A task manager with team invites and Stripe billing.\" That's enough. Prodvo gets it.",
+  },
+  {
+    title: "Watch it build",
+    description:
+      "The AI agent scaffolds the codebase, wires auth, creates your database schema, and builds the UI live in your browser.",
+    delay: "d1",
+  },
+  {
+    title: "Iterate by talking",
+    description:
+      "\"Change the dashboard layout.\" \"Add CSV export.\" \"Make it mobile-friendly.\" The agent evolves what's there, not restart.",
+    delay: "d2",
+  },
+  {
+    title: "Ship with one click",
+    description:
+      "Hit deploy. Your app goes live on a custom domain with SSL, CDN, and zero configuration.",
+    delay: "d3",
+  },
+];
+
+const TESTIMONIALS: readonly Testimonial[] = [
+  {
+    initials: "AR",
+    name: "Arif Rahman",
+    role: "Founder, Trackly · Jakarta",
+    quote:
+      '"I launched my SaaS in a weekend. Not a prototype — an actual product, with auth, billing, and a dashboard."',
+  },
+  {
+    initials: "MS",
+    name: "Maya S.",
+    role: "Indie developer · Singapore",
+    quote:
+      '"The AI actually understands what I\'m building. It\'s not just autocomplete — it makes real decisions."',
+  },
+  {
+    initials: "KT",
+    name: "Kevin T.",
+    role: "Full-stack engineer · Bangkok",
+    quote:
+      '"Replaced my stack with Prodvo. Way cheaper. Way less config. Way more speed."',
+  },
+  {
+    initials: "DP",
+    name: "Dian P.",
+    role: "CTO, Kopilot.ai",
+    quote:
+      '"My co-founder isn\'t technical. Now she can make product changes herself. That alone is worth it."',
+  },
+  {
+    initials: "JL",
+    name: "James L.",
+    role: "Solo founder · Kuala Lumpur",
+    quote:
+      '"I\'ve tried other tools. Prodvo is the first one that understood the complexity of what I was building."',
+  },
+  {
+    initials: "RK",
+    name: "Riza K.",
+    role: "Product engineer · Jakarta",
+    quote:
+      '"Shipped v1 of our internal tool in 3 days. Normally that\'s a 3-week project."',
+  },
+];
+
+const HOMEPAGE_PRICING: readonly PricingPlan[] = [
+  {
+    name: "Starter",
+    price: "$29",
+    period: "per month · billed monthly",
+    context: "Best for: pilots and first production workflows",
+    cta: "Start free",
+    tone: "outline",
+    features: [
+      { label: "1 active workspace" },
+      { label: "Lite agent runs" },
+      { label: "Built-in preview" },
+      { label: "Git sync and history" },
+    ],
+  },
+  {
+    name: "Growth",
+    price: "$99",
+    period: "per month · billed monthly",
+    context: "Best for: startup product + engineering teams",
+    cta: "Start trial",
+    tone: "fill",
+    popular: true,
+    features: [
+      { label: "Parallel agents" },
+      { label: "Autonomous build mode" },
+      { label: "Checkpoints and rollback" },
+      { label: "Custom domains and deploys" },
+    ],
+  },
+  {
+    name: "Scale",
+    price: "$249",
+    period: "per month · billed monthly",
+    context: "Best for: multi-team organizations",
+    cta: "Talk to sales",
+    tone: "outline",
+    features: [
+      { label: "Advanced access controls" },
+      { label: "Dedicated capacity lane" },
+      { label: "Priority support" },
+      { label: "Usage governance controls" },
+    ],
+  },
+];
+
+function cn(...classNames: string[]) {
+  return classNames.map((name) => styles[name]).join(" ");
+}
+
 export default function ProductPage() {
-  const [activeCapability, setActiveCapability] = useState(0);
-  
+  const [activeTimeline, setActiveTimeline] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+
   useEffect(() => {
     const revealEls = Array.from(document.querySelectorAll<HTMLElement>(`.${styles.reveal}`));
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.isVisible);
+            entry.target.classList.add(styles.visible);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
     );
+
     revealEls.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const timelineItems = Array.from(
+      document.querySelectorAll<HTMLElement>(`.${styles["tl-item"]}`),
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number((entry.target as HTMLElement).dataset.index ?? 0);
+            setActiveTimeline(idx);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
+
+    timelineItems.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const updateActive = () => {
+      const cards = cardRefs.current.filter((card): card is HTMLDivElement => card !== null);
+      if (!cards.length) return;
+
+      const left = track.scrollLeft;
+      let closest = 0;
+      let minDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const distance = Math.abs(card.offsetLeft - left);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closest = index;
+        }
+      });
+
+      setActiveTestimonial(closest);
+    };
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const onMouseDown = (event: MouseEvent) => {
+      isDown = true;
+      track.classList.add(styles.grabbing);
+      startX = event.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    };
+
+    const onMouseLeave = () => {
+      isDown = false;
+      track.classList.remove(styles.grabbing);
+    };
+
+    const onMouseUp = () => {
+      isDown = false;
+      track.classList.remove(styles.grabbing);
+    };
+
+    const onMouseMove = (event: MouseEvent) => {
+      if (!isDown) return;
+      event.preventDefault();
+      const x = event.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      track.scrollLeft = scrollLeft - walk;
+    };
+
+    track.addEventListener("scroll", updateActive, { passive: true });
+    track.addEventListener("mousedown", onMouseDown);
+    track.addEventListener("mouseleave", onMouseLeave);
+    track.addEventListener("mouseup", onMouseUp);
+    track.addEventListener("mousemove", onMouseMove);
+
+    return () => {
+      track.removeEventListener("scroll", updateActive);
+      track.removeEventListener("mousedown", onMouseDown);
+      track.removeEventListener("mouseleave", onMouseLeave);
+      track.removeEventListener("mouseup", onMouseUp);
+      track.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
+
+  const scrollToTestimonial = (index: number) => {
+    const track = trackRef.current;
+    const card = cardRefs.current[index];
+    if (!track || !card) return;
+    track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+  };
+
   return (
-    <SiteShell buildTag="prodvo-product-v5">
-      {/* ═══════════════════════════════════════════════════════════════════════
-          HERO: Full-bleed narrative opener with asymmetric layout
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.opener}>
-        <div className={styles.openerInner}>
-          <div className={styles.openerLead}>
-            <span className={styles.openerTag}>The Prodvo Platform</span>
-            <h1 className={styles.openerTitle}>
-              Stop managing tickets.
+    <SiteShell buildTag="prodvo-product-v7">
+      <section className={styles.hero}>
+        <div className="container">
+          <div className={styles["hero-inner"]}>
+            <div>
+              <div className={styles["hero-kicker"]}>Now in Early Access</div>
+              <h1 className={styles["hero-h1"]}>
+                Stop <span className={styles["word-cross"]}>stitching</span>
+                <br />
+                tools together.
+                <br />
+                <span className={styles["word-orange"]}>Just build.</span>
+              </h1>
+              <p className={styles["hero-sub"]}>
+                Prodvo is the AI coding agent with everything built in: code editor,
+                database, auth, storage, and deployment. Describe what you want and ship
+                it today.
+              </p>
+              <div className={styles["hero-ctas"]}>
+                <Link href="/pricing" className={styles["btn-hero-primary"]}>
+                  Start building free →
+                </Link>
+                <a href="#how" className={styles["btn-hero-secondary"]}>
+                  See how it works
+                </a>
+              </div>
+              <div className={styles["hero-proof"]}>
+                <span className={styles["hero-proof-item"]}>No credit card</span>
+                <span className={styles["hero-proof-sep"]}>·</span>
+                <span className={styles["hero-proof-item"]}>Deploy in under 2 min</span>
+                <span className={styles["hero-proof-sep"]}>·</span>
+                <span className={styles["hero-proof-item"]}>Free tier included</span>
+              </div>
+            </div>
+
+            <div className={styles["hero-visual"]}>
+              <div className={styles.terminal}>
+                <div className={styles["terminal-bar"]}>
+                  <div className={cn("t-dot", "r")} />
+                  <div className={cn("t-dot", "y")} />
+                  <div className={cn("t-dot", "g")} />
+                  <span className={styles["t-file"]}>prodvo — ai agent · workspace</span>
+                </div>
+                <div className={styles["terminal-body"]}>
+                  <div className={styles.tl}>
+                    <span className={styles.tp}>you →</span>
+                    <span className={styles.tc}>
+                      build a SaaS with auth, Postgres, and a dashboard
+                    </span>
+                  </div>
+                  <div className={styles.td} />
+                  <div className={styles.tl}>
+                    <span className={styles.to}>✦ Analyzing requirements...</span>
+                  </div>
+                  <div className={styles.tl}>
+                    <span className={styles.ts}>✓ Auth configured (email + OAuth)</span>
+                  </div>
+                  <div className={styles.tl}>
+                    <span className={styles.ts}>✓ Postgres database ready</span>
+                  </div>
+                  <div className={styles.tl}>
+                    <span className={styles.ts}>✓ Dashboard UI generated</span>
+                  </div>
+                  <div className={styles.tl}>
+                    <span className={styles.ts}>✓ API routes wired</span>
+                  </div>
+                  <div className={styles.td} />
+                  <div className={styles.tl}>
+                    <span className={styles.to}>🚀 Live at&nbsp;</span>
+                    <span className={styles.tc}>prodvo.app/your-project</span>
+                  </div>
+                  <div className={styles.td} />
+                  <div className={styles.tl}>
+                    <span className={styles.tp}>you →</span>
+                    <span className={styles["t-cursor"]} />
+                  </div>
+                </div>
+              </div>
+              <div className={styles["hero-float-tag"]}>
+                <div>
+                  <div className={styles["hft-num"]}>
+                    37<em>s</em>
+                  </div>
+                  <div className={styles["hft-label"]}>avg. time to first deploy</div>
+                </div>
+              </div>
+              <div className={styles["hero-float-badge"]}>AI-Powered</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.contrast}>
+        <div className="container">
+          <div className={styles["contrast-inner"]}>
+            <div>
+              <div className={cn("contrast-col-head", "bad")}>The old way — 6 tools</div>
+              <div className={styles["contrast-list"]}>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>VS Code + plugins</span>
+                  <span className={styles["ci-tag"]}>editor</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Auth0 / Clerk</span>
+                  <span className={styles["ci-tag"]}>auth</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Supabase / Neon</span>
+                  <span className={styles["ci-tag"]}>database</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Vercel / Railway</span>
+                  <span className={styles["ci-tag"]}>deploy</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Resend / Postmark</span>
+                  <span className={styles["ci-tag"]}>email</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>GitHub + CI/CD</span>
+                  <span className={styles["ci-tag"]}>version control</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles["contrast-mid"]}>
+              <div className={styles["contrast-line"]} />
+              <div className={styles["contrast-vs"]}>vs</div>
+              <div className={styles["contrast-line"]} />
+            </div>
+
+            <div>
+              <div className={cn("contrast-col-head", "good")}>With Prodvo — 1 tool</div>
+              <div className={cn("contrast-list", "prodvo")}>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>AI Code Editor</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Auth — zero config</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Postgres Database</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Instant Deploy</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Transactional Email</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+                <div className={styles["contrast-item"]}>
+                  <span className={styles["ci-name"]}>Git + Version Control</span>
+                  <span className={styles["ci-tag"]}>built-in</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.features} id="features">
+        <div className="container">
+          <div className={cn("features-head", "reveal")}>
+            <div className={styles["sec-eyebrow"]}>What you get</div>
+            <h2 className={styles["sec-title"]}>
+              Every tool you need.
               <br />
-              <em>Start shipping products.</em>
-            </h1>
-            <p className={styles.openerSubtitle}>
-              Prodvo is the execution layer between your idea and production. One workspace where 
-              AI agents plan, build, test, and deploy—while you stay in control of every decision.
-            </p>
-            <div className={styles.openerActions}>
-              <Link className="btn btn-primary" href="/pricing">Start free trial</Link>
-              <Link className={styles.openerGhost} href="/docs">
-                <span>Read documentation</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-            </div>
-          </div>
-          <div className={styles.openerVisual}>
-            <div className={styles.terminalWindow}>
-              <div className={styles.terminalBar}>
-                <span /><span /><span />
-              </div>
-              <div className={styles.terminalBody}>
-                <code><span className={styles.terminalPrompt}>$</span> prodvo run &quot;Add user authentication&quot;</code>
-                <code className={styles.terminalMuted}>⏳ Planning scope...</code>
-                <code className={styles.terminalSuccess}>✓ 4 tasks identified</code>
-                <code className={styles.terminalSuccess}>✓ Frontend agent assigned</code>
-                <code className={styles.terminalSuccess}>✓ Backend agent assigned</code>
-                <code className={styles.terminalSuccess}>✓ Test agent assigned</code>
-                <code className={styles.terminalMuted}>⏳ Executing in parallel...</code>
-                <code className={styles.terminalHighlight}>→ Checkpoint: ready for review</code>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.openerStats}>
-          <div className={styles.stat}>
-            <strong>3.1×</strong>
-            <span>parallel throughput</span>
-          </div>
-          <div className={styles.stat}>
-            <strong>52%</strong>
-            <span>less handoff delay</span>
-          </div>
-          <div className={styles.stat}>
-            <strong>96%</strong>
-            <span>delivery confidence</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          THE PROBLEM: Magazine-style editorial with dramatic statement
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.problemSection}>
-        <div className={styles.problemInner}>
-          <div className={styles.problemStatement}>
-            <span className={styles.problemLabel}>The reality</span>
-            <h2 className={styles.problemHeadline}>
-              Your team spends <em>60%</em> of their time not coding.
+              Zero setup required.
             </h2>
-            <p className={styles.problemBody}>
-              Status meetings. Slack threads. Ticket grooming. Context switching between tools. 
-              The work before the work. The coordination tax that slows every feature, every sprint, every quarter.
+            <p className={styles["sec-sub"]}>
+              From first prompt to live product. Prodvo handles the infra so you
+              focus entirely on your idea.
             </p>
           </div>
-          <div className={styles.problemEvidence}>
-            <figure className={styles.problemQuote}>
-              <blockquote>
-                &ldquo;We had six people in a room for two hours just to align on what 
-                &lsquo;done&rsquo; meant for one feature.&rdquo;
-              </blockquote>
-              <figcaption>— Engineering Director, Series B startup</figcaption>
-            </figure>
+
+          <div className={styles.bento}>
+            <div className={cn("bc", "s7", "surf-warm", "reveal", "d1")}>
+              <div className={styles["bc-tag"]}>Core</div>
+              <div className={styles["bc-title"]}>
+                AI that writes, fixes,
+                <br />
+                and ships — on its own
+              </div>
+              <p className={styles["bc-desc"]}>
+                Prodvo's agent understands your intent, not just your syntax. It
+                builds full features, catches its own bugs, and iterates until
+                it's done right.
+              </p>
+              <div className={styles["bc-code"]}>
+                <div>
+                  <span className={styles.cc}>// just describe what you want</span>
+                </div>
+                <div>
+                  <span className={styles.ck}>const</span>
+                  <span className={styles.cd}> feature = </span>
+                  <span className={styles.ck}>await</span> prodvo.
+                  <span className={styles.cf}>build</span>(
+                  <span className={styles.cs}>"add Stripe billing"</span>)
+                </div>
+                <div>
+                  <span className={styles.cc}>// agent writes, tests, deploys</span>
+                </div>
+                <div>
+                  <span className={styles.ck}>await</span> feature.
+                  <span className={styles.cf}>deploy</span>()
+                </div>
+              </div>
+            </div>
+
+            <div className={cn("bc", "s5", "reveal", "d2")}>
+              <div className={styles["bc-tag"]}>Database</div>
+              <div className={styles["bc-title-xl"]}>∞ DB</div>
+              <div className={styles["bc-title"]}>Postgres. Instant.</div>
+              <p className={styles["bc-desc"]}>
+                Full Postgres provisioned in seconds. Schema migrations, query
+                editor, backups — zero configuration.
+              </p>
+              <ul className={styles["bc-check"]}>
+                <li>Auto-generated schema from your data model</li>
+                <li>Visual query browser included</li>
+                <li>Daily backups + point-in-time restore</li>
+              </ul>
+            </div>
+
+            <div className={cn("bc", "s8", "surf-cool", "reveal", "d1")}>
+              <div className={styles["bc-tag"]}>Deploy</div>
+              <div className={styles["bc-title-xl"]}>1-click</div>
+              <div className={styles["bc-title"]}>To production. Right now.</div>
+              <p className={styles["bc-desc"]}>
+                Your project goes live the moment it's ready. Custom domain, SSL,
+                CDN — handled automatically.
+              </p>
+              <ul className={styles["bc-check"]}>
+                <li>Custom domain with automatic SSL</li>
+                <li>Global CDN, edge-optimized delivery</li>
+                <li>Preview environments per branch</li>
+              </ul>
+            </div>
+
+            <div className={cn("bc", "s4", "reveal", "d2")}>
+              <div className={styles["bc-tag"]}>Auth</div>
+              <div className={styles["bc-title"]}>Auth that just works</div>
+              <p className={styles["bc-desc"]}>
+                Email, magic links, Google, GitHub OAuth — wired automatically.
+                Sessions, roles, middleware — all handled.
+              </p>
+              <div className={styles["bc-pills"]}>
+                <span className={styles["bc-pill"]}>Email</span>
+                <span className={styles["bc-pill"]}>Magic Link</span>
+                <span className={styles["bc-pill"]}>Google</span>
+                <span className={styles["bc-pill"]}>GitHub</span>
+                <span className={styles["bc-pill"]}>SSO</span>
+                <span className={styles["bc-pill"]}>RBAC</span>
+              </div>
+            </div>
+
+            <div className={cn("bc", "s12", "surf-cool", "reveal")}>
+              <div className={styles["bc-tag"]}>Everything else</div>
+              <div className={styles["bc-hstrip"]}>
+                <div className={styles["bc-hcol"]}>
+                  <div className={styles["bc-hcol-num"]}>S3</div>
+                  <div className={styles["bc-hcol-label"]}>File Storage</div>
+                  <div className={styles["bc-hcol-desc"]}>
+                    S3-compatible, with image transforms and CDN delivery.
+                  </div>
+                </div>
+                <div className={styles["bc-hcol"]}>
+                  <div className={styles["bc-hcol-num"]}>WS</div>
+                  <div className={styles["bc-hcol-label"]}>Real-time APIs</div>
+                  <div className={styles["bc-hcol-desc"]}>
+                    WebSocket subscriptions and REST auto-generated from your schema.
+                  </div>
+                </div>
+                <div className={styles["bc-hcol"]}>
+                  <div className={styles["bc-hcol-num"]}>TX</div>
+                  <div className={styles["bc-hcol-label"]}>Transactional Email</div>
+                  <div className={styles["bc-hcol-desc"]}>
+                    Templates, logs, and delivery tracking built in.
+                  </div>
+                </div>
+                <div className={styles["bc-hcol"]}>
+                  <div className={styles["bc-hcol-num"]}>AN</div>
+                  <div className={styles["bc-hcol-label"]}>Analytics</div>
+                  <div className={styles["bc-hcol-desc"]}>
+                    Track users and events without third-party scripts.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          THE SHIFT: Full-width narrative transition
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.shiftSection}>
-        <div className={styles.shiftContent}>
-          <div className={styles.shiftMarker}>
-            <span>What changes</span>
-          </div>
-          <h2 className={styles.shiftHeadline}>
-            Prodvo eliminates the gap between decision and execution.
-          </h2>
-          <p className={styles.shiftBody}>
-            Instead of translating requirements through five tools and three meetings, 
-            you describe what you want—and watch agents build it with full visibility.
-          </p>
-        </div>
-      </section>
+      <section className={styles.how} id="how">
+        <div className="container">
+          <div className={styles["how-inner"]}>
+            <div className={styles["how-sticky"]}>
+              <div className={cn("sec-eyebrow", "reveal")}>The process</div>
+              <h2 className={cn("sec-title", "reveal", "d1")}>
+                From idea to live product
+                <br />
+                in minutes
+              </h2>
+              <p className={cn("sec-sub", "reveal", "d2")}>
+                No configuration. No DevOps rabbit holes. Describe what you're
+                building — Prodvo handles everything else.
+              </p>
+            </div>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          CORE CAPABILITIES: Interactive accordion-reveal with deep detail
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.capabilitiesSection}>
-        <div className={styles.capabilitiesInner}>
-          <div className={styles.capabilitiesHeader}>
-            <span className={styles.capabilitiesLabel}>Platform capabilities</span>
-            <h2 className={styles.capabilitiesTitle}>
-              Four systems that work as one
-            </h2>
-          </div>
-          
-          <div className={styles.capabilitiesLayout}>
-            <nav className={styles.capabilitiesNav}>
-              {[
-                { id: 0, title: "Intent Lock", subtitle: "Capture scope before chaos" },
-                { id: 1, title: "Parallel Agents", subtitle: "Multiply without meetings" },
-                { id: 2, title: "Checkpoints", subtitle: "Control without micromanaging" },
-                { id: 3, title: "Rollback States", subtitle: "Ship without fear" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`${styles.capabilityTrigger} ${activeCapability === item.id ? styles.active : ""}`}
-                  onClick={() => setActiveCapability(item.id)}
+            <div className={styles.timeline}>
+              {TIMELINE_STEPS.map((step, index) => (
+                <div
+                  key={step.title}
+                  data-index={index}
+                  className={cn(
+                    "tl-item",
+                    index === activeTimeline ? "active" : "",
+                    "reveal",
+                    step.delay ?? "",
+                  )}
                 >
-                  <span className={styles.capabilityNum}>0{item.id + 1}</span>
-                  <div>
-                    <strong>{item.title}</strong>
-                    <span>{item.subtitle}</span>
+                  <div className={styles["tl-left"]}>
+                    <div className={styles["tl-num"]}>{`0${index + 1}`}</div>
+                    <div className={styles["tl-connector"]} />
                   </div>
-                </button>
+                  <div className={styles["tl-body"]}>
+                    <div className={styles["tl-title"]}>{step.title}</div>
+                    <p className={styles["tl-desc"]}>{step.description}</p>
+                  </div>
+                </div>
               ))}
-            </nav>
-            
-            <div className={styles.capabilityDetail}>
-              {activeCapability === 0 && (
-                <article className={styles.capabilityContent}>
-                  <h3>Intent Lock</h3>
-                  <p className={styles.capabilityLede}>
-                    The scope document that actually stays true.
-                  </p>
-                  <p>
-                    Before a single line of code is written, Prodvo captures your goals, constraints, 
-                    and acceptance criteria in a structured format that agents reference throughout execution.
-                    No more &ldquo;that&rsquo;s not what I asked for&rdquo; at the end of a sprint.
-                  </p>
-                  <div className={styles.capabilityFeatures}>
-                    <div className={styles.featureItem}>
-                      <strong>Natural language input</strong>
-                      <span>Describe what you want in plain English</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Structured output</strong>
-                      <span>Auto-generated implementation plan with effort estimates</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Constraint binding</strong>
-                      <span>Agents can&rsquo;t drift outside defined boundaries</span>
-                    </div>
-                  </div>
-                </article>
-              )}
-              {activeCapability === 1 && (
-                <article className={styles.capabilityContent}>
-                  <h3>Parallel Agents</h3>
-                  <p className={styles.capabilityLede}>
-                    Three engineers in one workspace. Zero coordination overhead.
-                  </p>
-                  <p>
-                    Frontend, backend, and QA work happens simultaneously. Each agent operates in 
-                    its own scoped lane while sharing context through the same execution timeline.
-                    No more waiting for one team to finish before another can start.
-                  </p>
-                  <div className={styles.capabilityFeatures}>
-                    <div className={styles.featureItem}>
-                      <strong>Isolated execution</strong>
-                      <span>Each agent works in its own branch and environment</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Shared context</strong>
-                      <span>All agents see the same intent lock and constraints</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Automatic merge</strong>
-                      <span>Coordinated integration when checkpoints pass</span>
-                    </div>
-                  </div>
-                </article>
-              )}
-              {activeCapability === 2 && (
-                <article className={styles.capabilityContent}>
-                  <h3>Checkpoints</h3>
-                  <p className={styles.capabilityLede}>
-                    Review gates that catch problems before they compound.
-                  </p>
-                  <p>
-                    Define where human review is required. Agents pause at checkpoints and wait 
-                    for explicit approval before proceeding. You see exactly what changed, what 
-                    tests passed, and what risks exist—before anything ships.
-                  </p>
-                  <div className={styles.capabilityFeatures}>
-                    <div className={styles.featureItem}>
-                      <strong>Configurable gates</strong>
-                      <span>Set checkpoints per task, feature, or environment</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Full diff visibility</strong>
-                      <span>See every change with context, not just file names</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Quality signals</strong>
-                      <span>Test coverage, lint status, security scan results</span>
-                    </div>
-                  </div>
-                </article>
-              )}
-              {activeCapability === 3 && (
-                <article className={styles.capabilityContent}>
-                  <h3>Rollback States</h3>
-                  <p className={styles.capabilityLede}>
-                    Every checkpoint is a save point.
-                  </p>
-                  <p>
-                    If a run goes wrong—or priorities change—revert to any previous checkpoint 
-                    with one click. Full environment state, database migrations, and deployment 
-                    config all roll back together. No manual cleanup, no partial states.
-                  </p>
-                  <div className={styles.capabilityFeatures}>
-                    <div className={styles.featureItem}>
-                      <strong>Full state capture</strong>
-                      <span>Code, config, environment, and data snapshots</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>Instant recovery</strong>
-                      <span>One-click rollback to any checkpoint</span>
-                    </div>
-                    <div className={styles.featureItem}>
-                      <strong>History retention</strong>
-                      <span>Audit trail of every run and decision</span>
-                    </div>
-                  </div>
-                </article>
-              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          EXECUTION TIMELINE: Horizontal scrolling journey visualization
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.journeySection}>
-        <div className={styles.journeyHeader}>
-          <span className={styles.journeyLabel}>From prompt to production</span>
-          <h2 className={styles.journeyTitle}>One workspace. One timeline. Zero friction.</h2>
-        </div>
-        <div className={styles.journeyTrack}>
-          <div className={styles.journeyLine} aria-hidden="true" />
-          <div className={styles.journeySteps}>
-            <article className={`${styles.journeyStep} ${styles.reveal}`}>
-              <div className={styles.journeyNode}>
-                <span>01</span>
-              </div>
-              <div className={styles.journeyContent}>
-                <h3>Describe</h3>
-                <p>Write what you want in natural language. Prodvo translates intent into structured scope.</p>
-                <code className={styles.journeyCode}>&quot;Add Stripe checkout with subscription tiers&quot;</code>
-              </div>
-            </article>
-            <article className={`${styles.journeyStep} ${styles.reveal}`}>
-              <div className={styles.journeyNode}>
-                <span>02</span>
-              </div>
-              <div className={styles.journeyContent}>
-                <h3>Review plan</h3>
-                <p>See the generated task breakdown with effort estimates. Adjust scope before execution starts.</p>
-                <span className={styles.journeyMeta}>4 tasks • ~2 hours estimated</span>
-              </div>
-            </article>
-            <article className={`${styles.journeyStep} ${styles.reveal}`}>
-              <div className={styles.journeyNode}>
-                <span>03</span>
-              </div>
-              <div className={styles.journeyContent}>
-                <h3>Execute</h3>
-                <p>Agents work in parallel. Watch progress in real-time or check back when checkpoints trigger.</p>
-                <span className={styles.journeyMeta}>3 agents • 1 checkpoint pending</span>
-              </div>
-            </article>
-            <article className={`${styles.journeyStep} ${styles.reveal}`}>
-              <div className={styles.journeyNode}>
-                <span>04</span>
-              </div>
-              <div className={styles.journeyContent}>
-                <h3>Checkpoint</h3>
-                <p>Review changes at defined gates. Approve to continue, request changes, or rollback.</p>
-                <span className={styles.journeyMeta}>Tests passing • No security issues</span>
-              </div>
-            </article>
-            <article className={`${styles.journeyStep} ${styles.reveal}`}>
-              <div className={styles.journeyNode}>
-                <span>05</span>
-              </div>
-              <div className={styles.journeyContent}>
-                <h3>Deploy</h3>
-                <p>Ship to production with one click. Rollback instantly if anything goes wrong.</p>
-                <span className={styles.journeyMeta}>Preview available • Production-ready</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          PROOF POINTS: Diagonal offset layout with real metrics
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.proofSection}>
-        <div className={styles.proofInner}>
-          <div className={styles.proofHeader}>
-            <span className={styles.proofLabel}>Measured outcomes</span>
-            <h2 className={styles.proofTitle}>Results that show up in sprints, not slides.</h2>
-          </div>
-          <div className={styles.proofGrid}>
-            <article className={`${styles.proofCard} ${styles.reveal}`}>
-              <div className={styles.proofMetric}>
-                <strong>72%</strong>
-                <span>reduction in coordination time</span>
-              </div>
-              <p>
-                Teams stop spending half their day in status syncs. One execution view 
-                replaces six tools and three meetings.
+      <section className={styles.stack} id="stack">
+        <div className="container">
+          <div className={styles["stack-inner"]}>
+            <div>
+              <div className={cn("sec-eyebrow", "reveal")}>Under the hood</div>
+              <h2 className={cn("sec-title", "reveal", "d1")}>
+                Built on tech
+                <br />
+                you already trust
+              </h2>
+              <p className={cn("sec-sub", "reveal", "d2")}>
+                Prodvo uses battle-tested open-source tools and industry-standard
+                platforms. You can always export, migrate, or self-host.
               </p>
-              <cite>— Based on 14-team pilot, Q4 2025</cite>
-            </article>
-            <article className={`${styles.proofCard} ${styles.proofCardOffset} ${styles.reveal}`}>
-              <div className={styles.proofMetric}>
-                <strong>3.1×</strong>
-                <span>parallel execution throughput</span>
-              </div>
-              <p>
-                Frontend, backend, and QA work happens simultaneously. No more waiting 
-                for one stream to finish before another starts.
-              </p>
-              <cite>— Brightforge engineering report</cite>
-            </article>
-            <article className={`${styles.proofCard} ${styles.reveal}`}>
-              <div className={styles.proofMetric}>
-                <strong>84%</strong>
-                <span>release confidence score</span>
-              </div>
-              <p>
-                Explicit checkpoints replace gut-feel go/no-go decisions. Teams know 
-                exactly what shipped and what tests covered it.
-              </p>
-              <cite>— Nordpath deployment metrics</cite>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          DIFFERENTIATOR: Split comparison with honest positioning
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.diffSection}>
-        <div className={styles.diffInner}>
-          <h2 className={styles.diffTitle}>What Prodvo is—and isn&rsquo;t</h2>
-          <div className={styles.diffColumns}>
-            <div className={styles.diffYes}>
-              <h3>Prodvo is</h3>
-              <ul>
-                <li>
-                  <strong>An execution layer</strong>
-                  <span>Sits on top of your existing stack. Works with GitHub, GitLab, Bitbucket.</span>
-                </li>
-                <li>
-                  <strong>A coordination system</strong>
-                  <span>Keeps scope, status, and ownership visible without manual updates.</span>
-                </li>
-                <li>
-                  <strong>A quality control framework</strong>
-                  <span>Checkpoints and rollbacks built into the workflow, not bolted on.</span>
-                </li>
-                <li>
-                  <strong>A team multiplier</strong>
-                  <span>AI agents handle the work. Humans handle the decisions.</span>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.diffNo}>
-              <h3>Prodvo is not</h3>
-              <ul>
-                <li>
-                  <strong>A CI/CD replacement</strong>
-                  <span>Your pipelines stay. Prodvo orchestrates what feeds into them.</span>
-                </li>
-                <li>
-                  <strong>A project management tool</strong>
-                  <span>No Gantt charts. No resource planning. Just execution.</span>
-                </li>
-                <li>
-                  <strong>A no-code platform</strong>
-                  <span>This is for teams building real software, not prototypes.</span>
-                </li>
-                <li>
-                  <strong>A magic button</strong>
-                  <span>You still make decisions. Prodvo makes them easier to execute.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          TEAM VOICE: Asymmetric testimonial with full context
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.voiceSection}>
-        <div className={styles.voiceInner}>
-          <div className={styles.voicePrimary}>
-            <div className={styles.voiceQuoteMark}>&ldquo;</div>
-            <blockquote className={styles.voiceQuote}>
-              The biggest shift was confidence. Engineers are no longer guessing what changed 
-              in upstream scope because the run history is always visible.
-            </blockquote>
-            <div className={styles.voiceAttribution}>
-              <strong>Derek Kim</strong>
-              <span>Engineering Director, Nordpath</span>
-            </div>
-            <div className={styles.voiceProof}>
-              <div className={styles.voiceMetric}>
-                <strong>-37%</strong>
-                <span>coordination overhead</span>
-              </div>
-              <p className={styles.voiceContext}>
-                Prodvo replaced status chasing with checkpointed execution, so cross-functional 
-                teams spend more time shipping than coordinating.
-              </p>
-            </div>
-          </div>
-          <div className={styles.voiceSecondary}>
-            <article className={styles.voiceCard}>
-              <blockquote>
-                &ldquo;We run client launches in parallel workspaces now. Every implementation 
-                follows the same quality gates without slowing down custom work.&rdquo;
-              </blockquote>
-              <footer>
-                <strong>Alicia Romero</strong>
-                <span>Head of Delivery, Brightforge</span>
-              </footer>
-            </article>
-            <article className={styles.voiceCard}>
-              <blockquote>
-                &ldquo;Rollbacks used to be chaotic. Now we deploy with explicit checkpoints, 
-                so recovery is controlled and fast when priorities shift.&rdquo;
-              </blockquote>
-              <footer>
-                <strong>Theo Jensen</strong>
-                <span>CTO, Launchgrid</span>
-              </footer>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          TECHNICAL SPECS: Clean data presentation for evaluators
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.specsSection}>
-        <div className={styles.specsInner}>
-          <div className={styles.specsHeader}>
-            <span className={styles.specsLabel}>For technical evaluators</span>
-            <h2 className={styles.specsTitle}>Under the hood</h2>
-          </div>
-          <div className={styles.specsContent}>
-            <div className={styles.specsList}>
-              <div className={styles.specItem}>
-                <h4>Integrations</h4>
-                <p>GitHub, GitLab, Bitbucket, Linear, Jira, Slack, Discord</p>
-              </div>
-              <div className={styles.specItem}>
-                <h4>Languages</h4>
-                <p>TypeScript, JavaScript, Python, Go, Rust, Ruby, Java</p>
-              </div>
-              <div className={styles.specItem}>
-                <h4>Frameworks</h4>
-                <p>React, Next.js, Vue, Svelte, Django, FastAPI, Rails</p>
-              </div>
-              <div className={styles.specItem}>
-                <h4>Infrastructure</h4>
-                <p>AWS, GCP, Azure, Vercel, Cloudflare, Railway</p>
-              </div>
-              <div className={styles.specItem}>
-                <h4>Security</h4>
-                <p>SOC 2 Type II, GDPR compliant, SSO/SAML, audit logs</p>
-              </div>
-              <div className={styles.specItem}>
-                <h4>Deployment</h4>
-                <p>Cloud-hosted or self-hosted enterprise option</p>
-              </div>
-            </div>
-            <div className={styles.specsActions}>
-              <Link className="btn btn-secondary" href="/docs">View full documentation</Link>
-              <Link className={styles.specsLink} href="/docs">
-                Security whitepaper →
+              <Link href="/docs" className={cn("btn-hero-secondary", "reveal", "d3")}>
+                Read the architecture docs →
               </Link>
             </div>
+
+            <div className={styles["stack-cats"]}>
+              <div className={cn("stack-cat", "reveal", "d1")}>
+                <div className={styles["stack-cat-head"]}>Language & Frameworks</div>
+                <div className={styles["stack-cat-pills"]}>
+                  <span className={styles.scp}>TypeScript</span>
+                  <span className={styles.scp}>Next.js</span>
+                  <span className={styles.scp}>React</span>
+                  <span className={styles.scp}>Node.js</span>
+                  <span className={styles.scp}>Python</span>
+                </div>
+              </div>
+              <div className={cn("stack-cat", "reveal", "d2")}>
+                <div className={styles["stack-cat-head"]}>Database & Storage</div>
+                <div className={styles["stack-cat-pills"]}>
+                  <span className={styles.scp}>PostgreSQL</span>
+                  <span className={styles.scp}>Prisma ORM</span>
+                  <span className={styles.scp}>Redis</span>
+                  <span className={styles.scp}>S3-compatible</span>
+                </div>
+              </div>
+              <div className={cn("stack-cat", "reveal", "d3")}>
+                <div className={styles["stack-cat-head"]}>Auth & Security</div>
+                <div className={styles["stack-cat-pills"]}>
+                  <span className={styles.scp}>JWT / Sessions</span>
+                  <span className={styles.scp}>OAuth 2.0</span>
+                  <span className={styles.scp}>RBAC</span>
+                  <span className={styles.scp}>Row-level Security</span>
+                </div>
+              </div>
+              <div className={cn("stack-cat", "reveal", "d4")}>
+                <div className={styles["stack-cat-head"]}>Infrastructure</div>
+                <div className={styles["stack-cat-pills"]}>
+                  <span className={styles.scp}>Docker</span>
+                  <span className={styles.scp}>Kubernetes</span>
+                  <span className={styles.scp}>Cloudflare CDN</span>
+                  <span className={styles.scp}>Auto-scaling</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          CLOSING CTA: High-impact closer with urgency
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.closingSection}>
-        <div className={styles.closingInner}>
-          <h2 className={styles.closingTitle}>
-            Your next feature doesn&rsquo;t need another meeting.
-          </h2>
-          <p className={styles.closingBody}>
-            Start a Prodvo workspace. Describe what you want. Watch it build.
+      <section className={styles.testi}>
+        <div className="container">
+          <div className={cn("testi-head", "reveal")}>
+            <div className={styles["sec-eyebrow"]}>What builders say</div>
+            <h2 className={styles["sec-title"]}>They shipped. Fast.</h2>
+          </div>
+        </div>
+
+        <div className={styles["testi-track-wrap"]}>
+          <div className={styles["testi-track"]} ref={trackRef} id="testiTrack">
+            {TESTIMONIALS.map((item, index) => (
+              <div
+                key={`${item.name}-${index}`}
+                className={styles["testi-card"]}
+                ref={(element) => {
+                  cardRefs.current[index] = element;
+                }}
+              >
+                <p className={styles["testi-card-text"]}>{item.quote}</p>
+                <div className={styles["testi-footer"]}>
+                  <div className={styles["testi-avatar"]}>{item.initials}</div>
+                  <div>
+                    <div className={styles["testi-name"]}>{item.name}</div>
+                    <div className={styles["testi-role"]}>{item.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="container">
+          <div className={styles["testi-nav"]}>
+            {TESTIMONIALS.map((item, index) => (
+              <button
+                key={`${item.initials}-${index}`}
+                type="button"
+                className={cn("testi-dot", index === activeTestimonial ? "active" : "")}
+                aria-label={`Go to testimonial ${index + 1}`}
+                onClick={() => scrollToTestimonial(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.pricing} id="pricing">
+        <div className="container">
+          <div className={cn("pricing-head", "reveal")}>
+            <div className={styles["sec-eyebrow"]}>Pricing</div>
+            <h2 className={styles["sec-title"]}>
+              Pay for what you use.
+              <br />
+              Nothing else.
+            </h2>
+            <p className={styles["sec-sub"]}>Updated to match homepage pricing.</p>
+          </div>
+
+          <div className={styles["pricing-grid"]}>
+            {HOMEPAGE_PRICING.map((plan, index) => (
+              <div
+                key={plan.name}
+                className={cn(
+                  "pc",
+                  plan.popular ? "pop" : "",
+                  "reveal",
+                  index === 0 ? "d1" : index === 1 ? "d2" : "d3",
+                )}
+              >
+                {plan.popular ? <div className={styles["pop-badge"]}>Most Popular</div> : null}
+                <div className={styles["pc-plan"]}>{plan.name}</div>
+                <div className={styles["pc-price"]}>{plan.price}</div>
+                <div className={styles["pc-period"]}>{plan.period}</div>
+                <div className={styles["pc-context"]}>{plan.context}</div>
+                <div className={styles["pc-div"]} />
+                <ul className={styles["pc-list"]}>
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature.label}
+                      className={feature.off ? styles.off : undefined}
+                    >
+                      {feature.label}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/pricing"
+                  className={cn("btn-pc", plan.tone === "fill" ? "fill" : "outline")}
+                >
+                  {plan.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p className={cn("pricing-note", "reveal")}>
+            Need more? <Link href="/pricing">Talk to us about Enterprise</Link> — custom
+            compute, SLA guarantees, and white-glove onboarding.
           </p>
-          <div className={styles.closingActions}>
-            <Link className="btn btn-primary btn-lg" href="/pricing">Start free trial</Link>
-            <span className={styles.closingNote}>No credit card required • 14-day trial</span>
+        </div>
+      </section>
+
+      <section className={styles["cta-final"]}>
+        <div className="container">
+          <div className={styles["cta-inner"]}>
+            <div className={styles["cta-label"]}>Ready to ship?</div>
+            <h2 className={styles["cta-h"]}>
+              Your next product
+              <br />
+              starts right now.
+            </h2>
+            <p className={styles["cta-p"]}>
+              Stop planning your stack. Stop configuring tools. Describe what you
+              want to build and ship it today.
+            </p>
+            <div className={styles["cta-btns"]}>
+              <Link href="/pricing" className={styles["btn-cta-w"]}>
+                Start building →
+              </Link>
+              <Link href="/docs" className={styles["btn-cta-o"]}>
+                Book a demo
+              </Link>
+            </div>
+            <div className={styles["cta-trust-line"]}>
+              No credit card required · Deploy in under 2 minutes · Cancel anytime
+            </div>
           </div>
         </div>
       </section>
