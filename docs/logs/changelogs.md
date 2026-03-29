@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T17:17:29Z
+
+- **Who:** Copilot CLI agent
+- **What:** Restored neutral text/border hierarchy rules and fixed `/use-cases` readability by replacing overly orange text treatment
+- **When:** 2026-03-29T17:17:29Z
+- **Where:** `.claude/style-guideline.md`, `.claude/task/lessons.md`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User clarified prior request scope: only gray backgrounds should be avoided; text and borders should keep readable dark/gray hierarchy
+- **How:** Updated style guideline to allow neutral text/borders while still forbidding gray section backgrounds, refined lessons to prevent removing neutral hierarchy, changed use-cases text and divider colors from orange-heavy values to readable neutral tones, then validated with `npm run build`
+- **File path(s) changed:**
+  - `.claude/style-guideline.md`
+  - `.claude/task/lessons.md`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T16:50:37Z
 
 - **Who:** Copilot CLI agent

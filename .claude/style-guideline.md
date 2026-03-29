@@ -25,7 +25,8 @@ Core palette (from `:root`):
 
 Hard rules:
 
-- Do not use gray/grey/slate/neutral palettes in UI sections or text roles.
+- Do not use gray/grey/slate/neutral palettes for major section backgrounds.
+- Gray/neutral tones are allowed for text hierarchy and borders/dividers to preserve readability.
 - Do not use nude/cream backgrounds (`#fff7ed`, `#ffedd5`, `#fffbf7`, `#fed7aa`) for sections.
 - Do not use non-brand hues (green/blue/purple/red/black) for UI states.
 - Do not use gradient backgrounds for CTA sections.
@@ -46,7 +47,7 @@ Type scale patterns:
 
 - Hero H1: `clamp(2.2rem, 8vw, 5.5rem)`, line-height `1.05`, heavy weight
 - Section titles: `clamp(1.85rem, 4vw, 3rem)`, weight `800`
-- Body text: mostly `0.9rem–1.05rem`, secondary color (`--fire-orange-deep`)
+- Body text: mostly `0.9rem–1.05rem`, prefer neutral readable tones (e.g. zinc/slate range), with orange reserved for emphasis
 - Buttons: around `0.95rem`, semibold
 
 ## 4) Layout & Spacing System
@@ -131,7 +132,7 @@ Do:
 
 - Use token variables; avoid hardcoding random new colors.
 - Keep rounded corners and soft shadows consistent.
-- Preserve hierarchy with brand-orange tones only (light to dark orange).
+- Use neutral text hierarchy for readability and reserve orange for emphasis, active states, and accents.
 - Maintain comfortable line-heights (`~1.45–1.7`) for body text.
 - Keep section surfaces white first; orange is emphasis, not base tinting.
 
