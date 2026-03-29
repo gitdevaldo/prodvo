@@ -37,6 +37,8 @@ This file captures all user feedback — direct and indirect — to prevent repe
 28. **Use strict surface base** — white surfaces with fire-orange accents; avoid gray as major background color
 29. **Do NOT remove readable neutral text/border hierarchy unless user asks** — gray/dark text and divider tones are allowed for legibility
 30. **Do NOT use non-brand state colors** (green/blue/purple/red/black) — if contrast is needed, use dark orange
+31. **Do NOT frame Prodvo as a storytelling framework product** — copy must reflect AI coding workspace + real delivery execution
+32. **Do NOT default to comparison copy patterns** unless user explicitly asks for comparison
 
 ### DO (Best practices)
 1. **Prioritize professional editorial hierarchy** over decorative gimmicks
@@ -61,6 +63,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 7. **When user says redesign still feels the same, change content architecture/layout (not just colors/spacing)** — deliver a visibly new structure
 8. **Avoid repeated grid/card systems across multiple sections in one page** — each section must use a different layout mechanic
 9. **When user asks for richer copy, expand narrative depth per section** — don’t compress or simplify storyline content
+10. **When user asks to stop, stop patching and switch to one deliberate full-pass rewrite** to prevent noisy iterative edits
 
 ### File Organization
 1. **Follow user's exact directory structure** — don't create files in wrong locations

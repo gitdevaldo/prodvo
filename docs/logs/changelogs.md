@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T18:16:12Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fully rewrote `/use-cases` as a product-accurate execution page and removed story-framework/comparison framing
+- **When:** 2026-03-29T18:16:12Z
+- **Where:** `.claude/task/lessons.md`, `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User explicitly said current output did not represent what Prodvo is and requested a serious, unique, non-templated use-cases page aligned to product/reference quality
+- **How:** Added lessons to prevent framing Prodvo as storytelling product and to stop noisy patching after a stop request; replaced page with one cohesive production-grounded architecture (scenario selector, active scenario stage brief + runbook, delivery ledger, execution signal band, horizontal playbook steps, team-fit profile, solid-orange CTA), rewrote copy around actual Prodvo workflow semantics (plan mode, parallel agents, checkpoints, release, rollback), rebuilt CSS module with distinct section mechanics and responsive behavior, then validated with `npm run build`
+- **File path(s) changed:**
+  - `.claude/task/lessons.md`
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T17:55:17Z
 
 - **Who:** Copilot CLI agent

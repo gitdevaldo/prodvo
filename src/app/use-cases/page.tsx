@@ -1,169 +1,134 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./use-cases.module.css";
 
-type StoryCase = {
+type Scenario = {
   id: string;
-  chapter: string;
-  hero: string;
-  context: string;
-  stakes: string;
-  conflict: string;
-  guide: string;
-  plan: readonly string[];
-  results: readonly string[];
+  label: string;
+  team: string;
+  summary: string;
+  bottleneck: string;
+  workflow: readonly string[];
+  shipped: readonly string[];
   quote: string;
-  quoteBy: string;
+  source: string;
 };
 
-const CASES: readonly StoryCase[] = [
+const SCENARIOS: readonly Scenario[] = [
   {
-    id: "founder",
-    chapter: "Chapter 01",
-    hero: "Founder-operator",
-    context: "Early-stage SaaS team trying to hold weekly launch rhythm",
-    stakes:
-      "When shipping confidence drops, growth experiments freeze and roadmap credibility erodes inside the company.",
-    conflict:
-      "The work was clear, but progress died in handoffs. Engineering kept re-planning the same sprint every week.",
-    guide:
-      "Prodvo became the execution guide: one visible loop, one ownership model, one checkpoint rhythm.",
-    plan: [
-      "Lock one release promise with explicit done criteria.",
-      "Run frontend, backend, and QA in parallel lanes from day one.",
-      "Ship only through checkpoint gates, never by deadline panic.",
+    id: "startup-release",
+    label: "01 / Startup release lane",
+    team: "Product + engineering squad",
+    summary:
+      "A startup team shipping weekly growth releases in Next.js and TypeScript with constant scope pressure.",
+    bottleneck:
+      "Work was spread across tickets, chat, and PR threads, so release ownership was unclear and QA arrived too late.",
+    workflow: [
+      "Lock one release scope with explicit acceptance criteria in plan mode.",
+      "Run UI, API, and test implementation in parallel agents with shared checkpoint status.",
+      "Gate merges through checkpoint approvals before release branch is finalized.",
+      "Deploy with rollback state captured from the same workspace.",
     ],
-    results: [
-      "Release cadence shifted from sporadic to weekly.",
-      "Priority changes no longer destroyed delivery confidence.",
-      "Leadership got operational visibility without extra reporting rituals.",
+    shipped: [
+      "Weekly release cadence stabilized without adding ceremony.",
+      "Scope changes were absorbed without resetting the full sprint.",
+      "Product and engineering reviewed one execution timeline instead of status threads.",
     ],
     quote:
-      "We stopped spending sprint time on coordination theater. The team now runs one loop and ships on purpose.",
-    quoteBy: "Founder, Vertical SaaS startup",
+      "Prodvo removed coordination drag. We finally run one delivery loop from scope to deploy.",
+    source: "Engineering lead · B2B SaaS startup",
   },
   {
-    id: "agency",
-    chapter: "Chapter 02",
-    hero: "Agency delivery lead",
-    context: "Multi-client studio running 10+ active product streams",
-    stakes:
-      "Inconsistent delivery turns into client escalations, lower margins, and a team constantly in reactive mode.",
-    conflict:
-      "Every account had its own process. The team kept rebuilding operating rules instead of shipping outcomes.",
-    guide:
-      "Prodvo standardized execution without flattening client nuance, so teams could move fast and stay reliable.",
-    plan: [
-      "Apply one checkpoint framework to every delivery lane.",
-      "Map each client backlog to the same operating milestones.",
-      "Run release-readiness review before every client handoff.",
+    id: "agency-multi-client",
+    label: "02 / Agency multi-client pod",
+    team: "Delivery management + shared engineers",
+    summary:
+      "An agency operating multiple client workstreams with one shared delivery team and parallel launch windows.",
+    bottleneck:
+      "Each client account had a different delivery process, so context switching slowed implementation quality.",
+    workflow: [
+      "Spin up isolated workspaces per client with reusable workflow templates.",
+      "Map each client scope to the same checkpoint model for build, review, and handoff.",
+      "Track QA readiness and approvals in a single run history per account.",
+      "Ship client updates with consistent quality gates across all active lanes.",
     ],
-    results: [
-      "More projects shipped with the same core team.",
-      "Launch-week regressions dropped across accounts.",
-      "Client updates moved from activity logs to outcome proof.",
+    shipped: [
+      "Parallel client throughput increased with the same headcount.",
+      "Launch-week regressions dropped across active accounts.",
+      "Client reporting shifted from activity updates to shipped evidence.",
     ],
     quote:
-      "We stopped running 12 different playbooks. Now we run one system and adapt scope, not process.",
-    quoteBy: "Delivery lead, product agency",
+      "We stopped rebuilding process for every account. Prodvo gave us one execution system that scales.",
+    source: "Delivery manager · Product agency",
   },
   {
-    id: "fintech",
-    chapter: "Chapter 03",
-    hero: "Regulated fintech squad",
-    context: "Compliance-heavy release cycle with strict audit windows",
-    stakes:
-      "If evidence arrives late, launches slip, risk climbs, and engineering time gets consumed by audit firefighting.",
-    conflict:
-      "Evidence was collected at the end, under pressure, which made every release review slower and riskier.",
-    guide:
-      "Prodvo embedded evidence capture into the delivery lane, making compliance part of normal execution.",
-    plan: [
-      "Capture artifacts during delivery instead of post-release.",
-      "Attach checkpoint evidence directly to release records.",
-      "Run compliance and engineering review in the same operating loop.",
+    id: "regulated-release",
+    label: "03 / Regulated release flow",
+    team: "Engineering + compliance reviewers",
+    summary:
+      "A regulated team shipping onboarding and payment flows under recurring compliance and audit review.",
+    bottleneck:
+      "Evidence collection happened at the end of the cycle, creating rework and delayed approvals at release time.",
+    workflow: [
+      "Attach control evidence and test artifacts at each checkpoint during implementation.",
+      "Review engineering and compliance status in one lane before merge approval.",
+      "Retain decision logs and artifacts directly in run history for audit traceability.",
+      "Deploy with release records already complete and export-ready.",
     ],
-    results: [
-      "Audit prep time collapsed from weeks to days.",
-      "Compliance stopped acting as a release blocker.",
-      "Executive release confidence increased in regulated launches.",
+    shipped: [
+      "Audit preparation became predictable per release cycle.",
+      "Compliance stopped acting as a final-stage blocker.",
+      "Leadership approved launches with complete traceability in one workspace.",
     ],
     quote:
-      "Compliance is no longer the final gate. It now lives inside how we ship every week.",
-    quoteBy: "Head of engineering, fintech platform",
+      "Release sign-off is faster because evidence is already captured as we build.",
+    source: "Engineering manager · Fintech platform",
   },
 ];
 
-const PRINCIPLES = [
-  {
-    title: "Start with the hero",
-    tag: "Hero",
-    body:
-      "Every story opens with the accountable role, not the feature list.",
-  },
-  {
-    title: "Name the real friction",
-    tag: "Problem",
-    body:
-      "We frame operational pain first so teams can recognize themselves instantly.",
-  },
-  {
-    title: "Guide with a concrete plan",
-    tag: "Plan",
-    body:
-      "The plan is explicit, sequenced, and operational—not inspirational copy.",
-  },
-  {
-    title: "Close with measurable proof",
-    tag: "Proof",
-    body:
-      "Every case ends with outcome evidence teams can validate in their own environment.",
-  },
+const EXECUTION_SIGNALS = [
+  "Scope, owner, and acceptance criteria are visible from day one",
+  "Parallel workstreams progress without hidden handoff blockers",
+  "Checkpoint reviews catch risks before release-day crunch",
+  "Run history preserves implementation and approval context",
+  "Rollback decisions are controlled, fast, and low-friction",
 ] as const;
 
-const JOURNEY_STEPS = [
+const TEAM_FIT = [
+  "Your team ships customer-facing changes every sprint",
+  "Multiple roles must align on one release outcome",
+  "Quality gates need explicit owners and stage visibility",
+  "Release approvals require evidence, not status summaries",
+] as const;
+
+const PLAYBOOK = [
   {
     step: "01",
-    title: "Context capture",
+    title: "Define release intent",
     detail:
-      "Pin down who owns the outcome, what stage they are in, and what pressure is active now.",
+      "Scope one production slice with constraints, owner, and done criteria before implementation starts.",
   },
   {
     step: "02",
-    title: "Operating design",
+    title: "Run parallel execution",
     detail:
-      "Convert goals into one checkpointed operating lane with clear ownership and boundaries.",
+      "Launch UI, backend, and QA streams together so bottlenecks surface early.",
   },
   {
     step: "03",
-    title: "Aligned execution",
+    title: "Approve by checkpoints",
     detail:
-      "Run lanes in parallel with shared visibility so blockers appear before they become delays.",
+      "Review diffs, tests, and risk signals at defined gates before merge and deployment.",
   },
   {
     step: "04",
-    title: "Proof, then scale",
+    title: "Ship with traceability",
     detail:
-      "Measure outcomes, lock the winning pattern, then scale it across teams and programs.",
+      "Deploy with full run history, decision logs, and rollback confidence in the same lane.",
   },
-] as const;
-
-const PROOF_STRIP = [
-  "Cycle time stayed stable under release pressure",
-  "Handoffs became explicit instead of assumed",
-  "Quality increased without slowing shipment velocity",
-  "Audit evidence moved inside normal delivery flow",
-  "Leadership gained real-time execution clarity",
-] as const;
-
-const FIT_SIGNALS = [
-  "Your speed depends on cross-team coordination quality",
-  "Your roadmap confidence requires repeatable quality gates",
-  "Your releases need audit/compliance evidence every cycle",
-  "Your leadership needs proof of progress, not progress theater",
 ] as const;
 
 function cx(...parts: string[]) {
@@ -174,7 +139,7 @@ function cx(...parts: string[]) {
 }
 
 export default function UseCasesPage() {
-  const [activeId, setActiveId] = useState<string>(CASES[0]?.id ?? "");
+  const [activeScenarioId, setActiveScenarioId] = useState<string>(SCENARIOS[0]?.id ?? "");
 
   useEffect(() => {
     const revealEls = Array.from(document.querySelectorAll<HTMLElement>(`.${styles.reveal}`));
@@ -187,182 +152,153 @@ export default function UseCasesPage() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -12% 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
     );
 
     revealEls.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  const activeCase = useMemo(
-    () => CASES.find((item) => item.id === activeId) ?? CASES[0],
-    [activeId],
-  );
+  const activeScenario =
+    SCENARIOS.find((item) => item.id === activeScenarioId) ?? SCENARIOS[0];
 
   return (
-    <SiteShell buildTag="prodvo-use-cases-v12">
+    <SiteShell buildTag="prodvo-use-cases-v14">
       <div className={styles["usecases-page"]}>
         <section className={styles.hero}>
           <div className="container">
             <div className={cx("hero-shell", "reveal")}>
               <p className={styles["hero-kicker"]}>Use Cases</p>
               <h1 className={styles["hero-title"]}>
-                Storyboard-led delivery narratives
+                Real delivery teams.
                 <br />
-                for teams shipping under pressure.
+                Real execution in Prodvo.
               </h1>
               <p className={styles["hero-sub"]}>
-                This page is built for operators, not browsers. Each section shows how
-                real teams moved from delivery friction to repeatable execution using
-                one narrative arc: hero, conflict, guide, plan, and proof.
+                Prodvo is an AI coding workspace that keeps planning, implementation,
+                checkpoints, and release in one operating flow. These scenarios reflect
+                how teams actually ship production work with it.
               </p>
             </div>
           </div>
         </section>
 
-        <section className={styles["timeline-rail"]}>
+        <section className={styles["scenario-selector"]}>
           <div className="container">
-            <div className={cx("rail-line", "reveal", "d1")}>
-              {CASES.map((item, index) => (
+            <div className={cx("selector-track", "reveal", "d1")}>
+              {SCENARIOS.map((item, index) => (
                 <button
                   key={item.id}
                   type="button"
                   className={cx(
-                    "rail-node",
-                    activeId === item.id ? "rail-node-active" : "",
+                    "selector-item",
+                    activeScenarioId === item.id ? "selector-item-active" : "",
                     index === 1 ? "d1" : index === 2 ? "d2" : "",
                   )}
-                  onClick={() => setActiveId(item.id)}
-                  aria-pressed={activeId === item.id}
+                  onClick={() => setActiveScenarioId(item.id)}
+                  aria-pressed={activeScenarioId === item.id}
                 >
-                  <span>{item.chapter}</span>
-                  <strong>{item.hero}</strong>
+                  <span>{item.label}</span>
+                  <strong>{item.team}</strong>
                 </button>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles["narrative-split"]}>
+        <section className={styles["scenario-stage"]}>
           <div className="container">
-            <div className={styles["split-wrap"]}>
-              <aside className={cx("story-meta", "reveal")}>
-                <p className={styles["story-chapter"]}>{activeCase.chapter}</p>
-                <h2 className={styles["story-team"]}>{activeCase.hero}</h2>
-                <p className={styles["story-context"]}>{activeCase.context}</p>
-                <p className={styles["story-stakes"]}>{activeCase.stakes}</p>
-              </aside>
+            <div className={styles["stage-grid"]}>
+              <article className={cx("stage-brief", "reveal")}>
+                <p className={styles["stage-label"]}>{activeScenario.label}</p>
+                <h2 className={styles["stage-team"]}>{activeScenario.team}</h2>
+                <p className={styles["stage-summary"]}>{activeScenario.summary}</p>
+                <p className={styles["stage-bottleneck"]}>{activeScenario.bottleneck}</p>
+              </article>
 
-              <article className={cx("story-body", "reveal", "d1")}>
-                <div className={styles["story-block"]}>
-                  <h3>Conflict</h3>
-                  <p>{activeCase.conflict}</p>
-                </div>
-                <div className={styles["story-block"]}>
-                  <h3>Guide intervention</h3>
-                  <p>{activeCase.guide}</p>
-                </div>
-                <div className={styles["story-block"]}>
-                  <h3>Plan ladder</h3>
-                  <ol className={styles["plan-ladder"]}>
-                    {activeCase.plan.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
-                <div className={styles["story-block"]}>
-                  <h3>Observed outcomes</h3>
-                  <ul className={styles["result-list"]}>
-                    {activeCase.results.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <blockquote className={styles.quote}>
-                  <p>&ldquo;{activeCase.quote}&rdquo;</p>
-                  <cite>{activeCase.quoteBy}</cite>
+              <article className={cx("stage-runbook", "reveal", "d1")}>
+                <h3>Workflow in Prodvo</h3>
+                <ol className={styles["runbook-list"]}>
+                  {activeScenario.workflow.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+                <blockquote className={styles["stage-quote"]}>
+                  <p>&ldquo;{activeScenario.quote}&rdquo;</p>
+                  <cite>{activeScenario.source}</cite>
                 </blockquote>
               </article>
             </div>
           </div>
         </section>
 
-        <section className={styles["proof-strip"]}>
+        <section className={styles["delivery-ledger"]}>
           <div className="container">
-            <div className={cx("proof-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Proof strip</span>
-              <h2 className={styles["section-title"]}>Recurring signals across successful teams</h2>
+            <div className={cx("ledger-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Shipped outcomes</span>
+              <h2 className={styles["section-title"]}>What this team shipped after switching the lane to Prodvo</h2>
             </div>
-            <div className={styles["proof-track"]}>
-              {PROOF_STRIP.map((item, index) => (
-                <div key={item} className={cx("proof-chip", "reveal", index > 0 ? "d1" : "")}>
-                  {item}
+            <div className={styles["ledger-list"]}>
+              {activeScenario.shipped.map((item, index) => (
+                <div key={item} className={cx("ledger-row", "reveal", index > 0 ? "d1" : "")}>
+                  <span>{`0${index + 1}`}</span>
+                  <p>{item}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles["principles-accordion"]}>
+        <section className={styles["signal-band"]}>
           <div className="container">
-            <div className={cx("accordion-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Copy architecture</span>
-              <h2 className={styles["section-title"]}>StoryBrand principles applied to each case</h2>
+            <div className={cx("signal-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Execution signals</span>
+              <h2 className={styles["section-title"]}>Patterns we repeatedly see in successful Prodvo workflows</h2>
             </div>
-            <div className={styles["accordion-list"]}>
-              {PRINCIPLES.map((item, index) => (
-                <details
-                  key={item.title}
-                  className={cx("accordion-item", "reveal", index > 0 ? "d1" : "")}
-                  open={index === 0}
-                >
-                  <summary>
-                    <span>{item.title}</span>
-                    <em>{item.tag}</em>
-                  </summary>
-                  <p>{item.body}</p>
-                </details>
+            <div className={styles["signal-strip"]}>
+              {EXECUTION_SIGNALS.map((item, index) => (
+                <article key={item} className={cx("signal-pill", "reveal", index > 0 ? "d1" : "")}>
+                  {item}
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className={styles["journey-diagram"]}>
+        <section className={styles["playbook-steps"]}>
           <div className="container">
-            <div className={cx("diagram-head", "reveal")}>
-              <span className={styles["section-kicker"]}>Execution map</span>
-              <h2 className={styles["section-title"]}>From intent to repeatable operating cadence</h2>
+            <div className={cx("playbook-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Execution playbook</span>
+              <h2 className={styles["section-title"]}>How teams run release flow in Prodvo</h2>
             </div>
-            <ol className={styles["journey-list"]}>
-              {JOURNEY_STEPS.map((item, index) => (
-                <li key={item.step} className={cx("journey-step", "reveal", index > 0 ? "d1" : "")}>
-                  <span className={styles["journey-index"]}>{item.step}</span>
-                  <div className={styles["journey-copy"]}>
-                    <h3>{item.title}</h3>
-                    <p>{item.detail}</p>
-                  </div>
+            <ol className={styles["playbook-grid"]}>
+              {PLAYBOOK.map((item, index) => (
+                <li key={item.step} className={cx("playbook-step", "reveal", index > 0 ? "d1" : "")}>
+                  <span className={styles["playbook-index"]}>{item.step}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.detail}</p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section className={styles["fit-check"]}>
+        <section className={styles["fit-profile"]}>
           <div className="container">
             <div className={styles["fit-shell"]}>
               <div className={cx("fit-head", "reveal")}>
-                <span className={styles["section-kicker"]}>Fit check</span>
-                <h2 className={styles["section-title"]}>When this use-case model is a strong match</h2>
+                <span className={styles["section-kicker"]}>Team profile</span>
+                <h2 className={styles["section-title"]}>Who gets the biggest delivery gains</h2>
                 <p className={styles["fit-copy"]}>
-                  If these conditions are true in your team today, this operating model
-                  is likely to generate immediate execution gains.
+                  Prodvo is strongest for teams that need one execution system across
+                  planning, coding, review, and release governance.
                 </p>
               </div>
-              <div className={cx("fit-table", "reveal", "d1")}>
-                {FIT_SIGNALS.map((signal) => (
-                  <div key={signal} className={styles["fit-row"]}>
-                    <span>{signal}</span>
-                    <strong>Strong fit</strong>
+              <div className={cx("fit-matrix", "reveal", "d1")}>
+                {TEAM_FIT.map((item) => (
+                  <div key={item} className={styles["fit-row"]}>
+                    <p>{item}</p>
+                    <span>High fit</span>
                   </div>
                 ))}
               </div>
@@ -373,17 +309,17 @@ export default function UseCasesPage() {
         <section className={styles.cta}>
           <div className="container">
             <div className={cx("cta-frame", "reveal")}>
-              <h2>Run one narrative lane for one sprint and measure the delta.</h2>
+              <h2>Run one production workflow in Prodvo this sprint.</h2>
               <p>
-                Start where delivery friction is highest, prove the operating shift,
-                then scale the pattern with confidence.
+                Start with a release lane that is currently high-friction, execute it
+                end-to-end in Prodvo, and keep every checkpoint in one workspace.
               </p>
               <div className={styles["cta-actions"]}>
                 <Link className={styles["btn-primary"]} href="/pricing">
                   Start free trial
                 </Link>
                 <Link className={styles["btn-secondary"]} href="/workflow">
-                  Explore workflow
+                  See workflow
                 </Link>
               </div>
             </div>
