@@ -60,6 +60,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 6. **If asked to change only background gray, do NOT alter text/icon/button palettes** — keep existing colors unless explicitly requested
 7. **When user says redesign still feels the same, change content architecture/layout (not just colors/spacing)** — deliver a visibly new structure
 8. **Avoid repeated grid/card systems across multiple sections in one page** — each section must use a different layout mechanic
+9. **When user asks for richer copy, expand narrative depth per section** — don’t compress or simplify storyline content
 
 ### File Organization
 1. **Follow user's exact directory structure** — don't create files in wrong locations

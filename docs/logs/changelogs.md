@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T17:55:17Z
+
+- **Who:** Copilot CLI agent
+- **What:** Rewrote `/use-cases` copy with entirely new narrative voice and deeper section-level storytelling
+- **When:** 2026-03-29T17:55:17Z
+- **Where:** `.claude/task/lessons.md`, `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User said current copy was not real/strong enough and requested a complete copy replacement with serious quality
+- **How:** Added a lesson to enforce richer narrative depth when requested, then replaced hero/case/principles/journey/proof/fit/CTA language with fresh StoryBrand-grade copy focused on operational tension, stakes, guidance, and measurable outcomes; kept layout mechanics and readability hierarchy intact, and validated with `npm run build`
+- **File path(s) changed:**
+  - `.claude/task/lessons.md`
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T17:46:09Z
 
 - **Who:** Copilot CLI agent
