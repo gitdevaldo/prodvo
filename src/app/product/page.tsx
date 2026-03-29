@@ -278,8 +278,9 @@ export default function ProductPage() {
 
   return (
     <SiteShell buildTag="prodvo-product-v7">
-      <section className={styles.hero}>
-        <div className="container">
+      <div className={styles["product-page"]}>
+        <section className={styles.hero}>
+          <div className="container">
           <div className={styles["hero-inner"]}>
             <div>
               <div className={styles["hero-kicker"]}>Now in Early Access</div>
@@ -366,11 +367,11 @@ export default function ProductPage() {
               <div className={styles["hero-float-badge"]}>AI-Powered</div>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className={styles.contrast}>
-        <div className="container">
+        <section className={styles.contrast}>
+          <div className="container">
           <div className={styles["contrast-inner"]}>
             <div>
               <div className={cn("contrast-col-head", "bad")}>The old way — 6 tools</div>
@@ -438,10 +439,10 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className={styles.features} id="features">
+        <section className={styles.features} id="features">
         <div className="container">
           <div className={cn("features-head", "reveal")}>
             <div className={styles["sec-eyebrow"]}>What you get</div>
@@ -572,9 +573,9 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
-      <section className={styles.how} id="how">
+        <section className={styles.how} id="how">
         <div className="container">
           <div className={styles["how-inner"]}>
             <div className={styles["how-sticky"]}>
@@ -615,9 +616,9 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
-      <section className={styles.stack} id="stack">
+        <section className={styles.stack} id="stack">
         <div className="container">
           <div className={styles["stack-inner"]}>
             <div>
@@ -677,9 +678,9 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
-      <section className={styles.testi}>
+        <section className={styles.testi}>
         <div className="container">
           <div className={cn("testi-head", "reveal")}>
             <div className={styles["sec-eyebrow"]}>What builders say</div>
@@ -723,9 +724,9 @@ export default function ProductPage() {
             ))}
           </div>
         </div>
-      </section>
+        </section>
 
-      <section className={styles.pricing} id="pricing">
+        <section className={styles.pricing} id="pricing">
         <div className="container">
           <div className={cn("pricing-head", "reveal")}>
             <div className={styles["sec-eyebrow"]}>Pricing</div>
@@ -779,10 +780,10 @@ export default function ProductPage() {
             compute, SLA guarantees, and white-glove onboarding.
           </p>
         </div>
-      </section>
+        </section>
 
-      <section className={styles["cta-final"]}>
-        <div className="container">
+        <section className={styles["cta-final"]}>
+          <div className="container">
           <div className={styles["cta-inner"]}>
             <div className={styles["cta-label"]}>Ready to ship?</div>
             <h2 className={styles["cta-h"]}>
@@ -806,8 +807,9 @@ export default function ProductPage() {
               No credit card required · Deploy in under 2 minutes · Cancel anytime
             </div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
     </SiteShell>
   );
 }
