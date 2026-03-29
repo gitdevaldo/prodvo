@@ -20,7 +20,6 @@ Core palette (from `:root`):
 - `--fire-orange-dark: #ea580c` (primary hover)
 - `--fire-orange-deep: #ff4d00` (strong accent sections)
 - `--fire-orange-darker: #c2410c` (deep accent variant)
-- `--fire-orange-light: #fff7ed` (soft accent background)
 - `--charcoal: #18181b` (main text)
 - `--gray-900: #18181b`
 - `--gray-700: #3f3f46`
@@ -30,6 +29,12 @@ Core palette (from `:root`):
 - `--light-gray: #fafafa` (cards/surfaces)
 - `--cool-gray: #f4f4f5` (section separators)
 - `--success: #22c55e` (positive status/checks)
+
+Hard rules:
+
+- Do not use nude/cream backgrounds (`#fff7ed`, `#ffedd5`, `#fffbf7`, `#fed7aa`) for sections.
+- Do not use gradient backgrounds for CTA sections.
+- CTA sections must use solid `#f97316` with white title/body text.
 
 ## 3) Typography
 
@@ -69,7 +74,7 @@ Card rhythm:
 - Sticky header with subtle blur and border on scroll.
 - Announcement strip above nav for product updates.
 - Hero with badge + oversized statement + dual CTA.
-- Marquee social proof bar with gradient edge masks on desktop.
+- Marquee social proof bar with subtle edge fade masks on desktop.
 - Bento feature grid with mixed spans (`normal`, `wide`, `full`).
 - Pricing 3-card layout with one `popular` highlight.
 - Testimonials with quote + supporting stat cards.
@@ -131,6 +136,7 @@ Do:
 - Keep rounded corners and soft shadows consistent.
 - Preserve hierarchy: orange for action, gray for context.
 - Maintain comfortable line-heights (`~1.45–1.7`) for body text.
+- Keep section surfaces white/light-gray first; orange is emphasis, not base tinting.
 
 Don’t:
 
@@ -138,6 +144,8 @@ Don’t:
 - Add abrupt or high-frequency animations.
 - Use saturated non-brand colors as primary actions.
 - Compress spacing too tightly on desktop layouts.
+- Do not use nude/cream background fills for major sections.
+- Do not use CTA gradients.
 
 ## 10) Maintenance Notes
 

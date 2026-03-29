@@ -537,11 +537,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .ctaSection {
   padding: clamp(5rem, 10vw, 8rem) 0;
-  background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
-  background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #fed7aa;
+  background: #f97316;
   text-align: center;
 }
 
@@ -556,14 +552,14 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #18181b;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .ctaBody {
   font-size: 1.15rem;
   line-height: 1.6;
-  color: #52525b;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
 }
 
@@ -572,6 +568,30 @@
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.ctaActions :global(.btn-primary) {
+  background: #fff;
+  color: #f97316;
+  border-color: #fff;
+}
+
+.ctaActions :global(.btn-primary:hover) {
+  background: #fafafa;
+  color: #ea580c;
+  border-color: #fafafa;
+}
+
+.ctaActions :global(.btn-secondary) {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.ctaActions :global(.btn-secondary:hover) {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: #fff;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

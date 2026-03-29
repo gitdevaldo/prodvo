@@ -32,6 +32,9 @@ This file captures all user feedback — direct and indirect — to prevent repe
 23. **Never ignore explicit repeated feedback** — if user repeats “not vertical,” avoid every vertical-first composition immediately
 24. **Do NOT replace homepage structure without explicit request** — keep expected homepage intact while expanding other pages
 25. **When asked for full site pages, each route must be substantial** — avoid thin two-section placeholder pages
+26. **Do NOT use nude/cream colors** — avoid #fff7ed, #ffedd5, #fffbf7, #fed7aa as section backgrounds
+27. **Do NOT use gradient backgrounds for CTA sections** — CTA backgrounds must be solid fire-orange
+28. **Use strict color base** — white/light-gray surfaces with fire-orange accents only
 
 ### DO (Best practices)
 1. **Prioritize professional editorial hierarchy** over decorative gimmicks
@@ -39,6 +42,8 @@ This file captures all user feedback — direct and indirect — to prevent repe
 3. **Think magazine-style layout** — asymmetric, varied, editorial
 4. **Use horizontal scroll, accordion, mosaic, timeline** as alternatives to grid/card patterns
 5. **Show all testimonials visibly** rather than hiding behind tabs/switchers when social proof is important
+6. **Use solid fire-orange CTA backgrounds** (`#f97316`) with white CTA text
+7. **Use white/light-gray as primary surfaces** and reserve orange for emphasis
 
 ---
 

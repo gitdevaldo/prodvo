@@ -21,7 +21,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #9a3412;
+  color: #f97316;
   margin-bottom: 0.75rem;
 }
 
@@ -34,13 +34,13 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   HERO — Minimal, text-focused
+   HERO — Clean white with pattern
 ═══════════════════════════════════════════════════════════════════════════ */
 .heroSection {
   padding: clamp(5rem, 12vw, 9rem) 0 clamp(3rem, 6vw, 5rem);
   background: 
     linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
-    linear-gradient(180deg, #fff 0%, #fffbf7 100%);
+    #fff;
   background-size: 140px 100%, 100% 100%;
 }
 
@@ -52,14 +52,14 @@
 
 .heroTag {
   display: inline-block;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
+  background: #f97316;
+  border: none;
+  color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.45rem 0.9rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   margin-bottom: 1.5rem;
 }
@@ -88,8 +88,10 @@
   padding: 0 0 clamp(4rem, 8vw, 6rem);
   background: 
     linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
-    #fffbf7;
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.6), rgba(244, 244, 245, 0.2));
   background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #f4f4f5;
+  border-bottom: 1px solid #f4f4f5;
 }
 
 .casesInner {
@@ -120,13 +122,16 @@
 }
 
 .caseHeader:hover {
-  background: rgba(249, 115, 22, 0.03);
+  background: rgba(244, 244, 245, 0.5);
 }
 
 .caseNumber {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #f97316;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #fff;
+  background: #f97316;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
   font-family: 'SF Mono', 'Fira Code', monospace;
   letter-spacing: 0.04em;
   flex-shrink: 0;
@@ -142,20 +147,25 @@
 }
 
 .caseToggle {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: 300;
-  color: #a1a1aa;
+  color: #f97316;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 50%;
   flex-shrink: 0;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .caseHeader:hover .caseToggle {
-  color: #f97316;
+  border-color: #f97316;
+  background: #f97316;
+  color: #fff;
 }
 
 /* Case detail — hidden by default */
@@ -194,7 +204,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #9a3412;
+  color: #f97316;
 }
 
 .storyBlock p {
@@ -206,7 +216,8 @@
 
 /* Result metric — right column */
 .caseResult {
-  background: #fff7ed;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
   border-radius: 12px;
   padding: 1.75rem;
   display: flex;
@@ -223,7 +234,7 @@
   display: block;
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 800;
-  color: #ea580c;
+  color: #f97316;
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -232,14 +243,14 @@
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #9a3412;
+  color: #71717a;
   margin-top: 0.35rem;
 }
 
 .resultDetail {
   font-size: 0.88rem;
   line-height: 1.5;
-  color: #71717a;
+  color: #52525b;
   margin: 0;
 }
 
@@ -249,7 +260,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .signalSection {
   padding: clamp(3rem, 6vw, 4.5rem) 0;
-  background: #18181b;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
 }
 
 .signalInner {
@@ -266,7 +277,7 @@
 }
 
 .signalLeft .sectionLabel {
-  color: #f97316;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .signalTitle {
@@ -288,8 +299,11 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
-  color: #d4d4d8;
+  color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
 }
 
 .signalIcon {
@@ -344,16 +358,18 @@
 }
 
 .compareSideAfter .compareSideHeader {
-  background: #fff7ed;
-  color: #9a3412;
+  background: #f97316;
+  color: #fff;
 }
 
 .compareRow {
   padding: 1rem 1.5rem;
   font-size: 0.92rem;
-  color: #52525b;
+  color: #71717a;
   border-bottom: 1px solid #f4f4f5;
   line-height: 1.45;
+  text-decoration: line-through;
+  text-decoration-color: #d4d4d8;
 }
 
 .compareRow:last-child {
@@ -362,8 +378,9 @@
 
 .compareSideAfter .compareRow {
   color: #18181b;
-  font-weight: 500;
-  background: #fffbf7;
+  font-weight: 600;
+  background: #fff;
+  text-decoration: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -372,10 +389,11 @@
 .startSection {
   padding: clamp(5rem, 10vw, 8rem) 0;
   background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(180deg, #fafafa 0%, #fff 100%);
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.6), rgba(244, 244, 245, 0.2));
   background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #e4e4e7;
+  border-top: 1px solid #f4f4f5;
+  border-bottom: 1px solid #f4f4f5;
 }
 
 .startInner {
@@ -436,7 +454,7 @@
   display: block;
   font-size: 1rem;
   font-weight: 700;
-  color: #18181b;
+  color: #f97316;
   margin-bottom: 0.25rem;
 }
 
@@ -447,7 +465,7 @@
 }
 
 .flowLine {
-  width: 24px;
+  width: 32px;
   height: 2px;
   background: linear-gradient(90deg, #e4e4e7, #f97316);
   flex-shrink: 0;
@@ -458,10 +476,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .ctaSection {
   padding: clamp(5rem, 10vw, 8rem) 0;
-  background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
-  background-size: 140px 100%, 100% 100%;
+  background: #f97316;
   text-align: center;
 }
 
@@ -476,15 +491,27 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #18181b;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .ctaBody {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #52525b;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 2rem;
+}
+
+.ctaInner :global(.btn-primary) {
+  background: #fff;
+  color: #f97316;
+  border-color: #fff;
+}
+
+.ctaInner :global(.btn-primary:hover) {
+  background: #fafafa;
+  color: #ea580c;
+  border-color: #fafafa;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

@@ -22,9 +22,8 @@
   padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4rem);
   background: 
     linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
-    linear-gradient(180deg, #fff 0%, #fffbf7 100%);
+    #fff;
   background-size: 140px 100%, 100% 100%;
-  border-bottom: 1px solid #fed7aa;
 }
 
 .openerInner {
@@ -43,14 +42,14 @@
 
 .openerTag {
   display: inline-block;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
+  background: #f97316;
+  border: none;
+  color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   margin-bottom: 1.25rem;
 }
@@ -89,12 +88,12 @@
   gap: 0.4rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #52525b;
+  color: #ea580c;
   transition: color 0.2s ease;
 }
 
 .openerGhost:hover {
-  color: #ea580c;
+  color: #c2410c;
 }
 
 .openerGhost svg {
@@ -114,7 +113,7 @@
   background: #1e1e2e;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
   transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
   transition: transform 0.4s ease;
 }
@@ -211,8 +210,12 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .problemSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #18181b;
-  color: #fff;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.6), rgba(244, 244, 245, 0.2));
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #f4f4f5;
+  border-bottom: 1px solid #f4f4f5;
   position: relative;
   overflow: hidden;
 }
@@ -225,7 +228,7 @@
   transform: translateY(-50%);
   font-size: clamp(12rem, 25vw, 22rem);
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.03);
+  color: rgba(249, 115, 22, 0.06);
   letter-spacing: -0.05em;
   line-height: 1;
   pointer-events: none;
@@ -272,7 +275,7 @@
 .problemBody {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #a1a1aa;
+  color: #52525b;
 }
 
 .problemEvidence {
@@ -284,7 +287,7 @@
   font-size: 1.15rem;
   font-style: italic;
   line-height: 1.6;
-  color: #e4e4e7;
+  color: #52525b;
   margin: 0 0 1rem;
 }
 
@@ -298,12 +301,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .shiftSection {
   padding: clamp(3rem, 6vw, 4.5rem) 0;
-  background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-  background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #fed7aa;
-  border-bottom: 1px solid #fed7aa;
+  background: #f97316;
   text-align: center;
 }
 
@@ -319,9 +317,9 @@
 
 .shiftMarker span {
   display: inline-block;
-  background: #fff;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -335,14 +333,14 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #18181b;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .shiftBody {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #52525b;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -354,6 +352,7 @@
     linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
     #fff;
   background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #f4f4f5;
 }
 
 .capabilitiesInner {
@@ -373,7 +372,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #9a3412;
+  color: #ea580c;
   margin-bottom: 0.75rem;
 }
 
@@ -403,7 +402,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: #fafafa;
+  background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 12px;
   cursor: pointer;
@@ -412,12 +411,11 @@
 }
 
 .capabilityTrigger:hover {
-  background: #fff7ed;
-  border-color: #fed7aa;
+  border-color: #f97316;
 }
 
 .capabilityTrigger.active {
-  background: #fff7ed;
+  background: #fff;
   border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
@@ -429,7 +427,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e4e4e7;
+  background: #f4f4f5;
   border-radius: 8px;
   font-size: 0.72rem;
   font-weight: 700;
@@ -478,7 +476,7 @@
 .capabilityLede {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #52525b;
+  color: #f97316;
   margin-bottom: 1rem;
 }
 
@@ -503,6 +501,11 @@
   background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.featureItem:hover {
+  border-color: #f97316;
 }
 
 .featureItem strong {
@@ -523,10 +526,11 @@
 .journeySection {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, #fafafa, #fff);
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.6), rgba(244, 244, 245, 0.2));
   background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #e4e4e7;
+  border-top: 1px solid #f4f4f5;
+  border-bottom: 1px solid #f4f4f5;
   overflow: hidden;
 }
 
@@ -543,7 +547,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #9a3412;
+  color: #f97316;
   margin-bottom: 0.75rem;
 }
 
@@ -568,7 +572,7 @@
   left: 80px;
   right: 80px;
   height: 2px;
-  background: linear-gradient(90deg, #fed7aa 0%, #f97316 50%, #fed7aa 100%);
+  background: linear-gradient(90deg, #e4e4e7 0%, #f97316 50%, #e4e4e7 100%);
 }
 
 .journeySteps {
@@ -619,19 +623,20 @@
 
 .journeyCode {
   display: inline-block;
-  background: #18181b;
+  background: #fafafa;
   color: #f97316;
   font-family: "SF Mono", monospace;
   font-size: 0.72rem;
   padding: 0.4rem 0.65rem;
   border-radius: 6px;
+  border: 1px solid #e4e4e7;
 }
 
 .journeyMeta {
   display: inline-block;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #9a3412;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  color: #71717a;
   font-size: 0.72rem;
   font-weight: 600;
   padding: 0.35rem 0.6rem;
@@ -666,7 +671,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #9a3412;
+  color: #f97316;
   margin-bottom: 0.75rem;
 }
 
@@ -685,7 +690,7 @@
 }
 
 .proofCard {
-  background: #fafafa;
+  background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 16px;
   padding: 1.75rem;
@@ -736,7 +741,8 @@
   display: block;
   font-size: 0.78rem;
   font-style: normal;
-  color: #9a3412;
+  color: #f97316;
+  font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -744,8 +750,10 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .diffSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
-  background: #18181b;
-  color: #fff;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
 }
 
 .diffInner {
@@ -761,6 +769,7 @@
   letter-spacing: -0.02em;
   text-align: center;
   margin-bottom: 2.5rem;
+  color: #18181b;
 }
 
 .diffColumns {
@@ -776,13 +785,13 @@
 }
 
 .diffYes {
-  background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  background: #fff;
+  border: 1px solid #e4e4e7;
 }
 
 .diffNo {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
 }
 
 .diffYes h3,
@@ -791,15 +800,15 @@
   font-weight: 800;
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e4e4e7;
 }
 
 .diffYes h3 {
-  color: #4ade80;
+  color: #f97316;
 }
 
 .diffNo h3 {
-  color: #f87171;
+  color: #71717a;
 }
 
 .diffYes ul,
@@ -823,13 +832,13 @@
 .diffNo li strong {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #fff;
+  color: #18181b;
 }
 
 .diffYes li span,
 .diffNo li span {
   font-size: 0.85rem;
-  color: #a1a1aa;
+  color: #71717a;
   line-height: 1.5;
 }
 
@@ -839,10 +848,11 @@
 .voiceSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, #fff 0%, #fffbf7 100%);
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 244, 245, 0.6), rgba(244, 244, 245, 0.2));
   background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #fed7aa;
+  border-top: 1px solid #f4f4f5;
+  border-bottom: 1px solid #f4f4f5;
 }
 
 .voiceInner {
@@ -857,7 +867,7 @@
 
 .voicePrimary {
   background: #fff;
-  border: 1px solid #fed7aa;
+  border: 1px solid #e4e4e7;
   border-radius: 20px;
   padding: 2.5rem;
   position: relative;
@@ -869,9 +879,10 @@
   left: 1.5rem;
   font-size: 5rem;
   font-weight: 900;
-  color: #fed7aa;
+  color: #f97316;
   line-height: 1;
   pointer-events: none;
+  opacity: 0.15;
 }
 
 .voiceQuote {
@@ -914,8 +925,8 @@
   flex-shrink: 0;
   text-align: center;
   padding: 0.75rem 1rem;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
   border-radius: 12px;
 }
 
@@ -923,14 +934,14 @@
   display: block;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #ea580c;
+  color: #f97316;
   line-height: 1;
 }
 
 .voiceMetric span {
   display: block;
   font-size: 0.68rem;
-  color: #9a3412;
+  color: #71717a;
   margin-top: 0.25rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -954,11 +965,11 @@
   border: 1px solid #e4e4e7;
   border-radius: 14px;
   padding: 1.5rem;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .voiceCard:hover {
-  border-color: #fed7aa;
+  border-color: #f97316;
 }
 
 .voiceCard blockquote {
@@ -992,10 +1003,9 @@
 .specsSection {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    #fafafa;
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
   background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #e4e4e7;
 }
 
 .specsInner {
@@ -1015,7 +1025,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #9a3412;
+  color: #f97316;
   margin-bottom: 0.75rem;
 }
 
@@ -1045,6 +1055,11 @@
   background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.specItem:hover {
+  border-color: #f97316;
 }
 
 .specItem h4 {
@@ -1052,7 +1067,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #9a3412;
+  color: #f97316;
   margin-bottom: 0.5rem;
 }
 
@@ -1073,7 +1088,7 @@
 .specsLink {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #9a3412;
+  color: #f97316;
   transition: color 0.2s ease;
 }
 
@@ -1086,11 +1101,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 .closingSection {
   padding: clamp(5rem, 10vw, 8rem) 0;
-  background: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
-  background-size: 140px 100%, 100% 100%;
-  border-top: 1px solid #fed7aa;
+  background: #f97316;
   text-align: center;
 }
 
@@ -1105,14 +1116,14 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #18181b;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .closingBody {
   font-size: 1.15rem;
   line-height: 1.6;
-  color: #52525b;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
 }
 
@@ -1123,9 +1134,21 @@
   gap: 0.75rem;
 }
 
+.closingActions :global(.btn-primary) {
+  background: #fff;
+  color: #f97316;
+  border-color: #fff;
+}
+
+.closingActions :global(.btn-primary:hover) {
+  background: #fafafa;
+  color: #ea580c;
+  border-color: #fafafa;
+}
+
 .closingNote {
   font-size: 0.82rem;
-  color: #71717a;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
