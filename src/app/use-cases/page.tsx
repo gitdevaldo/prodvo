@@ -1,12 +1,78 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./use-cases.module.css";
 
+type UseCaseItem = {
+  id: string;
+  team: string;
+  stage: string;
+  tension: string;
+  before: string;
+  after: string;
+  win: string;
+  proof: string;
+  signal: "velocity" | "handoff" | "quality" | "audit";
+};
+
+const CASES: readonly UseCaseItem[] = [
+  {
+    id: "startup-release",
+    team: "Series A product team",
+    stage: "Pre-PMF push",
+    tension: "Features were blocked by handoffs across frontend, backend, and QA.",
+    before: "Two-week intent, six-week delivery.",
+    after: "One owner defined intent, parallel agents shipped scoped slices daily.",
+    win: "Release cycle dropped from 6 weeks to 10 days.",
+    proof: "Velocity",
+    signal: "velocity",
+  },
+  {
+    id: "agency-accounts",
+    team: "Agency with 12 client accounts",
+    stage: "Multi-stream delivery",
+    tension: "Delivery quality varied by PM style and project pressure.",
+    before: "Different process every client, surprise bugs near launch.",
+    after: "Same checkpoints, same quality gates, custom implementation per account.",
+    win: "3x more concurrent projects without adding headcount.",
+    proof: "Handoff",
+    signal: "handoff",
+  },
+  {
+    id: "fintech-compliance",
+    team: "Regulated fintech squad",
+    stage: "SOC2 + audit pressure",
+    tension: "Compliance work happened after coding and delayed releases.",
+    before: "Audit evidence was assembled manually before every release.",
+    after: "Evidence captured at each checkpoint automatically.",
+    win: "Audit preparation dropped from 2 weeks to 1 day.",
+    proof: "Audit",
+    signal: "audit",
+  },
+  {
+    id: "scale-engineering",
+    team: "50-person engineering org",
+    stage: "Cross-team scaling",
+    tension: "Dependencies broke silently between teams.",
+    before: "Blocked work discovered late in sprint reviews.",
+    after: "Dependency edges visible at planning, blockers surfaced in flow.",
+    win: "Cross-team delay incidents reduced by 60%.",
+    proof: "Quality",
+    signal: "quality",
+  },
+];
+
+function cx(...parts: string[]) {
+  return parts
+    .map((part) => styles[part])
+    .filter((value): value is string => Boolean(value))
+    .join(" ");
+}
+
 export default function UseCasesPage() {
-  const [expandedCase, setExpandedCase] = useState<number | null>(0);
+  const [activeId, setActiveId] = useState<string>(CASES[0]?.id ?? "");
 
   useEffect(() => {
     const revealEls = Array.from(document.querySelectorAll<HTMLElement>(`.${styles.reveal}`));
@@ -14,258 +80,168 @@ export default function UseCasesPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.isVisible);
+            entry.target.classList.add(styles.visible);
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -12% 0px" },
     );
     revealEls.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  const useCases = [
-    {
-      id: "feature-velocity",
-      number: "01",
-      headline: "Ship features in days, not sprints",
-      context: "A Series B startup needed to deliver 3 major features before their funding milestone.",
-      challenge: "2-week sprints stretched to 4 weeks. Half of every sprint was coordination, not coding.",
-      howProdvo: "Parallel agents handled frontend, backend, and tests simultaneously. Engineers reviewed at checkpoints instead of attending status meetings.",
-      metric: "72%",
-      metricLabel: "reduction in coordination time",
-      detail: "14 hours/week → 4 hours/week on alignment meetings",
-    },
-    {
-      id: "scale-teams",
-      number: "02",
-      headline: "Scale from 5 to 50 without scaling chaos",
-      context: "Enterprise SaaS company growing fast. What worked with one team collapsed at five teams.",
-      challenge: "Dependencies slipped constantly. No one knew who was blocking whom. Every release felt risky.",
-      howProdvo: "Explicit ownership at every checkpoint. Cross-team dependencies visible in one place. Automatic escalation when blockers appear.",
-      metric: "60%",
-      metricLabel: "fewer cross-team delays",
-      detail: "Handoff clarity became the default, not the exception",
-    },
-    {
-      id: "client-delivery",
-      number: "03",
-      headline: "Consistent quality across 12 client accounts",
-      context: "Digital agency delivering custom work for enterprise clients with tight margins.",
-      challenge: "Every project reinvented delivery. Quality varied by account manager. Surprises at launch.",
-      howProdvo: "Templated workflows with client-specific scope. Same quality gates, different implementations. Reusable patterns.",
-      metric: "3×",
-      metricLabel: "more projects with same headcount",
-      detail: "From reactive firefighting to proactive delivery",
-    },
-    {
-      id: "compliance-velocity",
-      number: "04",
-      headline: "Move fast without breaking compliance",
-      context: "Regulated fintech where auditors want evidence and engineers want autonomy.",
-      challenge: "Manual audit prep took 2 weeks per release. Speed and compliance felt mutually exclusive.",
-      howProdvo: "Automatic checkpoint evidence collection. Approval trails built into the workflow. Compliance as byproduct, not extra work.",
-      metric: "2 weeks → 1 day",
-      metricLabel: "audit prep time",
-      detail: "From dreaded chore to automated process",
-    },
-  ];
-
-  const signals = [
-    { icon: "⚡", text: "Shipping weekly or faster" },
-    { icon: "👥", text: "Cross-functional squads" },
-    { icon: "📈", text: "Scaling engineering org" },
-    { icon: "🔄", text: "Multiple concurrent projects" },
-    { icon: "✅", text: "Quality gates required" },
-    { icon: "🔐", text: "Audit trail needs" },
-  ];
+  const activeCase = useMemo(
+    () => CASES.find((item) => item.id === activeId) ?? CASES[0],
+    [activeId],
+  );
 
   return (
-    <SiteShell buildTag="prodvo-use-cases-v6">
-      {/* ═══════════════════════════════════════════════════════════════════════
-          HERO: Bold statement with supporting context
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroInner}>
-          <span className={styles.heroTag}>Use Cases</span>
-          <h1 className={styles.heroTitle}>
-            How teams actually use Prodvo
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Not feature lists. Not demos. Real stories from teams who solved 
-            real coordination problems and shipped faster because of it.
-          </p>
-        </div>
-      </section>
+    <SiteShell buildTag="prodvo-use-cases-v7">
+      <div className={styles["usecases-page"]}>
+        <section className={styles.hero}>
+          <div className="container">
+            <div className={cx("hero-wrap", "reveal")}>
+              <span className={styles["hero-kicker"]}>Use Cases</span>
+              <h1 className={styles["hero-title"]}>
+                Different teams.
+                <br />
+                One production rhythm.
+              </h1>
+              <p className={styles["hero-sub"]}>
+                This is not a feature catalog. It&apos;s a field manual of how teams use
+                Prodvo when delivery speed, handoff quality, and proof of work actually matter.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          CASE STUDIES: Full-width expandable case format
-          Unique layout: Number + headline row, expandable detail panel below
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.casesSection}>
-        <div className={styles.casesInner}>
-          {useCases.map((uc, i) => (
-            <article 
-              key={uc.id}
-              className={`${styles.caseItem} ${expandedCase === i ? styles.expanded : ""} ${styles.reveal}`}
-              style={{ transitionDelay: `${i * 0.1}s` }}
-            >
-              <button
-                type="button"
-                className={styles.caseHeader}
-                onClick={() => setExpandedCase(expandedCase === i ? null : i)}
-                aria-expanded={expandedCase === i}
-              >
-                <span className={styles.caseNumber}>{uc.number}</span>
-                <h2 className={styles.caseHeadline}>{uc.headline}</h2>
-                <span className={styles.caseToggle}>{expandedCase === i ? "−" : "+"}</span>
-              </button>
-              
-              <div className={styles.caseDetail}>
-                <div className={styles.caseStory}>
-                  <div className={styles.storyBlock}>
-                    <span className={styles.storyLabel}>The situation</span>
-                    <p>{uc.context}</p>
+        <section className={styles.dispatch}>
+          <div className="container">
+            <div className={styles["dispatch-grid"]}>
+              <aside className={cx("dispatch-rail", "reveal")}>
+                <div className={styles["rail-label"]}>Case dispatch</div>
+                <div className={styles["rail-list"]}>
+                  {CASES.map((item, index) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className={cx(
+                        "rail-item",
+                        activeId === item.id ? "rail-item-active" : "",
+                        index === 1 ? "d1" : index === 2 ? "d2" : index === 3 ? "d3" : "",
+                      )}
+                      onClick={() => setActiveId(item.id)}
+                      aria-pressed={activeId === item.id}
+                    >
+                      <span className={styles["rail-dot"]} aria-hidden />
+                      <span className={styles["rail-team"]}>{item.team}</span>
+                      <span className={styles["rail-stage"]}>{item.stage}</span>
+                    </button>
+                  ))}
+                </div>
+              </aside>
+
+              <article className={cx("dispatch-sheet", "reveal", "d1")}>
+                <div className={styles["sheet-head"]}>
+                  <span className={styles["sheet-tag"]}>{activeCase.proof}</span>
+                  <h2 className={styles["sheet-title"]}>{activeCase.team}</h2>
+                  <p className={styles["sheet-stage"]}>{activeCase.stage}</p>
+                </div>
+
+                <div className={styles["sheet-flow"]}>
+                  <div className={styles["flow-col"]}>
+                    <h3>The tension</h3>
+                    <p>{activeCase.tension}</p>
                   </div>
-                  <div className={styles.storyBlock}>
-                    <span className={styles.storyLabel}>The friction</span>
-                    <p>{uc.challenge}</p>
+                  <div className={styles["flow-col"]}>
+                    <h3>Before</h3>
+                    <p>{activeCase.before}</p>
                   </div>
-                  <div className={styles.storyBlock}>
-                    <span className={styles.storyLabel}>How Prodvo helped</span>
-                    <p>{uc.howProdvo}</p>
+                  <div className={styles["flow-col"]}>
+                    <h3>After</h3>
+                    <p>{activeCase.after}</p>
                   </div>
                 </div>
-                <div className={styles.caseResult}>
-                  <div className={styles.resultMetric}>
-                    <span className={styles.metricValue}>{uc.metric}</span>
-                    <span className={styles.metricLabel}>{uc.metricLabel}</span>
-                  </div>
-                  <p className={styles.resultDetail}>{uc.detail}</p>
+
+                <div className={styles["sheet-win"]}>
+                  <strong>Outcome</strong>
+                  <p>{activeCase.win}</p>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          PATTERN RECOGNITION: Horizontal signal strip
-          Not cards, not grid—inline flowing signals
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.signalSection}>
-        <div className={styles.signalInner}>
-          <div className={styles.signalLeft}>
-            <span className={styles.sectionLabel}>Pattern match</span>
-            <h2 className={styles.signalTitle}>You&apos;ll get the most value if...</h2>
-          </div>
-          <div className={styles.signalStrip}>
-            {signals.map((s) => (
-              <span key={s.text} className={styles.signalItem}>
-                <span className={styles.signalIcon}>{s.icon}</span>
-                {s.text}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════════
-          COMPARISON: Side-by-side without/with Prodvo
-          Two columns, same row heights, direct contrast
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.compareSection}>
-        <div className={styles.compareInner}>
-          <div className={styles.compareHeader}>
-            <span className={styles.sectionLabel}>The difference</span>
-            <h2 className={styles.sectionTitle}>Before and after</h2>
-          </div>
-          
-          <div className={styles.compareTable}>
-            <div className={styles.compareSide}>
-              <div className={styles.compareSideHeader}>Without Prodvo</div>
-              <div className={styles.compareRow}>Standups to sync on status</div>
-              <div className={styles.compareRow}>Slack threads to find blockers</div>
-              <div className={styles.compareRow}>Manual dependency tracking</div>
-              <div className={styles.compareRow}>Scope creep mid-sprint</div>
-              <div className={styles.compareRow}>Surprise bugs at merge time</div>
-              <div className={styles.compareRow}>Audit prep after the fact</div>
-            </div>
-            <div className={`${styles.compareSide} ${styles.compareSideAfter}`}>
-              <div className={styles.compareSideHeader}>With Prodvo</div>
-              <div className={styles.compareRow}>Async visibility into all runs</div>
-              <div className={styles.compareRow}>Blockers surfaced automatically</div>
-              <div className={styles.compareRow}>Dependencies explicit at checkpoints</div>
-              <div className={styles.compareRow}>Scope locked at intent definition</div>
-              <div className={styles.compareRow}>Issues caught at review gates</div>
-              <div className={styles.compareRow}>Evidence collected automatically</div>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          STARTING POINT: Linear progression, not steps grid
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.startSection}>
-        <div className={styles.startInner}>
-          <div className={styles.startText}>
-            <span className={styles.sectionLabel}>Where to start</span>
-            <h2 className={styles.startTitle}>
-              Pick your highest-friction workflow.
-              <br />
-              Run it once with Prodvo.
-              <br />
-              Measure the difference.
-            </h2>
-            <p className={styles.startBody}>
-              Don&apos;t try to transform everything at once. Find the one workflow where coordination 
-              overhead is killing velocity, and prove value there first. Scale after you have evidence.
-            </p>
-            <div className={styles.startActions}>
-              <Link className="btn btn-primary" href="/pricing">Start free trial</Link>
-              <Link className="btn btn-secondary" href="/workflow">See the workflow model</Link>
+        <section className={styles["proof-loop"]}>
+          <div className="container">
+            <div className={cx("loop-head", "reveal")}>
+              <span className={styles["section-kicker"]}>Operating pattern</span>
+              <h2 className={styles["section-title"]}>How successful teams run Prodvo</h2>
             </div>
-          </div>
-          <div className={styles.startVisual}>
-            <div className={styles.visualFlow}>
-              <div className={styles.flowNode}>
-                <span>Identify</span>
-                <small>Where handoffs break</small>
+
+            <div className={styles["loop-track"]}>
+              <div className={cx("loop-step", "reveal", "d1")}>
+                <span>01</span>
+                <h3>Define a sharp intent</h3>
+                <p>Scope one workflow with clear output and constraints.</p>
               </div>
-              <div className={styles.flowLine}></div>
-              <div className={styles.flowNode}>
-                <span>Run</span>
-                <small>One scoped workflow</small>
+              <div className={cx("loop-connector", "reveal", "d1")} aria-hidden />
+              <div className={cx("loop-step", "reveal", "d2")}>
+                <span>02</span>
+                <h3>Run in parallel lanes</h3>
+                <p>Frontend, backend, and tests move simultaneously.</p>
               </div>
-              <div className={styles.flowLine}></div>
-              <div className={styles.flowNode}>
-                <span>Prove</span>
-                <small>Measure the delta</small>
+              <div className={cx("loop-connector", "reveal", "d2")} aria-hidden />
+              <div className={cx("loop-step", "reveal", "d3")}>
+                <span>03</span>
+                <h3>Review at checkpoints</h3>
+                <p>Quality, security, and compliance are validated in-flow.</p>
               </div>
-              <div className={styles.flowLine}></div>
-              <div className={styles.flowNode}>
-                <span>Scale</span>
-                <small>Expand with confidence</small>
+              <div className={cx("loop-connector", "reveal", "d3")} aria-hidden />
+              <div className={cx("loop-step", "reveal", "d4")}>
+                <span>04</span>
+                <h3>Scale what proves out</h3>
+                <p>Expand only what repeatedly produces reliable outcomes.</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════════
-          CTA: Clean close
-      ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>Find your use case</h2>
-          <p className={styles.ctaBody}>
-            Start free. Run one workflow. See the difference.
-          </p>
-          <Link className="btn btn-primary btn-lg" href="/pricing">Start free trial</Link>
-        </div>
-      </section>
+        <section className={styles["fit-map"]}>
+          <div className="container">
+            <div className={styles["fit-grid"]}>
+              <div className={cx("fit-left", "reveal")}>
+                <span className={styles["section-kicker"]}>Fit check</span>
+                <h2 className={styles["section-title"]}>You&apos;ll likely win with Prodvo if...</h2>
+              </div>
+              <ul className={cx("fit-list", "reveal", "d1")}>
+                <li>work moves through multiple teams before shipping</li>
+                <li>release confidence depends on repeatable gates</li>
+                <li>audit/compliance asks for traceable change history</li>
+                <li>delivery speed is blocked by coordination, not coding</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.cta}>
+          <div className="container">
+            <div className={cx("cta-frame", "reveal")}>
+              <h2>Run one workflow. Measure the delta.</h2>
+              <p>Don&apos;t migrate everything. Start with your highest-friction delivery lane.</p>
+              <div className={styles["cta-actions"]}>
+                <Link className={styles["btn-primary"]} href="/pricing">
+                  Start free trial
+                </Link>
+                <Link className={styles["btn-secondary"]} href="/workflow">
+                  See workflow model
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </SiteShell>
   );
 }

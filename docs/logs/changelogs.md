@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T16:33:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Rebuilt `/use-cases` into a unique interactive editorial layout and aligned it to strict white + brand-orange-only styling
+- **When:** 2026-03-29T16:33:00Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested a better, non-templated, unique use-cases page inspired by the reference format while staying distinct from `/product` and compliant with palette rules
+- **How:** Replaced use-cases page structure with dispatch rail + active case sheet + operating loop + fit-check + solid-orange CTA, implemented full matching CSS module, fixed class composition helper safety, removed non-brand gray/black tones in this page, then validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T16:21:27Z
 
 - **Who:** Copilot CLI agent
