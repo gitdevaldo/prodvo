@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T18:22:24Z
+
+- **Who:** Copilot CLI agent
+- **What:** Rebuilt `/use-cases` into a richer, reference-grade multi-section experience with non-repetitive layout mechanics
+- **When:** 2026-03-29T18:22:24Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User flagged prior revision as too simple/basic and explicitly requested quality/depth closer to `docs/product-page.html` and `/product` without copy-pasting
+- **How:** Replaced the page architecture with a denser editorial flow and distinct section systems (hero shell, continuous lane marquee, horizontal scenario switcher, split active arc stage, horizontal outcome ribbon, tick-board execution grid, signal strip, two-column operating modes, operator Q&A accordion, solid-orange CTA), rewrote all copy to remain Prodvo-accurate (AI coding workspace + delivery execution), and validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T18:16:12Z
 
 - **Who:** Copilot CLI agent
