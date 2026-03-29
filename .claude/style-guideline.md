@@ -7,7 +7,7 @@ Use this as the source of truth for future UI edits.
 ## 1) Design Intent
 
 - Light-first, minimal SaaS aesthetic.
-- Warm orange accent system over neutral grays.
+- Fire-orange accent system over white surfaces.
 - Clean typography hierarchy with generous spacing.
 - Data-forward cards and clear CTA emphasis.
 - Motion should feel subtle, informative, and never distracting.
@@ -16,25 +16,22 @@ Use this as the source of truth for future UI edits.
 
 Core palette (from `:root`):
 
+- `--white: #ffffff` (primary surface)
 - `--fire-orange: #f97316` (primary accent)
 - `--fire-orange-dark: #ea580c` (primary hover)
-- `--fire-orange-deep: #ff4d00` (strong accent sections)
-- `--fire-orange-darker: #c2410c` (deep accent variant)
-- `--charcoal: #18181b` (main text)
-- `--gray-900: #18181b`
-- `--gray-700: #3f3f46`
-- `--gray-500: #71717a` (secondary text)
-- `--gray-300: #d4d4d8`
-- `--gray-200: #e4e4e7` (borders)
-- `--light-gray: #fafafa` (cards/surfaces)
-- `--cool-gray: #f4f4f5` (section separators)
-- `--success: #22c55e` (positive status/checks)
+- `--fire-orange-deep: #c2410c` (strong accent + darker emphasis)
+- `--fire-orange-darker: #9a3412` (deepest brand tone for contrast text)
+- `--fire-orange-soft: #fdba74` (borders/dividers)
 
 Hard rules:
 
+- Do not use gray/grey/slate/neutral palettes in UI sections or text roles.
 - Do not use nude/cream backgrounds (`#fff7ed`, `#ffedd5`, `#fffbf7`, `#fed7aa`) for sections.
+- Do not use non-brand hues (green/blue/purple/red/black) for UI states.
 - Do not use gradient backgrounds for CTA sections.
 - CTA sections must use solid `#f97316` with white title/body text.
+- Main page surfaces must stay white (`#ffffff`) unless explicitly asked otherwise.
+- If a darker tone is needed, use dark-orange tokens only.
 
 ## 3) Typography
 
@@ -49,7 +46,7 @@ Type scale patterns:
 
 - Hero H1: `clamp(2.2rem, 8vw, 5.5rem)`, line-height `1.05`, heavy weight
 - Section titles: `clamp(1.85rem, 4vw, 3rem)`, weight `800`
-- Body text: mostly `0.9rem–1.05rem`, secondary color (`--gray-500`)
+- Body text: mostly `0.9rem–1.05rem`, secondary color (`--fire-orange-deep`)
 - Buttons: around `0.95rem`, semibold
 
 ## 4) Layout & Spacing System
@@ -66,7 +63,7 @@ Section rhythm:
 Card rhythm:
 
 - Large cards: rounded `18px–24px`
-- Borders: mostly `1px solid var(--gray-200)`
+- Borders: mostly `1px solid var(--fire-orange-soft)`
 - Gap standards: `0.5rem`, `0.75rem`, `1rem`, `1.5rem`, `2.4rem+`
 
 ## 5) Major UI Patterns
@@ -134,9 +131,9 @@ Do:
 
 - Use token variables; avoid hardcoding random new colors.
 - Keep rounded corners and soft shadows consistent.
-- Preserve hierarchy: orange for action, gray for context.
+- Preserve hierarchy with brand-orange tones only (light to dark orange).
 - Maintain comfortable line-heights (`~1.45–1.7`) for body text.
-- Keep section surfaces white/light-gray first; orange is emphasis, not base tinting.
+- Keep section surfaces white first; orange is emphasis, not base tinting.
 
 Don’t:
 

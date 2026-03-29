@@ -15,7 +15,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 6. **Do NOT use the same layout pattern** for Use Cases, Results, and FAQ sections — they must be visually differentiated
 7. **Do NOT rely on cards, grids, bento, vertical stacks, or tabs/selectors** as the default solution for every problem
 8. **Do NOT think like a template** — think like a real UI/UX expert with editorial hierarchy
-9. **Do NOT use dark/charcoal colors for cards or backgrounds** — ONLY use brand colors (orange system, white, light gray)
+9. **Do NOT use dark/charcoal colors for cards or backgrounds** — ONLY use brand colors (fire-orange + white)
 10. **Do NOT create asymmetric layouts with large empty spaces** — if using columns, use the full width
 11. **Do NOT use stop-start marquee animations** — sliding should be smooth continuous movement
 12. **Do NOT use basic grid layouts for testimonials** — find more creative, editorial approaches
@@ -34,7 +34,9 @@ This file captures all user feedback — direct and indirect — to prevent repe
 25. **When asked for full site pages, each route must be substantial** — avoid thin two-section placeholder pages
 26. **Do NOT use nude/cream colors** — avoid #fff7ed, #ffedd5, #fffbf7, #fed7aa as section backgrounds
 27. **Do NOT use gradient backgrounds for CTA sections** — CTA backgrounds must be solid fire-orange
-28. **Use strict color base** — white/light-gray surfaces with fire-orange accents only
+28. **Use strict color base** — white surfaces with fire-orange accents only (no gray palette)
+29. **Do NOT keep gray/grey tokens in style guidelines** — project color language must stay fire-orange + white
+30. **Do NOT use non-brand state colors** (green/blue/purple/red/black) — if contrast is needed, use dark orange
 
 ### DO (Best practices)
 1. **Prioritize professional editorial hierarchy** over decorative gimmicks
@@ -43,7 +45,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 4. **Use horizontal scroll, accordion, mosaic, timeline** as alternatives to grid/card patterns
 5. **Show all testimonials visibly** rather than hiding behind tabs/switchers when social proof is important
 6. **Use solid fire-orange CTA backgrounds** (`#f97316`) with white CTA text
-7. **Use white/light-gray as primary surfaces** and reserve orange for emphasis
+7. **Use white as the primary surface** and reserve orange for emphasis
 
 ---
 
