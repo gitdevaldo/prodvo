@@ -141,6 +141,7 @@ When context is compacted, recover full context BEFORE continuing:
 ### Git Commit Scope Rules
 
 - Commit and push after every change, including small changes.
+- **Before every commit/push**, append a changelog entry to `docs/logs/changelogs.md`.
 - **Before every push**, run `git status` and `git diff` to check for user changes in the working tree.
 - Stage files explicitly; do not use broad staging that can include secrets or generated files.
 - Exclude `__pycache__/`, `*.pyc`, `node_modules/`, `.next/`, `dist/` unless explicitly asked.
@@ -152,12 +153,15 @@ For non-trivial tasks (3+ steps or architectural decisions), write a comprehensi
 
 ### Change Log Rules
 
-For every implementation/change, update `docs/log/log-changes.md` before commit/push. Each log entry must include:
+For every implementation/change, update `docs/logs/changelogs.md` before commit/push. Each log entry must include:
 
-- `Date time`
-- `Short description`
-- `What you do`
-- `File path that changes`
+- `Who`
+- `What`
+- `When`
+- `Where`
+- `Why`
+- `How`
+- `File path(s) changed`
 
 Log entries appended in reverse-chronological order (newest first).
 
@@ -289,7 +293,7 @@ Workflow for every fix: **fix the code → update issue status in report → com
 
 ### Principle 15: Build + Commit + Push After EVERY Single Change — No Exceptions
 
-After ANY code change — even a one-line CSS tweak — immediately: (1) build to verify, (2) `git add + commit + push`. Never wait for the user to remind you. This is automatic.
+After ANY change — even a one-line docs or CSS tweak — immediately: (1) append changelog entry in `docs/logs/changelogs.md` with 5W+1H + file paths, (2) build if code changed, (3) `git add + commit + push`. Never wait for the user to remind you. This is automatic.
 
 ### Principle 16: Do Exactly What Is Asked — No Assumptions, No Extra Steps
 

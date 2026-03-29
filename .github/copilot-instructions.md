@@ -169,9 +169,10 @@ If external integrations are added later:
 ### ⛔ MANDATORY AFTER EVERY CHANGE — Commit + Push
 
 > **After EVERY change — code, docs, config, lessons, instructions, ANYTHING — you MUST immediately:**
-> 1. **Stage** — `git add -A`
-> 2. **Commit** — `git commit --no-verify` with a conventional commit message
-> 3. **Push** — `git push`
+> 1. **Update changelog first** — append to `docs/logs/changelogs.md` with 5W+1H (`Who/What/When/Where/Why/How`) + changed file paths
+> 2. **Stage** — `git add -A`
+> 3. **Commit** — `git commit --no-verify` with a conventional commit message
+> 4. **Push** — `git push`
 >
 > **This applies to ALL files in the repo. A one-line docs edit gets committed and pushed immediately.**
 > **Do NOT wait for the user to remind you. This is automatic. No exceptions.**
@@ -232,6 +233,7 @@ If external integrations are added later:
 
 - **Scope**: Only commit and push inside `/root/searchy` for this project scope.
 - **Dev-Only Editing Policy**: Make ALL code/config/docs changes in `/root/searchy` only.
+- **Changelog Is Mandatory**: Before every commit/push, append an entry to `docs/logs/changelogs.md` with 5W+1H and file path(s).
 - **Verification Flow**: After changes are validated and pushed:
   1. `cd /root/searchy`
   2. `npm run build`
@@ -240,9 +242,10 @@ If external integrations are added later:
 - **Use Git Skills**: Before committing, read and follow the relevant Git skills in `.claude/skills/` (e.g., `git-commit`, `conventional-commit`, `make-repo-contribution`). Generate conventional commit messages with proper type, scope, and description.
 - **Workflow**:
   1. `cd /root/searchy`
-  2. Stage changed files (`git add`)
-  3. Generate a conventional commit message using skill guidance
-  4. `git commit` then `git push`
+  2. Append changelog entry in `docs/logs/changelogs.md` (5W+1H + file path[s])
+  3. Stage changed files (`git add`)
+  4. Generate a conventional commit message using skill guidance
+  5. `git commit` then `git push`
 - **Remote**: `origin` should point to this repository's remote and active branch.
 
 ### 7. External Service Proxy Rule — Zero Direct Calls

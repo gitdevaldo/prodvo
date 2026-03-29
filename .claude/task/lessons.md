@@ -55,6 +55,8 @@ This file captures all user feedback — direct and indirect — to prevent repe
 1. **Take notes on every piece of feedback** — user frustration often comes from repeated mistakes
 2. **Think before defaulting** — is this the same pattern I just used? If yes, find alternative
 3. **When user says "same thing again"** — completely rethink approach, don't just tweak
+4. **Do not ask for push confirmation** when change is done — commit and push automatically after every edit
+5. **Before every commit/push, append changelog first** in `docs/logs/changelogs.md` using 5W+1H + file paths
 
 ### File Organization
 1. **Follow user's exact directory structure** — don't create files in wrong locations
