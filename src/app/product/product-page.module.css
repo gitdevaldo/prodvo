@@ -1,0 +1,1258 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRODVO PRODUCT PAGE — Editorial Magazine Layout System
+   Each section uses a completely unique visual treatment
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* Reveal animation system */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 1: OPENER — Asymmetric split with terminal visualization
+═══════════════════════════════════════════════════════════════════════════ */
+.opener {
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 4rem);
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, #fff 0%, #fffbf7 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.openerInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.openerLead {
+  max-width: 560px;
+}
+
+.openerTag {
+  display: inline-block;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.openerTitle {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #18181b;
+  margin-bottom: 1.25rem;
+}
+
+.openerTitle em {
+  font-style: normal;
+  color: #ea580c;
+}
+
+.openerSubtitle {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #52525b;
+  margin-bottom: 1.75rem;
+}
+
+.openerActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.openerGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #52525b;
+  transition: color 0.2s ease;
+}
+
+.openerGhost:hover {
+  color: #ea580c;
+}
+
+.openerGhost svg {
+  transition: transform 0.2s ease;
+}
+
+.openerGhost:hover svg {
+  transform: translateX(3px);
+}
+
+/* Terminal visualization */
+.openerVisual {
+  position: relative;
+}
+
+.terminalWindow {
+  background: #1e1e2e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
+  transition: transform 0.4s ease;
+}
+
+.terminalWindow:hover {
+  transform: perspective(1000px) rotateY(0) rotateX(0);
+}
+
+.terminalBar {
+  display: flex;
+  gap: 6px;
+  padding: 12px 14px;
+  background: #2a2a3c;
+  border-bottom: 1px solid #3a3a4c;
+}
+
+.terminalBar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #52525b;
+}
+
+.terminalBar span:first-child { background: #ef4444; }
+.terminalBar span:nth-child(2) { background: #eab308; }
+.terminalBar span:last-child { background: #22c55e; }
+
+.terminalBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.terminalBody code {
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #a1a1aa;
+}
+
+.terminalPrompt {
+  color: #22c55e;
+  margin-right: 0.5rem;
+}
+
+.terminalMuted {
+  color: #71717a;
+}
+
+.terminalSuccess {
+  color: #4ade80;
+}
+
+.terminalHighlight {
+  color: #f97316;
+  font-weight: 600;
+}
+
+/* Stats strip */
+.openerStats {
+  max-width: 1180px;
+  margin: 3rem auto 0;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ea580c;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat span {
+  display: block;
+  font-size: 0.82rem;
+  color: #71717a;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 2: PROBLEM — Magazine-style editorial with dramatic statement
+═══════════════════════════════════════════════════════════════════════════ */
+.problemSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #18181b;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.problemSection::before {
+  content: "60%";
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(12rem, 25vw, 22rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.problemInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.problemLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f97316;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 999px;
+}
+
+.problemHeadline {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.problemHeadline em {
+  font-style: normal;
+  color: #f97316;
+}
+
+.problemBody {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #a1a1aa;
+}
+
+.problemEvidence {
+  border-left: 3px solid #f97316;
+  padding-left: 1.5rem;
+}
+
+.problemQuote blockquote {
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #e4e4e7;
+  margin: 0 0 1rem;
+}
+
+.problemQuote figcaption {
+  font-size: 0.85rem;
+  color: #71717a;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 3: SHIFT — Full-width narrative bridge
+═══════════════════════════════════════════════════════════════════════════ */
+.shiftSection {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+  border-bottom: 1px solid #fed7aa;
+  text-align: center;
+}
+
+.shiftContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.shiftMarker {
+  margin-bottom: 1.25rem;
+}
+
+.shiftMarker span {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
+.shiftHeadline {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-bottom: 1rem;
+}
+
+.shiftBody {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #52525b;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 4: CAPABILITIES — Interactive accordion with detail panels
+═══════════════════════════════════════════════════════════════════════════ */
+.capabilitiesSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
+}
+
+.capabilitiesInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.capabilitiesHeader {
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.capabilitiesLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.capabilitiesTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.capabilitiesLayout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  min-height: 420px;
+}
+
+.capabilitiesNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.capabilityTrigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.capabilityTrigger:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.capabilityTrigger.active {
+  background: #fff7ed;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.capabilityNum {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4e4e7;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #52525b;
+  transition: all 0.25s ease;
+}
+
+.capabilityTrigger.active .capabilityNum {
+  background: #f97316;
+  color: #fff;
+}
+
+.capabilityTrigger div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.capabilityTrigger strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #18181b;
+  line-height: 1.3;
+}
+
+.capabilityTrigger span {
+  font-size: 0.8rem;
+  color: #71717a;
+  line-height: 1.4;
+}
+
+.capabilityDetail {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.capabilityContent h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+}
+
+.capabilityLede {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #52525b;
+  margin-bottom: 1rem;
+}
+
+.capabilityContent > p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #52525b;
+}
+
+.capabilityFeatures {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+}
+
+.featureItem strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.featureItem span {
+  font-size: 0.82rem;
+  color: #71717a;
+  line-height: 1.45;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 5: JOURNEY — Horizontal timeline with connected nodes
+═══════════════════════════════════════════════════════════════════════════ */
+.journeySection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, #fafafa, #fff);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #e4e4e7;
+  overflow: hidden;
+}
+
+.journeyHeader {
+  max-width: 1180px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.journeyLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.journeyTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.journeyTrack {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.journeyLine {
+  position: absolute;
+  top: 38px;
+  left: 80px;
+  right: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #fed7aa 0%, #f97316 50%, #fed7aa 100%);
+}
+
+.journeySteps {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.journeyStep {
+  flex: 1;
+  max-width: 220px;
+  text-align: center;
+}
+
+.journeyNode {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1.25rem;
+  background: #fff;
+  border: 2px solid #f97316;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.journeyNode span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #f97316;
+}
+
+.journeyContent h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+}
+
+.journeyContent p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #52525b;
+  margin-bottom: 0.75rem;
+}
+
+.journeyCode {
+  display: inline-block;
+  background: #18181b;
+  color: #f97316;
+  font-family: "SF Mono", monospace;
+  font-size: 0.72rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+}
+
+.journeyMeta {
+  display: inline-block;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 6: PROOF — Offset diagonal layout with metrics
+═══════════════════════════════════════════════════════════════════════════ */
+.proofSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
+}
+
+.proofInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.proofHeader {
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.proofLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.proofTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.proofGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.proofCard {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proofCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.proofCardOffset {
+  margin-top: 2.5rem;
+}
+
+.proofMetric {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.proofMetric strong {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #f97316;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.proofMetric span {
+  display: block;
+  font-size: 0.82rem;
+  color: #71717a;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.proofCard p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #52525b;
+  margin-bottom: 1rem;
+}
+
+.proofCard cite {
+  display: block;
+  font-size: 0.78rem;
+  font-style: normal;
+  color: #9a3412;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 7: DIFFERENTIATOR — Split yes/no comparison
+═══════════════════════════════════════════════════════════════════════════ */
+.diffSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #18181b;
+  color: #fff;
+}
+
+.diffInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.diffTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.diffColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.diffYes,
+.diffNo {
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.diffYes {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.diffNo {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.diffYes h3,
+.diffNo h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diffYes h3 {
+  color: #4ade80;
+}
+
+.diffNo h3 {
+  color: #f87171;
+}
+
+.diffYes ul,
+.diffNo ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.diffYes li,
+.diffNo li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.diffYes li strong,
+.diffNo li strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.diffYes li span,
+.diffNo li span {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 8: VOICE — Asymmetric testimonial layout
+═══════════════════════════════════════════════════════════════════════════ */
+.voiceSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, #fff 0%, #fffbf7 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+}
+
+.voiceInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.voicePrimary {
+  background: #fff;
+  border: 1px solid #fed7aa;
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.voiceQuoteMark {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #fed7aa;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.voiceQuote {
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #18181b;
+  margin: 0 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.voiceAttribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.voiceAttribution strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.voiceAttribution span {
+  font-size: 0.85rem;
+  color: #71717a;
+}
+
+.voiceProof {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.voiceMetric {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+}
+
+.voiceMetric strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ea580c;
+  line-height: 1;
+}
+
+.voiceMetric span {
+  display: block;
+  font-size: 0.68rem;
+  color: #9a3412;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.voiceContext {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #52525b;
+  margin: 0;
+}
+
+.voiceSecondary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.voiceCard {
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.voiceCard:hover {
+  border-color: #fed7aa;
+}
+
+.voiceCard blockquote {
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #52525b;
+  margin: 0 0 1rem;
+}
+
+.voiceCard footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.voiceCard footer strong {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.voiceCard footer span {
+  font-size: 0.78rem;
+  color: #71717a;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 9: SPECS — Clean data presentation
+═══════════════════════════════════════════════════════════════════════════ */
+.specsSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    #fafafa;
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #e4e4e7;
+}
+
+.specsInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.specsHeader {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.specsLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.specsTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.specsContent {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+}
+
+.specsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.specItem {
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+}
+
+.specItem h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9a3412;
+  margin-bottom: 0.5rem;
+}
+
+.specItem p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #52525b;
+  margin: 0;
+}
+
+.specsActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.specsLink {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #9a3412;
+  transition: color 0.2s ease;
+}
+
+.specsLink:hover {
+  color: #ea580c;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION 10: CLOSING CTA — High-impact closer
+═══════════════════════════════════════════════════════════════════════════ */
+.closingSection {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+  text-align: center;
+}
+
+.closingInner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.closingTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-bottom: 1rem;
+}
+
+.closingBody {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #52525b;
+  margin-bottom: 2rem;
+}
+
+.closingActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.closingNote {
+  font-size: 0.82rem;
+  color: #71717a;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE: Tablet and mobile adaptations
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .openerInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .openerLead {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .openerActions {
+    justify-content: center;
+  }
+  
+  .openerStats {
+    gap: 2rem;
+  }
+  
+  .problemInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .capabilitiesLayout {
+    grid-template-columns: 1fr;
+  }
+  
+  .capabilitiesNav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .capabilityTrigger {
+    flex: 1 1 calc(50% - 0.375rem);
+    min-width: 200px;
+  }
+  
+  .journeySteps {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .journeyStep {
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: none;
+  }
+  
+  .journeyLine {
+    display: none;
+  }
+  
+  .proofGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .proofCardOffset {
+    margin-top: 0;
+  }
+  
+  .diffColumns {
+    grid-template-columns: 1fr;
+  }
+  
+  .voiceInner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .specsContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .specsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .specsActions {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .openerStats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .terminalWindow {
+    transform: none;
+  }
+  
+  .capabilityTrigger {
+    flex: 1 1 100%;
+  }
+  
+  .journeyStep {
+    flex: 1 1 100%;
+    max-width: 280px;
+  }
+  
+  .proofGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .voiceQuote {
+    font-size: 1.15rem;
+  }
+  
+  .voiceProof {
+    flex-direction: column;
+  }
+  
+  .specsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .specsActions {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}

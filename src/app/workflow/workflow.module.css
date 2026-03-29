@@ -1,0 +1,725 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   WORKFLOW PAGE — Process visualization with expandable phases
+   Unique: Vertical timeline accordion, side-by-side comparison, terminal demo
+═══════════════════════════════════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #52525b;
+  margin-top: 0.5rem;
+  max-width: 600px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO — With flow visualization
+═══════════════════════════════════════════════════════════════════════════ */
+.heroSection {
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, #18181b 0%, #27272a 100%);
+  background-size: 140px 100%, 100% 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem;
+}
+
+.heroTag {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: #f97316;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle em {
+  font-style: normal;
+  color: #f97316;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #a1a1aa;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Flow visualization */
+.heroFlow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.flowStep {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(249, 115, 22, 0.5);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.flowStep:hover {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: #f97316;
+  transform: scale(1.05);
+}
+
+.flowStep span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.flowConnector {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.5), rgba(249, 115, 22, 0.3));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PHASE SECTION — Vertical timeline accordion
+═══════════════════════════════════════════════════════════════════════════ */
+.phaseSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
+}
+
+.phaseInner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.phaseHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.phaseHeader .sectionSubtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.phaseTimeline {
+  position: relative;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #f97316, #fed7aa);
+}
+
+.phaseItem {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.phaseToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  padding-left: 70px;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.phaseToggle:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.phaseItem.expanded .phaseToggle {
+  background: #fff7ed;
+  border-color: #f97316;
+  border-radius: 14px 14px 0 0;
+}
+
+.phaseIcon {
+  position: absolute;
+  left: 8px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid #f97316;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.phaseMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.phaseMeta strong {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #18181b;
+}
+
+.phaseMeta span {
+  font-size: 0.9rem;
+  color: #52525b;
+}
+
+.phaseExpand {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4e4e7;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #52525b;
+  transition: all 0.2s ease;
+}
+
+.phaseItem.expanded .phaseExpand {
+  background: #f97316;
+  color: #fff;
+}
+
+.phaseContent {
+  margin-left: 58px;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #f97316;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+}
+
+.phaseDescription {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #52525b;
+  white-space: pre-line;
+  margin-bottom: 1.5rem;
+}
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.phaseInputs,
+.phaseOutputs {
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.phaseInputs {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+}
+
+.phaseOutputs {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.phaseInputs h4,
+.phaseOutputs h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.phaseInputs h4 {
+  color: #71717a;
+}
+
+.phaseOutputs h4 {
+  color: #16a34a;
+}
+
+.phaseInputs ul,
+.phaseOutputs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.phaseInputs li,
+.phaseOutputs li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.phaseInputs li:last-child,
+.phaseOutputs li:last-child {
+  border-bottom: 0;
+}
+
+.phaseInputs li {
+  color: #52525b;
+}
+
+.phaseOutputs li {
+  color: #166534;
+}
+
+.humanRole {
+  padding: 1rem 1.25rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+}
+
+.humanLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a3412;
+  margin-bottom: 0.5rem;
+}
+
+.humanRole p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #9a3412;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINCIPLES SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.principleSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, #fafafa, #fff);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #e4e4e7;
+}
+
+.principleInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.principleHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.principleRow {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.principleCard {
+  flex: 0 0 280px;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principleCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.principleCard h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+}
+
+.principleCard p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #52525b;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPARISON SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.compareSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
+}
+
+.compareInner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.compareHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.compareTable {
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.compareHead {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fafafa;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.compareHead span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #71717a;
+}
+
+.compareHead span:nth-child(2) {
+  color: #ef4444;
+}
+
+.compareHead span:nth-child(3) {
+  color: #22c55e;
+}
+
+.compareRow {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.compareRow:last-child {
+  border-bottom: 0;
+}
+
+.compareLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.compareBad {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+.compareGood {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EXAMPLE SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.exampleSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, #fff 0%, #fffbf7 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+}
+
+.exampleInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.exampleSteps {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.exStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.exStep span {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f97316;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.exStep p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #52525b;
+  margin: 0;
+  padding-top: 0.15rem;
+}
+
+/* Terminal */
+.terminalWindow {
+  background: #1e1e2e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+}
+
+.terminalBar {
+  display: flex;
+  gap: 6px;
+  padding: 12px 14px;
+  background: #2a2a3c;
+  border-bottom: 1px solid #3a3a4c;
+}
+
+.terminalBar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #52525b;
+}
+
+.terminalBar span:first-child { background: #ef4444; }
+.terminalBar span:nth-child(2) { background: #eab308; }
+.terminalBar span:last-child { background: #22c55e; }
+
+.terminalBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.terminalBody code {
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.terminalPrompt {
+  color: #22c55e;
+  margin-right: 0.5rem;
+}
+
+.terminalMuted {
+  color: #71717a;
+}
+
+.terminalSuccess {
+  color: #4ade80;
+}
+
+.terminalHighlight {
+  color: #f97316;
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.ctaSection {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.ctaTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-bottom: 1rem;
+}
+
+.ctaBody {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #52525b;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .heroFlow {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .flowStep {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .flowConnector {
+    width: 30px;
+  }
+  
+  .phaseGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .compareHead,
+  .compareRow {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .compareHead span:first-child {
+    display: none;
+  }
+  
+  .compareLabel {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e4e4e7;
+    margin-bottom: 0.5rem;
+  }
+  
+  .exampleInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .exampleVisual {
+    order: -1;
+  }
+}

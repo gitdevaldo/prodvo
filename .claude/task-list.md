@@ -16,3 +16,15 @@
 - [ ] Do NOT use quote-block style or split-weight quote composition for Results.
 - [ ] Keep Use Cases / Results / FAQ visually differentiated from each other.
 - [ ] Prioritize professional editorial hierarchy over decorative gimmicks.
+
+## Multi-page Rollout Todos
+
+- [ ] Restore homepage behavior/content exactly as expected (no simplification).
+- [ ] Expand `/product` into a full long-form page with multiple substantial sections.
+- [ ] Expand `/use-cases` into a full long-form page with multiple substantial sections.
+- [ ] Expand `/workflow` into a full long-form page with multiple substantial sections.
+- [ ] Expand `/pricing` into a full long-form page with multiple substantial sections.
+- [ ] Expand `/faq` into a full long-form page with multiple substantial sections.
+- [ ] Expand `/docs` into a full long-form page with multiple substantial sections.
+- [ ] Validate route navigation and responsive behavior across all pages.
+- [ ] Run build and lint (acknowledging existing `.claude/skills` baseline lint issues).

@@ -30,6 +30,8 @@ This file captures all user feedback — direct and indirect — to prevent repe
 21. **When asked to revamp full section, replace entire section composition** — not just testimonial container style
 22. **Before finalizing Results redesign, verify against ALL lessons** — reject any solution that is grid/bento/card/vertical timeline/plain
 23. **Never ignore explicit repeated feedback** — if user repeats “not vertical,” avoid every vertical-first composition immediately
+24. **Do NOT replace homepage structure without explicit request** — keep expected homepage intact while expanding other pages
+25. **When asked for full site pages, each route must be substantial** — avoid thin two-section placeholder pages
 
 ### DO (Best practices)
 1. **Prioritize professional editorial hierarchy** over decorative gimmicks

@@ -1,0 +1,773 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   USE CASES PAGE — Persona-driven storytelling layout
+   Unique: Interactive role selector, story expansion, diagonal scenarios
+═══════════════════════════════════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shared section styles */
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a3412;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #52525b;
+  margin-top: 0.5rem;
+  max-width: 600px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.heroSection {
+  padding: clamp(4rem, 10vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(180deg, #fff 0%, #fffbf7 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-bottom: 1px solid #fed7aa;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.heroTag {
+  display: inline-block;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #18181b;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle em {
+  font-style: normal;
+  color: #ea580c;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #52525b;
+  margin-bottom: 1.75rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.heroLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #9a3412;
+  transition: color 0.2s ease;
+}
+
+.heroLink:hover {
+  color: #ea580c;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PERSONA SECTION — Interactive story selector
+═══════════════════════════════════════════════════════════════════════════ */
+.personaSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    #fff;
+  background-size: 140px 100%, 100% 100%;
+}
+
+.personaInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.personaHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.personaHeader .sectionSubtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.personaSelector {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.personaTab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.personaTab:hover {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.personaTab.active {
+  background: #fff7ed;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.personaAvatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4e4e7;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #52525b;
+  transition: all 0.25s ease;
+}
+
+.personaTab.active .personaAvatar {
+  background: #f97316;
+  color: #fff;
+}
+
+.personaTab div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.personaTab strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.personaTab span {
+  font-size: 0.78rem;
+  color: #71717a;
+}
+
+/* Persona Story Card */
+.personaStory {
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.storyHeader {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  padding: 2rem;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.storyMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.storyAvatarLarge {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f97316;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.storyMeta h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.15rem;
+}
+
+.storyMeta span {
+  font-size: 0.88rem;
+  color: #71717a;
+}
+
+.storyChallenge {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #9a3412;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.storyBody {
+  padding: 2rem;
+}
+
+.storyNarrative {
+  margin-bottom: 2rem;
+}
+
+.storyNarrative h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #71717a;
+  margin-bottom: 0.75rem;
+}
+
+.storyNarrative p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #52525b;
+  white-space: pre-line;
+}
+
+.storyTransform {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #fafafa;
+  border-radius: 14px;
+}
+
+.transformBefore,
+.transformAfter {
+  flex: 1;
+}
+
+.transformLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.transformBefore .transformLabel {
+  color: #71717a;
+}
+
+.transformAfter .transformLabel {
+  color: #22c55e;
+}
+
+.transformBefore p,
+.transformAfter p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #18181b;
+  font-weight: 500;
+  margin: 0;
+}
+
+.transformArrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #d4d4d8;
+}
+
+.storyQuote {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: #52525b;
+  padding: 1.25rem 1.5rem;
+  background: #fff7ed;
+  border-left: 3px solid #f97316;
+  border-radius: 0 12px 12px 0;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCENARIO SECTION — Diagonal staggered cards
+═══════════════════════════════════════════════════════════════════════════ */
+.scenarioSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, #fafafa, #fff);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #e4e4e7;
+}
+
+.scenarioInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.scenarioHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.scenarioHeader .sectionSubtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scenarioShowcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.scenarioCard {
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scenarioCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.scenarioOffset {
+  margin-top: 2.5rem;
+}
+
+.scenarioTop {
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #fff7ed 0%, #fff 100%);
+  border-bottom: 1px solid #fed7aa;
+}
+
+.scenarioTop h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+}
+
+.scenarioMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scenarioMeta span {
+  font-size: 0.78rem;
+  color: #71717a;
+}
+
+.complexityBadge {
+  padding: 0.2rem 0.5rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9a3412;
+}
+
+.scenarioContent {
+  padding: 1.5rem;
+}
+
+.scenarioRow {
+  margin-bottom: 1rem;
+}
+
+.scenarioRow strong {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #71717a;
+  margin-bottom: 0.35rem;
+}
+
+.scenarioRow p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #52525b;
+  margin: 0;
+}
+
+.scenarioOutcome {
+  padding: 1rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+.scenarioOutcome span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #16a34a;
+  margin-bottom: 0.35rem;
+}
+
+.scenarioOutcome p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #166534;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FIT SECTION — Yes/Maybe columns
+═══════════════════════════════════════════════════════════════════════════ */
+.fitSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: #18181b;
+  color: #fff;
+}
+
+.fitInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.fitHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.fitHeader .sectionLabel {
+  color: #f97316;
+}
+
+.fitHeader .sectionTitle {
+  color: #fff;
+}
+
+.fitColumns {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+}
+
+.fitYes,
+.fitMaybe {
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.fitYes {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.fitMaybe {
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.fitYes h3 {
+  color: #4ade80;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fitMaybe h3 {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fitYes ul,
+.fitMaybe ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fitYes li,
+.fitMaybe li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.fitYes li strong,
+.fitMaybe li strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.fitYes li span,
+.fitMaybe li span {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   START SECTION — Getting started steps
+═══════════════════════════════════════════════════════════════════════════ */
+.startSection {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, #fff 0%, #fffbf7 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+}
+
+.startInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.startTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.startBody {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+.startSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.startStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.startStep:hover {
+  border-color: #fed7aa;
+}
+
+.stepNum {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f97316;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.startStep div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.startStep strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.startStep p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #71717a;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════════════════════════════════════════════ */
+.ctaSection {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fff7ed 100%);
+  background-size: 140px 100%, 100% 100%;
+  border-top: 1px solid #fed7aa;
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.ctaTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #18181b;
+  margin-bottom: 1rem;
+}
+
+.ctaBody {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #52525b;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .personaSelector {
+    gap: 0.5rem;
+  }
+  
+  .personaTab {
+    padding: 0.6rem 1rem;
+  }
+  
+  .scenarioShowcase {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .scenarioOffset {
+    margin-top: 0;
+  }
+  
+  .fitColumns {
+    grid-template-columns: 1fr;
+  }
+  
+  .startInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .personaSelector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .storyTransform {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .transformArrow {
+    justify-content: center;
+    transform: rotate(90deg);
+  }
+  
+  .scenarioShowcase {
+    grid-template-columns: 1fr;
+  }
+}
