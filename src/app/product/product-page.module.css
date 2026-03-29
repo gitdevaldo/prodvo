@@ -1127,21 +1127,15 @@
 
 .pc-context {
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
-  font-size: 0.83rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  font-style: italic;
-  color: #3f3f46;
-  padding: 0.7rem 1rem;
-  border-radius: 8px;
-  background: #f4f4f5;
-  border-left: 3px solid #f97316;
+  color: #c2410c;
   line-height: 1.45;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1rem;
 }
 
 .pop .pc-context {
-  background: rgba(249, 115, 22, 0.08);
-  border-left-color: #ff4d00;
+  color: #9a3412;
 }
 
 .pc-div {
