@@ -8,7 +8,7 @@
   padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 7vw, 6rem);
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background: transparent;
 }
 
 .hero::after {
@@ -346,7 +346,7 @@
 }
 
 .contrast {
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #e4e4e7;
   border-bottom: 1px solid #e4e4e7;
   padding: clamp(3.5rem, 6vw, 5rem) 0;
@@ -453,7 +453,7 @@
 
 .features {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #fff;
+  background: transparent;
 }
 
 .sec-eyebrow {
@@ -728,7 +728,7 @@
 
 .how {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #e4e4e7;
 }
 
@@ -834,7 +834,7 @@
 
 .stack {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #e4e4e7;
 }
 
@@ -893,7 +893,7 @@
 
 .testi {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #e4e4e7;
   overflow: hidden;
 }
@@ -1043,7 +1043,7 @@
 
 .pricing {
   padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background: #fff;
+  background: transparent;
   border-top: 1px solid #e4e4e7;
 }
 

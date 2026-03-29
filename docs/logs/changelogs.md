@@ -4,6 +4,18 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T16:21:27Z
+
+- **Who:** Copilot CLI agent
+- **What:** Made the product page background pattern visibly match homepage behavior
+- **When:** 2026-03-29T16:21:27Z
+- **Where:** `src/app/product/product-page.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported pattern still not visible after prior scoped update
+- **How:** Changed major product sections (`hero`, `contrast`, `features`, `how`, `stack`, `testi`, `pricing`) from solid white to transparent backgrounds so the page-level pattern layer shows through while keeping non-background palettes untouched
+- **File path(s) changed:**
+  - `src/app/product/product-page.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T16:16:44Z
 
 - **Who:** Copilot CLI agent
