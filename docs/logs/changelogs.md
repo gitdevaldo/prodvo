@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T18:26:16Z
+
+- **Who:** Copilot CLI agent
+- **What:** Replaced `/use-cases` again with a sharper premium layout and stronger visual hierarchy after explicit quality rejection
+- **When:** 2026-03-29T18:26:16Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User said the prior design quality still failed expectations and called the layout weak/basic
+- **How:** Rebuilt the route with a more assertive composition and less generic treatment (hero texture + tag rail, orbit model section, scenario tabs, dual-sheet execution canvas, quote strip, proof reel, rhythm strip, signal cloud, fit matrix, operator FAQ, orange CTA), kept product-accurate Prodvo execution copy, and validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T18:22:24Z
 
 - **Who:** Copilot CLI agent
