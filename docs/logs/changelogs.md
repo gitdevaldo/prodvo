@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-29T17:46:09Z
+
+- **Who:** Copilot CLI agent
+- **What:** Refactored `/use-cases` to remove repeated grid/card mechanics and enforce distinct section layout systems
+- **When:** 2026-03-29T17:46:09Z
+- **Where:** `.claude/task/lessons.md`, `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User explicitly flagged repetitive design patterns and required each section to use unique layout/style mechanics
+- **How:** Added a new lesson to forbid repeated grid/card systems across the page, then rebuilt use-cases sections with varied structures (single hero shell, horizontal timeline rail, split narrative panel, horizontal storyboard reel, accordion principles, diagram-style execution strip, single matrix block, CTA), while preserving readability hierarchy and validating with `npm run build`
+- **File path(s) changed:**
+  - `.claude/task/lessons.md`
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T17:30:34Z
 
 - **Who:** Copilot CLI agent
