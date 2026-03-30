@@ -330,7 +330,7 @@ export default function UseCasesPage() {
 
               <div className={cx("hero-ctas")}>
                 <Link href="/pricing" className={cx("btn-primary-lg")}>
-                  {activePersona.cta} -&gt;
+                  {activePersona.cta}
                 </Link>
                 <a href="#solo" className={cx("btn-outline-lg")}>
                   Explore use cases ↓
@@ -543,7 +543,7 @@ export default function UseCasesPage() {
                     href="/pricing"
                     className={cx("btn-primary-lg", "reveal", "d1", "nontechnical-cta")}
                   >
-                    Try it without coding -&gt;
+                    Try it without coding
                   </Link>
                 </div>
                 <div>
@@ -795,7 +795,7 @@ export default function UseCasesPage() {
                       <span className={cx("clock-task-name")}>
                         Building your actual idea...
                       </span>
-                      <span className={cx("clock-task-time")}>now -&gt;</span>
+                      <span className={cx("clock-task-time")}>now</span>
                     </div>
                   </div>
                 </div>
@@ -932,7 +932,7 @@ export default function UseCasesPage() {
               </div>
               <div className={cx("cta-right")}>
                 <Link href="/pricing" className={cx("btn-cta-w")}>
-                  Start building free -&gt;
+                  Start building free
                 </Link>
                 <Link href="/docs" className={cx("btn-cta-ghost")}>
                   Talk to the team

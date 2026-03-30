@@ -4,6 +4,18 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:41:53Z
+
+- **Who:** Copilot CLI agent
+- **What:** Removed all `->` arrow text from the `/use-cases` page copy
+- **When:** 2026-03-30T22:41:53Z
+- **Where:** `src/app/use-cases/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested deleting `->` across the entire use-cases page
+- **How:** Replaced every `-&gt;`/`->` instance in `/use-cases` CTA and inline strings (hero CTA, non-technical CTA, schedule line, final CTA), then verified no arrow tokens remain via ripgrep and validated with `npm run build` (lint still fails on unrelated existing files)
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:39:28Z
 
 - **Who:** Copilot CLI agent
