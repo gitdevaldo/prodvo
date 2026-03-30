@@ -393,17 +393,18 @@
   font-family: var(--font-brand);
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--ink-2);
   background: transparent;
   padding: 0.8rem 1.7rem;
   border-radius: 10px;
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
   transition: border-color 0.2s, background 0.2s;
 }
 
 .btn-outline-lg:hover {
-  border-color: var(--ink);
-  background: var(--border-soft);
+  border-color: var(--gray-300, #d4d4d8);
+  background: #fcfcfc;
+  color: var(--ink);
 }
 
 .eyebrow {
@@ -1409,7 +1410,7 @@
   font-family: var(--font-brand);
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--fire-orange-deep);
+  color: var(--fire-orange-darker);
   background: var(--white);
   padding: 0.9rem 2.2rem;
   border-radius: 10px;

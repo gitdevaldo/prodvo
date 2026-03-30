@@ -65,6 +65,8 @@ This file captures all user feedback — direct and indirect — to prevent repe
 9. **When user asks for richer copy, expand narrative depth per section** — don’t compress or simplify storyline content
 10. **When user asks to stop, stop patching and switch to one deliberate full-pass rewrite** to prevent noisy iterative edits
 11. **When converting HTML to TSX/CSS, do not keep source hex blindly** — map CTA/button tones to the project’s canonical homepage tokens (e.g. `--fire-orange`/`--fire-orange-dark`) when user requests consistency
+12. **When user requests reference parity, preserve hero option semantics exactly first** — labels, persona copy tone, and tab behavior must match the reference intent before stylistic tweaks
+13. **Text/secondary button colors must stay consistent cross-page** — use the same neutral hierarchy (`ink/gray`) used by homepage/product buttons, not ad-hoc darker orange text unless explicitly requested
 
 ### File Organization
 1. **Follow user's exact directory structure** — don't create files in wrong locations

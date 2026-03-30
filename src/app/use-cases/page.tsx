@@ -38,25 +38,25 @@ const PERSONAS: readonly Persona[] = [
   {
     label: "Solo Founders",
     word: "founders",
-    sub: "You have one shot to validate fast. Prodvo gets you from idea to live product in a weekend - auth, database, and deploy included.",
+    sub: "You have one shot to validate fast. Prodvo gets you from idea to live product in a weekend — auth, database, and deploy included.",
     cta: "Build your MVP today",
   },
   {
     label: "Agencies",
     word: "agencies",
-    sub: "Client deadlines do not care about setup time. Prodvo means less config, faster handoffs, and more margin per project.",
+    sub: "Client deadlines don't care about your setup time. Prodvo means less config, faster handoffs, and more margin per project.",
     cta: "See how agencies use it",
   },
   {
     label: "Non-Technical Founders",
     word: "non-devs",
-    sub: "You do not need to hire a developer. Describe what you want to build and Prodvo builds it - no technical background required.",
+    sub: "You don't need to hire a developer. Describe what you want to build and Prodvo builds it — no technical background required.",
     cta: "Build without coding",
   },
   {
     label: "Internal Tools Teams",
     word: "teams",
-    sub: "Internal tools should not take 3 sprints. Prodvo lets your team ship ops tooling fast, without blocking your core product roadmap.",
+    sub: "Internal tools shouldn't take 3 sprints. Prodvo lets your team ship ops tooling fast, without blocking your core product roadmap.",
     cta: "See internal tool use cases",
   },
   {

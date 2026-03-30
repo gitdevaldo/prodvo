@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:51:57Z
+
+- **Who:** Copilot CLI agent
+- **What:** Aligned use-cases hero persona copy semantics and text-button color hierarchy with reference intent + homepage/product button conventions; added explicit parity rules to lessons/style guideline
+- **When:** 2026-03-30T22:51:57Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `.claude/task/lessons.md`, `.claude/style-guideline.md`, `docs/logs/changelogs.md`
+- **Why:** User reported hero option differences from `docs/references/use-case.html` and inconsistent text-button colors compared with homepage/product
+- **How:** Re-synced hero persona sub-copy punctuation/wording to reference semantics (apostrophes/em dash usage), updated use-cases secondary/outline text-button styling to neutral cross-page hierarchy (`ink-2` default, `ink` hover) while preserving primary CTA token parity, then codified new guardrails in lessons/style guideline; validated with `npm run build` (lint failures remain existing unrelated repo issues)
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `.claude/task/lessons.md`
+  - `.claude/style-guideline.md`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:44:03Z
 
 - **Who:** Copilot CLI agent

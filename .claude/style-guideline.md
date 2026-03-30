@@ -35,6 +35,8 @@ Hard rules:
 - If a darker tone is needed, use dark-orange tokens only.
 - For cross-page CTA consistency requests, primary hero buttons must match homepage primary CTA tone (`--fire-orange` base and `--fire-orange-dark` hover), even if source HTML used a different hex.
 - During HTML-to-TSX conversion, raw source hex values for buttons should be normalized to project tokens when they conflict with shared button tone requirements.
+- For text/secondary buttons (ghost/outline/link-like CTAs), keep neutral button text hierarchy aligned with homepage/product conventions (`ink-2` default, `ink` on hover) unless a page-specific exception is explicitly requested.
+- For reference-driven pages, match hero persona options (labels and dynamic copy semantics) to reference behavior first, then apply project-wide token normalization.
 
 ## 3) Typography
 
