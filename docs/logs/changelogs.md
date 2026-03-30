@@ -4,6 +4,18 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:36:15Z
+
+- **Who:** Copilot CLI agent
+- **What:** Aligned `/use-cases` hero primary CTA background/hover appearance with homepage primary button behavior
+- **When:** 2026-03-30T22:36:15Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported the use-cases hero button still looked different from homepage hero primary CTA
+- **How:** Updated `.hero-ctas .btn-primary-lg` and its hover state to keep the same orange pair as homepage (`--fire-orange` / `--fire-orange-dark`) while matching the subtle homepage shadow treatment (`0 1px 2px rgba(0, 0, 0, 0.06)`), then validated with `npm run build` (lint remains failing only on existing unrelated files)
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:26:49Z
 
 - **Who:** Copilot CLI agent
