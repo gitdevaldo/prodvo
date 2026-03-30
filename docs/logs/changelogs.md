@@ -229,6 +229,21 @@ Newest entries first. Every change must add one entry before commit/push.
   - `src/app/use-cases/use-cases.module.css`
   - `docs/logs/changelogs.md`
 
+## 2026-03-30T23:34:42Z
+
+- **Who:** Copilot CLI agent
+- **What:** Converted `/workflow` and `/pricing` pages from reference HTML into Next.js TSX + CSS modules with interaction parity and normalized brand token usage
+- **When:** 2026-03-30T23:34:42Z
+- **Where:** `src/app/workflow/page.tsx`, `src/app/workflow/workflow.module.css`, `src/app/pricing/page.tsx`, `src/app/pricing/pricing.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested direct conversion from `docs/references/workflow.html` and `docs/references/pricing.html` while applying lessons to avoid inconsistent hex tones and preserve shared cross-page CTA/button hierarchy
+- **How:** Rebuilt both routes with reference-matching section architecture and ported scripted behaviors to React (`IntersectionObserver` reveals, workflow phase auto-cycle with manual stop, pricing billing toggle state). Normalized primary CTA/button tones to homepage tokens, kept neutral text/outline hierarchy, replaced non-brand green/red semantics with orange/neutral accents where needed, then validated with `npm run build` and route checks on local server (`/workflow`, `/pricing` returned `200` and expected hero headings). `npm run lint` still fails on known baseline issues in `.claude/skills/**/*.cjs` and existing `src/app/product/page.tsx`.
+- **File path(s) changed:**
+  - `src/app/workflow/page.tsx`
+  - `src/app/workflow/workflow.module.css`
+  - `src/app/pricing/page.tsx`
+  - `src/app/pricing/pricing.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T16:33:00Z
 
 - **Who:** Copilot CLI agent
