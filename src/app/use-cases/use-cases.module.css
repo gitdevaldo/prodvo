@@ -379,6 +379,16 @@
   box-shadow: 0 8px 24px rgba(194, 65, 12, 0.28);
 }
 
+.hero-ctas .btn-primary-lg {
+  background: var(--fire-orange);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.24);
+}
+
+.hero-ctas .btn-primary-lg:hover {
+  background: var(--fire-orange-dark);
+  box-shadow: 0 10px 26px rgba(234, 88, 12, 0.3);
+}
+
 .btn-outline-lg {
   font-family: var(--font-brand);
   font-size: 0.95rem;

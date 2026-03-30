@@ -4,6 +4,18 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:16:08Z
+
+- **Who:** Copilot CLI agent
+- **What:** Refined the hero primary button color on `/use-cases` for cleaner brand alignment and better emphasis balance
+- **When:** 2026-03-30T22:16:08Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested a color refinement specifically for the hero section button on the use-cases page
+- **How:** Scoped a hero-only override for `.btn-primary-lg` within `.hero-ctas`, shifting the base tone to brand fire-orange and hover to fire-orange-dark with matching shadow updates, then validated via `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-29T20:43:11Z
 
 - **Who:** Copilot CLI agent
