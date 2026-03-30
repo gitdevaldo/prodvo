@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { SiteShell } from "@/components/site-shell";
 import styles from "./use-cases.module.css";
 
 type Persona = {
@@ -158,7 +159,6 @@ function cx(...classNames: Array<string | false | null | undefined>) {
 }
 
 export default function UseCasesPage() {
-  const [navScrolled, setNavScrolled] = useState(false);
   const [selectedPersona, setSelectedPersona] = useState(0);
   const [contentPersona, setContentPersona] = useState(0);
   const [wordCurrent, setWordCurrent] = useState(PERSONAS[0].word);
@@ -171,17 +171,6 @@ export default function UseCasesPage() {
   const subTimeoutRef = useRef<number | null>(null);
   const wordTimeoutRef = useRef<number | null>(null);
   const measureRef = useRef<HTMLSpanElement | null>(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setNavScrolled(window.scrollY > 8);
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const revealEls = Array.from(
@@ -271,62 +260,8 @@ export default function UseCasesPage() {
   };
 
   return (
-    <div className={cx("page")}>
-      <a href="#main" className={cx("skip-link")}>
-        Skip to content
-      </a>
-
-      <div className={cx("announce")}>
-        Early access is open - limited seats.
-        <Link href="/pricing"> Claim yours -&gt;</Link>
-      </div>
-
-      <nav className={cx("nav", navScrolled && "scrolled")} id="nav">
-        <div className={cx("container")}>
-          <div className={cx("nav-inner")}>
-            <Link href="/" className={cx("nav-logo")}>
-              Prodvo<em>.</em>
-            </Link>
-
-            <ul className={cx("nav-links")}>
-              <li>
-                <Link href="/product">Features</Link>
-              </li>
-              <li>
-                <Link href="/use-cases" className={cx("active")}>
-                  Use Cases
-                </Link>
-              </li>
-              <li>
-                <Link href="/workflow">Stack</Link>
-              </li>
-              <li>
-                <Link href="/pricing">Pricing</Link>
-              </li>
-              <li>
-                <Link href="/docs">Docs</Link>
-              </li>
-            </ul>
-
-            <div className={cx("nav-right")}>
-              <a href="#" className={cx("btn-ghost")}>
-                Sign in
-              </a>
-              <Link href="/pricing" className={cx("btn-nav")}>
-                Start building -&gt;
-              </Link>
-            </div>
-
-            <button className={cx("nav-burger")} aria-label="Menu" type="button">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <main id="main">
+    <SiteShell buildTag="prodvo-usecases-v8">
+      <div className={cx("page")}>
         <section className={cx("hero")}>
           <div className={cx("container")}>
             <div className={cx("hero-inner")}>
@@ -1009,98 +944,7 @@ export default function UseCasesPage() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className={cx("footer")}>
-        <div className={cx("container")}>
-          <div className={cx("footer-top")}>
-            <div>
-              <div className={cx("footer-logo")}>
-                Prodvo<em>.</em>
-              </div>
-              <p className={cx("footer-tagline")}>
-                The AI coding agent for builders who want to ship - not configure.
-              </p>
-              <div className={cx("footer-social")}>
-                <a href="#" className={cx("fsoc")} aria-label="X">
-                  X
-                </a>
-                <a href="#" className={cx("fsoc")} aria-label="GitHub">
-                  GH
-                </a>
-                <a href="#" className={cx("fsoc")} aria-label="Discord">
-                  DC
-                </a>
-              </div>
-            </div>
-            <div>
-              <div className={cx("f-col-title")}>Product</div>
-              <ul className={cx("f-links")}>
-                <li>
-                  <Link href="/product">Features</Link>
-                </li>
-                <li>
-                  <Link href="/use-cases">Use Cases</Link>
-                </li>
-                <li>
-                  <Link href="/pricing">Pricing</Link>
-                </li>
-                <li>
-                  <a href="#">Changelog</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div className={cx("f-col-title")}>Developers</div>
-              <ul className={cx("f-links")}>
-                <li>
-                  <Link href="/docs">Docs</Link>
-                </li>
-                <li>
-                  <a href="#">API Reference</a>
-                </li>
-                <li>
-                  <a href="#">Templates</a>
-                </li>
-                <li>
-                  <a href="#">GitHub</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div className={cx("f-col-title")}>Company</div>
-              <ul className={cx("f-links")}>
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
-                <li>
-                  <a href="#">Careers</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className={cx("footer-bottom")}>
-            <div className={cx("footer-copy")}>© 2025 Prodvo, Inc. - prodvo.dev</div>
-            <ul className={cx("f-bottom-links")}>
-              <li>
-                <a href="#">Privacy</a>
-              </li>
-              <li>
-                <a href="#">Terms</a>
-              </li>
-              <li>
-                <a href="#">Cookies</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </SiteShell>
   );
 }

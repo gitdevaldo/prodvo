@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:26:49Z
+
+- **Who:** Copilot CLI agent
+- **What:** Unified header/footer shell usage across routes by migrating homepage and use-cases page to shared `SiteShell`
+- **When:** 2026-03-30T22:26:49Z
+- **Where:** `src/components/prodvo-landing.tsx`, `src/app/use-cases/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested consistent shared header/footer across all pages; `/use-cases` and homepage were still using standalone shell markup
+- **How:** Replaced local shell wrappers (announcement, header, footer, mobile menu state, scroll state) with `SiteShell` in both pages, retained each page’s unique content/animation sections, validated with `npm run build`, and confirmed runtime output on the existing dev server (`:4173`) for `/` and `/use-cases`
+- **File path(s) changed:**
+  - `src/components/prodvo-landing.tsx`
+  - `src/app/use-cases/page.tsx`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:16:08Z
 
 - **Who:** Copilot CLI agent

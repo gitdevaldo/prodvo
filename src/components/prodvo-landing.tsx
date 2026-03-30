@@ -1,5 +1,6 @@
 "use client";
 
+import { SiteShell } from "@/components/site-shell";
 import { useEffect, useMemo, useState } from "react";
 
 const COMPANY_LOGOS = [
@@ -275,11 +276,8 @@ const FAQ_ITEMS: readonly FaqItem[] = [
 const BUILD_TAG = "prodvo-live-18";
 
 export function ProdvoLanding() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState<number>(0);
   const [expandedFaqs, setExpandedFaqs] = useState<Set<number>>(new Set([0]));
-  const year = new Date().getFullYear();
   const marqueeItems = useMemo(() => [...COMPANY_LOGOS, ...COMPANY_LOGOS], []);
   const activeTestimonialItem =
     TEAM_TESTIMONIALS[activeTestimonial] ?? TEAM_TESTIMONIALS[0];
@@ -295,28 +293,6 @@ export function ProdvoLanding() {
       return next;
     });
   };
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileOpen]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -381,81 +357,7 @@ export function ProdvoLanding() {
   }, []);
 
   return (
-    <div className="site-root">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-
-      <div className="announcement-wrap">
-        <div className="container">
-          <p className="announcement">
-            Live build {BUILD_TAG}: slower company slide, richer section content,
-            and smoother responsive behavior are now active.
-            <a href="#features"> Explore what changed</a>
-          </p>
-        </div>
-      </div>
-
-      <header
-        className={`site-header${scrolled ? " scrolled" : ""}${
-          mobileOpen ? " mobile-open" : ""
-        }`}
-      >
-        <div className="container nav-row">
-          <a className="brand" href="#">
-            <span className="brand-mark">PV</span>
-            <span className="brand-text">Prodvo</span>
-          </a>
-
-          <nav className="nav-desktop" aria-label="Primary navigation">
-            <a href="#features">Product</a>
-            <a href="#use-cases">Use cases</a>
-            <a href="#workflow">Workflow</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
-            <a href="#footer">Docs</a>
-          </nav>
-
-          <div className="header-actions">
-            <a className="btn btn-header" href="#pricing">
-              Start now
-            </a>
-            <button
-              type="button"
-              className="menu-btn"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-panel"
-              aria-label="Toggle menu"
-              onClick={() => setMobileOpen((open) => !open)}
-            >
-              Menu
-            </button>
-          </div>
-        </div>
-
-        <div id="mobile-panel" className="mobile-panel" role="menu">
-          <a href="#features" onClick={() => setMobileOpen(false)}>
-            Product
-          </a>
-          <a href="#use-cases" onClick={() => setMobileOpen(false)}>
-            Use cases
-          </a>
-          <a href="#workflow" onClick={() => setMobileOpen(false)}>
-            Workflow
-          </a>
-          <a href="#pricing" onClick={() => setMobileOpen(false)}>
-            Pricing
-          </a>
-          <a href="#faq" onClick={() => setMobileOpen(false)}>
-            FAQ
-          </a>
-          <a href="#footer" onClick={() => setMobileOpen(false)}>
-            Docs
-          </a>
-        </div>
-      </header>
-
-      <main id="main-content">
+    <SiteShell buildTag={BUILD_TAG}>
         <section className="hero">
           <div className="container">
             <p className="hero-badge animate-fade-up">
@@ -833,63 +735,6 @@ export function ProdvoLanding() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className="footer" id="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <a className="brand" href="#">
-                <span className="brand-mark">PV</span>
-                <span className="brand-text">Prodvo</span>
-              </a>
-              <p>
-                AI coding agent workspace for teams that want speed, control,
-                and production-grade outcomes in one place.
-              </p>
-            </div>
-
-            <div className="footer-col">
-              <h4>Product</h4>
-              <ul>
-                <li>
-                  <a href="#features">Features</a>
-                </li>
-                <li>
-                  <a href="#use-cases">Use cases</a>
-                </li>
-                <li>
-                  <a href="#workflow">Workflow</a>
-                </li>
-                <li>
-                  <a href="#pricing">Pricing</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer-col">
-              <h4>Resources</h4>
-              <ul>
-                <li>
-                  <a href="#faq">FAQ</a>
-                </li>
-                <li>
-                  <a href="#">Documentation</a>
-                </li>
-                <li>
-                  <a href="#">API</a>
-                </li>
-                <li>
-                  <a href="#">Status</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            Copyright {year} Prodvo. All rights reserved.
-          </div>
-        </div>
-      </footer>
-    </div>
+    </SiteShell>
   );
 }
