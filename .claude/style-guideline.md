@@ -33,6 +33,8 @@ Hard rules:
 - CTA sections must use solid `#f97316` with white title/body text.
 - Main page surfaces must stay white (`#ffffff`) unless explicitly asked otherwise.
 - If a darker tone is needed, use dark-orange tokens only.
+- For cross-page CTA consistency requests, primary hero buttons must match homepage primary CTA tone (`--fire-orange` base and `--fire-orange-dark` hover), even if source HTML used a different hex.
+- During HTML-to-TSX conversion, raw source hex values for buttons should be normalized to project tokens when they conflict with shared button tone requirements.
 
 ## 3) Typography
 

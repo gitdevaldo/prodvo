@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:39:28Z
+
+- **Who:** Copilot CLI agent
+- **What:** Removed lingering dark-orange (`#c2410c`) tone from use-cases hero primary CTA base/hover and codified conversion guidance in lessons + style guideline
+- **When:** 2026-03-30T22:39:28Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `.claude/task/lessons.md`, `.claude/style-guideline.md`, `docs/logs/changelogs.md`
+- **Why:** User reported the hero button still appeared in the wrong tone and requested explicit project rules to avoid future HTML-to-TSX color carry-over mismatches
+- **How:** Updated `.btn-primary-lg` and hover in use-cases CSS to use homepage-equivalent primary tokens (`--fire-orange` and `--fire-orange-dark`) with subtle shadow parity, then added explicit rule entries to lessons and style guidelines requiring token normalization when source HTML hex values conflict with shared CTA tone; validated with `npm run build` (lint failures remain pre-existing outside this change)
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `.claude/task/lessons.md`
+  - `.claude/style-guideline.md`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:36:15Z
 
 - **Who:** Copilot CLI agent
