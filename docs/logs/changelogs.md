@@ -4,6 +4,18 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T22:44:03Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed the time-to-ship comparison bars so Prodvo rows no longer show a full grey track behind the orange fill
+- **When:** 2026-03-30T22:44:03Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported the “With Prodvo” bars looked incorrect because grey still appeared across the full traditional length behind orange
+- **How:** Made `.ship-bar-track` transparent (removing unintended background rail for both rows) and normalized `.without-fill` to own full-height grey bar (so only the traditional row is grey), then validated with `npm run build` (lint failures remain unrelated existing repo issues)
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
 ## 2026-03-30T22:41:53Z
 
 - **Who:** Copilot CLI agent
