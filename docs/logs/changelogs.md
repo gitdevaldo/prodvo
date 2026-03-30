@@ -309,3 +309,17 @@ Newest entries first. Every change must add one entry before commit/push.
   - `.claude/CLAUDE.md`
   - `.github/copilot-instructions.md`
   - `docs/logs/changelogs.md`
+
+## 2026-03-30T23:54:30Z
+
+- **Who:** Copilot CLI agent
+- **What:** Normalized primary CTA button tone/text on use-cases, workflow, and pricing pages to match homepage/product conventions
+- **When:** 2026-03-30T23:54:30Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `src/app/workflow/workflow.module.css`, `src/app/pricing/pricing.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested first-pass cross-page button consistency so primary actions use the lighter brand orange base with white text (not white-fill/dark-orange text variants)
+- **How:** Updated `btn-cta-w` and `ctaPrimary` styles to use `--fire-orange` base and `--fire-orange-dark` hover with white text, and aligned hover/border transition behavior for consistency. Verified with `npm run build` (pass). `npm run lint` remains failing on known baseline issues outside this scope (`.claude/skills/**/*.cjs` and pre-existing `src/app/product/page.tsx` lint errors).
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `src/app/workflow/workflow.module.css`
+  - `src/app/pricing/pricing.module.css`
+  - `docs/logs/changelogs.md`
