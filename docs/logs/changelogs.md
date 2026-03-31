@@ -373,3 +373,25 @@ Newest entries first. Every change must add one entry before commit/push.
 - **File path(s) changed:**
   - `src/app/pricing/pricing.module.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T00:48:42Z
+
+- **Who:** Copilot CLI agent
+- **What:** Added hard hero CTA override on `/pricing` to force exact homepage-like button colors for both hero buttons
+- **When:** 2026-03-31T00:48:42Z
+- **Where:** `src/app/pricing/pricing.module.css`, `docs/logs/changelogs.md`
+- **Why:** User still observed hero CTA mismatch on `/pricing` (`See the plans`, `Run the math`) with darker/black appearance
+- **How:** Added `.heroCtas a` and `.heroCtas a:hover` forced rules (`!important`) to pin hero button default to `#f97316` with white text and hover to `#ea580c` with white text, then re-built and validated served CSS includes the forced hero rules.
+- **File path(s) changed:**
+  - `src/app/pricing/pricing.module.css`
+  - `docs/logs/changelogs.md`
+
+## 2026-03-31 - Pricing button specificity fix
+
+**Who**: Copilot
+**What**: Fixed .page a rule overriding button text colors by changing to .page a:not([class]) so only non-classed anchors inherit dark text
+**Where**: src/app/pricing/pricing.module.css
+**Why**: Button text was showing as black instead of white due to CSS specificity issue
+**How**: Changed .page a { color: inherit } to only apply to anchors without class attribute
+
+Files: src/app/pricing/pricing.module.css

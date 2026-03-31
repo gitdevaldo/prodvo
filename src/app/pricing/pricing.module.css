@@ -36,8 +36,11 @@
 }
 
 .page a {
-  color: inherit;
   text-decoration: none;
+}
+
+.page a:not([class]) {
+  color: inherit;
 }
 
 .page button {
@@ -130,13 +133,25 @@
   flex-wrap: wrap;
 }
 
+.heroCtas a {
+  background: #f97316 !important;
+  color: #fff !important;
+  border: 1.5px solid #f97316 !important;
+}
+
+.heroCtas a:hover {
+  background: #ea580c !important;
+  color: #fff !important;
+  border-color: #ea580c !important;
+}
+
 .btnPrimaryLg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #f97316;
-  color: #fff;
-  border: 1.5px solid #f97316;
+  background: #f97316 !important;
+  color: #fff !important;
+  border: 1.5px solid #f97316 !important;
   border-radius: 10px;
   padding: 0.85rem 2rem;
   font-family: var(--font-brand);
@@ -147,8 +162,9 @@
 }
 
 .btnPrimaryLg:hover {
-  background: #ea580c;
-  border-color: #ea580c;
+  background: #ea580c !important;
+  color: #fff !important;
+  border-color: #ea580c !important;
   transform: translateY(-1px);
 }
 
@@ -156,9 +172,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid #f97316;
-  color: #fff;
-  background: #f97316;
+  border: 1.5px solid #f97316 !important;
+  color: #fff !important;
+  background: #f97316 !important;
   border-radius: 10px;
   padding: 0.8rem 1.7rem;
   font-family: var(--font-brand);
@@ -168,9 +184,9 @@
 }
 
 .btnOutlineLg:hover {
-  border-color: #ea580c;
-  background: #ea580c;
-  color: #fff;
+  border-color: #ea580c !important;
+  background: #ea580c !important;
+  color: #fff !important;
 }
 
 .costContrast {
