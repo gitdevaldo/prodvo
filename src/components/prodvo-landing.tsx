@@ -11,13 +11,13 @@ const COMPANY_LOGOS = [
   { name: "Supabase", domain: "supabase.com" },
   { name: "Resend", domain: "resend.com" },
   { name: "Clerk", domain: "clerk.com" },
-  { name: "Inngest", domain: "inngest.com" },
+  { name: "Vercel", domain: "vercel.com" },
   { name: "Railway", domain: "railway.app" },
   { name: "Render", domain: "render.com" },
   { name: "Planetscale", domain: "planetscale.com" },
   { name: "Neon", domain: "neon.tech" },
-  { name: "Turso", domain: "turso.tech" },
-  { name: "Fly.io", domain: "fly.io" },
+  { name: "Deno", domain: "deno.com" },
+  { name: "Prisma", domain: "prisma.io" },
 ];
 
 // Logo.dev API token (publishable key is safe for client-side)
@@ -408,7 +408,7 @@ export function ProdvoLanding() {
           <div className="marquee-window">
             <div className="marquee-track">
               {marqueeItems.map((company, index) => (
-                <span className="proof-item" key={`${company.domain}-${index}`}>
+                <span className="proof-item" key={`${company.domain}-${index}`} data-name={company.name}>
                   <Image
                     src={`https://img.logo.dev/${company.domain}?token=${LOGO_DEV_TOKEN}&format=png&greyscale=true&size=80`}
                     alt={`${company.name} logo`}
@@ -417,6 +417,7 @@ export function ProdvoLanding() {
                     className="proof-logo"
                     unoptimized
                   />
+                  <span className="proof-name">{company.name}</span>
                 </span>
               ))}
             </div>

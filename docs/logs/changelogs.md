@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T15:32:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Added company name hover text and fixed blank logo
+- **When:** 2026-03-31T15:32:00Z
+- **Where:** `src/components/prodvo-landing.tsx`, `src/app/globals.css`, `docs/logs/changelogs.md`
+- **Why:** User reported blank logo after Clerk (Inngest) and requested company name text on hover
+- **How:** Replaced Inngest and Turso/Fly.io with Vercel, Deno, and Prisma (known working logos); added `.proof-name` span below each logo that fades in on hover with slide-up animation; updated CSS with flex-direction column layout for logo + name; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/components/prodvo-landing.tsx`
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T12:42:00Z
 
 - **Who:** Copilot CLI agent
