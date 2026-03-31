@@ -1008,7 +1008,7 @@ export default function WorkflowPage() {
 
                 <div className={styles.deployUrl}>
                   <span className={styles.deployUrlLabel}>Live</span>
-                  <span className={styles.deployUrlValue}>invoicetrack.prodvo.app</span>
+                  <span className={styles.deployUrlValue}>invoicetrack.prodvo.dev</span>
                 </div>
               </div>
 

@@ -127,8 +127,8 @@ export default function DocsPage() {
     {
       title: "Email Support",
       description: "Get help from our team",
-      action: "support@prodvo.ai",
-      href: "mailto:support@prodvo.ai",
+      action: "support@prodvo.dev",
+      href: "mailto:support@prodvo.dev",
     },
     {
       title: "Book a call",
@@ -278,7 +278,7 @@ export default function DocsPage() {
               <span className={styles.terminalTitle}>bash — start-workflow.sh</span>
             </div>
             <div className={styles.terminalBody}>
-              <pre><code>{`curl -X POST https://api.prodvo.ai/v1/runs \\
+              <pre><code>{`curl -X POST https://api.prodvo.dev/v1/runs \\
   -H "Authorization: Bearer $PRODVO_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -295,7 +295,7 @@ export default function DocsPage() {
 {
   "run_id": "run_xyz789",
   "status": "initializing",
-  "checkpoint_url": "https://app.prodvo.ai/runs/xyz789"
+  "checkpoint_url": "https://app.prodvo.dev/runs/xyz789"
 }`}</code></pre>
             </div>
           </div>

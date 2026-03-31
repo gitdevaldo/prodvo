@@ -4,6 +4,23 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T12:30:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed all incorrect domain URLs to use prodvo.dev
+- **When:** 2026-03-31T12:30:00Z
+- **Where:** `src/app/faq/page.tsx`, `src/app/docs/page.tsx`, `src/app/workflow/page.tsx`, `src/app/product/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User reported incorrect domains (prodvo.com, prodvo.ai, prodvo.app) - correct domain is prodvo.dev
+- **How:** Scanned entire project for prodvo.(com|ai|io|app) patterns; replaced security@prodvo.com → security@prodvo.dev, support@prodvo.ai → support@prodvo.dev, api.prodvo.ai → api.prodvo.dev, app.prodvo.ai → app.prodvo.dev, invoicetrack.prodvo.app → invoicetrack.prodvo.dev, prodvo.app → prodvo.dev; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/faq/page.tsx`
+  - `src/app/docs/page.tsx`
+  - `src/app/workflow/page.tsx`
+  - `src/app/product/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T07:35:00Z
 
 - **Who:** Copilot CLI agent
