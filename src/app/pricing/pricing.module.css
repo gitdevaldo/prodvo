@@ -537,14 +537,15 @@
 }
 
 .btnPlanOutline {
-  border: 1.5px solid var(--border);
-  color: var(--ink);
-  background: transparent;
+  border: 1.5px solid #f97316;
+  color: #fff;
+  background: #f97316;
 }
 
 .btnPlanOutline:hover {
-  border-color: var(--ink);
-  background: var(--surface);
+  border-color: #ea580c;
+  background: #ea580c;
+  color: #fff;
 }
 
 .btnPlanFill {

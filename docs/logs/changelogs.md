@@ -361,3 +361,15 @@ Newest entries first. Every change must add one entry before commit/push.
   - `src/app/use-cases/page.tsx`
   - `src/app/pricing/pricing.module.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T00:45:23Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed remaining `/pricing` primary button mismatch by converting plan outline CTAs to the same orange/white primary style system
+- **When:** 2026-03-31T00:45:23Z
+- **Where:** `src/app/pricing/pricing.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported pricing buttons were still inconsistent; the remaining mismatch came from `btnPlanOutline` keeping neutral text/border while other pricing CTAs were already orange/white
+- **How:** Updated `.btnPlanOutline` and `.btnPlanOutline:hover` to match homepage-style primary treatment (`#f97316` default, `#ea580c` hover, white text), then validated full pricing CTA set (hero, plan cards, enterprise, final CTA) via build and served CSS/HTML inspection.
+- **File path(s) changed:**
+  - `src/app/pricing/pricing.module.css`
+  - `docs/logs/changelogs.md`
