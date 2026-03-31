@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T15:38:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed persona tabs styling in use-cases hero section
+- **When:** 2026-03-31T15:38:00Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported persona tabs not displaying properly as pill buttons like in the reference (docs/references/use-case.html)
+- **How:** Fixed CSS specificity issue where `.page button` reset was overriding `.persona-tab` styles by changing selector to `.page button:not(.persona-tab)` to exclude persona tabs from the reset; tabs now properly show as pill-shaped buttons with border, padding, and proper hover/active states; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T15:32:00Z
 
 - **Who:** Copilot CLI agent

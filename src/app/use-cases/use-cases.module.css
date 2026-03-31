@@ -45,7 +45,7 @@
   color: inherit;
 }
 
-.page button {
+.page button:not(.persona-tab) {
   cursor: pointer;
   font-family: inherit;
   border: none;
