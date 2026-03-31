@@ -323,3 +323,15 @@ Newest entries first. Every change must add one entry before commit/push.
   - `src/app/workflow/workflow.module.css`
   - `src/app/pricing/pricing.module.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T00:08:15Z
+
+- **Who:** Copilot CLI agent
+- **What:** Forced `/use-cases` hero and CTA primary buttons to exact homepage hero hex tones
+- **When:** 2026-03-31T00:08:15Z
+- **Where:** `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported `/use-cases` hero buttons still looked darker and text tone still wrong versus homepage hero; requested direct hex-level matching
+- **How:** Replaced token-based values for `/use-cases` button classes with explicit homepage-equivalent hex values: primary base `#f97316`, hover `#ea580c`, text `#fff`; applied to `.btn-primary-lg`, `.btn-outline-lg`, `.btn-cta-w`, and `.btn-nav` for full page consistency, then verified with `npm run build`.
+- **File path(s) changed:**
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`

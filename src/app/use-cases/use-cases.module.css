@@ -191,14 +191,14 @@
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--white);
-  background: var(--fire-orange);
+  background: #f97316;
   padding: 0.5rem 1.15rem;
   border-radius: 8px;
   transition: background 0.2s, transform 0.15s;
 }
 
 .btn-nav:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
   transform: translateY(-1px);
 }
 
@@ -365,27 +365,31 @@
   font-family: var(--font-brand);
   font-size: 1rem;
   font-weight: 800;
-  color: var(--white);
-  background: var(--fire-orange);
+  color: #fff;
+  background: #f97316;
   padding: 0.85rem 2rem;
   border-radius: 10px;
+  border: 1.5px solid #f97316;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .btn-primary-lg:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-2px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .hero-ctas .btn-primary-lg {
-  background: var(--fire-orange);
+  background: #f97316;
+  border-color: #f97316;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .hero-ctas .btn-primary-lg:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
+  border-color: #ea580c;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
@@ -393,18 +397,18 @@
   font-family: var(--font-brand);
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--ink-2);
-  background: transparent;
+  color: #fff;
+  background: #f97316;
   padding: 0.8rem 1.7rem;
   border-radius: 10px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, background 0.2s;
+  border: 1.5px solid #f97316;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 
 .btn-outline-lg:hover {
-  border-color: var(--gray-300, #d4d4d8);
-  background: #fcfcfc;
-  color: var(--ink);
+  border-color: #ea580c;
+  background: #ea580c;
+  color: #fff;
 }
 
 .eyebrow {
@@ -1411,18 +1415,18 @@
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--white);
-  background: var(--fire-orange);
+  background: #f97316;
   padding: 0.9rem 2.2rem;
   border-radius: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border: 1.5px solid #f97316;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
   transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
   display: inline-block;
 }
 
 .btn-cta-w:hover {
-  background: var(--fire-orange-dark);
-  border-color: rgba(255, 255, 255, 0.75);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
 }
