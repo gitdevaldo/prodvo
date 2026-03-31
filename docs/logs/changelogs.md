@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T12:42:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed logo.dev API parameters for transparent grayscale logos
+- **When:** 2026-03-31T12:42:00Z
+- **Where:** `src/components/prodvo-landing.tsx`, `src/app/globals.css`, `docs/logs/changelogs.md`
+- **Why:** User reported logos too big with black background instead of transparent grayscale
+- **How:** Added logo.dev API parameters: `format=png` for transparency, `greyscale=true` for no color, `size=80` for smaller size; updated CSS to remove redundant grayscale filter, reduced logo height to 24px with max-width 100px, simplified opacity hover effect; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/components/prodvo-landing.tsx`
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T12:40:00Z
 
 - **Who:** Copilot CLI agent

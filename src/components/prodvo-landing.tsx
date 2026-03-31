@@ -410,10 +410,10 @@ export function ProdvoLanding() {
               {marqueeItems.map((company, index) => (
                 <span className="proof-item" key={`${company.domain}-${index}`}>
                   <Image
-                    src={`https://img.logo.dev/${company.domain}?token=${LOGO_DEV_TOKEN}`}
+                    src={`https://img.logo.dev/${company.domain}?token=${LOGO_DEV_TOKEN}&format=png&greyscale=true&size=80`}
                     alt={`${company.name} logo`}
-                    width={120}
-                    height={32}
+                    width={80}
+                    height={80}
                     className="proof-logo"
                     unoptimized
                   />
