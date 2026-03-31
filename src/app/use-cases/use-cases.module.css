@@ -38,8 +38,11 @@
 }
 
 .page a {
-  color: inherit;
   text-decoration: none;
+}
+
+.page a:not([class]) {
+  color: inherit;
 }
 
 .page button {

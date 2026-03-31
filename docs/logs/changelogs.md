@@ -335,3 +335,16 @@ Newest entries first. Every change must add one entry before commit/push.
 - **File path(s) changed:**
   - `src/app/use-cases/use-cases.module.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T00:17:19Z
+
+- **Who:** Copilot CLI agent
+- **What:** Applied hard inline style overrides to `/use-cases` primary CTA links to force exact hero button hex rendering
+- **When:** 2026-03-31T00:17:19Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/use-cases/use-cases.module.css`, `docs/logs/changelogs.md`
+- **Why:** User still observed unchanged hero CTA color/text despite stylesheet edits; required non-ambiguous, immediate visual parity with homepage hex values
+- **How:** Added direct inline style values (`background:#f97316; color:#fff; borderColor:#f97316`) on hero and key CTA anchors (`btn-primary-lg`, `btn-outline-lg`, non-technical CTA, final CTA). Also narrowed generic `.page a` color inheritance to unclassed links only to prevent class-style clashes. Verified by fetching live `/use-cases` HTML and confirming inline styles are present on rendered CTA elements, and re-ran `npm run build` successfully.
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/use-cases/use-cases.module.css`
+  - `docs/logs/changelogs.md`
