@@ -260,7 +260,7 @@ export default function UseCasesPage() {
   };
 
   return (
-    <SiteShell buildTag="prodvo-usecases-v8">
+    <SiteShell>
       <div className={cx("page")}>
         <section className={cx("hero")}>
           <div className={cx("container")}>

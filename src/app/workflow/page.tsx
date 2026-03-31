@@ -444,7 +444,7 @@ export default function WorkflowPage() {
   };
 
   return (
-    <SiteShell buildTag="prodvo-workflow-v6">
+    <SiteShell>
       <div className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.container}>

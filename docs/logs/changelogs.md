@@ -415,3 +415,13 @@ Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/pa
 **How**: Closed .page div before CTA section, used global container class instead of module container
 
 Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx
+
+## 2026-03-31 - Unified notification bar
+
+**Who**: Copilot
+**What**: Made notification bar consistent across all pages by removing buildTag prop and hardcoding unified message in SiteShell
+**Where**: src/components/site-shell.tsx, all page files
+**Why**: Notification bar was showing different text on each page due to hardcoded buildTag props
+**How**: Removed buildTag prop from SiteShell type and all page usages, set single announcement message
+
+Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app/faq/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx, src/app/use-cases/page.tsx, src/app/product/page.tsx, src/app/docs/page.tsx

@@ -277,7 +277,7 @@ export default function ProductPage() {
   };
 
   return (
-    <SiteShell buildTag="prodvo-product-v7">
+    <SiteShell>
       <div className={styles["product-page"]}>
         <section className={styles.hero}>
         <div className="container">

@@ -299,7 +299,7 @@ export default function PricingPage() {
     : "= $19.80 / seat / month";
 
   return (
-    <SiteShell buildTag="prodvo-pricing-v6">
+    <SiteShell>
       <div className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.container}>

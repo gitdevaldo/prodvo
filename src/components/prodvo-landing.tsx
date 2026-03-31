@@ -357,7 +357,7 @@ export function ProdvoLanding() {
   }, []);
 
   return (
-    <SiteShell buildTag={BUILD_TAG}>
+    <SiteShell>
         <section className="hero">
           <div className="container">
             <p className="hero-badge animate-fade-up">

@@ -18,11 +18,10 @@ const NAV_ITEMS: readonly NavItem[] = [
 ];
 
 type SiteShellProps = {
-  buildTag: string;
   children: React.ReactNode;
 };
 
-export function SiteShell({ buildTag, children }: SiteShellProps) {
+export function SiteShell({ children }: SiteShellProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const year = new Date().getFullYear();
@@ -58,8 +57,8 @@ export function SiteShell({ buildTag, children }: SiteShellProps) {
       <div className="announcement-wrap">
         <div className="container">
           <p className="announcement">
-            Live build {buildTag}: multi-page rollout is active.
-            <Link href="/product"> View product details</Link>
+            🚀 Prodvo is now live — start building your product today.
+            <Link href="/pricing"> Get started free</Link>
           </p>
         </div>
       </div>
