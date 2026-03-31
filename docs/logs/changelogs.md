@@ -563,3 +563,15 @@ Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/pa
 **How**: Removed buildTag prop from SiteShell type and all page usages, set single announcement message
 
 Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app/faq/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx, src/app/use-cases/page.tsx, src/app/product/page.tsx, src/app/docs/page.tsx
+
+## 2026-03-31T15:34:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Increased spacing between logo icon and company name in homepage marquee
+- **When:** 2026-03-31T15:34:00Z
+- **Where:** `src/app/globals.css`
+- **Why:** User reported the gap between logo and text was too tight
+- **How:** Increased `.proof-item` gap from 0.5rem to 0.75rem for better visual spacing
+- **File path(s) changed:**
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
