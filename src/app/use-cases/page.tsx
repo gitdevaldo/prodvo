@@ -329,18 +329,10 @@ export default function UseCasesPage() {
               </div>
 
               <div className={cx("hero-ctas")}>
-                <Link
-                  href="/pricing"
-                  className={cx("btn-primary-lg")}
-                  style={{ background: "#f97316", color: "#fff", borderColor: "#f97316" }}
-                >
+                <Link href="/pricing" className={cx("btn-primary-lg")}>
                   {activePersona.cta}
                 </Link>
-                <a
-                  href="#solo"
-                  className={cx("btn-outline-lg")}
-                  style={{ background: "#f97316", color: "#fff", borderColor: "#f97316" }}
-                >
+                <a href="#solo" className={cx("btn-outline-lg")}>
                   Explore use cases ↓
                 </a>
               </div>
@@ -550,7 +542,6 @@ export default function UseCasesPage() {
                   <Link
                     href="/pricing"
                     className={cx("btn-primary-lg", "reveal", "d1", "nontechnical-cta")}
-                    style={{ background: "#f97316", color: "#fff", borderColor: "#f97316" }}
                   >
                     Try it without coding
                   </Link>
@@ -940,11 +931,7 @@ export default function UseCasesPage() {
                 </p>
               </div>
               <div className={cx("cta-right")}>
-                <Link
-                  href="/pricing"
-                  className={cx("btn-cta-w")}
-                  style={{ background: "#f97316", color: "#fff", borderColor: "#f97316" }}
-                >
+                <Link href="/pricing" className={cx("btn-cta-w")}>
                   Start building free
                 </Link>
                 <Link href="/docs" className={cx("btn-cta-ghost")}>

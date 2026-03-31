@@ -134,8 +134,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--fire-orange);
-  color: var(--white);
+  background: #f97316;
+  color: #fff;
+  border: 1.5px solid #f97316;
   border-radius: 10px;
   padding: 0.85rem 2rem;
   font-family: var(--font-brand);
@@ -146,7 +147,8 @@
 }
 
 .btnPrimaryLg:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-1px);
 }
 
@@ -154,8 +156,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border);
-  color: var(--ink-2);
+  border: 1.5px solid #f97316;
+  color: #fff;
+  background: #f97316;
   border-radius: 10px;
   padding: 0.8rem 1.7rem;
   font-family: var(--font-brand);
@@ -165,9 +168,9 @@
 }
 
 .btnOutlineLg:hover {
-  border-color: #d4d4d8;
-  background: #fcfcfc;
-  color: var(--ink);
+  border-color: #ea580c;
+  background: #ea580c;
+  color: #fff;
 }
 
 .costContrast {
@@ -545,13 +548,15 @@
 }
 
 .btnPlanFill {
-  background: var(--fire-orange);
-  color: var(--white);
+  background: #f97316;
+  color: #fff;
+  border: 1.5px solid #f97316;
   box-shadow: 0 4px 14px rgba(249, 115, 22, 0.28);
 }
 
 .btnPlanFill:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
 }
@@ -1038,8 +1043,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: var(--fire-orange);
-  color: var(--white);
+  background: #f97316;
+  color: #fff;
+  border: 1.5px solid #f97316;
   padding: 0.85rem 1.7rem;
   font-family: var(--font-brand);
   font-size: 0.95rem;
@@ -1048,7 +1054,8 @@
 }
 
 .enterpriseCta:hover {
-  background: var(--fire-orange-dark);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-1px);
 }
 
@@ -1159,9 +1166,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: var(--fire-orange);
-  color: var(--white);
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: #f97316;
+  color: #fff;
+  border: 1.5px solid #f97316;
   padding: 0.9rem 2.2rem;
   font-family: var(--font-brand);
   font-size: 1.05rem;
@@ -1171,8 +1178,8 @@
 }
 
 .ctaPrimary:hover {
-  background: var(--fire-orange-dark);
-  border-color: rgba(255, 255, 255, 0.75);
+  background: #ea580c;
+  border-color: #ea580c;
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
 }

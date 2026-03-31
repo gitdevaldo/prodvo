@@ -348,3 +348,16 @@ Newest entries first. Every change must add one entry before commit/push.
   - `src/app/use-cases/page.tsx`
   - `src/app/use-cases/use-cases.module.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T00:21:33Z
+
+- **Who:** Copilot CLI agent
+- **What:** Restored `/use-cases` hover color delta and matched `/pricing` primary button behavior to the same hex/hover pattern
+- **When:** 2026-03-31T00:21:33Z
+- **Where:** `src/app/use-cases/page.tsx`, `src/app/pricing/pricing.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported `/use-cases` hover state no longer changed color and requested the same color mismatch fix for `/pricing`
+- **How:** Removed forced inline styles from `/use-cases` buttons so CSS `:hover` color transitions apply again, then normalized `/pricing` primary action buttons to explicit homepage-aligned hex values with visible hover delta (`#f97316` default → `#ea580c` hover) across hero CTA, plan fill CTA, enterprise CTA, and final CTA classes. Verified with `npm run build` and inspected served CSS/HTML to confirm hover selectors are present.
+- **File path(s) changed:**
+  - `src/app/use-cases/page.tsx`
+  - `src/app/pricing/pricing.module.css`
+  - `docs/logs/changelogs.md`
