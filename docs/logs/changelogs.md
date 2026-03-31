@@ -575,3 +575,19 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `src/app/globals.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T15:37:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Improved logo marquee hover interaction
+- **When:** 2026-03-31T15:37:00Z
+- **Where:** `src/app/globals.css`
+- **Why:** User wanted logos centered by default, with hover effect that moves logo up, shows company name, and pauses marquee
+- **How:** 
+  - Removed gap from .proof-item so logo stays centered
+  - Made .proof-name absolutely positioned below logo
+  - Added translateY(-8px) transform on logo hover
+  - Added animation-play-state: paused on .marquee-track:has(.proof-item:hover)
+- **File path(s) changed:**
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
