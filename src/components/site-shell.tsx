@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type NavItem = {
   href: string;
@@ -24,13 +24,44 @@ type SiteShellProps = {
 export function SiteShell({ children }: SiteShellProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerLogoRef = useRef<HTMLDivElement>(null);
+  const footerLogoRef = useRef<HTMLDivElement>(null);
   const year = new Date().getFullYear();
 
+  // Handle scroll state and logo collapse/expand
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
+      
+      // Collapse/expand header logo based on scroll
+      if (headerLogoRef.current) {
+        if (isScrolled) {
+          headerLogoRef.current.classList.remove("expanded");
+        } else {
+          headerLogoRef.current.classList.add("expanded");
+        }
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Expand logos on mount with animation
+  useEffect(() => {
+    const expandWithAnimation = (el: HTMLElement | null, delay: number) => {
+      if (!el) return;
+      // Start collapsed
+      el.classList.remove("expanded");
+      // Expand after delay
+      setTimeout(() => {
+        el.classList.add("expanded");
+      }, delay);
+    };
+    
+    expandWithAnimation(headerLogoRef.current, 100);
+    expandWithAnimation(footerLogoRef.current, 200);
   }, []);
 
   useEffect(() => {
@@ -68,8 +99,11 @@ export function SiteShell({ children }: SiteShellProps) {
       >
         <div className="container nav-row">
           <Link className="brand" href="/">
-            <span className="brand-mark">PV</span>
-            <span className="brand-text">Prodvo</span>
+            <div className="prodvo-logo sz-nav" ref={headerLogoRef}>
+              <span className="logo-prefix">P/</span>
+              <div className="logo-word-wrap"><span className="logo-word">Prodvo</span></div>
+              <span className="logo-dot">.</span>
+            </div>
           </Link>
 
           <nav className="nav-desktop" aria-label="Primary navigation">
@@ -113,8 +147,11 @@ export function SiteShell({ children }: SiteShellProps) {
           <div className="footer-grid">
             <div className="footer-brand">
               <Link className="brand" href="/">
-                <span className="brand-mark">PV</span>
-                <span className="brand-text">Prodvo</span>
+                <div className="prodvo-logo sz-xs expanded" ref={footerLogoRef}>
+                  <span className="logo-prefix">P/</span>
+                  <div className="logo-word-wrap"><span className="logo-word">Prodvo</span></div>
+                  <span className="logo-dot">.</span>
+                </div>
               </Link>
               <p>
                 AI coding agent workspace for teams that want speed, control, and

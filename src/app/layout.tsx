@@ -17,6 +17,13 @@ export const metadata: Metadata = {
   title: "Prodvo — AI Coding Agent Workspace",
   description:
     "Prodvo is an all-in-one coding agent workspace to plan, build, and ship software from one flow.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

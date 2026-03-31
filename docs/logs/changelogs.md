@@ -4,6 +4,24 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T07:10:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Implemented animated logo from brand guideline and updated favicon
+- **When:** 2026-03-31T07:10:00Z
+- **Where:** `src/components/site-shell.tsx`, `src/app/globals.css`, `src/app/layout.tsx`, `public/favicon.svg`, `docs/logs/changelogs.md`
+- **Why:** User requested logo and favicon update per brand guideline in `docs/references/logo.html`
+- **How:** Added animated logo CSS (P/ Prodvo. with expand/collapse animation) to globals.css; updated site-shell header and footer to use new `.prodvo-logo` component with refs for scroll-based collapse; header logo collapses to "P/." on scroll, expands on return to top; created SVG favicon with "P/." mark; updated layout.tsx metadata with favicon configuration; removed old favicon.ico; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `src/app/globals.css`
+  - `src/app/layout.tsx`
+  - `public/favicon.svg`
+  - `src/app/favicon.ico` (deleted)
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T04:50:00Z
 
 - **Who:** Copilot CLI agent

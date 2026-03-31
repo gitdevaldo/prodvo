@@ -251,24 +251,83 @@ a {
   flex-shrink: 0;
 }
 
-.brand-mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--fire-orange), var(--fire-orange-dark));
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 0.72rem;
-  font-weight: 800;
+/* ═══════════════════════════════════════════════════════════════════════
+   ANIMATED LOGO — P/ Prodvo.
+   From brand guideline: docs/references/logo.html
+═══════════════════════════════════════════════════════════════════════ */
+
+.prodvo-logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-jakarta), var(--font-inter), sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
 }
 
-.brand-text {
-  font-size: 1.05rem;
-  font-weight: 800;
+/* P/ — always visible, always orange */
+.logo-prefix {
+  color: var(--fire-orange);
+  flex-shrink: 0;
+  letter-spacing: -0.05em;
+}
+
+/* The expanding container that holds "Prodvo" */
+.logo-word-wrap {
+  overflow: hidden;
+  max-width: 0;
+  padding-left: 0;
+  transition: max-width 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+              padding-left 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.prodvo-logo.expanded .logo-word-wrap {
+  max-width: 600px;
+  padding-left: 0.22em;
+}
+
+/* "Prodvo" text — fades in slightly delayed */
+.logo-word {
+  display: block;
   color: var(--gray-900);
-  letter-spacing: -0.02em;
-  font-family: var(--font-jakarta), var(--font-inter), sans-serif;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.35s ease 0.2s,
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+.prodvo-logo.expanded .logo-word {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* The dot — always visible */
+.logo-dot {
+  color: var(--fire-orange);
+  flex-shrink: 0;
+  letter-spacing: 0;
+  position: relative;
+  top: 0;
+}
+
+/* Size presets */
+.prodvo-logo.sz-nav { font-size: 1.25rem; letter-spacing: -0.038em; }
+.prodvo-logo.sz-xs  { font-size: 0.95rem; letter-spacing: -0.03em; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .logo-word-wrap,
+  .logo-word {
+    transition: none;
+  }
+  .prodvo-logo .logo-word {
+    opacity: 1;
+    transform: none;
+  }
+  .prodvo-logo .logo-word-wrap {
+    max-width: 600px;
+    padding-left: 0.22em;
+  }
 }
 
 .nav-desktop {
