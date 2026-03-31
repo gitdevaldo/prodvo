@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-30T23:15:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Removed all emoji and SVG icons from FAQ and docs pages
+- **When:** 2026-03-30T23:15:00Z
+- **Where:** `src/app/faq/page.tsx`, `src/app/docs/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested removal of all icons from FAQ and docs pages to maintain cleaner visual appearance
+- **How:** Removed search SVG icon from FAQ search bar, removed emoji icons from FAQ quick links section, removed icon properties from docs section navigation buttons, content headers, quick access buttons, and support cards; removed article arrow SVG icons; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/faq/page.tsx`
+  - `src/app/docs/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-30T22:51:57Z
 
 - **Who:** Copilot CLI agent

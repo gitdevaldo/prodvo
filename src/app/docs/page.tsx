@@ -28,7 +28,6 @@ export default function DocsPage() {
   const docSections = [
     {
       id: "quickstart",
-      icon: "🚀",
       title: "Quickstart",
       description: "Get up and running in 5 minutes",
       articles: [
@@ -39,7 +38,6 @@ export default function DocsPage() {
     },
     {
       id: "concepts",
-      icon: "💡",
       title: "Core Concepts",
       description: "Understand how Prodvo works",
       articles: [
@@ -51,7 +49,6 @@ export default function DocsPage() {
     },
     {
       id: "workflows",
-      icon: "🔄",
       title: "Workflows",
       description: "Configure and customize execution",
       articles: [
@@ -63,7 +60,6 @@ export default function DocsPage() {
     },
     {
       id: "integrations",
-      icon: "🔌",
       title: "Integrations",
       description: "Connect your existing tools",
       articles: [
@@ -75,7 +71,6 @@ export default function DocsPage() {
     },
     {
       id: "api",
-      icon: "⚡",
       title: "API Reference",
       description: "Programmatic access to Prodvo",
       articles: [
@@ -87,7 +82,6 @@ export default function DocsPage() {
     },
     {
       id: "security",
-      icon: "🔒",
       title: "Security",
       description: "Enterprise-grade protection",
       articles: [
@@ -125,21 +119,18 @@ export default function DocsPage() {
 
   const supportOptions = [
     {
-      icon: "💬",
       title: "Community Discord",
       description: "Connect with other Prodvo users",
       action: "Join community",
       href: "#",
     },
     {
-      icon: "📧",
       title: "Email Support",
       description: "Get help from our team",
       action: "support@prodvo.ai",
       href: "mailto:support@prodvo.ai",
     },
     {
-      icon: "📅",
       title: "Book a call",
       description: "Schedule a walkthrough",
       action: "Pick a time",
@@ -168,16 +159,13 @@ export default function DocsPage() {
           {/* Quick access buttons */}
           <div className={styles.quickAccess}>
             <Link href="#quickstart" className={styles.quickBtn}>
-              <span>🚀</span>
-              <span>Quickstart</span>
+              Quickstart
             </Link>
             <Link href="#api" className={styles.quickBtn}>
-              <span>⚡</span>
-              <span>API Reference</span>
+              API Reference
             </Link>
             <Link href="#integrations" className={styles.quickBtn}>
-              <span>🔌</span>
-              <span>Integrations</span>
+              Integrations
             </Link>
           </div>
         </div>
@@ -197,8 +185,7 @@ export default function DocsPage() {
                 className={`${styles.navBtn} ${activeSection === section.id ? styles.active : ""}`}
                 onClick={() => setActiveSection(section.id)}
               >
-                <span className={styles.navIcon}>{section.icon}</span>
-                <span>{section.title}</span>
+                {section.title}
               </button>
             ))}
           </nav>
@@ -208,7 +195,6 @@ export default function DocsPage() {
             {docSections.filter(s => s.id === activeSection).map((section) => (
               <div key={section.id} className={styles.sectionContent}>
                 <div className={styles.contentHeader}>
-                  <span className={styles.contentIcon}>{section.icon}</span>
                   <div>
                     <h2>{section.title}</h2>
                     <p>{section.description}</p>
@@ -228,9 +214,6 @@ export default function DocsPage() {
                         <h3>{article.title}</h3>
                         <span className={styles.readTime}>{article.time}</span>
                       </div>
-                      <svg className={styles.articleArrow} width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
                     </Link>
                   ))}
                 </div>
@@ -343,7 +326,6 @@ export default function DocsPage() {
                 className={`${styles.supportCard} ${styles.reveal}`}
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
-                <span className={styles.supportIcon}>{option.icon}</span>
                 <h3>{option.title}</h3>
                 <p>{option.description}</p>
                 <span className={styles.supportAction}>{option.action}</span>

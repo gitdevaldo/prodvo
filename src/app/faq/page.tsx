@@ -146,9 +146,6 @@ export default function FaqPage() {
           
           {/* Search */}
           <div className={styles.searchBox}>
-            <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M9 17A8 8 0 109 1a8 8 0 000 16zM19 19l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
             <input
               type="text"
               placeholder="Search questions..."
@@ -233,28 +230,24 @@ export default function FaqPage() {
           
           <div className={styles.linksGrid}>
             <Link href="/docs" className={styles.linkCard}>
-              <div className={styles.linkIcon}>📚</div>
               <div>
                 <h3>Documentation</h3>
                 <p>Detailed guides and API references</p>
               </div>
             </Link>
             <Link href="/workflow" className={styles.linkCard}>
-              <div className={styles.linkIcon}>🔄</div>
               <div>
                 <h3>Workflow Guide</h3>
                 <p>See how the execution flow works</p>
               </div>
             </Link>
             <Link href="/use-cases" className={styles.linkCard}>
-              <div className={styles.linkIcon}>💼</div>
               <div>
                 <h3>Use Cases</h3>
                 <p>Real examples from teams like yours</p>
               </div>
             </Link>
             <Link href="/pricing" className={styles.linkCard}>
-              <div className={styles.linkIcon}>💰</div>
               <div>
                 <h3>Pricing</h3>
                 <p>Plans and feature comparison</p>
