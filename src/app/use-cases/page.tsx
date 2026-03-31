@@ -915,31 +915,24 @@ export default function UseCasesPage() {
           </div>
         </section>
 
-        <section className={cx("cta-final")}>
-          <div className={cx("container")}>
-            <div className={cx("cta-inner")}>
-              <div className={cx("cta-left")}>
-                <div className={cx("cta-eyebrow")}>Start today</div>
-                <h2 className={cx("cta-title")}>
-                  Whoever you are,
-                  <br />
-                  Prodvo ships it.
-                </h2>
-                <p className={cx("cta-sub")}>
+        <section className="section">
+          <div className="container">
+            <div className="cta-banner reveal">
+              <div className="cta-copy">
+                <h2>Whoever you are, Prodvo ships it.</h2>
+                <p>
                   No setup. No configuration. No waiting on infrastructure. Describe
                   your product and start building in the next 2 minutes.
                 </p>
-              </div>
-              <div className={cx("cta-right")}>
-                <Link href="/pricing" className={cx("btn-cta-w")}>
+                <Link className="btn" href="/pricing">
                   Start building free
                 </Link>
-                <Link href="/docs" className={cx("btn-cta-ghost")}>
-                  Talk to the team
-                </Link>
-                <p className={cx("cta-trust")}>
-                  Free tier available - No credit card required - Cancel anytime
-                </p>
+              </div>
+              <div className="globe" aria-hidden="true">
+                <span className="globe-dot a" />
+                <span className="globe-dot b" />
+                <span className="globe-dot c" />
+                <span className="globe-dot d" />
               </div>
             </div>
           </div>

@@ -666,32 +666,24 @@ export default function PricingPage() {
           </div>
         </section>
 
-        <section className={styles.ctaSection}>
+        <section className="section">
           <div className={styles.container}>
-            <div className={styles.ctaInner}>
-              <div className={styles.ctaLeft}>
-                <div className={styles.ctaEyebrow}>Start today</div>
-                <h2 className={styles.ctaTitle}>
-                  Build more.
-                  <br />
-                  Pay less.
-                </h2>
-                <p className={styles.ctaSub}>
+            <div className="cta-banner reveal">
+              <div className="cta-copy">
+                <h2>Build more. Pay less.</h2>
+                <p>
                   Start free with no credit card. Upgrade only when team velocity
                   and workload justify it.
                 </p>
-              </div>
-
-              <div className={styles.ctaRight}>
-                <Link href="/docs" className={styles.ctaPrimary}>
+                <Link className="btn" href="/docs">
                   Start building free
                 </Link>
-                <a href="#plans" className={styles.ctaGhost}>
-                  Compare plans again
-                </a>
-                <p className={styles.ctaTrust}>
-                  Free tier available · No credit card required · Cancel anytime
-                </p>
+              </div>
+              <div className="globe" aria-hidden="true">
+                <span className="globe-dot a" />
+                <span className="globe-dot b" />
+                <span className="globe-dot c" />
+                <span className="globe-dot d" />
               </div>
             </div>
           </div>

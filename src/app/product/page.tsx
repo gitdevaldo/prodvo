@@ -782,32 +782,27 @@ export default function ProductPage() {
         </div>
         </section>
 
-        <section className={styles["cta-final"]}>
-        <div className="container">
-          <div className={styles["cta-inner"]}>
-            <div className={styles["cta-label"]}>Ready to ship?</div>
-            <h2 className={styles["cta-h"]}>
-              Your next product
-              <br />
-              starts right now.
-            </h2>
-            <p className={styles["cta-p"]}>
-              Stop planning your stack. Stop configuring tools. Describe what you
-              want to build and ship it today.
-            </p>
-            <div className={styles["cta-btns"]}>
-              <Link href="/pricing" className={styles["btn-cta-w"]}>
-                Start building →
-              </Link>
-              <Link href="/docs" className={styles["btn-cta-o"]}>
-                Book a demo
-              </Link>
-            </div>
-            <div className={styles["cta-trust-line"]}>
-              No credit card required · Deploy in under 2 minutes · Cancel anytime
+        <section className="section">
+          <div className="container">
+            <div className="cta-banner reveal">
+              <div className="cta-copy">
+                <h2>Your next product starts right now.</h2>
+                <p>
+                  Stop planning your stack. Stop configuring tools. Describe what you
+                  want to build and ship it today.
+                </p>
+                <Link className="btn" href="/pricing">
+                  Start building free
+                </Link>
+              </div>
+              <div className="globe" aria-hidden="true">
+                <span className="globe-dot a" />
+                <span className="globe-dot b" />
+                <span className="globe-dot c" />
+                <span className="globe-dot d" />
+              </div>
             </div>
           </div>
-        </div>
         </section>
       </div>
     </SiteShell>

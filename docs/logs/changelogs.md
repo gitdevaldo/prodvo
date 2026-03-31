@@ -395,3 +395,13 @@ Newest entries first. Every change must add one entry before commit/push.
 **How**: Changed .page a { color: inherit } to only apply to anchors without class attribute
 
 Files: src/app/pricing/pricing.module.css
+
+## 2026-03-31 - CTA sections converted to card style
+
+**Who**: Copilot
+**What**: Changed all page CTA sections from full-width orange background to homepage card style (.cta-banner with globe)
+**Where**: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx
+**Why**: User requested consistent CTA style across all pages matching homepage
+**How**: Replaced full-width CTA sections with .cta-banner card component using global styles, kept each page's copy
+
+Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx

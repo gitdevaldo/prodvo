@@ -1149,32 +1149,24 @@ export default function WorkflowPage() {
           </div>
         </section>
 
-        <section className={styles.ctaSection}>
+        <section className="section">
           <div className={styles.container}>
-            <div className={styles.ctaInner}>
-              <div>
-                <div className={styles.ctaEyebrow}>Start your loop</div>
-                <h2 className={styles.ctaTitle}>
-                  Prompt one.
-                  <br />
-                  Ship everything.
-                </h2>
-                <p className={styles.ctaSub}>
+            <div className="cta-banner reveal">
+              <div className="cta-copy">
+                <h2>Prompt one. Ship everything.</h2>
+                <p>
                   Start with one request, iterate in context, and ship with full
                   visibility across every phase.
                 </p>
-              </div>
-
-              <div className={styles.ctaActions}>
-                <Link href="/pricing" className={styles.ctaPrimary}>
+                <Link className="btn" href="/pricing">
                   Start building free
                 </Link>
-                <Link href="/use-cases" className={styles.ctaSecondary}>
-                  See all use cases
-                </Link>
-                <p className={styles.ctaTrust}>
-                  Free tier available · No credit card required
-                </p>
+              </div>
+              <div className="globe" aria-hidden="true">
+                <span className="globe-dot a" />
+                <span className="globe-dot b" />
+                <span className="globe-dot c" />
+                <span className="globe-dot d" />
               </div>
             </div>
           </div>
