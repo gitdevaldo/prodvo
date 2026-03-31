@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
       ...envAllowedOrigins,
     ])
   ),
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.logo.dev",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

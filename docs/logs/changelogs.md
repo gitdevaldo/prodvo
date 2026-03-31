@@ -4,6 +4,22 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T12:40:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Replaced text-based company logos with actual logos via logo.dev API
+- **When:** 2026-03-31T12:40:00Z
+- **Where:** `src/components/prodvo-landing.tsx`, `src/app/globals.css`, `next.config.ts`, `docs/logs/changelogs.md`
+- **Why:** User requested real company logos instead of text-based names in "Trusted by 3,200+" section
+- **How:** Updated COMPANY_LOGOS array with real small-to-medium company domains (Linear, Raycast, Supabase, Resend, Clerk, Inngest, Railway, Render, Planetscale, Neon, Turso, Fly.io); integrated logo.dev API with publishable key; used Next.js Image component with unoptimized prop for external CDN; added img.logo.dev to remotePatterns in next.config.ts; updated CSS for logo styling (grayscale filter, hover effect); validated with `npm run build`
+- **File path(s) changed:**
+  - `src/components/prodvo-landing.tsx`
+  - `src/app/globals.css`
+  - `next.config.ts`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T12:30:00Z
 
 - **Who:** Copilot CLI agent

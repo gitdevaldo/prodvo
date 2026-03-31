@@ -1,22 +1,27 @@
 "use client";
 
+import Image from "next/image";
 import { SiteShell } from "@/components/site-shell";
 import { useEffect, useMemo, useState } from "react";
 
+// Small to medium companies with their domains for logo.dev API
 const COMPANY_LOGOS = [
-  "Nordpath",
-  "Helio Labs",
-  "Stackline",
-  "Brightforge",
-  "Orbitly",
-  "Launchgrid",
-  "DeltaOps",
-  "Twinleaf",
-  "Acorn AI",
-  "Flowmint",
-  "PioneerHQ",
-  "Vectorbase",
+  { name: "Linear", domain: "linear.app" },
+  { name: "Raycast", domain: "raycast.com" },
+  { name: "Supabase", domain: "supabase.com" },
+  { name: "Resend", domain: "resend.com" },
+  { name: "Clerk", domain: "clerk.com" },
+  { name: "Inngest", domain: "inngest.com" },
+  { name: "Railway", domain: "railway.app" },
+  { name: "Render", domain: "render.com" },
+  { name: "Planetscale", domain: "planetscale.com" },
+  { name: "Neon", domain: "neon.tech" },
+  { name: "Turso", domain: "turso.tech" },
+  { name: "Fly.io", domain: "fly.io" },
 ];
+
+// Logo.dev API token (publishable key is safe for client-side)
+const LOGO_DEV_TOKEN = "pk_EKCWZiLBSsesSje0RloK4A";
 
 const PLATFORM_LOOP = [
   {
@@ -402,9 +407,16 @@ export function ProdvoLanding() {
           </p>
           <div className="marquee-window">
             <div className="marquee-track">
-              {marqueeItems.map((name, index) => (
-                <span className="proof-item" key={`${name}-${index}`}>
-                  {name}
+              {marqueeItems.map((company, index) => (
+                <span className="proof-item" key={`${company.domain}-${index}`}>
+                  <Image
+                    src={`https://img.logo.dev/${company.domain}?token=${LOGO_DEV_TOKEN}`}
+                    alt={`${company.name} logo`}
+                    width={120}
+                    height={32}
+                    className="proof-logo"
+                    unoptimized
+                  />
                 </span>
               ))}
             </div>
