@@ -31,7 +31,7 @@ export function SiteShell({ children }: SiteShellProps) {
   // Handle scroll state and logo collapse/expand
   useEffect(() => {
     const onScroll = () => {
-      const isScrolled = window.scrollY > 10;
+      const isScrolled = window.scrollY > 40;
       setScrolled(isScrolled);
       
       // Collapse/expand header logo based on scroll
@@ -43,25 +43,64 @@ export function SiteShell({ children }: SiteShellProps) {
         }
       }
     };
-    onScroll();
+    
+    // Initial call after a brief delay to allow mount animation
+    const timer = setTimeout(onScroll, 150);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   // Expand logos on mount with animation
   useEffect(() => {
-    const expandWithAnimation = (el: HTMLElement | null, delay: number) => {
-      if (!el) return;
-      // Start collapsed
-      el.classList.remove("expanded");
-      // Expand after delay
-      setTimeout(() => {
-        el.classList.add("expanded");
-      }, delay);
-    };
+    // Header logo - start with morph animation (collapse then expand)
+    if (headerLogoRef.current) {
+      // Ensure no transition initially for instant collapse
+      const wordWrap = headerLogoRef.current.querySelector(".logo-word-wrap") as HTMLElement;
+      const word = headerLogoRef.current.querySelector(".logo-word") as HTMLElement;
+      
+      if (wordWrap && word) {
+        // Disable transitions
+        wordWrap.style.transition = "none";
+        word.style.transition = "none";
+        
+        // Force collapsed state
+        headerLogoRef.current.classList.remove("expanded");
+        
+        // Re-enable transitions after next frame and expand
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            wordWrap.style.transition = "";
+            word.style.transition = "";
+            headerLogoRef.current?.classList.add("expanded");
+          });
+        });
+      }
+    }
     
-    expandWithAnimation(headerLogoRef.current, 100);
-    expandWithAnimation(footerLogoRef.current, 200);
+    // Footer logo - same animation with slight delay
+    if (footerLogoRef.current) {
+      const wordWrap = footerLogoRef.current.querySelector(".logo-word-wrap") as HTMLElement;
+      const word = footerLogoRef.current.querySelector(".logo-word") as HTMLElement;
+      
+      if (wordWrap && word) {
+        wordWrap.style.transition = "none";
+        word.style.transition = "none";
+        footerLogoRef.current.classList.remove("expanded");
+        
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              wordWrap.style.transition = "";
+              word.style.transition = "";
+              footerLogoRef.current?.classList.add("expanded");
+            });
+          });
+        }, 100);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -147,7 +186,7 @@ export function SiteShell({ children }: SiteShellProps) {
           <div className="footer-grid">
             <div className="footer-brand">
               <Link className="brand" href="/">
-                <div className="prodvo-logo sz-xs expanded" ref={footerLogoRef}>
+                <div className="prodvo-logo sz-xs" ref={footerLogoRef}>
                   <span className="logo-prefix">P/</span>
                   <div className="logo-word-wrap"><span className="logo-word">Prodvo</span></div>
                   <span className="logo-dot">.</span>

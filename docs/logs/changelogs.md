@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T07:35:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed logo animation to properly play morph effect on page load
+- **When:** 2026-03-31T07:35:00Z
+- **Where:** `src/components/site-shell.tsx`, `docs/logs/changelogs.md`
+- **Why:** User reported logo was showing static instead of animated (morph from P/. to P/ Prodvo.)
+- **How:** Implemented proper morph animation sequence per brand guideline: disable transitions, force collapsed state, re-enable transitions after frame, then expand; header logo morphs on load and collapses/expands on scroll (>40px threshold); footer logo morphs with 100ms delay; removed static `expanded` class from footer JSX; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T07:10:00Z
 
 - **Who:** Copilot CLI agent
