@@ -591,3 +591,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `src/app/globals.css`
   - `docs/logs/changelogs.md`
+
+## 2026-03-31T15:41:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Added mobile-responsive hover effects for logo marquee
+- **When:** 2026-03-31T15:41:00Z
+- **Where:** `src/app/globals.css`
+- **Why:** Ensuring hover effects work on mobile breakpoint too
+- **How:** Added mobile overrides for .proof-name bottom position, font-size, and .proof-item:hover .proof-logo transform
+- **File path(s) changed:**
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
