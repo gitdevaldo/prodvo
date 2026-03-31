@@ -405,3 +405,13 @@ Files: src/app/pricing/pricing.module.css
 **How**: Replaced full-width CTA sections with .cta-banner card component using global styles, kept each page's copy
 
 Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx
+
+## 2026-03-31 - Fix CTA card rendering
+
+**Who**: Copilot
+**What**: Moved CTA sections outside .page wrapper so global styles apply correctly
+**Where**: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx
+**Why**: CTA was blank/broken because CSS module .page reset rules were overriding global .cta-banner styles
+**How**: Closed .page div before CTA section, used global container class instead of module container
+
+Files: src/app/product/page.tsx, src/app/use-cases/page.tsx, src/app/workflow/page.tsx, src/app/pricing/page.tsx

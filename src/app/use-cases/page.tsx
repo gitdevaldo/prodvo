@@ -914,30 +914,30 @@ export default function UseCasesPage() {
             </div>
           </div>
         </section>
+      </div>
 
-        <section className="section">
-          <div className="container">
-            <div className="cta-banner reveal">
-              <div className="cta-copy">
-                <h2>Whoever you are, Prodvo ships it.</h2>
-                <p>
-                  No setup. No configuration. No waiting on infrastructure. Describe
-                  your product and start building in the next 2 minutes.
-                </p>
-                <Link className="btn" href="/pricing">
-                  Start building free
-                </Link>
-              </div>
-              <div className="globe" aria-hidden="true">
-                <span className="globe-dot a" />
-                <span className="globe-dot b" />
-                <span className="globe-dot c" />
-                <span className="globe-dot d" />
-              </div>
+      <section className="section">
+        <div className="container">
+          <div className="cta-banner reveal">
+            <div className="cta-copy">
+              <h2>Whoever you are, Prodvo ships it.</h2>
+              <p>
+                No setup. No configuration. No waiting on infrastructure. Describe
+                your product and start building in the next 2 minutes.
+              </p>
+              <Link className="btn" href="/pricing">
+                Start building free
+              </Link>
+            </div>
+            <div className="globe" aria-hidden="true">
+              <span className="globe-dot a" />
+              <span className="globe-dot b" />
+              <span className="globe-dot c" />
+              <span className="globe-dot d" />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </SiteShell>
   );
 }

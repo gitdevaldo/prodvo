@@ -1148,30 +1148,30 @@ export default function WorkflowPage() {
             </div>
           </div>
         </section>
+      </div>
 
-        <section className="section">
-          <div className={styles.container}>
-            <div className="cta-banner reveal">
-              <div className="cta-copy">
-                <h2>Prompt one. Ship everything.</h2>
-                <p>
-                  Start with one request, iterate in context, and ship with full
-                  visibility across every phase.
-                </p>
-                <Link className="btn" href="/pricing">
-                  Start building free
-                </Link>
-              </div>
-              <div className="globe" aria-hidden="true">
-                <span className="globe-dot a" />
-                <span className="globe-dot b" />
-                <span className="globe-dot c" />
-                <span className="globe-dot d" />
-              </div>
+      <section className="section">
+        <div className="container">
+          <div className="cta-banner reveal">
+            <div className="cta-copy">
+              <h2>Prompt one. Ship everything.</h2>
+              <p>
+                Start with one request, iterate in context, and ship with full
+                visibility across every phase.
+              </p>
+              <Link className="btn" href="/pricing">
+                Start building free
+              </Link>
+            </div>
+            <div className="globe" aria-hidden="true">
+              <span className="globe-dot a" />
+              <span className="globe-dot b" />
+              <span className="globe-dot c" />
+              <span className="globe-dot d" />
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </SiteShell>
   );
 }
