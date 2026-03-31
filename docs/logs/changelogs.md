@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T04:50:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed FAQ category filtering bug and expanded FAQ content
+- **When:** 2026-03-31T04:50:00Z
+- **Where:** `src/app/faq/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User reported FAQ items disappearing when selecting categories (only showed on fresh reload with "all"); also requested more FAQ questions
+- **How:** Fixed useEffect to re-run IntersectionObserver when `activeCategory` or `searchQuery` changes (was only running once on mount); added ref to faqList container for scoped element selection; expanded FAQ from 16 to 42 questions covering all categories comprehensively; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/faq/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-30T23:15:00Z
 
 - **Who:** Copilot CLI agent
