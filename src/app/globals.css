@@ -565,6 +565,7 @@ a {
   justify-content: center;
   height: 94px;
   position: relative;
+  cursor: pointer;
 }
 
 .proof-logo {
@@ -573,34 +574,30 @@ a {
   max-width: 100px;
   object-fit: contain;
   opacity: 0.6;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .proof-name {
   position: absolute;
-  bottom: 18px;
+  bottom: 22px;
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%);
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--gray-500);
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.25s ease;
   white-space: nowrap;
+  pointer-events: none;
 }
 
 .proof-item:hover .proof-logo {
   opacity: 1;
-  transform: translateY(-8px);
+  transform: translateY(-10px);
 }
 
 .proof-item:hover .proof-name {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-.marquee-track:has(.proof-item:hover) {
-  animation-play-state: paused;
 }
 
 .social-proof::before,

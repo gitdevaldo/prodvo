@@ -603,3 +603,19 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `src/app/globals.css`
   - `docs/logs/changelogs.md`
+
+## 2026-04-01T04:53:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed logo marquee hover - pause + logo moves up + name appears
+- **When:** 2026-04-01T04:53:00Z
+- **Where:** `src/components/prodvo-landing.tsx`, `src/app/globals.css`
+- **Why:** CSS :has() selector wasn't working; hover effects not triggering
+- **How:** 
+  - Added onMouseEnter/onMouseLeave handlers to marquee-track to pause/resume animation via JS
+  - Simplified hover CSS: logo translateY(-10px), name fades in
+  - Removed non-working :has() selector
+- **File path(s) changed:**
+  - `src/components/prodvo-landing.tsx`
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`

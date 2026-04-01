@@ -406,7 +406,11 @@ export function ProdvoLanding() {
             builders and product teams
           </p>
           <div className="marquee-window">
-            <div className="marquee-track">
+            <div 
+              className="marquee-track"
+              onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+              onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+            >
               {marqueeItems.map((company, index) => (
                 <span className="proof-item" key={`${company.domain}-${index}`} data-name={company.name}>
                   <Image
