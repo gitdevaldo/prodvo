@@ -1152,7 +1152,7 @@ export default function WorkflowPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-banner reveal">
+          <div className="cta-banner">
             <div className="cta-copy">
               <h2>Prompt one. Ship everything.</h2>
               <p>

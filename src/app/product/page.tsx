@@ -785,7 +785,7 @@ export default function ProductPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-banner reveal">
+          <div className="cta-banner">
             <div className="cta-copy">
               <h2>Your next product starts right now.</h2>
               <p>

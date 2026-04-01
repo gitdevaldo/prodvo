@@ -918,7 +918,7 @@ export default function UseCasesPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-banner reveal">
+          <div className="cta-banner">
             <div className="cta-copy">
               <h2>Whoever you are, Prodvo ships it.</h2>
               <p>

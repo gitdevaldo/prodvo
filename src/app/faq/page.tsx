@@ -413,7 +413,7 @@ export default function FaqPage() {
       ═══════════════════════════════════════════════════════════════════════ */}
       <section className="section">
         <div className="container">
-          <div className="cta-banner reveal">
+          <div className="cta-banner">
             <div className="cta-copy">
               <h2>Ready to try Prodvo?</h2>
               <p>

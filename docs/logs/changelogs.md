@@ -644,3 +644,20 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - `src/app/faq/page.tsx`
   - `src/app/docs/page.tsx`
   - `docs/logs/changelogs.md`
+
+## 2026-04-01T07:18:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed blank CTA sections on all pages
+- **When:** 2026-04-01T07:18:00Z
+- **Where:** `src/app/faq/page.tsx`, `src/app/docs/page.tsx`, `src/app/product/page.tsx`, `src/app/use-cases/page.tsx`, `src/app/workflow/page.tsx`, `src/app/pricing/page.tsx`
+- **Why:** CTAs were blank white because `.reveal` class sets opacity: 0 and requires IntersectionObserver JS to add `.is-visible` - subpages don't have this JS
+- **How:** Removed `reveal` class from all `cta-banner` elements on subpages
+- **File path(s) changed:**
+  - `src/app/faq/page.tsx`
+  - `src/app/docs/page.tsx`
+  - `src/app/product/page.tsx`
+  - `src/app/use-cases/page.tsx`
+  - `src/app/workflow/page.tsx`
+  - `src/app/pricing/page.tsx`
+  - `docs/logs/changelogs.md`

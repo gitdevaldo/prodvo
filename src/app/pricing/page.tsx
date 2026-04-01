@@ -669,7 +669,7 @@ export default function PricingPage() {
 
       <section className="section">
         <div className="container">
-          <div className="cta-banner reveal">
+          <div className="cta-banner">
             <div className="cta-copy">
               <h2>Build more. Pay less.</h2>
               <p>
