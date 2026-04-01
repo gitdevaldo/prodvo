@@ -542,8 +542,8 @@ export default function PricingPage() {
                         {row.name}
                         <span className={styles.capDetail}>{row.detail}</span>
                       </div>
-                      {row.cells.map((cell) => (
-                        <div key={`${row.name}-${cell.value}`} className={styles.capCell}>
+                      {row.cells.map((cell, cellIndex) => (
+                        <div key={`${row.name}-${cellIndex}`} className={styles.capCell}>
                           <div className={styles.capBarTrack}>
                             <div
                               className={getFillClass(cell.tone)}

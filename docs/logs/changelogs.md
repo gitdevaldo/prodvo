@@ -661,3 +661,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - `src/app/workflow/page.tsx`
   - `src/app/pricing/page.tsx`
   - `docs/logs/changelogs.md`
+
+## 2026-04-01T07:46:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed duplicate React key warning in pricing page
+- **When:** 2026-04-01T07:46:00Z
+- **Where:** `src/app/pricing/page.tsx`
+- **Why:** Console error about duplicate keys when multiple cells have same value (e.g., "Unlimited")
+- **How:** Changed key from `${row.name}-${cell.value}` to `${row.name}-${cellIndex}` to ensure uniqueness
+- **File path(s) changed:**
+  - `src/app/pricing/page.tsx`
+  - `docs/logs/changelogs.md`
