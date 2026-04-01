@@ -411,15 +411,24 @@ export default function FaqPage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           CTA
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>Ready to try Prodvo?</h2>
-          <p className={styles.ctaBody}>
-            Start your free trial and see the answers in action.
-          </p>
-          <div className={styles.ctaActions}>
-            <Link className="btn btn-primary btn-lg" href="/pricing">Start free trial</Link>
-            <Link className="btn btn-secondary" href="/docs">Talk to us</Link>
+      <section className="section">
+        <div className="container">
+          <div className="cta-banner reveal">
+            <div className="cta-copy">
+              <h2>Ready to try Prodvo?</h2>
+              <p>
+                Start your free trial and see the answers in action.
+              </p>
+              <Link className="btn" href="/pricing">
+                Start free trial
+              </Link>
+            </div>
+            <div className="globe" aria-hidden="true">
+              <span className="globe-dot a" />
+              <span className="globe-dot b" />
+              <span className="globe-dot c" />
+              <span className="globe-dot d" />
+            </div>
           </div>
         </div>
       </section>

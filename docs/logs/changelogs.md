@@ -631,3 +631,16 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `src/components/site-shell.tsx`
   - `docs/logs/changelogs.md`
+
+## 2026-04-01T05:59:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Updated FAQ and Docs CTA sections to use card style like homepage
+- **When:** 2026-04-01T05:59:00Z
+- **Where:** `src/app/faq/page.tsx`, `src/app/docs/page.tsx`
+- **Why:** User requested all CTAs use the card style (cta-banner) like homepage instead of full-width orange
+- **How:** Replaced CSS module ctaSection with global .cta-banner card style including globe decoration
+- **File path(s) changed:**
+  - `src/app/faq/page.tsx`
+  - `src/app/docs/page.tsx`
+  - `docs/logs/changelogs.md`
