@@ -14,7 +14,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   { href: "/workflow", label: "Workflow" },
   { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
-  { href: "/docs", label: "Docs" },
 ];
 
 type SiteShellProps = {

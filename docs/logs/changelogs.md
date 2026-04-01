@@ -619,3 +619,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - `src/components/prodvo-landing.tsx`
   - `src/app/globals.css`
   - `docs/logs/changelogs.md`
+
+## 2026-04-01T05:17:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Removed Docs link from header navigation
+- **When:** 2026-04-01T05:17:00Z
+- **Where:** `src/components/site-shell.tsx`
+- **Why:** User requested removal of docs from header
+- **How:** Removed `{ href: "/docs", label: "Docs" }` from NAV_LINKS array
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `docs/logs/changelogs.md`
