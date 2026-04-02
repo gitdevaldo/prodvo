@@ -81,6 +81,12 @@ const SAFETY_FEATURES = [
     prodvoWins: true,
   },
   {
+    title: "Scoped execution",
+    prodvo: "Limit agent runs to specific files or tasks",
+    lovable: "Full project regeneration on changes",
+    prodvoWins: true,
+  },
+  {
     title: "Compliance certs",
     prodvo: "Audit trails + governance controls",
     lovable: "SOC 2 Type II, ISO 27001, GDPR",
