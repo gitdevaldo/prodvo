@@ -1,0 +1,510 @@
+.hero {
+  padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.heroInner {
+  width: min(800px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fire-orange-deep);
+  background: var(--fire-orange-soft);
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.heroTitle {
+  font-family: var(--font-brand);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.heroSub {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 620px;
+  margin: 0 auto 2rem;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Shield visual */
+.shieldVisual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  height: 180px;
+}
+
+.shield {
+  position: relative;
+  z-index: 2;
+  width: 100px;
+  height: 120px;
+  background: var(--fire-orange);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shieldInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: #fff;
+}
+
+.shieldIcon {
+  font-size: 2rem;
+}
+
+.shieldText {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.shieldRings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border: 2px solid var(--fire-orange-soft);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ringPulse 3s ease-out infinite;
+}
+
+@keyframes ringPulse {
+  0% { width: 100px; height: 100px; opacity: 0.6; }
+  100% { width: 220px; height: 220px; opacity: 0; }
+}
+
+/* Section styles */
+.section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.container {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fire-orange-deep);
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-brand);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.sectionSub {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Workflow stages */
+.stagesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.stageCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.stageNumber {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  width: 28px;
+  height: 28px;
+  background: var(--fire-orange);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stageTitle {
+  font-family: var(--font-brand);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.stageComparison {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stageItem {
+  background: var(--gray-50);
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.stageBrand {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+  margin-bottom: 0.35rem;
+}
+
+.stageItem p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* Safety comparison */
+.safetyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.safetyCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.safetyCard.prodvoWins {
+  border-color: var(--fire-orange-soft);
+  background: #fffcfa;
+}
+
+.safetyCard.lovableWins {
+  border-color: var(--gray-300);
+}
+
+.safetyCategory {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.safetyComparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.safetyItem {
+  background: var(--gray-50);
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.safetyBrand {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+  margin-bottom: 0.35rem;
+}
+
+.safetyItem p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+.winnerBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fire-orange-deep);
+  background: var(--fire-orange-soft);
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+}
+
+.winnerBadgeLovable {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-2);
+  background: var(--gray-200);
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+}
+
+/* Team features */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.teamCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+
+.teamHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.teamFeature {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.teamChecks {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.checkYes {
+  color: var(--fire-orange);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.checkNo {
+  color: var(--ink-3);
+  font-size: 1rem;
+}
+
+.teamDesc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 0.75rem;
+}
+
+.teamLabels {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+}
+
+/* Enterprise matrix */
+.matrixWrap {
+  overflow-x: auto;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.matrix th,
+.matrix td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.matrix th {
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--gray-50);
+}
+
+.matrix th:first-child {
+  border-radius: 12px 0 0 0;
+}
+
+.matrix th:last-child {
+  border-radius: 0 12px 0 0;
+}
+
+.matrix td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.matrix td {
+  color: var(--ink-2);
+}
+
+/* Bottom line */
+.bottomLine {
+  background: var(--gray-50);
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.bottomTitle {
+  font-family: var(--font-brand);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.bottomColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.bottomCol h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.bottomCol ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottomCol li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin-bottom: 0.5rem;
+}
+
+.bottomCol li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--fire-orange);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stagesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .safetyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottomColumns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .stagesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .safetyComparison {
+    grid-template-columns: 1fr;
+  }
+
+  .shieldVisual {
+    height: 150px;
+  }
+
+  .shield {
+    width: 80px;
+    height: 96px;
+  }
+
+  .shieldIcon {
+    font-size: 1.5rem;
+  }
+}

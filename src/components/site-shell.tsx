@@ -212,6 +212,15 @@ export function SiteShell({ children }: SiteShellProps) {
                 <li>
                   <Link href="/pricing">Pricing</Link>
                 </li>
+                <li>
+                  <Link href="/compare/replit">Prodvo vs Replit</Link>
+                </li>
+                <li>
+                  <Link href="/compare/lovable">Prodvo vs Lovable</Link>
+                </li>
+                <li>
+                  <Link href="/compare/bolt">Prodvo vs Bolt</Link>
+                </li>
               </ul>
             </div>
 
