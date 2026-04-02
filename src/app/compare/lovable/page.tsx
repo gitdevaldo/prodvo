@@ -4,33 +4,89 @@ import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./lovable.module.css";
 
-const SAFETY_COMPARISON = [
+const WORKFLOW_TIMELINE = [
   {
-    category: "Rollback capability",
+    step: "01",
+    title: "Plan",
+    prodvo: {
+      headline: "Structured task breakdown",
+      detail: "Convert requirements into ordered tasks with effort estimates and dependencies",
+    },
+    lovable: {
+      headline: "Jump to prompts",
+      detail: "No planning phase — start prompting immediately",
+    },
+  },
+  {
+    step: "02",
+    title: "Build",
+    prodvo: {
+      headline: "Parallel agent execution",
+      detail: "UI, backend, tests, and integrations run simultaneously with live visibility",
+    },
+    lovable: {
+      headline: "Sequential generation",
+      detail: "Template library with one-at-a-time generation",
+    },
+  },
+  {
+    step: "03",
+    title: "Review",
+    prodvo: {
+      headline: "Checkpoint gates",
+      detail: "Clear diffs, team approvals, and rollback-ready states before deployment",
+    },
+    lovable: {
+      headline: "GitHub PR workflow",
+      detail: "Bring your own review process via GitHub sync",
+    },
+  },
+  {
+    step: "04",
+    title: "Ship",
+    prodvo: {
+      headline: "One-click deploy + rollback",
+      detail: "Deploy with automatic snapshots and audit trail for instant recovery",
+    },
+    lovable: {
+      headline: "Deploy only",
+      detail: "Custom domains supported, but no rollback safety net",
+    },
+  },
+];
+
+const SAFETY_FEATURES = [
+  {
+    icon: "↩",
+    title: "Rollback capability",
     prodvo: "One-click rollback to any checkpoint snapshot",
     lovable: "No built-in rollback — rely on Git history",
     prodvoWins: true,
   },
   {
-    category: "Approval gates",
+    icon: "⚡",
+    title: "Approval gates",
     prodvo: "Gate risky changes behind team approval workflows",
     lovable: "No approval workflow — direct deploy",
     prodvoWins: true,
   },
   {
-    category: "Audit trails",
+    icon: "📋",
+    title: "Audit trails",
     prodvo: "Full execution history with timestamps and diffs",
     lovable: "Standard Git commit history only",
     prodvoWins: true,
   },
   {
-    category: "Checkpoint snapshots",
+    icon: "📸",
+    title: "Checkpoint snapshots",
     prodvo: "Automatic checkpoints before major changes",
     lovable: "Manual Git commits required",
     prodvoWins: true,
   },
   {
-    category: "Compliance certifications",
+    icon: "🛡",
+    title: "Compliance certs",
     prodvo: "Audit trails + governance controls",
     lovable: "SOC 2 Type II, ISO 27001, GDPR",
     prodvoWins: false,
@@ -40,31 +96,31 @@ const SAFETY_COMPARISON = [
 const TEAM_FEATURES = [
   {
     feature: "Planning workspace",
-    description: "Convert requirements into ordered task plans with effort estimates",
+    description: "Convert requirements into ordered task plans",
     prodvo: true,
     lovable: false,
   },
   {
     feature: "Parallel execution",
-    description: "Run frontend, backend, QA, and integrations simultaneously",
+    description: "Run frontend, backend, QA simultaneously",
     prodvo: true,
     lovable: false,
   },
   {
     feature: "Live progress tracking",
-    description: "See active runs, blockers, and completion confidence in real-time",
+    description: "See blockers and completion confidence in real-time",
     prodvo: true,
     lovable: false,
   },
   {
-    feature: "Single coordination timeline",
-    description: "One view for PM, eng, and QA — no status chasing",
+    feature: "Single coordination view",
+    description: "PM, eng, and QA in one timeline",
     prodvo: true,
     lovable: false,
   },
   {
     feature: "GitHub sync",
-    description: "Push code to your own repository",
+    description: "Push code to your repository",
     prodvo: true,
     lovable: true,
   },
@@ -74,50 +130,15 @@ const TEAM_FEATURES = [
     prodvo: true,
     lovable: true,
   },
-  {
-    feature: "SSO integration",
-    description: "Enterprise identity management",
-    prodvo: true,
-    lovable: true,
-  },
 ];
 
-const ENTERPRISE_MATRIX = [
-  { feature: "SOC 2 Type II certified", prodvo: "Via audit trails", lovable: "Yes" },
-  { feature: "ISO 27001", prodvo: "Roadmap", lovable: "Yes" },
-  { feature: "GDPR compliance", prodvo: "Yes", lovable: "Yes" },
-  { feature: "SSO / SAML", prodvo: "Scale tier", lovable: "Business tier" },
-  { feature: "SCIM provisioning", prodvo: "Roadmap", lovable: "Enterprise" },
-  { feature: "Audit logs", prodvo: "All tiers", lovable: "Enterprise" },
-  { feature: "Role-based access", prodvo: "Scale tier", lovable: "Business tier" },
-  { feature: "Custom connectors", prodvo: "Scale tier", lovable: "Enterprise" },
-];
-
-const WORKFLOW_STAGES = [
-  {
-    stage: "1",
-    title: "Plan",
-    prodvo: "Structured task plans from plain language with effort estimates and dependencies",
-    lovable: "Jump to prompts — no planning phase",
-  },
-  {
-    stage: "2",
-    title: "Build",
-    prodvo: "Parallel agents for UI, backend, tests, and integrations with live visibility",
-    lovable: "Sequential generation with template library",
-  },
-  {
-    stage: "3",
-    title: "Review",
-    prodvo: "Checkpoint gates, clear diffs, team approvals before deployment",
-    lovable: "GitHub PR workflow (bring your own review process)",
-  },
-  {
-    stage: "4",
-    title: "Ship",
-    prodvo: "One-click deploy with rollback-ready snapshots and audit trail",
-    lovable: "Deploy with custom domains (no rollback safety net)",
-  },
+const ENTERPRISE_FEATURES = [
+  { feature: "SOC 2 Type II", prodvo: "Via audit trails", lovable: "Certified", lovableWins: true },
+  { feature: "ISO 27001", prodvo: "Roadmap", lovable: "Certified", lovableWins: true },
+  { feature: "GDPR compliance", prodvo: "Yes", lovable: "Yes", lovableWins: false },
+  { feature: "SSO / SAML", prodvo: "Scale tier", lovable: "Business tier", lovableWins: false },
+  { feature: "Audit logs", prodvo: "All tiers", lovable: "Enterprise only", lovableWins: false },
+  { feature: "Role-based access", prodvo: "Scale tier", lovable: "Business tier", lovableWins: false },
 ];
 
 export default function CompareLovablePage() {
@@ -127,69 +148,79 @@ export default function CompareLovablePage() {
           HERO
       ═══════════════════════════════════════════════════════════════════════ */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
+        <div className={styles.heroContent}>
           <span className={styles.badge}>Comparison</span>
           <h1 className={styles.heroTitle}>
-            Prodvo vs Lovable
+            Prodvo <span className={styles.vs}>vs</span> Lovable
           </h1>
           <p className={styles.heroSub}>
-            Both claim production-grade output. The difference is what "production-grade" 
-            actually means — planning workflows, rollback safety, and the team coordination 
-            that keeps complex projects on track.
+            Both promise production-ready output. The difference is what happens 
+            when something goes wrong — and how you prevent it in the first place.
           </p>
           <div className={styles.heroCtas}>
             <Link href="/pricing" className="btn btn-primary btn-lg">
               Try Prodvo free
             </Link>
-            <Link href="#safety" className="btn btn-secondary">
-              See safety features
+            <Link href="#workflow" className="btn btn-secondary">
+              See the difference
             </Link>
           </div>
         </div>
 
-        {/* Shield visual */}
-        <div className={styles.shieldVisual}>
-          <div className={styles.shield}>
-            <div className={styles.shieldInner}>
-              <span className={styles.shieldIcon}>⛨</span>
-              <span className={styles.shieldText}>Rollback-ready</span>
+        {/* Visual element */}
+        <div className={styles.heroVisual}>
+          <div className={styles.visualCard}>
+            <div className={styles.visualHeader}>
+              <span className={styles.visualDot} />
+              <span className={styles.visualDot} />
+              <span className={styles.visualDot} />
             </div>
-          </div>
-          <div className={styles.shieldRings}>
-            <span className={styles.ring} style={{ animationDelay: "0s" }} />
-            <span className={styles.ring} style={{ animationDelay: "0.5s" }} />
-            <span className={styles.ring} style={{ animationDelay: "1s" }} />
+            <div className={styles.visualContent}>
+              <div className={styles.visualLine} style={{ width: "80%" }} />
+              <div className={styles.visualLine} style={{ width: "65%" }} />
+              <div className={styles.visualCheckpoint}>
+                <span className={styles.checkpointIcon}>✓</span>
+                <span>Checkpoint saved</span>
+              </div>
+              <div className={styles.visualLine} style={{ width: "45%" }} />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          WORKFLOW STAGES
+          WORKFLOW TIMELINE
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.section}>
+      <section className={styles.section} id="workflow">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Workflow</span>
-            <h2 className={styles.sectionTitle}>From idea to production — step by step</h2>
+            <span className={styles.label}>Workflow</span>
+            <h2 className={styles.sectionTitle}>From idea to production</h2>
             <p className={styles.sectionSub}>
-              Lovable generates apps. Prodvo manages the entire journey from planning 
-              through safe deployment.
+              Lovable generates apps. Prodvo manages the journey from planning through safe deployment.
             </p>
           </div>
 
-          <div className={styles.stagesGrid}>
-            {WORKFLOW_STAGES.map((item) => (
-              <div key={item.stage} className={styles.stageCard}>
-                <div className={styles.stageNumber}>{item.stage}</div>
-                <h3 className={styles.stageTitle}>{item.title}</h3>
-                <div className={styles.stageComparison}>
-                  <div className={styles.stageItem}>
-                    <span className={styles.stageBrand}>Prodvo</span>
-                    <p>{item.prodvo}</p>
-                  </div>
-                  <div className={styles.stageItem}>
-                    <span className={styles.stageBrand}>Lovable</span>
-                    <p>{item.lovable}</p>
+          <div className={styles.timeline}>
+            {WORKFLOW_TIMELINE.map((item, idx) => (
+              <div key={item.step} className={styles.timelineItem}>
+                <div className={styles.timelineMarker}>
+                  <span className={styles.timelineStep}>{item.step}</span>
+                  {idx < WORKFLOW_TIMELINE.length - 1 && <div className={styles.timelineLine} />}
+                </div>
+                <div className={styles.timelineContent}>
+                  <h3 className={styles.timelineTitle}>{item.title}</h3>
+                  <div className={styles.timelineCompare}>
+                    <div className={styles.timelineBox}>
+                      <span className={styles.timelineBrand}>Prodvo</span>
+                      <strong>{item.prodvo.headline}</strong>
+                      <p>{item.prodvo.detail}</p>
+                    </div>
+                    <div className={styles.timelineBox}>
+                      <span className={styles.timelineBrand}>Lovable</span>
+                      <strong>{item.lovable.headline}</strong>
+                      <p>{item.lovable.detail}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -201,36 +232,39 @@ export default function CompareLovablePage() {
       {/* ═══════════════════════════════════════════════════════════════════════
           SAFETY FEATURES
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.section} id="safety">
+      <section className={styles.sectionAlt} id="safety">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Safety</span>
+            <span className={styles.label}>Safety</span>
             <h2 className={styles.sectionTitle}>Production-grade means rollback-ready</h2>
             <p className={styles.sectionSub}>
-              Lovable emphasizes compliance certifications. Prodvo adds the operational 
-              safety features that prevent bad deploys from becoming incidents.
+              Lovable emphasizes certifications. Prodvo adds the operational safety 
+              that prevents bad deploys from becoming incidents.
             </p>
           </div>
 
           <div className={styles.safetyGrid}>
-            {SAFETY_COMPARISON.map((item) => (
+            {SAFETY_FEATURES.map((item) => (
               <div 
-                key={item.category} 
-                className={`${styles.safetyCard} ${item.prodvoWins ? styles.prodvoWins : styles.lovableWins}`}
+                key={item.title} 
+                className={`${styles.safetyCard} ${item.prodvoWins ? styles.prodvoWins : ""}`}
               >
-                <h3 className={styles.safetyCategory}>{item.category}</h3>
-                <div className={styles.safetyComparison}>
-                  <div className={styles.safetyItem}>
-                    <span className={styles.safetyBrand}>Prodvo</span>
-                    <p>{item.prodvo}</p>
+                <div className={styles.safetyHeader}>
+                  <span className={styles.safetyIcon}>{item.icon}</span>
+                  <h3>{item.title}</h3>
+                  {item.prodvoWins && <span className={styles.winTag}>Prodvo</span>}
+                  {!item.prodvoWins && <span className={styles.winTagAlt}>Lovable</span>}
+                </div>
+                <div className={styles.safetyBody}>
+                  <div className={styles.safetyRow}>
+                    <span className={styles.rowLabel}>Prodvo</span>
+                    <span>{item.prodvo}</span>
                   </div>
-                  <div className={styles.safetyItem}>
-                    <span className={styles.safetyBrand}>Lovable</span>
-                    <p>{item.lovable}</p>
+                  <div className={styles.safetyRow}>
+                    <span className={styles.rowLabel}>Lovable</span>
+                    <span>{item.lovable}</span>
                   </div>
                 </div>
-                {item.prodvoWins && <span className={styles.winnerBadge}>Prodvo advantage</span>}
-                {!item.prodvoWins && <span className={styles.winnerBadgeLovable}>Lovable advantage</span>}
               </div>
             ))}
           </div>
@@ -243,33 +277,32 @@ export default function CompareLovablePage() {
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Teams</span>
-            <h2 className={styles.sectionTitle}>Built for team coordination, not just code generation</h2>
+            <span className={styles.label}>Teams</span>
+            <h2 className={styles.sectionTitle}>Built for coordination, not just generation</h2>
             <p className={styles.sectionSub}>
-              Code generation is table stakes. The real challenge is keeping teams 
-              aligned through planning, execution, and review.
+              Code generation is table stakes. The real challenge is keeping teams aligned 
+              through planning, execution, and review.
             </p>
           </div>
 
-          <div className={styles.teamGrid}>
+          <div className={styles.featureList}>
+            <div className={styles.featureHeader}>
+              <span>Feature</span>
+              <span>Prodvo</span>
+              <span>Lovable</span>
+            </div>
             {TEAM_FEATURES.map((item) => (
-              <div key={item.feature} className={styles.teamCard}>
-                <div className={styles.teamHeader}>
-                  <h3 className={styles.teamFeature}>{item.feature}</h3>
-                  <div className={styles.teamChecks}>
-                    <span className={item.prodvo ? styles.checkYes : styles.checkNo}>
-                      {item.prodvo ? "✓" : "—"}
-                    </span>
-                    <span className={item.lovable ? styles.checkYes : styles.checkNo}>
-                      {item.lovable ? "✓" : "—"}
-                    </span>
-                  </div>
+              <div key={item.feature} className={styles.featureRow}>
+                <div className={styles.featureInfo}>
+                  <strong>{item.feature}</strong>
+                  <span>{item.description}</span>
                 </div>
-                <p className={styles.teamDesc}>{item.description}</p>
-                <div className={styles.teamLabels}>
-                  <span>Prodvo</span>
-                  <span>Lovable</span>
-                </div>
+                <span className={item.prodvo ? styles.checkYes : styles.checkNo}>
+                  {item.prodvo ? "✓" : "—"}
+                </span>
+                <span className={item.lovable ? styles.checkYes : styles.checkNo}>
+                  {item.lovable ? "✓" : "—"}
+                </span>
               </div>
             ))}
           </div>
@@ -277,38 +310,37 @@ export default function CompareLovablePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          ENTERPRISE MATRIX
+          ENTERPRISE COMPARISON
       ═══════════════════════════════════════════════════════════════════════ */}
-      <section className={styles.section}>
+      <section className={styles.sectionAlt}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Enterprise</span>
-            <h2 className={styles.sectionTitle}>Enterprise feature comparison</h2>
+            <span className={styles.label}>Enterprise</span>
+            <h2 className={styles.sectionTitle}>Enterprise readiness</h2>
             <p className={styles.sectionSub}>
-              Lovable leads on compliance certifications. Prodvo leads on operational 
-              controls. Here's how they stack up.
+              Lovable leads on certifications. Prodvo leads on operational controls.
             </p>
           </div>
 
-          <div className={styles.matrixWrap}>
-            <table className={styles.matrix}>
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Prodvo</th>
-                  <th>Lovable</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ENTERPRISE_MATRIX.map((row) => (
-                  <tr key={row.feature}>
-                    <td>{row.feature}</td>
-                    <td>{row.prodvo}</td>
-                    <td>{row.lovable}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className={styles.enterpriseGrid}>
+            {ENTERPRISE_FEATURES.map((item) => (
+              <div 
+                key={item.feature} 
+                className={`${styles.enterpriseCard} ${item.lovableWins ? styles.lovableWins : ""}`}
+              >
+                <h4>{item.feature}</h4>
+                <div className={styles.enterpriseCompare}>
+                  <div>
+                    <span className={styles.brandSmall}>Prodvo</span>
+                    <span className={styles.enterpriseValue}>{item.prodvo}</span>
+                  </div>
+                  <div>
+                    <span className={styles.brandSmall}>Lovable</span>
+                    <span className={styles.enterpriseValue}>{item.lovable}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -320,8 +352,8 @@ export default function CompareLovablePage() {
         <div className={styles.container}>
           <div className={styles.bottomLine}>
             <h2 className={styles.bottomTitle}>The bottom line</h2>
-            <div className={styles.bottomColumns}>
-              <div className={styles.bottomCol}>
+            <div className={styles.bottomGrid}>
+              <div className={styles.bottomCard}>
                 <h3>Choose Lovable if...</h3>
                 <ul>
                   <li>SOC 2 / ISO 27001 certification is a hard requirement today</li>
@@ -329,7 +361,7 @@ export default function CompareLovablePage() {
                   <li>You're a solo builder who doesn't need team coordination</li>
                 </ul>
               </div>
-              <div className={styles.bottomCol}>
+              <div className={`${styles.bottomCard} ${styles.bottomCardHighlight}`}>
                 <h3>Choose Prodvo if...</h3>
                 <ul>
                   <li>You need planning → execution → review → ship in one place</li>

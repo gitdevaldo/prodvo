@@ -1,120 +1,138 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   LOVABLE COMPARISON PAGE - CLEAN REVAMP
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Hero */
 .hero {
-  padding: clamp(5rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
-  text-align: center;
+  padding: clamp(5rem, 10vw, 7rem) 0 clamp(4rem, 8vw, 6rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
 }
 
-.heroInner {
-  width: min(800px, calc(100% - 2rem));
-  margin: 0 auto;
+.heroContent {
+  max-width: 560px;
 }
 
 .badge {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--fire-orange-deep);
   background: var(--fire-orange-soft);
-  padding: 0.35rem 0.9rem;
+  padding: 0.4rem 1rem;
   border-radius: 100px;
   margin-bottom: 1.25rem;
 }
 
 .heroTitle {
   font-family: var(--font-brand);
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 5.5vw, 3.75rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: var(--ink);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.vs {
+  color: var(--ink-3);
+  font-weight: 400;
 }
 
 .heroSub {
   font-size: 1.1rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink-2);
-  max-width: 620px;
-  margin: 0 auto 2rem;
+  margin-bottom: 2rem;
 }
 
 .heroCtas {
   display: flex;
   gap: 0.75rem;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Shield visual */
-.shieldVisual {
-  position: relative;
+/* Hero Visual */
+.heroVisual {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
-  height: 180px;
 }
 
-.shield {
-  position: relative;
-  z-index: 2;
-  width: 100px;
-  height: 120px;
-  background: var(--fire-orange);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+.visualCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 340px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.visualHeader {
+  background: var(--gray-100);
+  padding: 0.75rem 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 0.4rem;
 }
 
-.shieldInner {
+.visualDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gray-300);
+}
+
+.visualContent {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+.visualLine {
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+}
+
+.visualCheckpoint {
+  display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  background: var(--fire-orange-soft);
+  color: var(--fire-orange-deep);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.checkpointIcon {
+  width: 18px;
+  height: 18px;
+  background: var(--fire-orange);
   color: #fff;
-}
-
-.shieldIcon {
-  font-size: 2rem;
-}
-
-.shieldText {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.shieldRings {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 160px;
-  height: 160px;
-  border: 2px solid var(--fire-orange-soft);
   border-radius: 50%;
-  opacity: 0;
-  animation: ringPulse 3s ease-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
 }
 
-@keyframes ringPulse {
-  0% { width: 100px; height: 100px; opacity: 0.6; }
-  100% { width: 220px; height: 220px; opacity: 0; }
-}
-
-/* Section styles */
+/* Sections */
 .section {
-  padding: clamp(3rem, 6vw, 5rem) 0;
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.sectionAlt {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background: var(--gray-50);
 }
 
 .container {
@@ -124,15 +142,15 @@
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
-.sectionLabel {
+.label {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--fire-orange-deep);
   margin-bottom: 0.75rem;
 }
@@ -143,282 +161,323 @@
   font-weight: 800;
   line-height: 1.15;
   color: var(--ink);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .sectionSub {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--ink-2);
-  max-width: 600px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
-/* Workflow stages */
-.stagesGrid {
+/* Timeline */
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timelineItem {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 60px 1fr;
+  gap: 1.5rem;
 }
 
-.stageCard {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  position: relative;
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.stageNumber {
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  width: 28px;
-  height: 28px;
+.timelineStep {
+  width: 44px;
+  height: 44px;
   background: var(--fire-orange);
   color: #fff;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.stageTitle {
+.timelineLine {
+  width: 2px;
+  flex: 1;
+  background: var(--gray-200);
+  margin: 0.5rem 0;
+}
+
+.timelineContent {
+  padding-bottom: 2.5rem;
+}
+
+.timelineTitle {
   font-family: var(--font-brand);
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink);
   margin-bottom: 1rem;
-  margin-top: 0.5rem;
 }
 
-.stageComparison {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.timelineCompare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.stageItem {
-  background: var(--gray-50);
-  border-radius: 10px;
-  padding: 0.85rem;
+.timelineBox {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
 }
 
-.stageBrand {
+.timelineBrand {
   display: block;
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--ink-3);
+  margin-bottom: 0.5rem;
+}
+
+.timelineBox strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
   margin-bottom: 0.35rem;
 }
 
-.stageItem p {
-  font-size: 0.8rem;
-  line-height: 1.45;
+.timelineBox p {
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--ink-2);
   margin: 0;
 }
 
-/* Safety comparison */
+/* Safety Grid */
 .safetyGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.25rem;
 }
 
 .safetyCard {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 1.5rem;
-  position: relative;
 }
 
 .safetyCard.prodvoWins {
-  border-color: var(--fire-orange-soft);
-  background: #fffcfa;
+  border-color: var(--fire-orange);
+  border-width: 2px;
 }
 
-.safetyCard.lovableWins {
-  border-color: var(--gray-300);
+.safetyHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.safetyCategory {
+.safetyIcon {
+  width: 36px;
+  height: 36px;
+  background: var(--gray-100);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.safetyHeader h3 {
+  flex: 1;
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 1rem;
-}
-
-.safetyComparison {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.safetyItem {
-  background: var(--gray-50);
-  border-radius: 10px;
-  padding: 0.85rem;
-}
-
-.safetyBrand {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-3);
-  margin-bottom: 0.35rem;
-}
-
-.safetyItem p {
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: var(--ink-2);
   margin: 0;
 }
 
-.winnerBadge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+.winTag {
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--fire-orange-deep);
-  background: var(--fire-orange-soft);
-  padding: 0.25rem 0.6rem;
+  color: #fff;
+  background: var(--fire-orange);
+  padding: 0.3rem 0.6rem;
   border-radius: 100px;
 }
 
-.winnerBadgeLovable {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+.winTagAlt {
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--ink-2);
   background: var(--gray-200);
-  padding: 0.25rem 0.6rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 100px;
 }
 
-/* Team features */
-.teamGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+.safetyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
-.teamCard {
+.safetyRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+.rowLabel {
+  flex-shrink: 0;
+  width: 60px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+  padding-top: 2px;
+}
+
+/* Feature List */
+.featureList {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.teamHeader {
+.featureHeader {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--gray-50);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+.featureHeader span:nth-child(2),
+.featureHeader span:nth-child(3) {
+  text-align: center;
+}
+
+.featureRow {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px;
+  gap: 1rem;
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.featureRow:last-child {
+  border-bottom: none;
+}
+
+.featureInfo {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-.teamFeature {
+.featureInfo strong {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--ink);
-  margin: 0;
 }
 
-.teamChecks {
-  display: flex;
-  gap: 1.25rem;
+.featureInfo span {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+
+.featureRow .checkYes,
+.featureRow .checkNo {
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 .checkYes {
   color: var(--fire-orange);
   font-weight: 700;
-  font-size: 1rem;
 }
 
 .checkNo {
-  color: var(--ink-3);
-  font-size: 1rem;
+  color: var(--gray-300);
 }
 
-.teamDesc {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--ink-2);
-  margin: 0 0 0.75rem;
+/* Enterprise Grid */
+.enterpriseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
-.teamLabels {
-  display: flex;
-  justify-content: flex-end;
+.enterpriseCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.enterpriseCard.lovableWins {
+  border-color: var(--gray-400);
+}
+
+.enterpriseCard h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.enterpriseCompare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
-  font-size: 0.65rem;
-  font-weight: 600;
+}
+
+.enterpriseCompare > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.brandSmall {
+  font-size: 0.6rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--ink-3);
 }
 
-/* Enterprise matrix */
-.matrixWrap {
-  overflow-x: auto;
-}
-
-.matrix {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.matrix th,
-.matrix td {
-  padding: 1rem 1.25rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-
-.matrix th {
-  font-weight: 700;
-  color: var(--ink);
-  background: var(--gray-50);
-}
-
-.matrix th:first-child {
-  border-radius: 12px 0 0 0;
-}
-
-.matrix th:last-child {
-  border-radius: 0 12px 0 0;
-}
-
-.matrix td:first-child {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.matrix td {
+.enterpriseValue {
+  font-size: 0.85rem;
   color: var(--ink-2);
 }
 
-/* Bottom line */
+/* Bottom Line */
 .bottomLine {
-  background: var(--gray-50);
-  border-radius: 20px;
-  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
 }
 
 .bottomTitle {
@@ -426,39 +485,52 @@
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.bottomColumns {
+.bottomGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.bottomCol h3 {
-  font-size: 1rem;
+.bottomCard {
+  background: var(--gray-50);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+}
+
+.bottomCardHighlight {
+  background: var(--fire-orange-soft);
+  border: 2px solid var(--fire-orange);
+}
+
+.bottomCard h3 {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.bottomCol ul {
+.bottomCard ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.bottomCol li {
+.bottomCard li {
   position: relative;
   padding-left: 1.25rem;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--ink-2);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
 }
 
-.bottomCol li::before {
+.bottomCard li::before {
   content: "→";
   position: absolute;
   left: 0;
@@ -466,45 +538,74 @@
   font-weight: 600;
 }
 
+.bottomCardHighlight li::before {
+  color: var(--fire-orange-deep);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
-  .stagesGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .heroContent {
+    max-width: 100%;
+  }
+
+  .heroCtas {
+    justify-content: center;
+  }
+
+  .heroVisual {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .visualCard {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .timelineCompare {
+    grid-template-columns: 1fr;
+  }
+
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .timelineItem {
+    grid-template-columns: 44px 1fr;
+    gap: 1rem;
+  }
+
+  .featureHeader {
+    grid-template-columns: 1fr 70px 70px;
+    font-size: 0.6rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .featureRow {
+    grid-template-columns: 1fr 70px 70px;
+    padding: 1rem;
+  }
+
+  .featureInfo strong {
+    font-size: 0.85rem;
+  }
+
+  .featureInfo span {
+    font-size: 0.7rem;
   }
 
   .safetyGrid {
     grid-template-columns: 1fr;
   }
 
-  .teamGrid {
+  .enterpriseGrid {
     grid-template-columns: 1fr;
-  }
-
-  .bottomColumns {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .stagesGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .safetyComparison {
-    grid-template-columns: 1fr;
-  }
-
-  .shieldVisual {
-    height: 150px;
-  }
-
-  .shield {
-    width: 80px;
-    height: 96px;
-  }
-
-  .shieldIcon {
-    font-size: 1.5rem;
   }
 }
