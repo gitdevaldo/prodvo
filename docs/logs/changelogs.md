@@ -887,3 +887,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `src/app/legal/privacy/page.tsx`
   - `docs/logs/changelogs.md`
+
+## 2026-04-02T13:10:42Z
+
+- **Who:** Copilot CLI agent
+- **What:** Refined shared legal page callout style and restored visible list markers
+- **When:** 2026-04-02T13:10:42Z
+- **Where:** `src/app/legal/legal.module.css`
+- **Why:** User requested replacing the one-sided bold quote-like box style and fixing missing bullet/number markers in legal lists
+- **How:** Redesigned `.callout` to a full bordered card with subtle gradient and balanced emphasis, then explicitly restored list marker rendering for TOC and section content (`list-style-type` + `::marker` styling for `ul`/`ol`)
+- **File path(s) changed:**
+  - `src/app/legal/legal.module.css`
+  - `docs/logs/changelogs.md`
