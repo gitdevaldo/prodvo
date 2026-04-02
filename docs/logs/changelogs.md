@@ -760,3 +760,13 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **Where**: src/app/compare/lovable/page.tsx
 - **Why**: User requested 6 items instead of 5
 - **How**: Added "Scoped execution" feature comparing Prodvo's file-limited runs vs Lovable's full regeneration
+
+## 2026-04-02 07:46 UTC
+- **Who**: Copilot
+- **What**: Updated Bolt comparison page - removed icons, added 6th agent intelligence item, revamped bottom line
+- **Where**: src/app/compare/bolt/page.tsx, src/app/compare/bolt/bolt.module.css
+- **Why**: User requested icon removal, 6 items in agent intelligence, and bottom line revamp
+- **How**: 
+  - Removed icon property from BEYOND_PROMPTS and removed beyondIcon element/CSS
+  - Added "Rollback & recovery" as 6th item in AGENT_INTELLIGENCE
+  - Redesigned bottom line with card-based layout, brand headers, tags, and verdict summary

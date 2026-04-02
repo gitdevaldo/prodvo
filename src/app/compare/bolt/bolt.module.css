@@ -158,12 +158,6 @@
   transform: translateY(-4px);
 }
 
-.beyondIcon {
-  display: block;
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-}
-
 .beyondTitle {
   font-size: 1rem;
   font-weight: 700;
@@ -442,9 +436,7 @@
 
 /* Bottom line */
 .bottomLine {
-  background: var(--gray-50);
-  border-radius: 20px;
-  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
 }
 
 .bottomTitle {
@@ -452,30 +444,80 @@
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 0.75rem;
 }
 
-.bottomColumns {
+.bottomSub {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.bottomGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
 }
 
-.bottomCol h3 {
-  font-size: 1rem;
-  font-weight: 700;
+.bottomCard {
+  background: var(--gray-50);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-align: left;
+}
+
+.bottomCardHighlight {
+  background: var(--fire-orange-soft);
+  border: 2px solid var(--fire-orange);
+}
+
+.bottomCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.bottomBrand {
+  font-family: var(--font-brand);
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--ink);
-  margin-bottom: 1rem;
 }
 
-.bottomCol ul {
+.bottomTag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-2);
+  background: var(--gray-200);
+  padding: 0.3rem 0.6rem;
+  border-radius: 100px;
+}
+
+.bottomTagHighlight {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: var(--fire-orange);
+  padding: 0.3rem 0.6rem;
+  border-radius: 100px;
+}
+
+.bottomList {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.bottomCol li {
+.bottomList li {
   position: relative;
   padding-left: 1.25rem;
   font-size: 0.9rem;
@@ -484,12 +526,24 @@
   margin-bottom: 0.5rem;
 }
 
-.bottomCol li::before {
+.bottomList li::before {
   content: "→";
   position: absolute;
   left: 0;
   color: var(--fire-orange);
   font-weight: 600;
+}
+
+.bottomCardHighlight .bottomList li::before {
+  color: var(--fire-orange-deep);
+}
+
+.bottomVerdict {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  max-width: 500px;
+  margin: 0 auto;
+  font-style: italic;
 }
 
 /* Responsive */
@@ -514,9 +568,8 @@
     font-size: 0.8rem;
   }
 
-  .bottomColumns {
+  .bottomGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 }
 

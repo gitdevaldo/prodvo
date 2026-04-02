@@ -30,6 +30,12 @@ const AGENT_INTELLIGENCE = [
     prodvoAdvantage: true,
   },
   {
+    capability: "Rollback & recovery",
+    prodvo: "One-click rollback to any checkpoint with full audit trail",
+    bolt: "No built-in rollback — manual recovery only",
+    prodvoAdvantage: true,
+  },
+  {
     capability: "Design system support",
     prodvo: "Standard component libraries",
     bolt: "Porsche, Material UI, Chakra, Shadcn, custom brand systems",
@@ -103,22 +109,18 @@ const BEYOND_PROMPTS = [
   {
     title: "Plan before you prompt",
     description: "Convert requirements into ordered task plans. Know what you're building before the first line of code.",
-    icon: "📋",
   },
   {
     title: "Parallel, not sequential",
     description: "Run frontend, backend, QA, and integrations simultaneously. 3.1× faster than sequential prompts.",
-    icon: "⚡",
   },
   {
     title: "Checkpoints, not prayers",
     description: "Automatic snapshots before major changes. One-click rollback when things break.",
-    icon: "🛡️",
   },
   {
     title: "Team coordination built-in",
     description: "Single timeline for PM, eng, and QA. No status chasing across tools.",
-    icon: "👥",
   },
 ];
 
@@ -188,7 +190,6 @@ export default function CompareBoltPage() {
           <div className={styles.beyondGrid}>
             {BEYOND_PROMPTS.map((item) => (
               <div key={item.title} className={styles.beyondCard}>
-                <span className={styles.beyondIcon}>{item.icon}</span>
                 <h3 className={styles.beyondTitle}>{item.title}</h3>
                 <p className={styles.beyondDesc}>{item.description}</p>
               </div>
@@ -368,27 +369,41 @@ export default function CompareBoltPage() {
         <div className={styles.container}>
           <div className={styles.bottomLine}>
             <h2 className={styles.bottomTitle}>The bottom line</h2>
-            <div className={styles.bottomColumns}>
-              <div className={styles.bottomCol}>
-                <h3>Choose Bolt if...</h3>
-                <ul>
-                  <li>You need design system support (Porsche, Material UI, etc.)</li>
-                  <li>You're a solo builder who wants the most generous free tier</li>
-                  <li>SEO features are a priority</li>
-                  <li>You prefer token-based pay-as-you-go pricing</li>
+            <p className={styles.bottomSub}>
+              Bolt excels at rapid prototyping with generous free tokens. Prodvo excels at 
+              turning those prototypes into production-ready products with team workflows.
+            </p>
+            <div className={styles.bottomGrid}>
+              <div className={styles.bottomCard}>
+                <div className={styles.bottomCardHeader}>
+                  <span className={styles.bottomBrand}>Bolt</span>
+                  <span className={styles.bottomTag}>Best for prototyping</span>
+                </div>
+                <ul className={styles.bottomList}>
+                  <li>Design system support (Porsche, Material UI, Shadcn)</li>
+                  <li>Generous free tier (1M tokens/month)</li>
+                  <li>SEO boosting features</li>
+                  <li>Token-based pay-as-you-go</li>
                 </ul>
               </div>
-              <div className={styles.bottomCol}>
-                <h3>Choose Prodvo if...</h3>
-                <ul>
-                  <li>You need planning → execution → review → ship in one place</li>
-                  <li>Rollback safety and checkpoints matter for production</li>
-                  <li>You want parallel execution, not sequential prompts</li>
-                  <li>You have 5+ team members (flat pricing wins)</li>
-                  <li>Team coordination is as important as code generation</li>
+              <div className={`${styles.bottomCard} ${styles.bottomCardHighlight}`}>
+                <div className={styles.bottomCardHeader}>
+                  <span className={styles.bottomBrand}>Prodvo</span>
+                  <span className={styles.bottomTagHighlight}>Best for production</span>
+                </div>
+                <ul className={styles.bottomList}>
+                  <li>Full workflow: plan → build → review → ship</li>
+                  <li>Rollback safety + checkpoint snapshots</li>
+                  <li>Parallel execution (3.1× faster)</li>
+                  <li>Flat pricing at 5+ team members</li>
+                  <li>Team coordination timeline</li>
                 </ul>
               </div>
             </div>
+            <p className={styles.bottomVerdict}>
+              Start with Bolt for quick experiments. Switch to Prodvo when 
+              you need to ship reliably with a team.
+            </p>
           </div>
         </div>
       </section>
