@@ -725,3 +725,10 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **Where**: src/app/globals.css
 - **Why**: Compare links should align horizontally with nav items, not with h4 labels
 - **How**: Set padding-top to match h4 height (font-size + margin-bottom)
+
+## 2026-04-02 07:16 UTC
+- **Who**: Copilot
+- **What**: Fixed compare column padding to align with first nav items
+- **Where**: src/app/globals.css
+- **Why**: Compare links must align with Platform/FAQ, not with h4 labels
+- **How**: Set explicit 1.68rem padding-top to match h4 height + margin

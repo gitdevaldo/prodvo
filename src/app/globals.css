@@ -2331,7 +2331,7 @@ a {
 }
 
 .footer-col-no-label {
-  padding-top: calc(0.7rem * 1.4 + 0.7rem); /* align with nav items below h4 */
+  padding-top: 1.68rem; /* match h4 label height + margin to align with first nav item */
 }
 
 .footer-bottom {
