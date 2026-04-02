@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T15:09:30Z
+
+- **Who:** Copilot CLI agent
+- **What:** Enabled sign-up invitation request form inputs and submit action
+- **When:** 2026-04-02T15:09:30Z
+- **Where:** `src/app/sign-up/page.tsx`, `src/app/auth-pages.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested invitation request form be enabled so users can fill it.
+- **How:** Removed disabled fieldset semantics from sign-up form to make inputs editable, enabled the primary submit button, updated helper copy to reflect active request flow, and renamed the shared fieldset style from disabled-specific naming to neutral form naming.
+- **File path(s) changed:**
+  - `src/app/sign-up/page.tsx`
+  - `src/app/auth-pages.module.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T14:45:06Z
 
 - **Who:** Copilot CLI agent

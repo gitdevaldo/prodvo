@@ -34,11 +34,11 @@ export default function SignUpPage() {
           <section className={styles.formPanel}>
             <h2 className={styles.panelTitle}>Request invitation</h2>
             <p className={styles.panelSub}>
-              Form submission is temporarily disabled while invitation rollout is limited.
+              Complete the form so our team can review your invitation request.
             </p>
 
             <form className={styles.authForm}>
-              <fieldset className={styles.disabledFieldset} disabled aria-disabled="true">
+              <fieldset className={styles.formFieldset}>
                 <div className={styles.field}>
                   <label className={styles.label} htmlFor="signup-name">
                     Full name
@@ -78,8 +78,8 @@ export default function SignUpPage() {
                   />
                 </div>
 
-                <button className={styles.primaryButton} type="button" disabled>
-                  Sign up (Invitation required)
+                <button className={styles.primaryButton} type="button">
+                  Submit invitation request
                 </button>
               </fieldset>
             </form>
