@@ -838,3 +838,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - Removed icon property from BEYOND_PROMPTS and removed beyondIcon element/CSS
   - Added "Rollback & recovery" as 6th item in AGENT_INTELLIGENCE
   - Redesigned bottom line with card-based layout, brand headers, tags, and verdict summary
+
+## 2026-04-02T12:31:05Z
+
+- **Who:** Copilot CLI agent
+- **What:** Replaced README with a full A-to-Z project deep-dive
+- **When:** 2026-04-02T12:31:05Z
+- **Where:** `README.md`
+- **Why:** User requested comprehensive project documentation covering product, features, pricing, legal, architecture, and development workflows
+- **How:** Rewrote README with complete route map, feature taxonomy, pricing details, legal suite documentation, security/compliance content references, UI/system conventions, architecture notes, and local development/runtime instructions
+- **File path(s) changed:**
+  - `README.md`
+  - `docs/logs/changelogs.md`
