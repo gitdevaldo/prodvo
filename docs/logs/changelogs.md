@@ -4,6 +4,22 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T14:45:06Z
+
+- **Who:** Copilot CLI agent
+- **What:** Revamped sign-in and sign-up into standalone full-page auth experiences without global header/footer
+- **When:** 2026-04-02T14:45:06Z
+- **Where:** `src/app/sign-in/page.tsx`, `src/app/sign-up/page.tsx`, `src/app/auth-pages.module.css`, `docs/logs/changelogs.md`
+- **Why:** User requested both auth routes be full standalone pages (no site header/footer) and asked for a stronger visual revamp.
+- **How:** Removed `SiteShell` from `/sign-in` and `/sign-up`; rebuilt both pages with a dedicated full-screen two-panel auth layout and lightweight top brand row; replaced previous auth CSS with a standalone module tuned for responsive full-page auth UX; preserved invitation-only signup behavior via disabled fieldset/button and explicit invite notice.
+- **File path(s) changed:**
+  - `src/app/sign-in/page.tsx`
+  - `src/app/sign-up/page.tsx`
+  - `src/app/auth-pages.module.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T14:31:07Z
 
 - **Who:** Copilot CLI agent
