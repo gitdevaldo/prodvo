@@ -875,3 +875,15 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - `.claude/skills/privacy-policy-generator/references/DROITS_PERSONNES.md`
   - `.claude/skills/privacy-policy-generator/references/DUREES_CONSERVATION.md`
   - `docs/logs/changelogs.md`
+
+## 2026-04-02T12:58:23Z
+
+- **Who:** Copilot CLI agent
+- **What:** Expanded Privacy Policy legal page with fuller GDPR-style coverage
+- **When:** 2026-04-02T12:58:23Z
+- **Where:** `src/app/legal/privacy/page.tsx`
+- **Why:** User requested refining the privacy policy because the previous version felt too short and potentially incomplete
+- **How:** Reworked the page from 10 to 16 substantive sections, adding controller/contact details, data sources, required fields, detailed purposes/legal bases, cookies and consent handling, subprocessors, rights exercise workflow, minors, automated processing disclosure, retention/deletion granularity, and policy update mechanics aligned with existing project claims
+- **File path(s) changed:**
+  - `src/app/legal/privacy/page.tsx`
+  - `docs/logs/changelogs.md`
