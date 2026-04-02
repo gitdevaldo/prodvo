@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T13:36:40Z
+
+- **Who:** Copilot CLI agent
+- **What:** Updated footer Resources links to use a shared Coming Soon placeholder route
+- **When:** 2026-04-02T13:36:40Z
+- **Where:** `src/components/site-shell.tsx`, `src/app/coming-soon/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested adding missing Resources menu labels and routing unfinished pages to a coming-soon destination.
+- **How:** Kept `FAQ` unchanged, changed `Docs` to point to `/coming-soon`, added `Blog` and `About` links in the Resources column (both to `/coming-soon`), and created a dedicated `/coming-soon` page using the existing `SiteShell` and shared legal-style content layout for visual consistency.
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `src/app/coming-soon/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T13:24:29Z
 
 - **Who:** Copilot CLI agent
