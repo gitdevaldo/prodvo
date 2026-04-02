@@ -4,6 +4,19 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2025-01-15T12:00:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Created AI coding tools competitor research document
+- **When:** 2025-01-15T12:00:00Z
+- **Where:** `docs/2025-01-15-ai-coding-tools-competitor-research.md`
+- **Why:** User requested research on Replit, Lovable, and Bolt.new AI coding platforms
+- **How:** Fetched and analyzed public website content from replit.com, lovable.dev, bolt.new and their pricing/documentation pages; compiled comprehensive competitor analysis covering core product, features, pricing, target users, strengths/weaknesses, and positioning; created structured markdown report with comparison matrices and insights
+- **File path(s) changed:**
+  - `docs/2025-01-15-ai-coding-tools-competitor-research.md`
+
+---
+
 ## 2026-03-31T15:38:00Z
 
 - **Who:** Copilot CLI agent
