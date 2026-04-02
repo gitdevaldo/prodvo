@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T08:15:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Revamped Prodvo vs v0 comparison page to match quality of other comparison pages
+- **When:** 2026-04-02T08:15:00Z
+- **Where:** `src/app/compare/v0/page.tsx`, `src/app/compare/v0/v0.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported the v0 page wasn't as good as other comparison pages (Replit, Lovable, Bolt)
+- **How:** Complete revamp with: (1) Dual-path visual in hero showing v0's design→code→deploy vs Prodvo's plan→build→review→ship journey; (2) Workflow timeline like Lovable with phase-by-phase comparison and leader badges; (3) Strength cards with winner tags like safety cards; (4) Scenario cards with time-to-ship comparison like Replit; (5) Visual bar chart for team scaling economics; (6) Stats block in bottom line (3.1× faster, 1-click rollback, $351 saved); validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/compare/v0/page.tsx`
+  - `src/app/compare/v0/v0.module.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-03-31T17:15:00Z
 
 - **Who:** Copilot CLI agent
