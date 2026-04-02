@@ -4,6 +4,28 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T09:14:50Z
+
+- **Who:** Copilot CLI agent
+- **What:** Added full Legal section with 5 single-page legal posts and footer legal navigation
+- **When:** 2026-04-02T09:14:50Z
+- **Where:** `src/app/legal/**`, `src/components/site-shell.tsx`, `src/components/legal-links.tsx`, `src/app/globals.css`, `docs/logs/changelogs.md`
+- **Why:** User requested a deep project-aware legal implementation with dedicated pages for Terms of Service, Privacy Policy, Commercial Agreement, DPA, and Report Abuse, plus legal navigation in the site menu.
+- **How:** Deep-dived project product/security/pricing claims from source pages; implemented shared legal document system and styling in `src/app/legal/legal.module.css`; created five legal routes (`/legal/terms`, `/legal/privacy`, `/legal/commercial`, `/legal/dpa`, `/legal/report-abuse`) as single-page posts with structured sections and internal TOCs; added reusable `LegalLinks` component for cross-linking among legal pages; added a new **Legal** column to shared footer navigation in `SiteShell`; updated footer grid to 5-column desktop / 3-column tablet layout in `globals.css`; validated with `npm run build` and route check at `/legal/terms` (HTTP 200).
+- **File path(s) changed:**
+  - `src/app/legal/legal.module.css`
+  - `src/app/legal/terms/page.tsx`
+  - `src/app/legal/privacy/page.tsx`
+  - `src/app/legal/commercial/page.tsx`
+  - `src/app/legal/dpa/page.tsx`
+  - `src/app/legal/report-abuse/page.tsx`
+  - `src/components/legal-links.tsx`
+  - `src/components/site-shell.tsx`
+  - `src/app/globals.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T08:15:00Z
 
 - **Who:** Copilot CLI agent

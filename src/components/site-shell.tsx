@@ -243,6 +243,27 @@ export function SiteShell({ children }: SiteShellProps) {
                 </li>
               </ul>
             </div>
+
+            <div className="footer-col">
+              <h4>Legal</h4>
+              <ul>
+                <li>
+                  <Link href="/legal/terms">Terms of Service</Link>
+                </li>
+                <li>
+                  <Link href="/legal/privacy">Privacy Policy</Link>
+                </li>
+                <li>
+                  <Link href="/legal/commercial">Commercial Agreement</Link>
+                </li>
+                <li>
+                  <Link href="/legal/dpa">DPA</Link>
+                </li>
+                <li>
+                  <Link href="/legal/report-abuse">Report Abuse</Link>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="footer-bottom">Copyright {year} Prodvo. All rights reserved.</div>
         </div>

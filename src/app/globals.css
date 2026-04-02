@@ -2291,7 +2291,7 @@ a {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.1fr auto auto auto;
+  grid-template-columns: 1.1fr auto auto auto auto;
   gap: 2.5rem;
 }
 
@@ -3681,7 +3681,7 @@ a {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.8rem;
   }
 }
