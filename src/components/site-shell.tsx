@@ -204,13 +204,13 @@ export function SiteShell({ children }: SiteShellProps) {
                   <Link href="/product">Platform</Link>
                 </li>
                 <li>
+                  <Link href="/pricing">Pricing</Link>
+                </li>
+                <li>
                   <Link href="/use-cases">Use cases</Link>
                 </li>
                 <li>
                   <Link href="/workflow">Workflow</Link>
-                </li>
-                <li>
-                  <Link href="/pricing">Pricing</Link>
                 </li>
               </ul>
             </div>
@@ -218,13 +218,13 @@ export function SiteShell({ children }: SiteShellProps) {
             <div className="footer-col footer-col-no-label">
               <ul>
                 <li>
-                  <Link href="/compare/replit">Prodvo vs Replit</Link>
+                  <Link href="/compare/bolt">Prodvo vs Bolt</Link>
                 </li>
                 <li>
                   <Link href="/compare/lovable">Prodvo vs Lovable</Link>
                 </li>
                 <li>
-                  <Link href="/compare/bolt">Prodvo vs Bolt</Link>
+                  <Link href="/compare/replit">Prodvo vs Replit</Link>
                 </li>
                 <li>
                   <Link href="/compare/v0">Prodvo vs v0</Link>
@@ -236,16 +236,16 @@ export function SiteShell({ children }: SiteShellProps) {
               <h4>Resources</h4>
               <ul>
                 <li>
-                  <Link href="/faq">FAQ</Link>
-                </li>
-                <li>
-                  <Link href="/coming-soon">Docs</Link>
+                  <Link href="/coming-soon">About</Link>
                 </li>
                 <li>
                   <Link href="/coming-soon">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon">About</Link>
+                  <Link href="/coming-soon">Docs</Link>
+                </li>
+                <li>
+                  <Link href="/faq">FAQ</Link>
                 </li>
               </ul>
             </div>
@@ -254,19 +254,19 @@ export function SiteShell({ children }: SiteShellProps) {
               <h4>Legal</h4>
               <ul>
                 <li>
-                  <Link href="/legal/terms">Terms of Service</Link>
-                </li>
-                <li>
-                  <Link href="/legal/privacy">Privacy Policy</Link>
-                </li>
-                <li>
                   <Link href="/legal/commercial">Commercial Agreement</Link>
                 </li>
                 <li>
                   <Link href="/legal/dpa">Data Processing Agreement</Link>
                 </li>
                 <li>
+                  <Link href="/legal/privacy">Privacy Policy</Link>
+                </li>
+                <li>
                   <Link href="/legal/report-abuse">Report Abuse</Link>
+                </li>
+                <li>
+                  <Link href="/legal/terms">Terms of Service</Link>
                 </li>
               </ul>
             </div>

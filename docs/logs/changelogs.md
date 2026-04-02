@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T13:44:58Z
+
+- **Who:** Copilot CLI agent
+- **What:** Reordered all footer label menus alphabetically
+- **When:** 2026-04-02T13:44:58Z
+- **Where:** `src/components/site-shell.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested fixing order across all footer label menus and then clarified the desired pattern as alphabetical ordering in every column.
+- **How:** Updated footer lists in Product, Compare, Resources, and Legal columns to alphabetical label order while keeping all existing destinations unchanged.
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T13:36:40Z
 
 - **Who:** Copilot CLI agent
