@@ -746,3 +746,10 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - Enterprise comparison as card grid
   - Better bottom line section with highlighted Prodvo card
   - Full responsive design
+
+## 2026-04-02 07:33 UTC
+- **Who**: Copilot
+- **What**: Removed icons/emojis from Lovable page; added lesson about no icons
+- **Where**: src/app/compare/lovable/page.tsx, src/app/compare/lovable/lovable.module.css, .claude/task/lessons.md
+- **Why**: Style guideline prohibits icons/emojis in UI
+- **How**: Removed icon property from SAFETY_FEATURES data, removed safetyIcon element from JSX, removed .safetyIcon CSS

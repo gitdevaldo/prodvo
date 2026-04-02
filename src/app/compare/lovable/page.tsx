@@ -57,35 +57,30 @@ const WORKFLOW_TIMELINE = [
 
 const SAFETY_FEATURES = [
   {
-    icon: "↩",
     title: "Rollback capability",
     prodvo: "One-click rollback to any checkpoint snapshot",
     lovable: "No built-in rollback — rely on Git history",
     prodvoWins: true,
   },
   {
-    icon: "⚡",
     title: "Approval gates",
     prodvo: "Gate risky changes behind team approval workflows",
     lovable: "No approval workflow — direct deploy",
     prodvoWins: true,
   },
   {
-    icon: "📋",
     title: "Audit trails",
     prodvo: "Full execution history with timestamps and diffs",
     lovable: "Standard Git commit history only",
     prodvoWins: true,
   },
   {
-    icon: "📸",
     title: "Checkpoint snapshots",
     prodvo: "Automatic checkpoints before major changes",
     lovable: "Manual Git commits required",
     prodvoWins: true,
   },
   {
-    icon: "🛡",
     title: "Compliance certs",
     prodvo: "Audit trails + governance controls",
     lovable: "SOC 2 Type II, ISO 27001, GDPR",
@@ -250,7 +245,6 @@ export default function CompareLovablePage() {
                 className={`${styles.safetyCard} ${item.prodvoWins ? styles.prodvoWins : ""}`}
               >
                 <div className={styles.safetyHeader}>
-                  <span className={styles.safetyIcon}>{item.icon}</span>
                   <h3>{item.title}</h3>
                   {item.prodvoWins && <span className={styles.winTag}>Prodvo</span>}
                   {!item.prodvoWins && <span className={styles.winTagAlt}>Lovable</span>}

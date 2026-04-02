@@ -39,6 +39,7 @@ This file captures all user feedback — direct and indirect — to prevent repe
 30. **Do NOT use non-brand state colors** (green/blue/purple/red/black) — if contrast is needed, use dark orange
 31. **Do NOT frame Prodvo as a storytelling framework product** — copy must reflect AI coding workspace + real delivery execution
 32. **Do NOT default to comparison copy patterns** unless user explicitly asks for comparison
+33. **Do NOT use icons or emojis** — no emoji icons (🛡️ ⚡ 📋 etc.) in UI elements; keep design clean and text-based
 
 ### DO (Best practices)
 1. **Prioritize professional editorial hierarchy** over decorative gimmicks
