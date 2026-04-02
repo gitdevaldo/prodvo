@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { type FormEvent, useState } from "react";
 import styles from "../auth-pages.module.css";
 
 export default function SignUpPage() {
+  const [requestSubmitted, setRequestSubmitted] = useState(false);
+
+  const handleRequestSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setRequestSubmitted(true);
+  };
+
   return (
     <div className={styles.authPage}>
       <div className={styles.authWrap}>
@@ -19,10 +29,10 @@ export default function SignUpPage() {
         <div className={styles.authGrid}>
           <section className={styles.infoPanel}>
             <span className={styles.eyebrow}>Invitation only</span>
-            <h1 className={styles.title}>Sign up is currently invite-based</h1>
+            <h1 className={styles.title}>Prodvo is in high demand right now</h1>
             <p className={styles.subtitle}>
-              We are onboarding teams through controlled invitations to keep rollout quality and
-              support performance stable.
+              We are onboarding in controlled waves so every invited team receives a stable
+              workspace, responsive support, and a smooth rollout experience.
             </p>
             <ul className={styles.featureList}>
               <li>Invitations are issued by the Prodvo team.</li>
@@ -37,7 +47,7 @@ export default function SignUpPage() {
               Complete the form so our team can review your invitation request.
             </p>
 
-            <form className={styles.authForm}>
+            <form className={styles.authForm} onSubmit={handleRequestSubmit} noValidate>
               <fieldset className={styles.formFieldset}>
                 <div className={styles.field}>
                   <label className={styles.label} htmlFor="signup-name">
@@ -78,9 +88,18 @@ export default function SignUpPage() {
                   />
                 </div>
 
-                <button className={styles.primaryButton} type="button">
+                <button className={styles.primaryButton} type="submit">
                   Submit invitation request
                 </button>
+                {requestSubmitted ? (
+                  <p
+                    className={`${styles.formFeedback} ${styles.formFeedbackSuccess}`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Success. Our team will be in touch as soon as possible.
+                  </p>
+                ) : null}
               </fieldset>
             </form>
 

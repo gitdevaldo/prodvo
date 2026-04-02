@@ -4,6 +4,22 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T15:27:32Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed auth-page list markers and added deterministic submit feedback for sign-in/sign-up forms
+- **When:** 2026-04-02T15:27:32Z
+- **Where:** `src/app/sign-in/page.tsx`, `src/app/sign-up/page.tsx`, `src/app/auth-pages.module.css`, `docs/logs/changelogs.md`
+- **Why:** User reported missing bullet list rendering and requested explicit post-submit messages for sign-in failure and sign-up success, plus updated high-demand signup headline copy.
+- **How:** Converted sign-in and sign-up routes to client components for local form interaction; added submit handlers that render requested inline feedback states (`User not found or credentials is wrong.` for sign-in and `Success. Our team will be in touch as soon as possible.` for sign-up); updated sign-up headline/subcopy to high-demand wording; explicitly restored marker rendering on auth feature lists with `list-style: disc` and maintained styled markers.
+- **File path(s) changed:**
+  - `src/app/sign-in/page.tsx`
+  - `src/app/sign-up/page.tsx`
+  - `src/app/auth-pages.module.css`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T15:09:30Z
 
 - **Who:** Copilot CLI agent

@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { type FormEvent, useState } from "react";
 import styles from "../auth-pages.module.css";
 
 export default function SignInPage() {
+  const [signInError, setSignInError] = useState<string | null>(null);
+
+  const handleSignInSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSignInError("User not found or credentials is wrong.");
+  };
+
   return (
     <div className={styles.authPage}>
       <div className={styles.authWrap}>
@@ -35,7 +45,7 @@ export default function SignInPage() {
             <h2 className={styles.panelTitle}>Welcome back</h2>
             <p className={styles.panelSub}>Use your workspace credentials to continue.</p>
 
-            <form className={styles.authForm}>
+            <form className={styles.authForm} onSubmit={handleSignInSubmit} noValidate>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="signin-email">
                   Work email
@@ -64,9 +74,18 @@ export default function SignInPage() {
                 />
               </div>
 
-              <button className={styles.primaryButton} type="button">
+              <button className={styles.primaryButton} type="submit">
                 Sign in
               </button>
+              {signInError ? (
+                <p
+                  className={`${styles.formFeedback} ${styles.formFeedbackError}`}
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  {signInError}
+                </p>
+              ) : null}
             </form>
 
             <p className={styles.helper}>

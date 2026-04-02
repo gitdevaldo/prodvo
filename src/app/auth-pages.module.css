@@ -136,9 +136,11 @@
 
 .featureList {
   margin: 1.2rem 0 0;
-  padding-left: 1.2rem;
+  padding: 0 0 0 1.2rem;
   display: grid;
   gap: 0.45rem;
+  list-style: disc;
+  list-style-position: outside;
   color: var(--auth-ink-2);
 }
 
@@ -254,6 +256,27 @@
   border-color: #d4d4d8;
   color: #71717a;
   transform: none;
+}
+
+.formFeedback {
+  margin: 0.15rem 0 0;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.formFeedbackError {
+  border-color: #fed7aa;
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.formFeedbackSuccess {
+  border-color: #fdba74;
+  background: #fff7ed;
+  color: #9a3412;
 }
 
 .notice {
