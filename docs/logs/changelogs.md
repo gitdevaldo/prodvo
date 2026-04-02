@@ -850,3 +850,28 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - **File path(s) changed:**
   - `README.md`
   - `docs/logs/changelogs.md`
+
+## 2026-04-02T12:44:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Imported privacy-policy-generator skill package into `.claude/skills`
+- **When:** 2026-04-02T12:44:00Z
+- **Where:** `.claude/skills/privacy-policy-generator/`
+- **Why:** User requested downloading the provided ZIP and placing all files under a new `.claude/skills/privacy-policy-generator` directory
+- **How:** Downloaded ZIP to `/tmp`, created target directory, extracted all archive files into the new skill folder preserving `assets/` and `references/` structure
+- **File path(s) changed:**
+  - `.claude/skills/privacy-policy-generator/SKILL.md`
+  - `.claude/skills/privacy-policy-generator/LICENSE.txt`
+  - `.claude/skills/privacy-policy-generator/assets/CNIL_droits_personnes.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/CNIL_durees_conservation.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/CNIL_finalites.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/CNIL_principes_rgpd.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/CNIL_transparence.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/RGPD_texte_officiel.pdf`
+  - `.claude/skills/privacy-policy-generator/assets/sample_template_politique_confidentialite.docx`
+  - `.claude/skills/privacy-policy-generator/assets/sample_template_politique_confidentialite.pdf`
+  - `.claude/skills/privacy-policy-generator/references/BASES_LEGALES.md`
+  - `.claude/skills/privacy-policy-generator/references/COOKIES.md`
+  - `.claude/skills/privacy-policy-generator/references/DROITS_PERSONNES.md`
+  - `.claude/skills/privacy-policy-generator/references/DUREES_CONSERVATION.md`
+  - `docs/logs/changelogs.md`
