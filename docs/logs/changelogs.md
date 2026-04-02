@@ -711,3 +711,17 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
   - `src/components/site-shell.tsx`
   - `docs/2025-01-15-ai-coding-tools-competitor-research.md` (new)
   - `docs/logs/changelogs.md`
+
+## 2026-04-02 07:12 UTC
+- **Who**: Copilot
+- **What**: Fixed footer grid to show 4 columns; aligned compare links with label row
+- **Where**: src/app/globals.css
+- **Why**: Resources column was dropping to bottom; compare links not aligned with Product label
+- **How**: Changed grid-template-columns to 4 columns; set padding-top: 0 for no-label column
+
+## 2026-04-02 07:14 UTC
+- **Who**: Copilot
+- **What**: Aligned compare links with other nav items (below h4 labels)
+- **Where**: src/app/globals.css
+- **Why**: Compare links should align horizontally with nav items, not with h4 labels
+- **How**: Set padding-top to match h4 height (font-size + margin-bottom)

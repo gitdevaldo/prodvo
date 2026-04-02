@@ -2291,7 +2291,7 @@ a {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.1fr auto auto;
+  grid-template-columns: 1.1fr auto auto auto;
   gap: 2.5rem;
 }
 
@@ -2328,6 +2328,10 @@ a {
 
 .footer-col a:hover {
   color: var(--fire-orange);
+}
+
+.footer-col-no-label {
+  padding-top: calc(0.7rem * 1.4 + 0.7rem); /* align with nav items below h4 */
 }
 
 .footer-bottom {
