@@ -4,6 +4,20 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T15:31:57Z
+
+- **Who:** Copilot CLI agent
+- **What:** Corrected sign-up invite contact email from legal to support
+- **When:** 2026-04-02T15:31:57Z
+- **Where:** `src/app/sign-up/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User flagged that invitation intake should not route through legal contact.
+- **How:** Updated sign-up invitation notice to use `support@prodvo.dev` instead of `legal@prodvo.dev`, preserving the same callout structure and context request wording.
+- **File path(s) changed:**
+  - `src/app/sign-up/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T15:27:32Z
 
 - **Who:** Copilot CLI agent

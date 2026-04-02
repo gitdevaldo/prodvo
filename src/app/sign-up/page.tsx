@@ -104,8 +104,8 @@ export default function SignUpPage() {
             </form>
 
             <div className={styles.notice}>
-              Need an invite? Contact <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a> with
-              your team context and expected usage.
+              Need an invite? Contact <a href="mailto:support@prodvo.dev">support@prodvo.dev</a>{" "}
+              with your team context and expected usage.
             </div>
 
             <p className={styles.helper}>
