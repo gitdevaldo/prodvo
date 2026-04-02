@@ -4,6 +4,22 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-03-31T17:15:00Z
+
+- **Who:** Copilot CLI agent
+- **What:** Created Prodvo vs v0 comparison page
+- **When:** 2026-03-31T17:15:00Z
+- **Where:** `src/app/compare/v0/`, `src/components/site-shell.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested a new competitor comparison page for Prodvo vs v0 by Vercel, as part of the ongoing comparison pages suite (after Replit, Lovable, Bolt)
+- **How:** Researched v0.app to understand its features (visual design mode, Figma import, iOS app, Vercel deployment, per-user pricing with credits); created unique page design with dual-column philosophy comparison, feature matrix, use case fit cards, pricing/team cost tables, and bottom line verdict section; added v0 link to footer navigation; validated with `npm run build`
+- **File path(s) changed:**
+  - `src/app/compare/v0/page.tsx` (new)
+  - `src/app/compare/v0/v0.module.css` (new)
+  - `src/components/site-shell.tsx` (footer link)
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2025-01-15T12:00:00Z
 
 - **Who:** Copilot CLI agent
