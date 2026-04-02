@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import styles from "./v0.module.css";

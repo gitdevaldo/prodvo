@@ -257,7 +257,7 @@ export function SiteShell({ children }: SiteShellProps) {
                   <Link href="/legal/commercial">Commercial Agreement</Link>
                 </li>
                 <li>
-                  <Link href="/legal/dpa">DPA</Link>
+                  <Link href="/legal/dpa">Data Processing Agreement</Link>
                 </li>
                 <li>
                   <Link href="/legal/report-abuse">Report Abuse</Link>

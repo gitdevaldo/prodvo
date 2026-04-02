@@ -4,6 +4,21 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T12:13:40Z
+
+- **Who:** Copilot CLI agent
+- **What:** Fixed compare/v0 hydration mismatch and finalized Legal footer labels
+- **When:** 2026-04-02T12:13:40Z
+- **Where:** `src/app/compare/v0/page.tsx`, `src/components/site-shell.tsx`, `docs/logs/changelogs.md`
+- **Why:** User reported recoverable hydration error on `/compare/v0` and requested legal pages to be under footer label **Legal**.
+- **How:** Removed unnecessary client component directive from `compare/v0/page.tsx` to keep server/client rendered output deterministic and eliminate hydration mismatch; confirmed legal links are grouped under the dedicated Legal footer column; renamed `DPA` footer item label to full text `Data Processing Agreement` for clarity and consistency; validated with `npm run build` and route checks.
+- **File path(s) changed:**
+  - `src/app/compare/v0/page.tsx`
+  - `src/components/site-shell.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T09:14:50Z
 
 - **Who:** Copilot CLI agent
