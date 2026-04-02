@@ -4,6 +4,23 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T13:24:29Z
+
+- **Who:** Copilot CLI agent
+- **What:** Deepened legal coverage across Terms, Commercial Agreement, DPA, and Report Abuse pages
+- **When:** 2026-04-02T13:24:29Z
+- **Where:** `src/app/legal/terms/page.tsx`, `src/app/legal/commercial/page.tsx`, `src/app/legal/dpa/page.tsx`, `src/app/legal/report-abuse/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested a full legal deep-dive and to expand all non-privacy legal pages so they cover key operational and compliance scenarios more completely.
+- **How:** Expanded Terms with eligibility, integrations, confidentiality, beta/service-change language, indemnity, and stronger governing/general clauses; expanded Commercial with order-change mechanics, termination effects, and stronger customer/security obligations; expanded DPA with customer instruction obligations, assistance detail, records/cooperation clauses, and clearer incident language; expanded Report Abuse with explicit reportable categories, process expectations, false-report policy, and appeal/follow-up section while keeping existing contact/reporting structure; validated with `npm run build` (passing) and `npm run lint` (existing repo-wide baseline failures outside these legal pages).
+- **File path(s) changed:**
+  - `src/app/legal/terms/page.tsx`
+  - `src/app/legal/commercial/page.tsx`
+  - `src/app/legal/dpa/page.tsx`
+  - `src/app/legal/report-abuse/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T12:13:40Z
 
 - **Who:** Copilot CLI agent

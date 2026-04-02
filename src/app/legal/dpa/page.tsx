@@ -1,5 +1,3 @@
-"use client";
-
 import { SiteShell } from "@/components/site-shell";
 import { LegalLinks } from "@/components/legal-links";
 import styles from "../legal.module.css";
@@ -39,22 +37,28 @@ export default function DpaPage() {
                 <a href="#subprocessors">4. Subprocessors</a>
               </li>
               <li>
-                <a href="#transfers">5. International Transfers</a>
+                <a href="#customer-obligations">5. Customer Instructions and Obligations</a>
               </li>
               <li>
-                <a href="#assistance">6. Data Subject Assistance</a>
+                <a href="#transfers">6. International Transfers</a>
               </li>
               <li>
-                <a href="#incidents">7. Security Incident Notice</a>
+                <a href="#assistance">7. Data Subject Assistance</a>
               </li>
               <li>
-                <a href="#deletion">8. Return and Deletion</a>
+                <a href="#incidents">8. Security Incident Notice</a>
               </li>
               <li>
-                <a href="#audit">9. Audit and Information Rights</a>
+                <a href="#deletion">9. Return and Deletion</a>
               </li>
               <li>
-                <a href="#liability">10. Liability and Precedence</a>
+                <a href="#audit">10. Audit and Information Rights</a>
+              </li>
+              <li>
+                <a href="#records">11. Records and Cooperation</a>
+              </li>
+              <li>
+                <a href="#liability">12. Liability and Precedence</a>
               </li>
             </ol>
           </nav>
@@ -122,8 +126,32 @@ export default function DpaPage() {
             </div>
           </section>
 
-          <section className={styles.section} id="transfers">
+          <section className={styles.section} id="customer-obligations">
             <span className={styles.sectionNumber}>Section 5</span>
+            <h2 className={styles.sectionTitle}>Customer Instructions and Obligations</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                Customer is responsible for determining a lawful basis for processing and for
+                ensuring that instructions provided to Prodvo are lawful, documented, and aligned
+                with applicable data protection law.
+              </p>
+              <ul>
+                <li>
+                  Customer remains responsible for data quality, accuracy, and permitted collection.
+                </li>
+                <li>
+                  Customer should avoid sending special category or highly regulated data unless
+                  expressly covered by written terms.
+                </li>
+                <li>
+                  Customer must configure workspace access using least-privilege principles.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.section} id="transfers">
+            <span className={styles.sectionNumber}>Section 6</span>
             <h2 className={styles.sectionTitle}>International Transfers</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -134,7 +162,7 @@ export default function DpaPage() {
           </section>
 
           <section className={styles.section} id="assistance">
-            <span className={styles.sectionNumber}>Section 6</span>
+            <span className={styles.sectionNumber}>Section 7</span>
             <h2 className={styles.sectionTitle}>Data Subject Assistance</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -142,11 +170,18 @@ export default function DpaPage() {
                 assistance to customer for handling data subject rights requests and regulatory
                 obligations.
               </p>
+              <ul>
+                <li>Assistance may include search, export, correction, restriction, or deletion support.</li>
+                <li>
+                  Customer remains responsible for evaluating request validity and issuing final
+                  responses to data subjects unless required otherwise by law.
+                </li>
+              </ul>
             </div>
           </section>
 
           <section className={styles.section} id="incidents">
-            <span className={styles.sectionNumber}>Section 7</span>
+            <span className={styles.sectionNumber}>Section 8</span>
             <h2 className={styles.sectionTitle}>Security Incident Notice</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -154,11 +189,15 @@ export default function DpaPage() {
                 affecting customer personal data and provide available details necessary for
                 customer legal compliance.
               </p>
+              <p>
+                Notification includes known incident scope, likely impact, and remediation steps in
+                progress, subject to legal and security constraints.
+              </p>
             </div>
           </section>
 
           <section className={styles.section} id="deletion">
-            <span className={styles.sectionNumber}>Section 8</span>
+            <span className={styles.sectionNumber}>Section 9</span>
             <h2 className={styles.sectionTitle}>Return and Deletion</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -173,7 +212,7 @@ export default function DpaPage() {
           </section>
 
           <section className={styles.section} id="audit">
-            <span className={styles.sectionNumber}>Section 9</span>
+            <span className={styles.sectionNumber}>Section 10</span>
             <h2 className={styles.sectionTitle}>Audit and Information Rights</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -188,8 +227,23 @@ export default function DpaPage() {
             </div>
           </section>
 
+          <section className={styles.section} id="records">
+            <span className={styles.sectionNumber}>Section 11</span>
+            <h2 className={styles.sectionTitle}>Records and Cooperation</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                Prodvo maintains processor records required by applicable law and cooperates with
+                supervisory authority inquiries to the extent legally required.
+              </p>
+              <p>
+                Customer and Prodvo will coordinate in good faith where regulatory communications,
+                complaints, or investigations involve customer personal data processed under this DPA.
+              </p>
+            </div>
+          </section>
+
           <section className={styles.section} id="liability">
-            <span className={styles.sectionNumber}>Section 10</span>
+            <span className={styles.sectionNumber}>Section 12</span>
             <h2 className={styles.sectionTitle}>Liability and Precedence</h2>
             <div className={styles.sectionContent}>
               <p>

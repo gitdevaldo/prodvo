@@ -1,5 +1,3 @@
-"use client";
-
 import { SiteShell } from "@/components/site-shell";
 import { LegalLinks } from "@/components/legal-links";
 import styles from "../legal.module.css";
@@ -39,22 +37,28 @@ export default function CommercialAgreementPage() {
                 <a href="#term-renewal">4. Term and Renewal</a>
               </li>
               <li>
-                <a href="#support-sla">5. Support and Service Levels</a>
+                <a href="#order-changes">5. Order Changes and Expansion</a>
               </li>
               <li>
-                <a href="#security-compliance">6. Security and Compliance</a>
+                <a href="#support-sla">6. Support and Service Levels</a>
               </li>
               <li>
-                <a href="#customer-obligations">7. Customer Responsibilities</a>
+                <a href="#security-compliance">7. Security and Compliance</a>
               </li>
               <li>
-                <a href="#suspension">8. Suspension and Remedies</a>
+                <a href="#customer-obligations">8. Customer Responsibilities</a>
               </li>
               <li>
-                <a href="#liability">9. Liability and Risk Allocation</a>
+                <a href="#suspension">9. Suspension and Remedies</a>
               </li>
               <li>
-                <a href="#misc">10. Miscellaneous</a>
+                <a href="#liability">10. Liability and Risk Allocation</a>
+              </li>
+              <li>
+                <a href="#termination-effects">11. Effects of Termination</a>
+              </li>
+              <li>
+                <a href="#misc">12. Miscellaneous</a>
               </li>
             </ol>
           </nav>
@@ -124,8 +128,29 @@ export default function CommercialAgreementPage() {
             </div>
           </section>
 
-          <section className={styles.section} id="support-sla">
+          <section className={styles.section} id="order-changes">
             <span className={styles.sectionNumber}>Section 5</span>
+            <h2 className={styles.sectionTitle}>Order Changes and Expansion</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                Customer may request expansion of users, capacity, or add-on services through order
+                updates. Changes become effective as documented in the accepted commercial order.
+              </p>
+              <ul>
+                <li>Mid-term upgrades may be invoiced pro-rata where commercially applicable.</li>
+                <li>
+                  Reduction of committed minimums generally applies at renewal unless expressly
+                  agreed in writing.
+                </li>
+                <li>
+                  Promotional or discount terms are limited to the period specified in the order.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.section} id="support-sla">
+            <span className={styles.sectionNumber}>Section 6</span>
             <h2 className={styles.sectionTitle}>Support and Service Levels</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -141,7 +166,7 @@ export default function CommercialAgreementPage() {
           </section>
 
           <section className={styles.section} id="security-compliance">
-            <span className={styles.sectionNumber}>Section 6</span>
+            <span className={styles.sectionNumber}>Section 7</span>
             <h2 className={styles.sectionTitle}>Security and Compliance</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -152,11 +177,15 @@ export default function CommercialAgreementPage() {
                 Additional controls such as SSO, role-based access, and custom compliance packages
                 may be plan-dependent and reflected in the commercial order.
               </p>
+              <p>
+                Privacy and data processing commitments for personal data are governed by the
+                applicable DPA and related legal schedules.
+              </p>
             </div>
           </section>
 
           <section className={styles.section} id="customer-obligations">
-            <span className={styles.sectionNumber}>Section 7</span>
+            <span className={styles.sectionNumber}>Section 8</span>
             <h2 className={styles.sectionTitle}>Customer Responsibilities</h2>
             <div className={styles.sectionContent}>
               <ul>
@@ -164,12 +193,14 @@ export default function CommercialAgreementPage() {
                 <li>Protect account credentials and internal access controls.</li>
                 <li>Review generated outputs before production deployment.</li>
                 <li>Obtain all required rights and permissions for provided content.</li>
+                <li>Maintain accurate billing contacts and procurement details.</li>
+                <li>Cooperate with reasonable security and compliance verification requests.</li>
               </ul>
             </div>
           </section>
 
           <section className={styles.section} id="suspension">
-            <span className={styles.sectionNumber}>Section 8</span>
+            <span className={styles.sectionNumber}>Section 9</span>
             <h2 className={styles.sectionTitle}>Suspension and Remedies</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -184,7 +215,7 @@ export default function CommercialAgreementPage() {
           </section>
 
           <section className={styles.section} id="liability">
-            <span className={styles.sectionNumber}>Section 9</span>
+            <span className={styles.sectionNumber}>Section 10</span>
             <h2 className={styles.sectionTitle}>Liability and Risk Allocation</h2>
             <div className={styles.sectionContent}>
               <p>
@@ -197,14 +228,46 @@ export default function CommercialAgreementPage() {
             </div>
           </section>
 
+          <section className={styles.section} id="termination-effects">
+            <span className={styles.sectionNumber}>Section 11</span>
+            <h2 className={styles.sectionTitle}>Effects of Termination</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                On expiration or termination, customer access and usage rights end except as needed
+                for data retrieval windows, legal compliance, or surviving contractual obligations.
+              </p>
+              <ul>
+                <li>Outstanding fees remain payable.</li>
+                <li>
+                  Relevant confidentiality, limitation of liability, and dispute provisions survive.
+                </li>
+                <li>
+                  Data return or deletion follows the controlling commercial and data processing
+                  terms.
+                </li>
+              </ul>
+            </div>
+          </section>
+
           <section className={styles.section} id="misc">
-            <span className={styles.sectionNumber}>Section 10</span>
+            <span className={styles.sectionNumber}>Section 12</span>
             <h2 className={styles.sectionTitle}>Miscellaneous</h2>
             <div className={styles.sectionContent}>
               <p>
                 This agreement may only be amended by written instrument or accepted online
                 amendment flow approved by both parties.
               </p>
+              <ul>
+                <li>
+                  Order-specific terms prevail over this page where a direct conflict exists.
+                </li>
+                <li>
+                  Neither party waives rights by delay or partial exercise of a contractual remedy.
+                </li>
+                <li>
+                  If a provision is unenforceable, remaining provisions continue in full effect.
+                </li>
+              </ul>
               <div className={styles.contactBlock}>
                 <span className={styles.contactLabel}>Commercial contact</span>
                 <p>

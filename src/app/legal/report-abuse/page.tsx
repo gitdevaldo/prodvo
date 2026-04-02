@@ -1,5 +1,3 @@
-"use client";
-
 import { SiteShell } from "@/components/site-shell";
 import { LegalLinks } from "@/components/legal-links";
 import styles from "../legal.module.css";
@@ -23,9 +21,51 @@ export default function ReportAbusePage() {
 
       <article className={styles.document}>
         <div className={styles.documentInner}>
-          <section className={styles.section}>
-            <span className={styles.sectionNumber}>How to report</span>
-            <h2 className={styles.sectionTitle}>Submit an abuse report</h2>
+          <nav className={styles.toc} aria-label="Report abuse contents">
+            <h2 className={styles.tocTitle}>Contents</h2>
+            <ol className={styles.tocList}>
+              <li>
+                <a href="#what-to-report">1. What to Report</a>
+              </li>
+              <li>
+                <a href="#submit">2. Submit an Abuse Report</a>
+              </li>
+              <li>
+                <a href="#expectations">3. What Happens Next</a>
+              </li>
+              <li>
+                <a href="#false-reports">4. False or Bad-Faith Reports</a>
+              </li>
+              <li>
+                <a href="#appeals">5. Appeals and Follow-up</a>
+              </li>
+              <li>
+                <a href="#contacts">6. Direct Contacts</a>
+              </li>
+            </ol>
+          </nav>
+
+          <section className={styles.section} id="what-to-report">
+            <span className={styles.sectionNumber}>Section 1</span>
+            <h2 className={styles.sectionTitle}>What to Report</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                You may use this process to report content or behavior that appears unlawful,
+                harmful, abusive, or in breach of Prodvo policies.
+              </p>
+              <ul>
+                <li>Security vulnerabilities, account compromise, or unauthorized access attempts.</li>
+                <li>Malicious code distribution or exploit delivery through workspace activity.</li>
+                <li>Copyright, trademark, or other intellectual property infringement claims.</li>
+                <li>Harassment, threats, or harmful content shared through the service.</li>
+                <li>Impersonation, fraud, or deceptive usage patterns.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.section} id="submit">
+            <span className={styles.sectionNumber}>Section 2</span>
+            <h2 className={styles.sectionTitle}>Submit an Abuse Report</h2>
             <div className={styles.sectionContent}>
               <p>
                 Include as much detail as possible so our trust and security team can investigate
@@ -115,8 +155,8 @@ export default function ReportAbusePage() {
                     placeholder="Describe what happened, how it can be reproduced, and who is affected."
                   />
                   <p className={styles.formHint}>
-                    Do not include unnecessary sensitive personal data. Include only what is required
-                    for investigation.
+                    Do not include unnecessary sensitive personal data. Include only what is
+                    required for investigation.
                   </p>
                 </div>
 
@@ -146,31 +186,62 @@ export default function ReportAbusePage() {
             </div>
           </section>
 
-          <hr className={styles.sectionBreak} />
-
-          <section className={styles.section}>
-            <span className={styles.sectionNumber}>What happens next</span>
-            <h2 className={styles.sectionTitle}>Investigation process</h2>
+          <section className={styles.section} id="expectations">
+            <span className={styles.sectionNumber}>Section 3</span>
+            <h2 className={styles.sectionTitle}>What Happens Next</h2>
             <div className={styles.sectionContent}>
               <ol>
-                <li>We triage severity and confirm receipt.</li>
+                <li>We triage report severity and confirm receipt where possible.</li>
                 <li>We investigate logs, metadata, and affected systems.</li>
                 <li>We may request additional details from the reporter.</li>
                 <li>We take remediation actions, including account restrictions if needed.</li>
                 <li>We communicate outcome and any required follow-up steps.</li>
               </ol>
+              <p>
+                Investigation timelines vary based on report complexity, impacted systems, and
+                legal requirements.
+              </p>
+            </div>
+          </section>
+
+          <section className={styles.section} id="false-reports">
+            <span className={styles.sectionNumber}>Section 4</span>
+            <h2 className={styles.sectionTitle}>False or Bad-Faith Reports</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                Submitting intentionally false, malicious, or misleading reports may itself be
+                treated as abuse under Prodvo policies.
+              </p>
               <div className={`${styles.callout} ${styles.calloutImportant}`}>
                 <p>
-                  Submitting false, malicious, or knowingly misleading reports may itself be treated
-                  as abuse under our platform policies.
+                  Abuse reporting channels are for good-faith safety and compliance use. Do not use
+                  them to disrupt competitors, harass users, or submit fabricated claims.
                 </p>
               </div>
             </div>
           </section>
 
-          <section className={styles.section}>
-            <span className={styles.sectionNumber}>Alternative channels</span>
-            <h2 className={styles.sectionTitle}>Direct contacts</h2>
+          <section className={styles.section} id="appeals">
+            <span className={styles.sectionNumber}>Section 5</span>
+            <h2 className={styles.sectionTitle}>Appeals and Follow-up</h2>
+            <div className={styles.sectionContent}>
+              <p>
+                If you are directly impacted by an enforcement decision and believe it was made in
+                error, you may request review by replying to the case communication thread or
+                contacting legal support.
+              </p>
+              <ul>
+                <li>Include case references, supporting context, and any corrective actions taken.</li>
+                <li>
+                  We evaluate appeals using available evidence, platform policy, and applicable law.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.section} id="contacts">
+            <span className={styles.sectionNumber}>Section 6</span>
+            <h2 className={styles.sectionTitle}>Direct Contacts</h2>
             <div className={styles.sectionContent}>
               <div className={styles.contactBlock}>
                 <span className={styles.contactLabel}>Trust and safety</span>
