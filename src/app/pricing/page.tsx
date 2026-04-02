@@ -414,7 +414,7 @@ export default function PricingPage() {
                     </div>
                   ))}
                 </div>
-                <Link href="/docs" className={cx(styles.btnPlan, styles.btnPlanOutline)}>
+                <Link href="/sign-up" className={cx(styles.btnPlan, styles.btnPlanOutline)}>
                   Get started free
                 </Link>
               </article>
@@ -456,7 +456,7 @@ export default function PricingPage() {
                   ))}
                 </div>
 
-                <Link href="/docs" className={cx(styles.btnPlan, styles.btnPlanFill)}>
+                <Link href="/sign-in" className={cx(styles.btnPlan, styles.btnPlanFill)}>
                   Start Pro
                 </Link>
               </article>
@@ -496,7 +496,7 @@ export default function PricingPage() {
                   ))}
                 </div>
 
-                <Link href="/docs" className={cx(styles.btnPlan, styles.btnPlanOutline)}>
+                <Link href="/sign-in" className={cx(styles.btnPlan, styles.btnPlanOutline)}>
                   Start team trial
                 </Link>
               </article>
@@ -636,7 +636,7 @@ export default function PricingPage() {
                     ))}
                   </div>
                 ))}
-                <Link href="/docs" className={styles.enterpriseCta}>
+                <Link href="/sign-in" className={styles.enterpriseCta}>
                   Talk to us
                 </Link>
               </div>
@@ -676,7 +676,7 @@ export default function PricingPage() {
                 Start free with no credit card. Upgrade only when team velocity
                 and workload justify it.
               </p>
-              <Link className="btn" href="/docs">
+              <Link className="btn" href="/sign-up">
                 Start building free
               </Link>
             </div>

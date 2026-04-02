@@ -4,6 +4,23 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T14:31:07Z
+
+- **Who:** Copilot CLI agent
+- **What:** Added sign-in/sign-up routes and rewired pricing CTAs from docs to auth pages
+- **When:** 2026-04-02T14:31:07Z
+- **Where:** `src/app/sign-in/page.tsx`, `src/app/sign-up/page.tsx`, `src/app/auth-pages.module.css`, `src/app/pricing/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested dedicated sign-in/sign-up pages and asked to stop routing pricing actions to docs, with sign-up disabled due to invitation-only access.
+- **How:** Implemented new `/sign-in` and `/sign-up` pages using shared shell and a new auth style module; created an invitation-only sign-up form using disabled fieldset/button and explicit notice; rewired pricing action links to `/sign-up` for free-start actions and `/sign-in` for paid/team/enterprise actions.
+- **File path(s) changed:**
+  - `src/app/sign-in/page.tsx`
+  - `src/app/sign-up/page.tsx`
+  - `src/app/auth-pages.module.css`
+  - `src/app/pricing/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T14:22:14Z
 
 - **Who:** Copilot CLI agent
