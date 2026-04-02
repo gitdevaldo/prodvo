@@ -4,6 +4,25 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-02T14:22:14Z
+
+- **Who:** Copilot CLI agent
+- **What:** Switched Resources links back to real routes and rendered coming-soon content on those route pages
+- **When:** 2026-04-02T14:22:14Z
+- **Where:** `src/components/site-shell.tsx`, `src/components/coming-soon-view.tsx`, `src/app/about/page.tsx`, `src/app/blog/page.tsx`, `src/app/docs/page.tsx`, `src/app/coming-soon/page.tsx`, `docs/logs/changelogs.md`
+- **Why:** User requested that menu items should not navigate to a literal `/coming-soon` URL and instead should show coming-soon content on the actual destination pages.
+- **How:** Updated footer Resources links to `/about`, `/blog`, and `/docs`; created a reusable `ComingSoonView` component; implemented new `/about` and `/blog` routes and replaced `/docs` content with coming-soon content using the shared component; kept `/coming-soon` available as a generic placeholder route.
+- **File path(s) changed:**
+  - `src/components/site-shell.tsx`
+  - `src/components/coming-soon-view.tsx`
+  - `src/app/about/page.tsx`
+  - `src/app/blog/page.tsx`
+  - `src/app/docs/page.tsx`
+  - `src/app/coming-soon/page.tsx`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T13:44:58Z
 
 - **Who:** Copilot CLI agent

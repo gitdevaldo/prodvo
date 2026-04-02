@@ -236,13 +236,13 @@ export function SiteShell({ children }: SiteShellProps) {
               <h4>Resources</h4>
               <ul>
                 <li>
-                  <Link href="/coming-soon">About</Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon">Blog</Link>
+                  <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/coming-soon">Docs</Link>
+                  <Link href="/docs">Docs</Link>
                 </li>
                 <li>
                   <Link href="/faq">FAQ</Link>
