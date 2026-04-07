@@ -1073,3 +1073,18 @@ Files: src/components/site-shell.tsx, src/components/prodvo-landing.tsx, src/app
 - `docs/Prodvo_NVIDIA_Inception_Pitch_Deck.pdf` (created)
 - `docs/PRODVO_COMPREHENSIVE_OVERVIEW.md` (founding date updated)
 - `docs/logs/changelogs.md`
+
+---
+
+## 2026-04-07T18:47:00Z — Fix pitch deck PDF formatting issues
+
+**Who:** Copilot CLI  
+**What:** Fixed text formatting and layer issues in NVIDIA Inception pitch deck PDF  
+**When:** April 7, 2026, 18:47:00 UTC  
+**Where:** `/docs/Prodvo_NVIDIA_Inception_Pitch_Deck.pdf`  
+**Why:** Original PDF had HTML tags rendering as plain text (e.g., "<b>Challenge</b>") and text overlap/layer issues  
+**How:** Regenerated PDF using proper ReportLab table formatting with clean text (no HTML tags in table cells), fixed cell padding/alignment, ensured proper text wrapping, removed overlapping elements, and maintained proper vertical spacing between all elements
+
+**Changed files:**
+- `docs/Prodvo_NVIDIA_Inception_Pitch_Deck.pdf`
+- `docs/logs/changelogs.md`
