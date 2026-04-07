@@ -25,7 +25,7 @@
 
 ## Executive Summary
 
-**Prodvo** is an AI-powered coding workspace that transforms natural language requirements into production-ready applications through structured planning, parallel execution, and checkpoint-based deployment. Founded on April 1, 2025, Prodvo positions itself as the planning-first alternative to prompt-only AI coding tools, emphasizing team coordination, safety, and operational readiness.
+**Prodvo** is an AI-powered coding workspace that transforms natural language requirements into production-ready applications through structured planning, parallel execution, and checkpoint-based deployment. Founded on April 1, 2024, Prodvo positions itself as the planning-first alternative to prompt-only AI coding tools, emphasizing team coordination, safety, and operational readiness.
 
 **Key Differentiators:**
 - **Planning before execution**: Structured task breakdown with dependencies and effort estimates
@@ -76,7 +76,7 @@ This approach reduces false starts, coordination overhead, and deployment risk â
 
 ### Founding
 
-**Founded:** April 1, 2025
+**Founded:** April 1, 2024
 
 Prodvo was created to solve the coordination gap in AI-assisted development. While prompt-to-code tools excel at rapid prototyping, they struggle with multi-person teams, production safety, and iterative refinement without breaking existing features.
 
