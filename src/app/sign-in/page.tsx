@@ -16,10 +16,12 @@ export default function SignInPage() {
     <div className={styles.authPage}>
       <div className={styles.authWrap}>
         <div className={styles.topBar}>
-          <Link href="/" className={styles.brand}>
-            <span className={styles.brandPrefix}>P/</span>
-            <span className={styles.brandWord}>Prodvo</span>
-            <span className={styles.brandDot}>.</span>
+          <Link href="/" className="brand">
+            <div className="prodvo-logo sz-nav expanded">
+              <span className="logo-prefix">P/</span>
+              <div className="logo-word-wrap"><span className="logo-word">Prodvo</span></div>
+              <span className="logo-dot">.</span>
+            </div>
           </Link>
           <p className={styles.topLink}>
             New to Prodvo? <Link href="/sign-up">Request invitation access</Link>
