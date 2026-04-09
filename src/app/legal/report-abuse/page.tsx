@@ -176,7 +176,7 @@ export default function ReportAbusePage() {
                 <div className={styles.reportActions}>
                   <p className={styles.reportNote}>
                     For immediate security issues, email{" "}
-                    <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>.
+                    <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>.
                   </p>
                   <button className="btn btn-primary" type="button">
                     Submit report
@@ -247,14 +247,14 @@ export default function ReportAbusePage() {
                 <span className={styles.contactLabel}>Trust and safety</span>
                 <p>
                   <strong>Security:</strong>{" "}
-                  <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>
+                  <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>
                 </p>
                 <p>
-                  <strong>Legal:</strong> <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a>
+                  <strong>Legal:</strong> <a href="mailto:legal@prodvo.studio">legal@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>Support:</strong>{" "}
-                  <a href="mailto:support@prodvo.dev">support@prodvo.dev</a>
+                  <a href="mailto:support@prodvo.studio">support@prodvo.studio</a>
                 </p>
               </div>
             </div>

@@ -763,7 +763,7 @@ Prodvo takes security and privacy seriously. The following security posture is r
 
 ### Responsible Disclosure
 
-- **Security reporting channel:** `security@prodvo.dev`
+- **Security reporting channel:** `security@prodvo.studio`
 - **Abuse reporting workflow:** `/legal/report-abuse` with structured form (category, workspace ID, incident time, detailed report, evidence link)
 - **Investigation process:** Documented in Report Abuse page with expected timelines
 
@@ -778,10 +778,10 @@ Prodvo maintains a comprehensive legal suite:
 - **Report Abuse** (`/legal/report-abuse`)
 
 **Contact channels:**
-- Legal inquiries: `legal@prodvo.dev`
-- Privacy inquiries: `privacy@prodvo.dev`
-- Security reports: `security@prodvo.dev`
-- General support: `support@prodvo.dev`
+- Legal inquiries: `legal@prodvo.studio`
+- Privacy inquiries: `privacy@prodvo.studio`
+- Security reports: `security@prodvo.studio`
+- General support: `support@prodvo.studio`
 
 ---
 
@@ -1002,18 +1002,18 @@ A: Yes. Annual plans save ~20% (Pro: $276/yr vs $348/yr monthly, Team: $948/yr v
 
 ## Contact & Support
 
-**General Support:** `support@prodvo.dev`  
-**Security Reports:** `security@prodvo.dev`  
-**Privacy Inquiries:** `privacy@prodvo.dev`  
-**Legal Inquiries:** `legal@prodvo.dev`
+**General Support:** `support@prodvo.studio`  
+**Security Reports:** `security@prodvo.studio`  
+**Privacy Inquiries:** `privacy@prodvo.studio`  
+**Legal Inquiries:** `legal@prodvo.studio`
 
-**Documentation:** [prodvo.dev/docs](https://prodvo.dev/docs) (placeholder)  
-**Pricing:** [prodvo.dev/pricing](https://prodvo.dev/pricing)  
+**Documentation:** [prodvo.studio/docs](https://prodvo.studio/docs) (placeholder)  
+**Pricing:** [prodvo.studio/pricing](https://prodvo.studio/pricing)  
 **Comparison Pages:**  
-- [vs Replit](https://prodvo.dev/compare/replit)  
-- [vs Lovable](https://prodvo.dev/compare/lovable)  
-- [vs Bolt](https://prodvo.dev/compare/bolt)  
-- [vs v0](https://prodvo.dev/compare/v0)
+- [vs Replit](https://prodvo.studio/compare/replit)  
+- [vs Lovable](https://prodvo.studio/compare/lovable)  
+- [vs Bolt](https://prodvo.studio/compare/bolt)  
+- [vs v0](https://prodvo.studio/compare/v0)
 
 ---
 

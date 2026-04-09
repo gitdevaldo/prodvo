@@ -110,14 +110,14 @@ export default function PrivacyPage() {
                 <span className={styles.contactLabel}>Controller contact</span>
                 <p>
                   <strong>Privacy:</strong>{" "}
-                  <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a>
+                  <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a>
                 </p>
                 <p>
-                  <strong>Legal:</strong> <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a>
+                  <strong>Legal:</strong> <a href="mailto:legal@prodvo.studio">legal@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>Security:</strong>{" "}
-                  <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>
+                  <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>
                 </p>
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function PrivacyPage() {
               </p>
               <p>
                 Additional transfer information can be requested through{" "}
-                <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a>.
+                <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a>.
               </p>
             </div>
           </section>
@@ -348,7 +348,7 @@ export default function PrivacyPage() {
               </p>
               <p>
                 Security issues can be reported to{" "}
-                <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>.
+                <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>.
               </p>
             </div>
           </section>
@@ -398,7 +398,7 @@ export default function PrivacyPage() {
               </p>
               <p>
                 If you believe a minor has provided personal data in violation of this policy,
-                contact <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a> so we can review
+                contact <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a> so we can review
                 and take appropriate action.
               </p>
             </div>
@@ -435,7 +435,7 @@ export default function PrivacyPage() {
             <div className={styles.sectionContent}>
               <p>
                 Rights requests can be submitted to{" "}
-                <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a>. To protect account
+                <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a>. To protect account
                 security, we may request verification before releasing or changing protected data.
               </p>
               <p>
@@ -487,19 +487,19 @@ export default function PrivacyPage() {
                 <span className={styles.contactLabel}>Privacy and legal channels</span>
                 <p>
                   <strong>Privacy requests:</strong>{" "}
-                  <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a>
+                  <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>General support:</strong>{" "}
-                  <a href="mailto:support@prodvo.dev">support@prodvo.dev</a>
+                  <a href="mailto:support@prodvo.studio">support@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>Security reports:</strong>{" "}
-                  <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>
+                  <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>Commercial and legal matters:</strong>{" "}
-                  <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a>
+                  <a href="mailto:legal@prodvo.studio">legal@prodvo.studio</a>
                 </p>
               </div>
             </div>

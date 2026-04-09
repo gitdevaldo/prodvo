@@ -11,7 +11,7 @@ Newest entries first. Every change must add one entry before commit/push.
 - **When:** 2026-04-02T15:31:57Z
 - **Where:** `src/app/sign-up/page.tsx`, `docs/logs/changelogs.md`
 - **Why:** User flagged that invitation intake should not route through legal contact.
-- **How:** Updated sign-up invitation notice to use `support@prodvo.dev` instead of `legal@prodvo.dev`, preserving the same callout structure and context request wording.
+- **How:** Updated sign-up invitation notice to use `support@prodvo.studio` instead of `legal@prodvo.studio`, preserving the same callout structure and context request wording.
 - **File path(s) changed:**
   - `src/app/sign-up/page.tsx`
   - `docs/logs/changelogs.md`
@@ -291,11 +291,11 @@ Newest entries first. Every change must add one entry before commit/push.
 ## 2026-03-31T12:30:00Z
 
 - **Who:** Copilot CLI agent
-- **What:** Fixed all incorrect domain URLs to use prodvo.dev
+- **What:** Fixed all incorrect domain URLs to use prodvo.studio
 - **When:** 2026-03-31T12:30:00Z
 - **Where:** `src/app/faq/page.tsx`, `src/app/docs/page.tsx`, `src/app/workflow/page.tsx`, `src/app/product/page.tsx`, `docs/logs/changelogs.md`
-- **Why:** User reported incorrect domains (prodvo.com, prodvo.ai, prodvo.app) - correct domain is prodvo.dev
-- **How:** Scanned entire project for prodvo.(com|ai|io|app) patterns; replaced security@prodvo.com → security@prodvo.dev, support@prodvo.ai → support@prodvo.dev, api.prodvo.ai → api.prodvo.dev, app.prodvo.ai → app.prodvo.dev, invoicetrack.prodvo.app → invoicetrack.prodvo.dev, prodvo.app → prodvo.dev; validated with `npm run build`
+- **Why:** User reported incorrect domains (prodvo.com, prodvo.ai, prodvo.app) - correct domain is prodvo.studio
+- **How:** Scanned entire project for prodvo.(com|ai|io|app) patterns; replaced security@prodvo.com → security@prodvo.studio, support@prodvo.ai → support@prodvo.studio, api.prodvo.ai → api.prodvo.studio, app.prodvo.ai → app.prodvo.studio, invoicetrack.prodvo.app → invoicetrack.prodvo.studio, prodvo.app → prodvo.studio; validated with `npm run build`
 - **File path(s) changed:**
   - `src/app/faq/page.tsx`
   - `src/app/docs/page.tsx`

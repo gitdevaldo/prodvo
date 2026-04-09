@@ -258,7 +258,7 @@ export default function DpaPage() {
                 <span className={styles.contactLabel}>Data protection contact</span>
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:privacy@prodvo.dev">privacy@prodvo.dev</a>
+                  <a href="mailto:privacy@prodvo.studio">privacy@prodvo.studio</a>
                 </p>
               </div>
             </div>

@@ -429,11 +429,11 @@ Agent 3: ████████░░░░░░ Task 4 - UI components (52%)
 
 ## Prodvo
 
-**Website**: prodvo.dev
+**Website**: prodvo.studio
 
-**Email**: hello@prodvo.dev
+**Email**: hello@prodvo.studio
 
-**Demo**: prodvo.dev/demo
+**Demo**: prodvo.studio/demo
 
 ---
 

@@ -153,10 +153,10 @@ Legal pages are implemented as standalone posts with shared styling (`src/app/le
 
 ### Contact channels currently surfaced
 
-- `legal@prodvo.dev`
-- `privacy@prodvo.dev`
-- `security@prodvo.dev`
-- `support@prodvo.dev`
+- `legal@prodvo.studio`
+- `privacy@prodvo.studio`
+- `security@prodvo.studio`
+- `support@prodvo.studio`
 
 `/legal/report-abuse` includes a structured form UI (category, workspace ID, incident time, detailed report, optional evidence link) and a documented investigation process.
 

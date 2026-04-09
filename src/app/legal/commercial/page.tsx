@@ -272,7 +272,7 @@ export default function CommercialAgreementPage() {
                 <span className={styles.contactLabel}>Commercial contact</span>
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a>
+                  <a href="mailto:legal@prodvo.studio">legal@prodvo.studio</a>
                 </p>
               </div>
             </div>

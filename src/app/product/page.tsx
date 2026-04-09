@@ -347,7 +347,7 @@ export default function ProductPage() {
                   <div className={styles.td} />
                   <div className={styles.tl}>
                     <span className={styles.to}>🚀 Live at&nbsp;</span>
-                    <span className={styles.tc}>prodvo.dev/your-project</span>
+                    <span className={styles.tc}>prodvo.studio/your-project</span>
                   </div>
                   <div className={styles.td} />
                   <div className={styles.tl}>

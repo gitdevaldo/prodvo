@@ -366,11 +366,11 @@ export default function TermsPage() {
               <div className={styles.contactBlock}>
                 <span className={styles.contactLabel}>Legal contact</span>
                 <p>
-                  <strong>Email:</strong> <a href="mailto:legal@prodvo.dev">legal@prodvo.dev</a>
+                  <strong>Email:</strong> <a href="mailto:legal@prodvo.studio">legal@prodvo.studio</a>
                 </p>
                 <p>
                   <strong>Security reports:</strong>{" "}
-                  <a href="mailto:security@prodvo.dev">security@prodvo.dev</a>
+                  <a href="mailto:security@prodvo.studio">security@prodvo.studio</a>
                 </p>
               </div>
             </div>

@@ -198,7 +198,7 @@ export default function FaqPage() {
     {
       category: "security",
       question: "Do you have a bug bounty program?",
-      answer: `Yes. We run a responsible disclosure program for security researchers. If you discover a vulnerability, please report it to security@prodvo.dev. We respond within 24 hours and offer rewards for valid findings.`,
+      answer: `Yes. We run a responsible disclosure program for security researchers. If you discover a vulnerability, please report it to security@prodvo.studio. We respond within 24 hours and offer rewards for valid findings.`,
     },
     {
       category: "security",
