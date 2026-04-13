@@ -164,7 +164,7 @@ export function SiteShell({ children }: SiteShellProps) {
               aria-label="Toggle menu"
               onClick={() => setMobileOpen((open) => !open)}
             >
-              Menu
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
             </button>
           </div>
         </div>
