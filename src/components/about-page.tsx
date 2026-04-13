@@ -218,8 +218,8 @@ export function AboutPage() {
               <p>Join a team that&rsquo;s redefining how software gets built. We&rsquo;re looking for engineers, designers, and product thinkers who want to shape the future of AI-assisted development.</p>
             </div>
             <div className="about-hiring-actions">
-              <a href="mailto:dev@prodvo.dev" className="btn btn-primary">Get in touch</a>
-              <a href="mailto:aldo@prodvo.dev" className="about-hiring-email">aldo@prodvo.dev</a>
+              <a href="mailto:career@prodvo.dev" className="btn btn-primary">Get in touch</a>
+              <a href="mailto:career@prodvo.dev" className="about-hiring-email">career@prodvo.dev</a>
             </div>
           </div>
         </div>
