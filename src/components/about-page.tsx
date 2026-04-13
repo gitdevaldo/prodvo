@@ -48,67 +48,6 @@ const DELIVERY_PHASES = [
   },
 ] as const;
 
-const TRACTION_METRICS = [
-  { value: "2,400+", label: "Monthly Active Users" },
-  { value: "47%", label: "MoM User Growth" },
-  { value: "12,000+", label: "Projects Created" },
-  { value: "$1.47M", label: "Current ARR" },
-] as const;
-
-const CUSTOMER_OUTCOMES = [
-  {
-    type: "Agency (5-person team)",
-    before: "12 days per project",
-    after: "5.5 days",
-    improvement: "54% faster",
-  },
-  {
-    type: "Solo Founder",
-    before: "8 weeks to MVP",
-    after: "4 weeks",
-    improvement: "50% faster",
-  },
-  {
-    type: "Enterprise Team",
-    before: "34% rework rate",
-    after: "11% rework",
-    improvement: "68% reduction",
-  },
-] as const;
-
-const TESTIMONIALS = [
-  {
-    quote: "We went from shipping 2 client projects per month to 5. The parallel execution alone paid for the subscription in week one.",
-    name: "Marcus Chen",
-    role: "CTO at PixelForge Agency",
-    detail: "12 developers",
-  },
-  {
-    quote: "I finally trust AI to help me code. The checkpoint system means I can experiment without fear. Rolled back 3 times yesterday and still shipped by end of day.",
-    name: "Sarah Kim",
-    role: "Solo Founder at Metricly",
-    detail: "",
-  },
-  {
-    quote: "Our compliance team was blocking AI tool adoption. Prodvo's audit trail and rollback capability got us approved in 2 weeks.",
-    name: "James Wright",
-    role: "VP Engineering at FinanceStack",
-    detail: "",
-  },
-  {
-    quote: "We used to spend hours syncing between PM, engineering, and QA before each release. With Prodvo, everyone sees one execution timeline and we ship with fewer surprises.",
-    name: "Marina Solis",
-    role: "VP Product at Helio Labs",
-    detail: "52% reduction in handoff delay",
-  },
-  {
-    quote: "Rollbacks used to be chaotic. Now we deploy with explicit checkpoints, so recovery is controlled and fast when priorities shift.",
-    name: "Theo Jensen",
-    role: "CTO at Launchgrid",
-    detail: "96% delivery confidence",
-  },
-] as const;
-
 const BUILT_IN_STACK = [
   { title: "Authentication", detail: "Email, magic links, OAuth, SSO with zero configuration." },
   { title: "Database", detail: "Postgres with schema generation from natural language, automatic migrations, and daily backups." },
@@ -137,6 +76,24 @@ const VALUES = [
   },
 ] as const;
 
+const MARKET_SEGMENTS = [
+  {
+    segment: "Development Agencies",
+    profile: "5 to 20 concurrent client projects",
+    value: "Parallel execution, client workspace isolation, template reuse",
+  },
+  {
+    segment: "Solo Founders & Indies",
+    profile: "Building MVPs with limited resources",
+    value: "Full-stack scaffold in hours, built-in auth and billing, rollback safety",
+  },
+  {
+    segment: "Enterprise Internal Tools",
+    profile: "Legacy systems plus new feature development",
+    value: "Audit trails, checkpoint governance, compliance-ready rollback",
+  },
+] as const;
+
 export function AboutPage() {
   return (
     <SiteShell>
@@ -154,7 +111,7 @@ export function AboutPage() {
           </p>
           <ul className="page-hero-meta animate-fade-up-3">
             <li>Plan. Build. Ship. Maintain.</li>
-            <li>Post-revenue &amp; publicly launched</li>
+            <li>Founded 2024</li>
             <li>$750K Seed Round</li>
             <li>prodvo.dev</li>
           </ul>
@@ -164,7 +121,7 @@ export function AboutPage() {
       <section className="section" id="origin">
         <div className="container">
           <div className="section-label">
-            <code>[ 01 / 06 ]</code>
+            <code>[ 01 / 05 ]</code>
             <span>Origin</span>
           </div>
           <h2 className="section-title">Why Prodvo exists</h2>
@@ -187,7 +144,7 @@ export function AboutPage() {
       <section className="section section-alt" id="how-it-works">
         <div className="container">
           <div className="section-label">
-            <code>[ 02 / 06 ]</code>
+            <code>[ 02 / 05 ]</code>
             <span>Delivery lifecycle</span>
           </div>
           <h2 className="section-title">Five phases. One workspace.</h2>
@@ -207,81 +164,12 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="section" id="traction">
-        <div className="container">
-          <div className="section-label">
-            <code>[ 03 / 06 ]</code>
-            <span>Traction</span>
-          </div>
-          <h2 className="section-title">Post-revenue. Publicly launched. Growing.</h2>
-          <p className="section-subtitle">
-            Real teams use Prodvo every day to ship real products. These numbers reflect organic adoption and product-led growth.
-          </p>
-
-          <div className="about-metrics-band reveal">
-            {TRACTION_METRICS.map((metric) => (
-              <div className="about-metric-cell" key={metric.label}>
-                <strong>{metric.value}</strong>
-                <span>{metric.label}</span>
-              </div>
-            ))}
-          </div>
-
-          <table className="about-outcomes-table reveal delay-1">
-            <thead>
-              <tr className="about-outcomes-head">
-                <th scope="col">Customer type</th>
-                <th scope="col">Before Prodvo</th>
-                <th scope="col">With Prodvo</th>
-                <th scope="col">Improvement</th>
-              </tr>
-            </thead>
-            <tbody>
-              {CUSTOMER_OUTCOMES.map((row) => (
-                <tr className="about-outcomes-row" key={row.type}>
-                  <th scope="row">{row.type}</th>
-                  <td>{row.before}</td>
-                  <td>{row.after}</td>
-                  <td><span className="about-outcome-badge">{row.improvement}</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="section section-alt" id="voices">
-        <div className="container">
-          <div className="section-label">
-            <code>[ 04 / 06 ]</code>
-            <span>Customer voices</span>
-          </div>
-          <h2 className="section-title">Teams ship faster. Engineers trust the output.</h2>
-          <p className="section-subtitle">
-            Hear from the builders, CTOs, and product leaders who use Prodvo every day.
-          </p>
-
-          <div className="about-quotes-mosaic reveal">
-            {TESTIMONIALS.map((t) => (
-              <blockquote className="about-quote-card" key={t.name}>
-                <p>&ldquo;{t.quote}&rdquo;</p>
-                <footer>
-                  <cite>{t.name}</cite>
-                  <span>{t.role}</span>
-                  {t.detail && <strong>{t.detail}</strong>}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section" id="stack">
         <div className="container">
           <div className="section-head-row">
             <div>
               <div className="section-label">
-                <code>[ 05 / 06 ]</code>
+                <code>[ 03 / 05 ]</code>
                 <span>Built-in stack</span>
               </div>
               <h2 className="section-title">Everything you need, nothing to stitch together</h2>
@@ -302,10 +190,33 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="section section-alt" id="values">
+      <section className="section section-alt" id="who-its-for">
         <div className="container">
           <div className="section-label">
-            <code>[ 06 / 06 ]</code>
+            <code>[ 04 / 05 ]</code>
+            <span>Who it&rsquo;s for</span>
+          </div>
+          <h2 className="section-title">Built for teams that need to ship, not just demo</h2>
+          <p className="section-subtitle">
+            Prodvo sits at the intersection of agencies, solo founders, and enterprise teams. The planning-first architecture is the differentiator across all three.
+          </p>
+
+          <div className="about-segments-rail reveal">
+            {MARKET_SEGMENTS.map((seg) => (
+              <article className="about-segment-card" key={seg.segment}>
+                <h3>{seg.segment}</h3>
+                <p className="about-segment-profile">{seg.profile}</p>
+                <p className="about-segment-value">{seg.value}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="values">
+        <div className="container">
+          <div className="section-label">
+            <code>[ 05 / 05 ]</code>
             <span>What we believe</span>
           </div>
           <h2 className="section-title">Principles that shape Prodvo</h2>
