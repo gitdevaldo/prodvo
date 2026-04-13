@@ -3655,22 +3655,9 @@ a {
   border-radius: 14px;
   background: #fff;
   padding: 1rem;
-  position: relative;
-}
-
-.about-stack-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  border-radius: 14px 0 0 14px;
-  background: var(--fire-orange);
 }
 
 .about-stack-card h3 {
-  padding-left: 0.35rem;
   font-size: 0.96rem;
   line-height: 1.35;
   color: var(--gray-900);
@@ -3679,7 +3666,6 @@ a {
 
 .about-stack-card p {
   margin-top: 0.35rem;
-  padding-left: 0.35rem;
   font-size: 0.86rem;
   line-height: 1.55;
   color: var(--gray-600);
