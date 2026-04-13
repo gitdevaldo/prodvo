@@ -21,7 +21,7 @@ const MOATS = [
 
 const TEAM = [
   {
-    name: "Aldo Suhartono Putra",
+    name: "Aldo Dwi Kristian",
     role: "Founder & CEO",
     bio: "Former senior engineer at Grab and Tokopedia. Built distributed systems serving millions of users across Southeast Asia. Started Prodvo after watching teams waste months recovering from unplanned AI-generated code.",
   },

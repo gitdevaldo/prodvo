@@ -11,8 +11,7 @@ interface TeamMember {
 export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
   const [active, setActive] = useState(0);
   const [dragging, setDragging] = useState(false);
-  const startX = useRef(0);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const startY = useRef(0);
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const go = useCallback((dir: number) => {
@@ -40,14 +39,13 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
 
   const onPointerDown = (e: React.PointerEvent) => {
     setDragging(true);
-    startX.current = e.clientX;
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    startY.current = e.clientY;
   };
 
   const onPointerUp = (e: React.PointerEvent) => {
     if (!dragging) return;
     setDragging(false);
-    const diff = e.clientX - startX.current;
+    const diff = e.clientY - startY.current;
     if (Math.abs(diff) > 50) {
       if (diff < 0) handleNext();
       else handlePrev();
@@ -62,23 +60,13 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
   return (
     <div className="about-slider-wrapper">
       <div className="container">
-        <div
-          className="about-slider"
-          ref={trackRef}
-          onPointerDown={onPointerDown}
-          onPointerUp={onPointerUp}
-          onPointerCancel={() => setDragging(false)}
-        >
-          <button
-            className="about-slider-arrow about-slider-prev"
-            onClick={handlePrev}
-            aria-label="Previous team member"
-            type="button"
+        <div className="about-slider-layout">
+          <div
+            className="about-slider-card"
+            onPointerDown={onPointerDown}
+            onPointerUp={onPointerUp}
+            onPointerCancel={() => setDragging(false)}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-
-          <div className="about-slider-stage">
             <div className="about-slider-photo">
               <div className="about-slider-shimmer">
                 <span className="about-slider-initials">{initials(member.name)}</span>
@@ -93,26 +81,37 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
             </div>
           </div>
 
-          <button
-            className="about-slider-arrow about-slider-next"
-            onClick={handleNext}
-            aria-label="Next team member"
-            type="button"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-        </div>
-
-        <div className="about-slider-dots">
-          {members.map((m, i) => (
+          <div className="about-slider-nav">
             <button
-              key={m.name}
-              className={`about-slider-dot${i === active ? " active" : ""}`}
-              onClick={() => handleDot(i)}
-              aria-label={`Go to ${m.name}`}
+              className="about-slider-arrow"
+              onClick={handlePrev}
+              aria-label="Previous team member"
               type="button"
-            />
-          ))}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 12.5L10 7.5L5 12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+
+            <div className="about-slider-dots">
+              {members.map((m, i) => (
+                <button
+                  key={m.name}
+                  className={`about-slider-dot${i === active ? " active" : ""}`}
+                  onClick={() => handleDot(i)}
+                  aria-label={`Go to ${m.name}`}
+                  type="button"
+                />
+              ))}
+            </div>
+
+            <button
+              className="about-slider-arrow"
+              onClick={handleNext}
+              aria-label="Next team member"
+              type="button"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
