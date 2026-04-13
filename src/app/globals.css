@@ -3866,6 +3866,64 @@ a {
   color: var(--gray-500);
 }
 
+.about-slider-wrapper {
+  margin-top: 1.5rem;
+}
+
+.about-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.about-slider-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  color: var(--gray-500);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  padding: 0;
+}
+
+.about-slider-arrow:hover {
+  border-color: var(--fire-orange);
+  color: var(--fire-orange);
+}
+
+.about-slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.about-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid var(--gray-300);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.about-slider-dot.active {
+  border-color: var(--fire-orange);
+  background: var(--fire-orange);
+}
+
+.about-slider-dot:hover:not(.active) {
+  border-color: var(--gray-400);
+}
+
 .about-team-hiring {
   margin-top: 1.5rem;
   border: 1px solid var(--gray-200);
