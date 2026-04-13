@@ -23,7 +23,7 @@ const TEAM = [
   {
     name: "Aldo Dwi Kristian",
     role: "Founder & CEO",
-    bio: "Former senior engineer at Grab and Tokopedia. Built distributed systems serving millions of users across Southeast Asia. Started Prodvo after watching teams waste months recovering from unplanned AI-generated code.",
+    bio: "A tech-savvy founder who started Prodvo after watching teams waste months recovering from unplanned AI-generated code. Passionate about building tools that make software delivery predictable and reversible.",
   },
   {
     name: "Rina Wijaya",
@@ -99,7 +99,7 @@ export function AboutPage() {
             </div>
             <div className="about-mission-card">
               <h3>Vision</h3>
-              <p>Make software delivery predictable and reversible — where teams ship with confidence because every change is planned, tracked, and rollback-ready.</p>
+              <p>Make software delivery predictable and reversible - where teams ship with confidence because every change is planned, tracked, and rollback-ready.</p>
             </div>
           </div>
 
@@ -205,7 +205,7 @@ export function AboutPage() {
           </div>
           <h2 className="section-title">The people behind Prodvo</h2>
           <p className="section-subtitle">
-            A small, focused team with deep experience in distributed systems, developer tooling, and AI — building the future of software delivery.
+            A small, focused team with deep experience in distributed systems, developer tooling, and AI - building the future of software delivery.
           </p>
 
         <TeamSlider members={TEAM} />
