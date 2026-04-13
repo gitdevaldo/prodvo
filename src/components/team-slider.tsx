@@ -62,57 +62,37 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
   const visible = members.slice(start, start + PER_PAGE);
 
   return (
-    <div className="about-slider-wrapper">
-      <div
-        className="about-team-grid"
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
-        onPointerCancel={() => setDragging(false)}
-      >
-        {visible.map((member) => (
-          <div key={member.name} className="about-team-card">
-            <div className="about-slider-photo">
-              <div className="about-slider-shimmer">
-                <span className="about-slider-initials">{initials(member.name)}</span>
-              </div>
-            </div>
-            <div className="about-team-card-info">
-              <h3 className="about-team-card-name">{member.name}</h3>
-              <span className="about-team-card-role">{member.role}</span>
-              <p className="about-team-card-bio">{member.bio}</p>
+    <div
+      className="about-team-grid"
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      onPointerCancel={() => setDragging(false)}
+    >
+      {visible.map((member) => (
+        <div key={member.name} className="about-team-card">
+          <div className="about-team-card-photo">
+            <div className="about-slider-shimmer">
+              <span className="about-slider-initials">{initials(member.name)}</span>
             </div>
           </div>
-        ))}
-      </div>
+          <div className="about-team-card-info">
+            <h3 className="about-team-card-name">{member.name}</h3>
+            <span className="about-team-card-role">{member.role}</span>
+            <p className="about-team-card-bio">{member.bio}</p>
+          </div>
+        </div>
+      ))}
 
       <div className="about-slider-controls">
-        <button
-          className="about-slider-arrow"
-          onClick={handlePrev}
-          aria-label="Previous"
-          type="button"
-        >
+        <button className="about-slider-arrow" onClick={handlePrev} aria-label="Previous" type="button">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
-
         <div className="about-slider-dots">
           {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              className={`about-slider-dot${i === page ? " active" : ""}`}
-              onClick={() => handleDot(i)}
-              aria-label={`Page ${i + 1}`}
-              type="button"
-            />
+            <button key={i} className={`about-slider-dot${i === page ? " active" : ""}`} onClick={() => handleDot(i)} aria-label={`Page ${i + 1}`} type="button" />
           ))}
         </div>
-
-        <button
-          className="about-slider-arrow"
-          onClick={handleNext}
-          aria-label="Next"
-          type="button"
-        >
+        <button className="about-slider-arrow" onClick={handleNext} aria-label="Next" type="button">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
       </div>

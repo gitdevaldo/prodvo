@@ -207,9 +207,9 @@ export function AboutPage() {
           <p className="section-subtitle">
             A small, focused team with deep experience in distributed systems, developer tooling, and AI — building the future of software delivery.
           </p>
-        </div>
 
         <TeamSlider members={TEAM} />
+        </div>
 
         <div className="container">
           <div className="about-team-hiring reveal">
