@@ -3780,89 +3780,204 @@ a {
   background: var(--fire-orange);
 }
 
-.about-team-grid {
+.about-slider-wrapper {
   margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
 }
 
-.about-team-card {
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  background: #fff;
-  padding: 1.25rem;
-}
-
-.about-team-avatar {
-  display: inline-flex;
+.about-slider {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.about-slider-arrow {
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  background: var(--fire-orange);
-  color: #fff;
-  font-size: 0.88rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.75rem;
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  color: var(--gray-500);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
 }
 
-.about-team-card h3 {
-  font-size: 1rem;
-  line-height: 1.3;
-  color: var(--gray-900);
-  font-weight: 700;
-}
-
-.about-team-role {
-  display: block;
-  margin-top: 0.1rem;
-  font-size: 0.82rem;
-  font-weight: 600;
+.about-slider-arrow:hover {
+  border-color: var(--fire-orange);
   color: var(--fire-orange);
 }
 
-.about-team-card p {
-  margin-top: 0.55rem;
-  font-size: 0.86rem;
-  line-height: 1.58;
-  color: var(--gray-500);
+.about-slider-stage {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  border: 1px solid var(--gray-200);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  min-height: 340px;
 }
 
-.about-team-contact {
+.about-slider-photo {
+  flex-shrink: 0;
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  background: #f4f4f5;
+}
+
+@keyframes shimmer-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.about-slider-shimmer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e4e4e7 0%, #f4f4f5 50%, #e4e4e7 100%);
+  overflow: hidden;
+}
+
+.about-slider-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+  animation: shimmer-slide 2s ease-in-out infinite;
+}
+
+.about-slider-initials {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.08);
+  letter-spacing: 0.05em;
+  z-index: 1;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+}
+
+.about-slider-info {
+  flex: 1;
+  padding: 2rem 2rem 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-slider-counter {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.about-slider-name {
+  margin-top: 0.5rem;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  line-height: 1.15;
+  color: var(--gray-900);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.about-slider-role {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--fire-orange);
+}
+
+.about-slider-bio {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--gray-500);
+  max-width: 44ch;
+}
+
+.about-slider-dots {
+  margin-top: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.about-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid var(--gray-300);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.about-slider-dot.active {
+  border-color: var(--fire-orange);
+  background: var(--fire-orange);
+}
+
+.about-slider-dot:hover:not(.active) {
+  border-color: var(--gray-400);
+}
+
+.about-team-hiring {
   margin-top: 1.5rem;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
   background: #fff;
   padding: 1.25rem;
-  text-align: center;
-}
-
-.about-team-contact p {
-  font-size: 0.94rem;
-  line-height: 1.5;
-  color: var(--gray-600);
-}
-
-.about-team-links {
-  margin-top: 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.5rem;
 }
 
-.about-team-links a {
-  font-size: 0.9rem;
+.about-hiring-content h3 {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: var(--gray-900);
+  font-weight: 800;
+}
+
+.about-hiring-content p {
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.58;
+  color: var(--gray-500);
+  max-width: 52ch;
+}
+
+.about-hiring-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.about-hiring-email {
+  font-size: 0.82rem;
   font-weight: 600;
-  color: var(--fire-orange);
+  color: var(--gray-400);
   text-decoration: none;
 }
 
-.about-team-links a:hover {
-  text-decoration: underline;
+.about-hiring-email:hover {
+  color: var(--fire-orange);
 }
 
 .about-cta-frame {
@@ -4075,9 +4190,21 @@ a {
 
   .about-mission-grid,
   .about-moats-grid,
-  .about-gtm-rail,
-  .about-team-grid {
+  .about-gtm-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-slider-photo {
+    width: 240px;
+  }
+
+  .about-slider-stage {
+    min-height: 300px;
+  }
+
+  .about-team-hiring {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .about-cta-frame,
@@ -4225,9 +4352,26 @@ a {
 
   .about-mission-grid,
   .about-moats-grid,
-  .about-gtm-rail,
-  .about-team-grid {
+  .about-gtm-rail {
     grid-template-columns: 1fr;
+  }
+
+  .about-slider-stage {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .about-slider-photo {
+    width: 100%;
+    height: 220px;
+  }
+
+  .about-slider-info {
+    padding: 0 1.15rem 1.25rem;
+  }
+
+  .about-slider-arrow {
+    display: none;
   }
 
   .competitor-grid {

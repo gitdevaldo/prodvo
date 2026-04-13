@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { AboutRevealEffect } from "@/components/about-reveal-effect";
+import { TeamSlider } from "@/components/team-slider";
 
 const TIMELINE = [
   { date: "Apr 2024", event: "Prodvo founded", detail: "Started building the planning-first AI workspace to solve the coordination gap in AI-assisted development." },
@@ -206,23 +207,19 @@ export function AboutPage() {
           <p className="section-subtitle">
             A small, focused team with deep experience in distributed systems, developer tooling, and AI — building the future of software delivery.
           </p>
+        </div>
 
-          <div className="about-team-grid reveal">
-            {TEAM.map((member) => (
-              <article className="about-team-card" key={member.name}>
-                <div className="about-team-avatar">{member.name.split(" ").map(n => n[0]).slice(0, 2).join("")}</div>
-                <h3>{member.name}</h3>
-                <span className="about-team-role">{member.role}</span>
-                <p>{member.bio}</p>
-              </article>
-            ))}
-          </div>
+        <TeamSlider members={TEAM} />
 
-          <div className="about-team-contact reveal delay-1">
-            <p>Interested in Prodvo or want to join the team?</p>
-            <div className="about-team-links">
-              <a href="mailto:dev@prodvo.dev">dev@prodvo.dev</a>
-              <a href="https://prodvo.dev" target="_blank" rel="noopener noreferrer">prodvo.dev</a>
+        <div className="container">
+          <div className="about-team-hiring reveal">
+            <div className="about-hiring-content">
+              <h3>We&rsquo;re hiring</h3>
+              <p>Join a team that&rsquo;s redefining how software gets built. We&rsquo;re looking for engineers, designers, and product thinkers who want to shape the future of AI-assisted development.</p>
+            </div>
+            <div className="about-hiring-actions">
+              <a href="mailto:dev@prodvo.dev" className="btn btn-primary">Get in touch</a>
+              <a href="mailto:aldo@prodvo.dev" className="about-hiring-email">aldo@prodvo.dev</a>
             </div>
           </div>
         </div>
