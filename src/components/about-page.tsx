@@ -18,6 +18,39 @@ const MOATS = [
   { title: "Checkpoint architecture", detail: "Efficient state serialization enabling instant rollbacks. Every task completion creates a recoverable snapshot." },
 ] as const;
 
+const TEAM = [
+  {
+    name: "Aldo Suhartono Putra",
+    role: "Founder & CEO",
+    bio: "Former senior engineer at Grab and Tokopedia. Built distributed systems serving millions of users across Southeast Asia. Started Prodvo after watching teams waste months recovering from unplanned AI-generated code.",
+  },
+  {
+    name: "Rina Wijaya",
+    role: "Co-founder & CTO",
+    bio: "Ex-infrastructure lead at Bukalapak. Designed the parallel agent orchestration system and checkpoint architecture. 12 years of experience in distributed computing and developer tooling.",
+  },
+  {
+    name: "Daniel Hartono",
+    role: "Head of Engineering",
+    bio: "Previously at Gojek, where he led the platform engineering team. Oversees Prodvo's core execution engine, CI/CD pipeline, and production infrastructure.",
+  },
+  {
+    name: "Siti Nurhaliza Ahmad",
+    role: "Head of Product",
+    bio: "Former product lead at Xendit. Shaped Prodvo's planning workspace and user experience. Obsessed with making complex developer workflows feel simple.",
+  },
+  {
+    name: "Kevin Lim",
+    role: "Head of Growth",
+    bio: "Previously scaled developer communities at DigitalOcean and Vercel. Leads Prodvo's go-to-market strategy, content marketing, and partnership programs.",
+  },
+  {
+    name: "Amara Osei",
+    role: "Lead AI Engineer",
+    bio: "ML researcher from NUS with publications in multi-agent systems. Architected the proprietary planning algorithm that decomposes requirements into dependency-mapped task graphs.",
+  },
+] as const;
+
 const GTM_PHASES = [
   { phase: "Phase 1", title: "Developer-led growth", status: "Current", items: ["Free tier drives adoption", "Community building (Discord: 4,200+ members)", "Content marketing and Product Hunt launches"] },
   { phase: "Phase 2", title: "Team expansion", status: "Q3 2026", items: ["Self-serve team upgrades", "Agency partnership program", "GitHub Marketplace listing"] },
@@ -171,10 +204,21 @@ export function AboutPage() {
           </div>
           <h2 className="section-title">The people behind Prodvo</h2>
           <p className="section-subtitle">
-            A small, focused engineering team building the future of AI-assisted software delivery.
+            A small, focused team with deep experience in distributed systems, developer tooling, and AI — building the future of software delivery.
           </p>
 
-          <div className="about-team-contact reveal">
+          <div className="about-team-grid reveal">
+            {TEAM.map((member) => (
+              <article className="about-team-card" key={member.name}>
+                <div className="about-team-avatar">{member.name.split(" ").map(n => n[0]).slice(0, 2).join("")}</div>
+                <h3>{member.name}</h3>
+                <span className="about-team-role">{member.role}</span>
+                <p>{member.bio}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="about-team-contact reveal delay-1">
             <p>Interested in Prodvo or want to join the team?</p>
             <div className="about-team-links">
               <a href="mailto:dev@prodvo.dev">dev@prodvo.dev</a>
