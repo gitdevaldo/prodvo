@@ -6,7 +6,7 @@ import { TeamSlider } from "@/components/team-slider";
 const TIMELINE = [
   { date: "Apr 2024", event: "Prodvo founded", detail: "Started building the planning-first AI workspace to solve the coordination gap in AI-assisted development." },
   { date: "Late 2024", event: "Seed round closed", detail: "Raised seed funding to build the core engineering team and platform architecture." },
-  { date: "Early 2025", event: "Private beta", detail: "Early adopter agencies and solo founders began using parallel execution and checkpoint rollback." },
+  { date: "Early 2025", event: "Beta launch", detail: "Early adopter agencies and solo founders began using parallel execution and checkpoint rollback." },
   { date: "Q3 2025", event: "Public launch", detail: "Publicly launched with thousands of active users building real production software." },
   { date: "Q1 2026", event: "Team tier launch", detail: "Shipping team collaboration, GitHub Marketplace listing, and expanded user base." },
   { date: "Q3 2026", event: "Enterprise + SOC 2", detail: "Enterprise tier with self-hosted option and SOC 2 Type II certification." },
