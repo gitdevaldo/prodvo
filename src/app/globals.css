@@ -3785,6 +3785,8 @@ a {
 }
 
 .about-slider-card {
+  max-width: 380px;
+  margin: 0 auto;
   border: 1px solid var(--gray-200);
   border-radius: 18px;
   background: #fff;
@@ -3797,7 +3799,7 @@ a {
 
 .about-slider-photo {
   width: 100%;
-  height: 380px;
+  aspect-ratio: 3 / 4;
   position: relative;
   overflow: hidden;
   background: #f4f4f5;
@@ -4188,10 +4190,6 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-slider-photo {
-    height: 320px;
-  }
-
   .about-team-hiring {
     flex-direction: column;
     align-items: flex-start;
@@ -4346,8 +4344,8 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .about-slider-photo {
-    height: 240px;
+  .about-slider-card {
+    max-width: 100%;
   }
 
   .about-slider-arrow {
