@@ -3798,7 +3798,7 @@ a {
 
 .about-slider-photo {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 200px;
   position: relative;
   overflow: hidden;
   background: #f4f4f5;
