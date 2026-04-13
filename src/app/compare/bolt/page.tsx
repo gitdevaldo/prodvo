@@ -8,13 +8,13 @@ const AGENT_INTELLIGENCE = [
   {
     capability: "Architectural decisions",
     prodvo: "Agents make real architectural choices based on project context",
-    bolt: "Prompt-to-code generation — architecture emerges from prompts",
+    bolt: "Prompt-to-code generation - architecture emerges from prompts",
     prodvoAdvantage: true,
   },
   {
     capability: "Planning phase",
     prodvo: "Structured task plans with dependencies and effort estimates",
-    bolt: "No planning — jump straight to generation",
+    bolt: "No planning - jump straight to generation",
     prodvoAdvantage: true,
   },
   {
@@ -32,7 +32,7 @@ const AGENT_INTELLIGENCE = [
   {
     capability: "Rollback & recovery",
     prodvo: "One-click rollback to any checkpoint with full audit trail",
-    bolt: "No built-in rollback — manual recovery only",
+    bolt: "No built-in rollback - manual recovery only",
     prodvoAdvantage: true,
   },
   {
@@ -59,7 +59,7 @@ const PRICING_TIERS = [
   {
     tier: "Free",
     prodvo: {
-      price: "—",
+      price: "-",
       allocation: "No free tier",
       notes: "14-day trial available",
     },
@@ -138,7 +138,7 @@ export default function CompareBoltPage() {
           </h1>
           <p className={styles.heroSub}>
             Bolt calls itself the "#1 professional vibe coding tool." Prodvo goes beyond 
-            vibe coding — with planning workflows, parallel execution, and safety rails 
+            vibe coding - with planning workflows, parallel execution, and safety rails 
             that turn prompts into production-ready products.
           </p>
           <div className={styles.heroCtas}>
@@ -207,7 +207,7 @@ export default function CompareBoltPage() {
             <span className={styles.sectionLabel}>Intelligence</span>
             <h2 className={styles.sectionTitle}>Agent intelligence comparison</h2>
             <p className={styles.sectionSub}>
-              Both platforms use AI. The difference is what the AI actually does — 
+              Both platforms use AI. The difference is what the AI actually does - 
               prompt parsing vs. architectural reasoning.
             </p>
           </div>
@@ -356,7 +356,7 @@ export default function CompareBoltPage() {
 
           <p className={styles.economicsNote}>
             At 5+ team members, Prodvo's flat pricing becomes more economical than 
-            Bolt's per-member model — and you get planning workflows, checkpoints, 
+            Bolt's per-member model - and you get planning workflows, checkpoints, 
             and rollback included.
           </p>
         </div>

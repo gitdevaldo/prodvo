@@ -8,13 +8,13 @@ const WORKFLOW_COMPARISON = [
   {
     stage: "Planning",
     prodvo: "Structured task plans with effort estimates from plain language",
-    replit: "Jump straight to prompts — no planning phase",
+    replit: "Jump straight to prompts - no planning phase",
     winner: "prodvo",
   },
   {
     stage: "Execution",
     prodvo: "Parallel agents for frontend, backend, QA, and integrations",
-    replit: "Sequential builds — one thing at a time",
+    replit: "Sequential builds - one thing at a time",
     winner: "prodvo",
   },
   {
@@ -32,7 +32,7 @@ const WORKFLOW_COMPARISON = [
   {
     stage: "Deployment",
     prodvo: "One-click deploy with rollback-ready states",
-    replit: "One-click deploy — but no rollback safety net",
+    replit: "One-click deploy - but no rollback safety net",
     winner: "tie",
   },
 ];
@@ -106,7 +106,7 @@ export default function CompareReplitPage() {
           </h1>
           <p className={styles.heroSub}>
             Both platforms turn prompts into apps. The difference is what happens 
-            between the prompt and production — planning, parallel execution, and 
+            between the prompt and production - planning, parallel execution, and 
             safety rails that keep teams shipping with confidence.
           </p>
           <div className={styles.heroCtas}>
@@ -184,7 +184,7 @@ export default function CompareReplitPage() {
             <span className={styles.sectionLabel}>Features</span>
             <h2 className={styles.sectionTitle}>Feature-by-feature breakdown</h2>
             <p className={styles.sectionSub}>
-              Where each platform excels — and where Prodvo fills the gaps that 
+              Where each platform excels - and where Prodvo fills the gaps that 
               matter for production teams.
             </p>
           </div>
@@ -206,14 +206,14 @@ export default function CompareReplitPage() {
                       {row.prodvo ? (
                         <span className={styles.checkYes}>✓</span>
                       ) : (
-                        <span className={styles.checkNo}>—</span>
+                        <span className={styles.checkNo}>-</span>
                       )}
                     </td>
                     <td>
                       {row.replit ? (
                         <span className={styles.checkYes}>✓</span>
                       ) : (
-                        <span className={styles.checkNo}>—</span>
+                        <span className={styles.checkNo}>-</span>
                       )}
                     </td>
                   </tr>
@@ -300,7 +300,7 @@ export default function CompareReplitPage() {
           <div className={styles.bottomLine}>
             <h2 className={styles.bottomTitle}>The bottom line</h2>
             <p className={styles.bottomBody}>
-              Replit is great for exploration and learning — it has a mobile app, 
+              Replit is great for exploration and learning - it has a mobile app, 
               generates videos, and has a large community. But when you need to 
               ship production software with a team, Prodvo's planning workflow, 
               parallel execution, and safety rails make the difference between 

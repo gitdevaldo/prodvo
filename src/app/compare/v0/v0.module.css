@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PRODVO vs V0 COMPARISON PAGE — REVAMPED
+   PRODVO vs V0 COMPARISON PAGE - REVAMPED
    - Dual-path visual in hero
    - Workflow timeline like Lovable
    - Strength cards with winner badges
@@ -709,7 +709,7 @@
 }
 
 .bottomCard li::before {
-  content: "—";
+  content: "-";
   position: absolute;
   left: 0;
   color: #d4d4d4;

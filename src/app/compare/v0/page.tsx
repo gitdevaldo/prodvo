@@ -8,7 +8,7 @@ const WORKFLOW_PHASES = [
     name: "Design",
     v0: {
       headline: "Visual design mode",
-      detail: "Figma import, design systems, live preview — design to code in seconds",
+      detail: "Figma import, design systems, live preview - design to code in seconds",
     },
     prodvo: {
       headline: "Plan before you code",
@@ -25,7 +25,7 @@ const WORKFLOW_PHASES = [
     },
     prodvo: {
       headline: "Parallel execution",
-      detail: "Frontend, backend, QA, integrations — running simultaneously",
+      detail: "Frontend, backend, QA, integrations - running simultaneously",
     },
     v0Leads: false,
   },
@@ -47,7 +47,7 @@ const WORKFLOW_PHASES = [
     name: "Ship",
     v0: {
       headline: "Vercel deployment",
-      detail: "One-click deploy to Vercel's edge network — Vercel only",
+      detail: "One-click deploy to Vercel's edge network - Vercel only",
     },
     prodvo: {
       headline: "Deploy + rollback",
@@ -76,13 +76,13 @@ const STRENGTH_AREAS = [
     area: "Execution speed",
     winner: "Prodvo",
     v0: "Sequential chat-based generation",
-    prodvo: "Parallel agents — 3.1× faster than sequential",
+    prodvo: "Parallel agents - 3.1× faster than sequential",
     detail: "Prodvo runs frontend, backend, QA simultaneously",
   },
   {
     area: "Safety & rollback",
     winner: "Prodvo",
-    v0: "Git history only — no built-in rollback UI",
+    v0: "Git history only - no built-in rollback UI",
     prodvo: "Checkpoint snapshots with one-click rollback",
     detail: "Prodvo lets you undo bad deploys instantly",
   },
@@ -106,7 +106,7 @@ const TEAM_SCALING = [
   { size: "Solo", prodvo: 99, v0: 30, note: "v0 is 3× cheaper for individuals" },
   { size: "3 users", prodvo: 249, v0: 90, note: "v0 still 2.7× cheaper" },
   { size: "5 users", prodvo: 249, v0: 150, note: "Gap narrows to 1.6×" },
-  { size: "8 users", prodvo: 249, v0: 240, note: "Nearly equal — Prodvo adds safety" },
+  { size: "8 users", prodvo: 249, v0: 240, note: "Nearly equal - Prodvo adds safety" },
   { size: "10 users", prodvo: 249, v0: 300, note: "Prodvo wins by $51/mo" },
   { size: "20 users", prodvo: 249, v0: 600, note: "Prodvo saves $351/mo" },
 ];
@@ -252,7 +252,7 @@ export default function CompareV0Page() {
             <span className={styles.label}>Capabilities</span>
             <h2 className={styles.sectionTitle}>Where each platform excels</h2>
             <p className={styles.sectionSub}>
-              An honest breakdown — v0 wins on design tooling, Prodvo wins on 
+              An honest breakdown - v0 wins on design tooling, Prodvo wins on 
               workflow and safety.
             </p>
           </div>
@@ -379,7 +379,7 @@ export default function CompareV0Page() {
 
           <p className={styles.scalingInsight}>
             For solo work and small teams, v0 is more economical. At 8+ users, 
-            Prodvo's flat pricing wins — and you get planning workflows, 
+            Prodvo's flat pricing wins - and you get planning workflows, 
             checkpoints, and rollback included.
           </p>
         </div>

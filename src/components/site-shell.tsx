@@ -126,7 +126,7 @@ export function SiteShell({ children }: SiteShellProps) {
       <div className="announcement-wrap">
         <div className="container">
           <p className="announcement">
-            🚀 Prodvo is now live — start building your product today.
+            🚀 Prodvo is now live - start building your product today.
             <Link href="/pricing"> Get started free</Link>
           </p>
         </div>

@@ -14,7 +14,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Prodvo — AI Coding Agent Workspace",
+  title: "Prodvo - AI Coding Agent Workspace",
   description:
     "Prodvo is an all-in-one coding agent workspace to plan, build, and ship software from one flow.",
   icons: {

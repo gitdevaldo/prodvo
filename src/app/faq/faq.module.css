@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   FAQ PAGE — Two-column layout with sidebar filters
+   FAQ PAGE - Two-column layout with sidebar filters
    Unique: Category sidebar, search, expandable answers
 ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -123,7 +123,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   FAQ SECTION — Two column
+   FAQ SECTION - Two column
 ═══════════════════════════════════════════════════════════════════════════ */
 .faqSection {
   padding: clamp(3rem, 6vw, 5rem) 0;

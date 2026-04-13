@@ -66,14 +66,14 @@ const TESTIMONIALS: readonly Testimonial[] = [
     name: "Arif Rahman",
     role: "Founder, Trackly · Jakarta",
     quote:
-      '"I launched my SaaS in a weekend. Not a prototype — an actual product, with auth, billing, and a dashboard."',
+      '"I launched my SaaS in a weekend. Not a prototype - an actual product, with auth, billing, and a dashboard."',
   },
   {
     initials: "MS",
     name: "Maya S.",
     role: "Indie developer · Singapore",
     quote:
-      '"The AI actually understands what I\'m building. It\'s not just autocomplete — it makes real decisions."',
+      '"The AI actually understands what I\'m building. It\'s not just autocomplete - it makes real decisions."',
   },
   {
     initials: "KT",
@@ -319,7 +319,7 @@ export default function ProductPage() {
                   <div className={cn("t-dot", "r")} />
                   <div className={cn("t-dot", "y")} />
                   <div className={cn("t-dot", "g")} />
-                  <span className={styles["t-file"]}>prodvo — ai agent · workspace</span>
+                  <span className={styles["t-file"]}>prodvo - ai agent · workspace</span>
                 </div>
                 <div className={styles["terminal-body"]}>
                   <div className={styles.tl}>
@@ -374,7 +374,7 @@ export default function ProductPage() {
         <div className="container">
           <div className={styles["contrast-inner"]}>
             <div>
-              <div className={cn("contrast-col-head", "bad")}>The old way — 6 tools</div>
+              <div className={cn("contrast-col-head", "bad")}>The old way - 6 tools</div>
               <div className={styles["contrast-list"]}>
                 <div className={styles["contrast-item"]}>
                   <span className={styles["ci-name"]}>VS Code + plugins</span>
@@ -410,14 +410,14 @@ export default function ProductPage() {
             </div>
 
             <div>
-              <div className={cn("contrast-col-head", "good")}>With Prodvo — 1 tool</div>
+              <div className={cn("contrast-col-head", "good")}>With Prodvo - 1 tool</div>
               <div className={cn("contrast-list", "prodvo")}>
                 <div className={styles["contrast-item"]}>
                   <span className={styles["ci-name"]}>AI Code Editor</span>
                   <span className={styles["ci-tag"]}>built-in</span>
                 </div>
                 <div className={styles["contrast-item"]}>
-                  <span className={styles["ci-name"]}>Auth — zero config</span>
+                  <span className={styles["ci-name"]}>Auth - zero config</span>
                   <span className={styles["ci-tag"]}>built-in</span>
                 </div>
                 <div className={styles["contrast-item"]}>
@@ -463,7 +463,7 @@ export default function ProductPage() {
               <div className={styles["bc-title"]}>
                 AI that writes, fixes,
                 <br />
-                and ships — on its own
+                and ships - on its own
               </div>
               <p className={styles["bc-desc"]}>
                 Prodvo's agent understands your intent, not just your syntax. It
@@ -497,7 +497,7 @@ export default function ProductPage() {
               <div className={styles["bc-title"]}>Postgres. Instant.</div>
               <p className={styles["bc-desc"]}>
                 Full Postgres provisioned in seconds. Schema migrations, query
-                editor, backups — zero configuration.
+                editor, backups - zero configuration.
               </p>
               <ul className={styles["bc-check"]}>
                 <li>Auto-generated schema from your data model</li>
@@ -512,7 +512,7 @@ export default function ProductPage() {
               <div className={styles["bc-title"]}>To production. Right now.</div>
               <p className={styles["bc-desc"]}>
                 Your project goes live the moment it's ready. Custom domain, SSL,
-                CDN — handled automatically.
+                CDN - handled automatically.
               </p>
               <ul className={styles["bc-check"]}>
                 <li>Custom domain with automatic SSL</li>
@@ -525,8 +525,8 @@ export default function ProductPage() {
               <div className={styles["bc-tag"]}>Auth</div>
               <div className={styles["bc-title"]}>Auth that just works</div>
               <p className={styles["bc-desc"]}>
-                Email, magic links, Google, GitHub OAuth — wired automatically.
-                Sessions, roles, middleware — all handled.
+                Email, magic links, Google, GitHub OAuth - wired automatically.
+                Sessions, roles, middleware - all handled.
               </p>
               <div className={styles["bc-pills"]}>
                 <span className={styles["bc-pill"]}>Email</span>
@@ -587,7 +587,7 @@ export default function ProductPage() {
               </h2>
               <p className={cn("sec-sub", "reveal", "d2")}>
                 No configuration. No DevOps rabbit holes. Describe what you're
-                building — Prodvo handles everything else.
+                building - Prodvo handles everything else.
               </p>
             </div>
 
@@ -776,7 +776,7 @@ export default function ProductPage() {
           </div>
 
           <p className={cn("pricing-note", "reveal")}>
-            Need more? <Link href="/pricing">Talk to us about Enterprise</Link> — custom
+            Need more? <Link href="/pricing">Talk to us about Enterprise</Link> - custom
             compute, SLA guarantees, and white-glove onboarding.
           </p>
         </div>

@@ -14,7 +14,7 @@ const WORKFLOW_TIMELINE = [
     },
     lovable: {
       headline: "Jump to prompts",
-      detail: "No planning phase — start prompting immediately",
+      detail: "No planning phase - start prompting immediately",
     },
   },
   {
@@ -59,13 +59,13 @@ const SAFETY_FEATURES = [
   {
     title: "Rollback capability",
     prodvo: "One-click rollback to any checkpoint snapshot",
-    lovable: "No built-in rollback — rely on Git history",
+    lovable: "No built-in rollback - rely on Git history",
     prodvoWins: true,
   },
   {
     title: "Approval gates",
     prodvo: "Gate risky changes behind team approval workflows",
-    lovable: "No approval workflow — direct deploy",
+    lovable: "No approval workflow - direct deploy",
     prodvoWins: true,
   },
   {
@@ -156,7 +156,7 @@ export default function CompareLovablePage() {
           </h1>
           <p className={styles.heroSub}>
             Both promise production-ready output. The difference is what happens 
-            when something goes wrong — and how you prevent it in the first place.
+            when something goes wrong - and how you prevent it in the first place.
           </p>
           <div className={styles.heroCtas}>
             <Link href="/pricing" className="btn btn-primary btn-lg">
@@ -298,10 +298,10 @@ export default function CompareLovablePage() {
                   <span>{item.description}</span>
                 </div>
                 <span className={item.prodvo ? styles.checkYes : styles.checkNo}>
-                  {item.prodvo ? "✓" : "—"}
+                  {item.prodvo ? "✓" : "-"}
                 </span>
                 <span className={item.lovable ? styles.checkYes : styles.checkNo}>
-                  {item.lovable ? "✓" : "—"}
+                  {item.lovable ? "✓" : "-"}
                 </span>
               </div>
             ))}

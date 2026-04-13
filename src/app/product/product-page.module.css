@@ -1186,7 +1186,7 @@
 }
 
 .pc-list li.off::before {
-  content: "—";
+  content: "-";
   color: #d4d4d8;
 }
 

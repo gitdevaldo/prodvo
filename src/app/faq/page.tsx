@@ -47,12 +47,12 @@ export default function FaqPage() {
     {
       category: "getting-started",
       question: "How do I get started with Prodvo?",
-      answer: `Start by creating a free account—no credit card required. Once you're in, create your first workspace and connect your Git repository. From there, describe what you want to build in plain language, and Prodvo will generate a structured plan. Review and approve the plan, then watch agents execute while you maintain oversight at checkpoints.`,
+      answer: `Start by creating a free account-no credit card required. Once you're in, create your first workspace and connect your Git repository. From there, describe what you want to build in plain language, and Prodvo will generate a structured plan. Review and approve the plan, then watch agents execute while you maintain oversight at checkpoints.`,
     },
     {
       category: "getting-started",
       question: "How long does it take to see results?",
-      answer: `Most teams run their first production workflow within an hour of signing up. Meaningful impact—reduced coordination overhead, faster cycle times—typically shows up within one sprint of active use.`,
+      answer: `Most teams run their first production workflow within an hour of signing up. Meaningful impact-reduced coordination overhead, faster cycle times-typically shows up within one sprint of active use.`,
     },
     {
       category: "getting-started",
@@ -67,7 +67,7 @@ export default function FaqPage() {
     {
       category: "getting-started",
       question: "Can I use Prodvo with private repositories?",
-      answer: `Absolutely. Prodvo works with both public and private repositories. Your code remains private and secure—we never share or expose your source code to other users or third parties.`,
+      answer: `Absolutely. Prodvo works with both public and private repositories. Your code remains private and secure-we never share or expose your source code to other users or third parties.`,
     },
     {
       category: "getting-started",
@@ -84,17 +84,17 @@ export default function FaqPage() {
     {
       category: "features",
       question: "What are 'parallel agents' and how do they work?",
-      answer: `Parallel agents are specialized AI workers that can execute different parts of a task simultaneously. For example, one agent handles frontend code while another works on the API and a third writes tests—all operating from the same intent lock but in isolated branches. They coordinate through shared context and merge at checkpoints.`,
+      answer: `Parallel agents are specialized AI workers that can execute different parts of a task simultaneously. For example, one agent handles frontend code while another works on the API and a third writes tests-all operating from the same intent lock but in isolated branches. They coordinate through shared context and merge at checkpoints.`,
     },
     {
       category: "features",
       question: "How do checkpoints work?",
-      answer: `Checkpoints are human review gates you define in your workflow. When agents reach a checkpoint, they pause and present their work—code changes, test results, quality signals—for your approval. You can approve to continue, request revisions, or rollback to a previous checkpoint.`,
+      answer: `Checkpoints are human review gates you define in your workflow. When agents reach a checkpoint, they pause and present their work-code changes, test results, quality signals-for your approval. You can approve to continue, request revisions, or rollback to a previous checkpoint.`,
     },
     {
       category: "features",
       question: "Can I rollback if something goes wrong?",
-      answer: `Yes. Every checkpoint creates a snapshot of your entire state—code, config, environment. If anything goes wrong after approval, you can rollback to any previous checkpoint with one click. Full state restoration, no manual cleanup required.`,
+      answer: `Yes. Every checkpoint creates a snapshot of your entire state-code, config, environment. If anything goes wrong after approval, you can rollback to any previous checkpoint with one click. Full state restoration, no manual cleanup required.`,
     },
     {
       category: "features",
@@ -109,7 +109,7 @@ export default function FaqPage() {
     {
       category: "features",
       question: "How does the intent lock prevent conflicts?",
-      answer: `The intent lock ensures only one workflow modifies a given scope at a time. When you start a workflow, Prodvo locks the relevant files and paths. Other workflows can read but not write until the lock is released—preventing merge conflicts and coordination chaos.`,
+      answer: `The intent lock ensures only one workflow modifies a given scope at a time. When you start a workflow, Prodvo locks the relevant files and paths. Other workflows can read but not write until the lock is released-preventing merge conflicts and coordination chaos.`,
     },
     {
       category: "features",
@@ -119,7 +119,7 @@ export default function FaqPage() {
     {
       category: "features",
       question: "Does Prodvo write tests automatically?",
-      answer: `Yes. Agents can generate unit tests, integration tests, and end-to-end tests based on your codebase patterns. You can configure test coverage requirements as checkpoint conditions—workflows won't proceed until tests pass.`,
+      answer: `Yes. Agents can generate unit tests, integration tests, and end-to-end tests based on your codebase patterns. You can configure test coverage requirements as checkpoint conditions-workflows won't proceed until tests pass.`,
     },
     {
       category: "features",
@@ -220,7 +220,7 @@ export default function FaqPage() {
     {
       category: "technical",
       question: "How does Prodvo integrate with my CI/CD pipeline?",
-      answer: `Prodvo works alongside your existing CI/CD. When agents complete work and you approve at a checkpoint, the changes are committed to your branch and trigger your normal CI pipeline. We don't replace your pipeline—we orchestrate what feeds into it.`,
+      answer: `Prodvo works alongside your existing CI/CD. When agents complete work and you approve at a checkpoint, the changes are committed to your branch and trigger your normal CI pipeline. We don't replace your pipeline-we orchestrate what feeds into it.`,
     },
     {
       category: "technical",
@@ -250,7 +250,7 @@ export default function FaqPage() {
     {
       category: "technical",
       question: "What's the latency for agent execution?",
-      answer: `Agent startup is typically under 3 seconds. Execution speed depends on task complexity—simple changes complete in seconds, while larger features may take minutes. You can monitor progress in real time and see estimated completion times.`,
+      answer: `Agent startup is typically under 3 seconds. Execution speed depends on task complexity-simple changes complete in seconds, while larger features may take minutes. You can monitor progress in real time and see estimated completion times.`,
     },
     {
       category: "technical",
@@ -309,7 +309,7 @@ export default function FaqPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════════
-          FAQ CONTENT — Two-column with sidebar filters
+          FAQ CONTENT - Two-column with sidebar filters
       ═══════════════════════════════════════════════════════════════════════ */}
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>

@@ -38,7 +38,7 @@ const PERSONAS: readonly Persona[] = [
   {
     label: "Solo Founders",
     word: "founders",
-    sub: "You have one shot to validate fast. Prodvo gets you from idea to live product in a weekend — auth, database, and deploy included.",
+    sub: "You have one shot to validate fast. Prodvo gets you from idea to live product in a weekend - auth, database, and deploy included.",
     cta: "Build your MVP today",
   },
   {
@@ -50,7 +50,7 @@ const PERSONAS: readonly Persona[] = [
   {
     label: "Non-Technical Founders",
     word: "non-devs",
-    sub: "You don't need to hire a developer. Describe what you want to build and Prodvo builds it — no technical background required.",
+    sub: "You don't need to hire a developer. Describe what you want to build and Prodvo builds it - no technical background required.",
     cta: "Build without coding",
   },
   {

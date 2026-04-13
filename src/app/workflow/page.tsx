@@ -27,35 +27,35 @@ const LOOP_PHASES: ReadonlyArray<{
   {
     key: "start",
     number: "01",
-    name: "Start — Describe your product",
+    name: "Start - Describe your product",
     description:
       "One prompt scaffolds the entire codebase, database, and auth layer.",
   },
   {
     key: "build",
     number: "02",
-    name: "Build — Agent writes the code",
+    name: "Build - Agent writes the code",
     description:
       "The AI agent executes each feature, tests it, and fixes issues in context.",
   },
   {
     key: "iterate",
     number: "03",
-    name: "Iterate — Talk to change it",
+    name: "Iterate - Talk to change it",
     description:
       "Request changes in plain language. Prodvo applies them without breaking existing features.",
   },
   {
     key: "deploy",
     number: "04",
-    name: "Deploy — One click to production",
+    name: "Deploy - One click to production",
     description:
       "SSL, CDN, custom domain, and previews per branch are handled for you.",
   },
   {
     key: "maintain",
     number: "05",
-    name: "Maintain — Prodvo watches it",
+    name: "Maintain - Prodvo watches it",
     description:
       "Logs, errors, and performance metrics stay visible in one operating view.",
   },
@@ -63,7 +63,7 @@ const LOOP_PHASES: ReadonlyArray<{
 
 const HERO_PROMPTS: readonly string[] = [
   '"Build a SaaS with user auth, a subscription dashboard, and Stripe billing."',
-  '"Add a team invite system — each team can have up to 5 members."',
+  '"Add a team invite system - each team can have up to 5 members."',
   '"Make the pricing page mobile-friendly and add a free tier."',
 ];
 
@@ -109,7 +109,7 @@ const BUILD_TURNS: ReadonlyArray<{
 }> = [
   {
     fromUser:
-      "Add a client portal where clients can view invoices and download PDFs without signing in — just a magic link.",
+      "Add a client portal where clients can view invoices and download PDFs without signing in - just a magic link.",
     fromProdvo:
       "Built. Added portal_token on invoices, a magic-link generator, and a public route at /portal/[token]. PDF download reuses the export endpoint for a secure no-login flow.",
     chips: ["prisma migration", "2 new routes", "email template updated"],
@@ -165,7 +165,7 @@ const DIFF_LINES: ReadonlyArray<{ tone: DiffTone; marker: string; code: string }
   {
     tone: "neutral",
     marker: " ",
-    code: "// PDF template — invoice-template.tsx",
+    code: "// PDF template - invoice-template.tsx",
   },
   {
     tone: "removed",
@@ -242,13 +242,13 @@ const DEPLOY_STEPS: ReadonlyArray<{
     status: "queued",
     name: "SSL certificate",
     detail: "Certificate issuance and renewal attached to domain.",
-    time: "—",
+    time: "-",
   },
   {
     status: "queued",
     name: "Health checks",
     detail: "Smoke test suite executes against production URL.",
-    time: "—",
+    time: "-",
   },
 ];
 
@@ -692,7 +692,7 @@ export default function WorkflowPage() {
               <div className={styles.phaseDividerLine} />
             </div>
             <h2 className={cx(styles.phaseTitle, styles.reveal)}>
-              Start — One prompt.
+              Start - One prompt.
               <br />
               A full project, live.
             </h2>
@@ -733,26 +733,26 @@ export default function WorkflowPage() {
                   </div>
                   <div className={styles.understandingList}>
                     <div className={styles.understandingItem}>
-                      → <strong>Data model</strong> — users, clients, invoices, and
+                      → <strong>Data model</strong> - users, clients, invoices, and
                       line items
                     </div>
                     <div className={styles.understandingItem}>
-                      → <strong>Auth requirement</strong> — sign-up flow and protected
+                      → <strong>Auth requirement</strong> - sign-up flow and protected
                       routes
                     </div>
                     <div className={styles.understandingItem}>
-                      → <strong>Monetization</strong> — subscription billing with
+                      → <strong>Monetization</strong> - subscription billing with
                       Stripe
                     </div>
                     <div className={styles.understandingItem}>
-                      → <strong>Export feature</strong> — PDF generation pipeline
+                      → <strong>Export feature</strong> - PDF generation pipeline
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className={cx(styles.scaffoldPanel, styles.reveal)}>
-                <div className={styles.scaffoldBar}>Scaffold output — generated in 43s</div>
+                <div className={styles.scaffoldBar}>Scaffold output - generated in 43s</div>
                 <div className={styles.scaffoldBody}>
                   <div className={styles.scaffoldRow}>
                     <span className={styles.scaffoldPath}>
@@ -857,7 +857,7 @@ export default function WorkflowPage() {
               <div className={styles.phaseDividerLine} />
             </div>
             <h2 className={cx(styles.phaseTitle, styles.reveal)}>
-              Build — The agent
+              Build - The agent
               <br />
               codes while you watch.
             </h2>
@@ -897,7 +897,7 @@ export default function WorkflowPage() {
               <div className={styles.phaseDividerLine} />
             </div>
             <h2 className={cx(styles.phaseTitle, styles.reveal)}>
-              Iterate — Change anything.
+              Iterate - Change anything.
               <br />
               Break nothing.
             </h2>
@@ -966,7 +966,7 @@ export default function WorkflowPage() {
               <div className={styles.phaseDividerLine} />
             </div>
             <h2 className={cx(styles.phaseTitle, styles.reveal)}>
-              Deploy — Live in seconds.
+              Deploy - Live in seconds.
               <br />
               No ops required.
             </h2>
@@ -1032,7 +1032,7 @@ export default function WorkflowPage() {
               <div className={styles.phaseDividerLine} />
             </div>
             <h2 className={cx(styles.phaseTitle, styles.reveal)}>
-              Maintain — Prodvo watches
+              Maintain - Prodvo watches
               <br />
               so you do not have to.
             </h2>

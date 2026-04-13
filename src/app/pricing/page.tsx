@@ -39,7 +39,7 @@ const STARTER_LIMITS: ReadonlyArray<{ name: string; value: string }> = [
   { name: "Compute", value: "Shared" },
   { name: "Deploy bandwidth", value: "5 GB/mo" },
   { name: "AI prompts", value: "100/mo" },
-  { name: "Team members", value: "—" },
+  { name: "Team members", value: "-" },
 ];
 
 const PRO_USAGE: ReadonlyArray<{ name: string; value: string; width: string }> = [
@@ -113,7 +113,7 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Backups",
         detail: "Automated + point-in-time",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "60%", value: "Daily · 7d", tone: "pro" },
           { width: "100%", value: "Hourly · 30d", tone: "pro" },
         ],
@@ -122,8 +122,8 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Read replicas",
         detail: "Geographic distribution",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "100%", value: "Up to 3", tone: "pro" },
         ],
       },
@@ -145,7 +145,7 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Custom domains",
         detail: "SSL auto-renew included",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "100%", value: "Unlimited", tone: "pro" },
           { width: "100%", value: "Unlimited", tone: "pro" },
         ],
@@ -154,7 +154,7 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Preview environments",
         detail: "Branch-based live previews",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "60%", value: "3 active", tone: "pro" },
           { width: "100%", value: "Unlimited", tone: "pro" },
         ],
@@ -168,8 +168,8 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Team members",
         detail: "Collaborators per workspace",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "100%", value: "Up to 5", tone: "pro" },
         ],
       },
@@ -177,8 +177,8 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "SSO + RBAC",
         detail: "Role-based access control",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "100%", value: "Full RBAC", tone: "pro" },
         ],
       },
@@ -186,7 +186,7 @@ const CAPABILITY_GROUPS: readonly CapabilityGroup[] = [
         name: "Audit logs",
         detail: "Access and change history",
         cells: [
-          { width: "0%", value: "—", tone: "none" },
+          { width: "0%", value: "-", tone: "none" },
           { width: "30%", value: "7 days", tone: "pro" },
           { width: "100%", value: "90 days", tone: "pro" },
         ],
@@ -342,7 +342,7 @@ export default function PricingPage() {
                 </div>
                 <div className={styles.ccProdvoRow}>
                   <span className={styles.ccProdvoLabel}>
-                    Prodvo Pro — all of the above
+                    Prodvo Pro - all of the above
                   </span>
                   <span className={styles.ccProdvoNum}>$29/mo</span>
                 </div>

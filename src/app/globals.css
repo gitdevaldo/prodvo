@@ -252,7 +252,7 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   ANIMATED LOGO — P/ Prodvo.
+   ANIMATED LOGO - P/ Prodvo.
    From brand guideline: docs/references/logo.html
 ═══════════════════════════════════════════════════════════════════════ */
 
@@ -267,7 +267,7 @@ a {
   user-select: none;
 }
 
-/* P/ — always visible, always orange */
+/* P/ - always visible, always orange */
 .logo-prefix {
   color: var(--fire-orange);
   flex-shrink: 0;
@@ -287,7 +287,7 @@ a {
   padding-left: 0.22em;
 }
 
-/* "Prodvo" text — fades in slightly delayed */
+/* "Prodvo" text - fades in slightly delayed */
 .logo-word {
   display: block;
   color: var(--gray-900);
@@ -301,7 +301,7 @@ a {
   transform: translateX(0);
 }
 
-/* The dot — always visible */
+/* The dot - always visible */
 .logo-dot {
   color: var(--fire-orange);
   flex-shrink: 0;
