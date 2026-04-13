@@ -113,7 +113,6 @@ export function AboutPage() {
             <li>Plan. Build. Ship. Maintain.</li>
             <li>Founded 2024</li>
             <li>$750K Seed Round</li>
-            <li>prodvo.dev</li>
           </ul>
         </div>
       </section>
