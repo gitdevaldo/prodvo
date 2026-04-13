@@ -3780,21 +3780,20 @@ a {
   background: var(--fire-orange);
 }
 
-.about-slider-wrapper {
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
-.about-slider-card {
-  max-width: 380px;
-  margin: 0 auto;
+.about-team-card {
   border: 1px solid var(--gray-200);
-  border-radius: 18px;
+  border-radius: 16px;
   background: #fff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  user-select: none;
-  touch-action: pan-y;
 }
 
 .about-slider-photo {
@@ -3830,7 +3829,7 @@ a {
 }
 
 .about-slider-initials {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: rgba(0, 0, 0, 0.06);
   letter-spacing: 0.05em;
@@ -3838,96 +3837,33 @@ a {
   font-family: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
 }
 
-.about-slider-info {
-  padding: 1.5rem;
+.about-team-card-info {
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
 }
 
-.about-slider-counter {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--gray-400);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.about-slider-name {
-  margin-top: 0.4rem;
-  font-size: clamp(1.4rem, 3vw, 1.85rem);
-  line-height: 1.15;
+.about-team-card-name {
+  font-size: 1.15rem;
+  line-height: 1.2;
   color: var(--gray-900);
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-.about-slider-role {
+.about-team-card-role {
   display: block;
-  margin-top: 0.2rem;
-  font-size: 0.92rem;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--fire-orange);
 }
 
-.about-slider-bio {
-  margin-top: 0.7rem;
-  font-size: 0.92rem;
-  line-height: 1.65;
+.about-team-card-bio {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
   color: var(--gray-500);
-}
-
-.about-slider-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.25rem;
-}
-
-.about-slider-arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--gray-200);
-  background: #fff;
-  color: var(--gray-500);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-  padding: 0;
-}
-
-.about-slider-arrow:hover {
-  border-color: var(--fire-orange);
-  color: var(--fire-orange);
-}
-
-.about-slider-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.about-slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 2px solid var(--gray-300);
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.about-slider-dot.active {
-  border-color: var(--fire-orange);
-  background: var(--fire-orange);
-}
-
-.about-slider-dot:hover:not(.active) {
-  border-color: var(--gray-400);
 }
 
 .about-team-hiring {
@@ -4344,12 +4280,8 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .about-slider-card {
-    max-width: 100%;
-  }
-
-  .about-slider-arrow {
-    display: none;
+  .about-team-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .competitor-grid {
