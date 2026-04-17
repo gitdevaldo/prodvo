@@ -22,33 +22,39 @@ const MOATS = [
 const TEAM = [
   {
     name: "Aldo Dwi Kristian",
-    role: "Founder & CEO",
-    bio: "A tech-savvy founder who started Prodvo after watching teams waste months recovering from unplanned AI-generated code. Passionate about building tools that make software delivery predictable and reversible.",
-  },
-  {
-    name: "Rina Wijaya",
-    role: "Co-founder & CTO",
-    bio: "Ex-infrastructure lead at Bukalapak. Designed the parallel agent orchestration system and checkpoint architecture. 12 years of experience in distributed computing and developer tooling.",
-  },
-  {
-    name: "Daniel Hartono",
-    role: "Head of Engineering",
-    bio: "Previously at Gojek, where he led the platform engineering team. Oversees Prodvo's core execution engine, CI/CD pipeline, and production infrastructure.",
-  },
-  {
-    name: "Siti Nurhaliza Ahmad",
-    role: "Head of Product",
-    bio: "Former product lead at Xendit. Shaped Prodvo's planning workspace and user experience. Obsessed with making complex developer workflows feel simple.",
-  },
-  {
-    name: "Kevin Lim",
-    role: "Head of Growth",
-    bio: "Previously scaled developer communities at DigitalOcean and Vercel. Leads Prodvo's go-to-market strategy, content marketing, and partnership programs.",
+    role: "CEO",
+    bio: "Founded Prodvo to solve the planning and coordination gap in AI-assisted software delivery.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Aldo%20Dwi%20Kristian%20-%20CEO.png",
   },
   {
     name: "Amara Osei",
     role: "Lead AI Engineer",
-    bio: "ML researcher from NUS with publications in multi-agent systems. Architected the proprietary planning algorithm that decomposes requirements into dependency-mapped task graphs.",
+    bio: "Leads model quality and multi-agent behavior to keep planning and execution outputs reliable in production use.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Amara%20Osei.png",
+  },
+  {
+    name: "Andre Afrillian",
+    role: "Business Development",
+    bio: "Builds strategic partnerships and growth channels to expand Prodvo's market reach.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Andre%20Afrillian%20-%20Business%20Development.png",
+  },
+  {
+    name: "Jun An",
+    role: "AI Engineer",
+    bio: "Works on execution reliability, evaluation loops, and practical AI performance for real product teams.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Jun%20An%20-%20AI%20Engineer.png",
+  },
+  {
+    name: "Rina Wijaya",
+    role: "Head of Growth",
+    bio: "Owns growth strategy, product storytelling, and demand generation across channels.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Rina%20Wijaya%20-%20Head%20of%20Growth.png",
+  },
+  {
+    name: "Wong Jun Xiong",
+    role: "AI Engineer",
+    bio: "Focuses on model orchestration and prompt execution quality for consistent implementation outcomes.",
+    photoUrl: "https://pub-26dea5ec509f4933a0317883567d339b.r2.dev/prodvo/Wong%20Jun%20Xiong%20-%20AI%20Engineer.png",
   },
 ] as const;
 

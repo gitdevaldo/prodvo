@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useCallback, useEffect, useRef } from "react";
 
 interface TeamMember {
   readonly name: string;
   readonly role: string;
   readonly bio: string;
+  readonly photoUrl: string;
 }
 
 const PER_PAGE = 3;
@@ -55,9 +57,6 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
     }
   };
 
-  const initials = (name: string) =>
-    name.split(" ").map((n) => n[0]).slice(0, 2).join("");
-
   const start = page * PER_PAGE;
   const visible = members.slice(start, start + PER_PAGE);
 
@@ -71,9 +70,13 @@ export function TeamSlider({ members }: { members: readonly TeamMember[] }) {
       {visible.map((member) => (
         <div key={member.name} className="about-team-card">
           <div className="about-team-card-photo">
-            <div className="about-slider-shimmer">
-              <span className="about-slider-initials">{initials(member.name)}</span>
-            </div>
+            <Image
+              src={member.photoUrl}
+              alt={`Portrait of ${member.name}`}
+              fill
+              sizes="(max-width: 900px) 50vw, 33vw"
+              className="about-team-card-photo-image"
+            />
           </div>
           <div className="about-team-card-info">
             <h3 className="about-team-card-name">{member.name}</h3>

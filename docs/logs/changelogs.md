@@ -4,6 +4,23 @@ Newest entries first. Every change must add one entry before commit/push.
 
 ---
 
+## 2026-04-17T12:45:39Z
+
+- **Who:** Copilot CLI agent
+- **What:** Updated About page team slider with real member photos and revised team roster/names
+- **When:** 2026-04-17T12:45:39Z
+- **Where:** `src/components/about-page.tsx`, `src/components/team-slider.tsx`, `src/app/globals.css`, `next.config.ts`, `docs/logs/changelogs.md`
+- **Why:** User requested replacing placeholder team slide avatars with provided photo URLs and applying updated team names.
+- **How:** Replaced initials shimmer placeholders with `next/image` portraits in the team slider, added `photoUrl` support to team data, updated the About page team list to the six provided members and roles, and whitelisted the R2 image host/path in Next image `remotePatterns`.
+- **File path(s) changed:**
+  - `src/components/about-page.tsx`
+  - `src/components/team-slider.tsx`
+  - `src/app/globals.css`
+  - `next.config.ts`
+  - `docs/logs/changelogs.md`
+
+---
+
 ## 2026-04-02T15:31:57Z
 
 - **Who:** Copilot CLI agent

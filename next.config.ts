@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         hostname: "img.logo.dev",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "pub-26dea5ec509f4933a0317883567d339b.r2.dev",
+        pathname: "/prodvo/**",
+      },
     ],
   },
 };
